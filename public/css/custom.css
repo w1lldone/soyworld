@@ -1,5 +1,16 @@
 /* your styles go here */
-.side-navbar.scroll {
+.side-navbar.scroll  {
 	height: calc(100vh - 80px);
 	overflow-y: auto;
+}
+
+.content-inner.scroll {
+	max-height: calc(100vh - 80px);
+	/*min-height: calc(100vh - 80px);*/
+	overflow: auto;
+}
+
+.content-wrapper {
+	min-height: calc(100% - 102px);
+
 }

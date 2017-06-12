@@ -35,7 +35,7 @@
       <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
         @include('layouts.sidenav')
-        <div class="content-inner">
+        <div class="content-inner scroll">
 
           @yield('content')
 
