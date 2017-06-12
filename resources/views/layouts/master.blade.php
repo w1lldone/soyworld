@@ -36,14 +36,8 @@
         <!-- Side Navbar -->
         @include('layouts.sidenav')
         <div class="content-inner">
-          <!-- Page Header-->
-          <header class="page-header">
-            <div class="container-fluid">
-              <h2 class="no-margin-bottom">Dashboard</h2>
-            </div>
-          </header>
 
-          {{-- @yield('content') --}}
+          @yield('content')
 
           <footer class="main-footer">
             <div class="container-fluid">
