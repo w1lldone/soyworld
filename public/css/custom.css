@@ -1,1 +1,5 @@
 /* your styles go here */
+.side-navbar.scroll {
+	height: calc(100vh - 80px);
+	overflow-y: auto;
+}

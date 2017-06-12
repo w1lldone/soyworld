@@ -1,4 +1,4 @@
-<nav class="side-navbar">
+<nav class="side-navbar scroll">
   <!-- Sidebar Header-->
   <div class="sidebar-header d-flex align-items-center">
     <div class="avatar"><img src="img/person.svg" alt="..." class="img-fluid rounded-circle"></div>
