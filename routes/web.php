@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'anggota'], function()
+Route::group(['prefix' => 'user'], function()
 {
-	Route::get('/', 'AnggotaController@index');
-	Route::get('/create', 'AnggotaController@create');
-	Route::post('/', 'AnggotaController@store');
+	Route::get('/', 'UserController@index');
+	Route::get('/create', 'UserController@create');
+	Route::post('/', 'UserController@store');
 });

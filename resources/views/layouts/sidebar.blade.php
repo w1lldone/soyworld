@@ -14,8 +14,8 @@
     <li class="active"> <a href="/home"><i class="icon-home"></i>Home</a></li>
     <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Anggota </a>
       <ul id="dashvariants" class="collapse list-unstyled">
-        <li><a href="/anggota">Daftar Anggota</a></li>
-        <li><a href="/anggota/create">Tambah Anggota</a></li>
+        <li><a href="/user">Daftar Anggota</a></li>
+        <li><a href="/user/create">Tambah Anggota</a></li>
       </ul>
     </li>
   </ul><span class="heading">Kedelai</span>
