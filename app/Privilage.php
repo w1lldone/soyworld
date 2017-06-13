@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Privilage extends Model
 {
-    //
+    protected $guarded = ['id'];
+
+    public function user()
+    {
+    	return $this->HasMany('App\User');
+    }
 }
