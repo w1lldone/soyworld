@@ -14,8 +14,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+        'id',
     ];
 
     /**
@@ -30,5 +30,17 @@ class User extends Authenticatable
     public function privilage()
     {
         return $this->belongsTo('App\Privilage');
+    }
+
+    public static function addUser($request)
+    {
+        return static::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact' => $request->contact,
+            'address' => $request->address,
+            'password' => bcrypt($request->address),
+            'privilage_id' => $request->privilage_id,
+        ]);
     }
 }

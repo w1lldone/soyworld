@@ -22,4 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'anggota'], function()
 {
 	Route::get('/', 'AnggotaController@index');
+	Route::get('/create', 'AnggotaController@create');
+	Route::post('/', 'AnggotaController@store');
 });

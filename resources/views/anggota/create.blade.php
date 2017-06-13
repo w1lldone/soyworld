@@ -104,7 +104,7 @@
 
 					      <div class="form-group row">       
 					        <div class="col-sm-9 offset-sm-3">
-					          <input type="submit" value="Signin" class="btn btn-primary">
+					          <input type="submit" value="Simpan" class="btn btn-primary">
 					        </div>
 					      </div>
 					    </form>
