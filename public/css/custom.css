@@ -19,3 +19,10 @@ button.logout {
 	border: none;
 	color: white;
 }
+
+.btn.btn-xs, .btn-group-xs .btn,
+.navbar .navbar-nav > li > a.btn.btn-xs, .btn-group-xs
+.navbar .navbar-nav > li > a.btn {
+  padding: 4px 15px;
+  font-size: 10px;
+}
