@@ -1,7 +1,57 @@
-@extends('layouts.master')
+@extends('layouts.master-plain')
 
 @section('content')
-<div class="content-wrapper">
+<div class="page login-page">
+  <div class="container d-flex align-items-center">
+    <div class="form-holder has-shadow">
+      <div class="row">
+        <!-- Logo & Information Panel-->
+        <div class="col-lg-6">
+          <div class="info d-flex align-items-center">
+            <div class="content text-center">
+              <div class="logo mb-4">
+                {{-- <h1>SIMPel</h1> --}}
+                  <img class="img-fluid" src="/img/logo/logo.svg" width="300px">
+              </div>
+              <p>Sistem Informasi Pengendalian Pasca-panen Kedelai Lokal</p>
+            </div>
+          </div>
+        </div>
+        <!-- Form Panel    -->
+        <div class="col-lg-6 bg-white">
+          <div class="form d-flex align-items-center">
+            <div class="content">
+              <form id="login-form" method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                  <input id="login-email" type="email" name="email" required=""  class="input-material" value="{{ old('email') }}">
+                  @if ($errors->has('email'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                  @endif
+                  <label for="login-email" class="label-material">Email</label>
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                  <input id="password" type="password" name="password" required="" class="input-material">
+                  <label for="login-password" class="label-material">Password</label>
+                </div><button type="submit" class="btn btn-primary">Login</button>
+                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+              </form><a href="{{ route('password.request') }}" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="{{ route('register') }}" class="signup">Signup</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyrights text-center">
+    <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
+    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+  </div>
+</div>
+
+{{-- ORIGIN --}}
+{{-- <div class="content-wrapper">
     <div class="dashboard-header">
         <div class="container-fluid">
             <div class="row">
@@ -68,5 +118,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
