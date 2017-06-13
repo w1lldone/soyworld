@@ -26,3 +26,7 @@ button.logout {
   padding: 4px 15px;
   font-size: 10px;
 }
+
+td > a, td > button {
+	margin-right: 10px;
+}
