@@ -41,7 +41,7 @@
       </header>
       <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
-        @include('layouts.sidenav')
+        @yield('sidebar')
         <div class="content-inner scroll" style="width: 100%">
 
           @yield('content')
@@ -71,15 +71,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="{{ asset('js/charts-home.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
-    <!---->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
   </body>
 </html>
