@@ -12,5 +12,10 @@
 
 .content-wrapper {
 	min-height: calc(100% - 102px);
+}
 
+button.logout {
+	background-color: transparent;
+	border: none;
+	color: white;
 }

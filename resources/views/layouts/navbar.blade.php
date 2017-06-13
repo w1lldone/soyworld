@@ -71,7 +71,14 @@
             </ul>
           </li>
           <!-- Logout    -->
-          <li class="nav-item"><a href="/logout" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+          <li class="nav-item">
+            <form method="POST" action="/logout">
+              {{ csrf_field() }}
+              <button href="#" type="submit" class="nav-link logout">Logout
+                <i class="fa fa-sign-out"></i>
+              </button>
+            </form>
+          </li>
 
         @endif  
 
