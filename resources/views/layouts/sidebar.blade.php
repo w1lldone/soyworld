@@ -11,7 +11,7 @@
   <!-- Sidebar Navidation Menus-->
   <span class="heading">Utama</span>
   <ul class="list-unstyled">
-    <li class="active"> <a href="/home"><i class="icon-home"></i>Home</a></li>
+    <li> <a href="/home"><i class="icon-home"></i>Home</a></li>
     <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Anggota </a>
       <ul id="dashvariants" class="collapse list-unstyled">
         <li><a href="/user">Daftar Anggota</a></li>
@@ -20,7 +20,7 @@
     </li>
   </ul><span class="heading">Kedelai</span>
   <ul class="list-unstyled">
-    <li> <a href="#"> <i class="icon-grid"></i>Pra panen </a></li>
+    <li> <a href="/onfarm"> <i class="icon-grid"></i>On farm </a></li>
     <li> <a href="#"> <i class="icon-form"></i>Pasca panen </a></li>
     <li> <a href="#"> <i class="icon-form"></i>Gudang </a></li>
   </ul>

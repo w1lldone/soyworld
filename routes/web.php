@@ -20,3 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('user', 'UserController');
+
+Route::group(['prefix' => 'onfarm'], function()
+{
+	Route::get('/', 'OnFarmController@index');
+});
