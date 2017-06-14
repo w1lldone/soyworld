@@ -15,7 +15,7 @@
 <ul class="breadcrumb">
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/anggota">Anggota</a></li>
-    <li class="breadcrumb-item active">Tambah anggota</li>
+    <li class="breadcrumb-item active">Edit anggota</li>
   </div>
 </ul>
 
@@ -28,28 +28,18 @@
 				<div class="col-md-8 offset-md-2">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Form tambah anggota</h3>
+					    <h3 class="h4">Form edit anggota</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/user">
-					      {{ csrf_field() }}
+					    <form class="form-horizontal" method="POST" action="/anggota">
+					      {{ csrf_field('PUT') }}
 					      {{-- INPUT NAME --}}
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Nama</label>
 					        <div class="col-sm-9">
-					          <input name="name" id="inputHorizontalSuccess" type="text" placeholder="Nama lengkap" class="form-control form-control-success" value="{{ old('name') }}" required>
+					          <input name="name" id="inputHorizontalSuccess" type="text" placeholder="Nama lengkap" class="form-control form-control-success" value="{{ $user->name }}" required>
 					          @if ($errors->has('name'))
 						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
-					          @endif
-					        </div>
-					      </div>
-					      {{-- INPUT EMAIL --}}
-					      <div class="form-group row {{ $errors->has('email') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Email</label>
-					        <div class="col-sm-9">
-					          <input name="email" id="inputHorizontalSuccess" type="email" placeholder="email@contoh.com" class="form-control form-control-success " value="{{ old('email') }}" required>
-					          @if ($errors->has('email'))
-						          <small class="form-text text-danger">{{ $errors->first('email') }}</small>
 					          @endif
 					        </div>
 					      </div>
@@ -57,7 +47,7 @@
 					      <div class="form-group row {{ $errors->has('address') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Alamat</label>
 					        <div class="col-sm-9">
-					          <input name="address" id="inputHorizontalSuccess" type="text" placeholder="Alamat lengkap" class="form-control form-control-success " value="{{ old('address') }}" required>
+					          <input name="address" id="inputHorizontalSuccess" type="text" placeholder="Alamat lengkap" class="form-control form-control-success " value="{{ $user->address }}" required>
 					          @if ($errors->has('address'))
 						          <small class="form-text text-danger">{{ $errors->first('address') }}</small>
 					          @endif
@@ -69,25 +59,8 @@
 					        <div class="col-sm-9">
 					          <input name="contact" id="inputHorizontalSuccess" type="text" placeholder="0812306*****" class="form-control form-control-success " value="{{ old('contact') }}" required>
 					          @if ($errors->has('contact'))
-						          <small class="form-text text-danger">{{ $errors->first('contact') }}</small>
+						          <small class="form-text text-danger">{{ $user->contact }}</small>
 					          @endif
-					        </div>
-					      </div>
-					      {{-- INPUT PASSWORD --}}
-					      <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Password</label>
-					        <div class="col-sm-9">
-					          <input name="password" id="inputHorizontalSuccess" type="password" placeholder="password" class="form-control form-control-success " required>
-					          @if ($errors->has('password'))
-						          <small class="form-text text-danger">{{ $errors->first('password') }}</small>
-					          @endif
-					        </div>
-					      </div>
-					      {{-- INPUT PASSWORD CONFIRMATION --}}
-					      <div class="form-group row">
-					        <label class="col-sm-3 form-control-label">Ulangi password</label>
-					        <div class="col-sm-9">
-					          <input name="password_confirmation" id="inputHorizontalSuccess" type="password" placeholder="Ulangi password" class="form-control form-control-success" required>
 					        </div>
 					      </div>
 					      {{-- INPUT PRIVILAGES --}}
