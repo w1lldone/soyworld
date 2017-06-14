@@ -58,7 +58,7 @@
 					      <div class="form-group row {{ $errors->has('contact') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">No Hp</label>
 					        <div class="col-sm-9">
-					          <input name="contact" id="inputHorizontalSuccess" type="text" placeholder="0812306*****" class="form-control form-control-success " value="{{ old('contact') }}" required>
+					          <input name="contact" id="inputHorizontalSuccess" type="text" placeholder="0812306*****" class="form-control form-control-success " value="{{$user->contact }}" required>
 					          @if ($errors->has('contact'))
 						          <small class="form-text text-danger">{{ $user->contact }}</small>
 					          @endif

@@ -43,6 +43,7 @@
 					          <th>Email</th>
 					          <th>Kontak</th>
 					          <th>Alamat</th>
+					          <th>Action</th>
 					        </tr>
 					      </thead>
 					      <tbody>
@@ -53,6 +54,11 @@
 					      	    <td>{{ $user->email }}</td>
 					      	    <td>{{ $user->contact }}</td>
 					      	    <td>{{ $user->address }}</td>
+					      	    <td style="display: flex;">
+									<a href="/user/{{$user->id}}/edit" type="button" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
+										<i class="fa fa-edit"></i>
+									</a>
+					      	    </td>
 					      	  </tr>
 					      	@endforeach
 					      </tbody>
