@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('contact', 15)->nullable();
             $table->string('password');
             $table->integer('privilage_id')->unsigned();
+            $table->integer('poktan_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

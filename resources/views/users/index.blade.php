@@ -44,7 +44,7 @@
 					          <th>Nama</th>
 					          <th>Email</th>
 					          <th>Kontak</th>
-					          <th>Alamat</th>
+					          <th>Kewenangan</th>
 					          <th>Action</th>
 					        </tr>
 					      </thead>
@@ -55,7 +55,7 @@
 					      	    <td>{{ $user->name }}</td>
 					      	    <td>{{ $user->email }}</td>
 					      	    <td>{{ $user->contact }}</td>
-					      	    <td>{{ $user->address }}</td>
+					      	    <td>{{ $user->privilage->name }}</td>
 					      	    <td style="display: flex;">
 									<a href="/user/{{$user->id}}/edit" type="button" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
 										<i class="fa fa-edit"></i>

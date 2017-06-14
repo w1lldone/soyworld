@@ -27,11 +27,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /*
+    * RELATIONS SECTION
+    */
     public function privilage()
     {
         return $this->belongsTo('App\Privilage');
     }
 
+    public function seed()
+    {
+        return $this->hasMany('App\Seed');
+    }
+
+    public function poktan()
+    {
+        return $this->belongsTo('App\Poktan');
+    }
+
+
+    /*
+    * CUSTOM METHOD SECTION
+    */
     public static function addUser($request)
     {
         return static::create([
