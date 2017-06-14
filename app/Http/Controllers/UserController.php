@@ -49,6 +49,14 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $privilages = Privilage::all();
+        return view('users.edit', compact(['user', 'privilages']));
+    }
+
+    public function update(User $user, Request $request)
+    {
+        $request->has('name') ? $user->update(request(['name', 'contact', 'address', 'privilage_id'])) : $user;
+
+        return redirect('/user');
     }
 }

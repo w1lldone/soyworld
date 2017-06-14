@@ -31,8 +31,9 @@
 					    <h3 class="h4">Form edit anggota</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/anggota">
-					      {{ csrf_field('PUT') }}
+					    <form class="form-horizontal" method="POST" action="/user/{{$user->id}}">
+					      {{ method_field('PUT') }}	
+					      {{ csrf_field() }}
 					      {{-- INPUT NAME --}}
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Nama</label>
