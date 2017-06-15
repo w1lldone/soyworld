@@ -29,7 +29,7 @@
 					    <div class="dropdown">
 					      <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
 					      <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-						      <a href="/user/create" class="dropdown-item"> <i class="fa fa-plus"></i>On farm kedelai</a>
+						      <a href="/onfarm/create" class="dropdown-item"> <i class="fa fa-plus"></i>On farm kedelai</a>
 					      </div>
 					    </div>
 					  </div>
@@ -37,7 +37,7 @@
 					    <h3 class="h4">Daftar on farm kedelai</h3>
 					  </div>
 					  <div class="card-body">
-					    <table class="table">
+					    <table class="table table-hover">
 					      <thead>
 					        <tr>
 					          <th>#</th>
@@ -50,8 +50,8 @@
 					      <tbody>
 					      	@foreach ($onfarms as $onfarm)
 					      		<tr>
-						      		<th scope="row">{{ $onfarm->created_at }}</th>
-						      		<td>{{ $onfarm->name }}</td>
+						      		<th scope="row">{{ $onfarm->created_at->toFormattedDateString() }}</th>
+						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
 						      		<td>{{ $onfarm->user->name }}</td>
 						      		<td>{{ $onfarm->user->poktan->name }}</td>
 						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
