@@ -33,6 +33,21 @@
 					  <div class="card-body">
 					    <form class="form-horizontal" method="POST" action="/onfarm">
 					      {{ csrf_field() }}
+					      @if (auth()->user()->privilage->is_superadmin)
+						      {{-- INPUT PRIVILAGES --}}
+						      <div class="form-group row">
+						        <label class="col-sm-3 form-control-label">Petani</label>
+						        <div class="col-sm-9">
+						          <select name="input_user" class="form-control">
+	                                @foreach (\App\User::all() as $user)
+	                                	<option value="{{ $user->id }}">{{ $user->name }}</option>
+	                                @endforeach
+	                              </select>
+						        </div>
+						      </div>
+					      @endif
+					      {{-- HIDDEN INPUT --}}
+					      <input type="hidden" name="auth_user" value="{{ auth()->user()->id }}">
 					      {{-- INPUT NAME --}}
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Judul</label>
