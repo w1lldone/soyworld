@@ -23,7 +23,7 @@
 	<section class="dashboard-counts no-padding-bottom">
 	    <div class="container-fluid">
     	  <div class="project">
-            <div class="row bg-white has-shadow">
+            <div class="row bg-white has-shadow" style="padding: 5px 15px;">
               <div class="col-lg-4 d-flex align-items-center justify-content-between">
                 <div class="project-title d-flex align-items-center">
                   {{-- <div class="image has-shadow"><img src="/img/project-1.jpg" alt="..." class="img-fluid"></div> --}}
@@ -33,9 +33,13 @@
                 </div>
                 <div class="project-date"><span class="hidden-sm-down">Today at 4:24 AM</span></div>
               </div>
-              <div class="statistic col-lg-4 clearfix align-items-center">
+              <div class="statistic col-lg-4 clearfix align-items-center" style="margin-bottom: inherit;">
                <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
-               <div class="text float-right"><strong>99.9%</strong><br><small>Total</small></div>
+               <div class="text float-right"><strong>700 m<sup>2</sup></strong><br><small>Luas Lahan</small></div>
+              </div>
+              <div class="statistic col-lg-4 clearfix align-items-center" style="border-right: none; margin-bottom: inherit;">
+               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
+               <div class="text float-right"><strong>27 Mei, 2017</sup></strong><br><small>Tanggal tanam</small></div>
               </div>
 
             </div>
