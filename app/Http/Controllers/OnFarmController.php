@@ -14,7 +14,8 @@ class OnFarmController extends Controller
 
     public function index()
     {
-    	return view('onfarm.index');
+        $onfarms = Onfarm::latest()->get();
+    	return view('onfarm.index', compact('onfarms'));
     }
 
     public function create()

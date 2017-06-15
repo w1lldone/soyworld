@@ -48,13 +48,15 @@
 					        </tr>
 					      </thead>
 					      <tbody>
-					      	<tr>
-					      		<th scope="row">1</th>
-					      		<td>Tanam bulan Januari</td>
-					      		<td>Pak tani</td>
-					      		<td>Tani Makmur</td>
-					      		<td>2 Hari yang lalu</td>
-					      	</tr>
+					      	@foreach ($onfarms as $onfarm)
+					      		<tr>
+						      		<th scope="row">{{ $onfarm->created_at }}</th>
+						      		<td>{{ $onfarm->name }}</td>
+						      		<td>{{ $onfarm->user->name }}</td>
+						      		<td>{{ $onfarm->user->poktan->name }}</td>
+						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
+						      	</tr>
+					      	@endforeach
 					      	{{-- @foreach ($users as $user)
 				      		  <tr>
 					      	    <th scope="row">{{ $loop->index+1 }}</th>
