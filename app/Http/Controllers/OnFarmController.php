@@ -10,4 +10,9 @@ class OnFarmController extends Controller
     {
     	return view('onfarm.index');
     }
+
+    public function create()
+    {
+    	return view('onfarm.create');
+    }
 }

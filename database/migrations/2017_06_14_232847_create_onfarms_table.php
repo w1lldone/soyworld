@@ -16,6 +16,7 @@ class CreateOnfarmsTable extends Migration
         Schema::create('onfarms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', '250');
+            $table->string('description', '500')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('seed_id')->unsigned()->nullable();
             $table->integer('seed_quantity')->nullable();

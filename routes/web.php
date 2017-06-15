@@ -24,4 +24,5 @@ Route::resource('user', 'UserController');
 Route::group(['prefix' => 'onfarm'], function()
 {
 	Route::get('/', 'OnFarmController@index');
+	Route::get('/create', 'OnFarmController@create');
 });
