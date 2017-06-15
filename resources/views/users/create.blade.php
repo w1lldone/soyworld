@@ -14,7 +14,7 @@
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
   <div class="container-fluid">
-    <li class="breadcrumb-item"><a href="/anggota">Anggota</a></li>
+    <li class="breadcrumb-item"><a href="/user">Anggota</a></li>
     <li class="breadcrumb-item active">Tambah anggota</li>
   </div>
 </ul>
