@@ -18,6 +18,11 @@ class OnFarmController extends Controller
     	return view('onfarm.index', compact('onfarms'));
     }
 
+    public function view(Onfarm $onfarm)
+    {
+        return view('onfarm.view');
+    }
+
     public function create()
     {
     	return view('onfarm.create');
