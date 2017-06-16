@@ -15,6 +15,10 @@ class Onfarm extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function seed(){
+        return $this->hasOne('App\Seed');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */

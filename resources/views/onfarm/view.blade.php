@@ -28,17 +28,17 @@
                 <div class="project-title d-flex align-items-center pt-4 py-4">
                   {{-- <div class="image has-shadow"><img src="/img/project-1.jpg" alt="..." class="img-fluid"></div> --}}
                   <div class="text">
-                    <h3 class="text-light">Tanam kedelai bulan juli</h3><small>Muhammad Alahudin, Kelompok Tani makmur</small>
+                    <h3 class="text-light">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}, {{ $onfarm->user->poktan->name }}</small>
                   </div>
                 </div>
                 {{-- <div class="project-date"><span class="hidden-sm-down">Today at 4:24 AM</span></div> --}}
               </div>
               <div class="statistic col-lg-4 clearfix align-items-center" style="margin-bottom: inherit;">
-              	@isset ($seed)
+              	@isset ($onfarm->seed)
 	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
 	               <div class="text text-right float-right"><strong>700 Kg</strong><br><small>Benih digunakan</small></div>
               	@endisset
-              	@empty ($seed)
+              	@empty ($onfarm->seed)
                    <div class="text text-center">
     	               <h3 class="text-light">Benih belum dibeli</h3>
     	               <a class="round-link" href="/seed/create/1">Beli</a>
@@ -46,14 +46,16 @@
               	@endempty
               </div>
               <div class="statistic col-lg-4 clearfix align-items-center" style="border-right: none; margin-bottom: inherit;">
-              	@isset ($seed)
+              	@isset ($onfarm->planted_at)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
 	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>27 Mei, 2017</sup></strong></div>
               	@endisset
-              	@empty ($seed)
+              	@empty ($onfarm->planted_at)
                    <div class="text text-center">
     	               <h3 class="text-light">Benih belum ditanam</h3>
-    	               <a class="round-link bg-orange disabled" href="/plant/create/1">tanam</a>
+                     @isset ($onfarm->seed)
+      	               <a class="round-link bg-orange" href="/plant/create/1">tanam</a>
+                     @endisset
                    </div>
               	@endempty
               </div>

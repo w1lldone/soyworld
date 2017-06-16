@@ -20,7 +20,8 @@ class OnFarmController extends Controller
 
     public function view(Onfarm $onfarm)
     {
-        return view('onfarm.view');
+
+        return view('onfarm.view', compact('onfarm'));
     }
 
     public function create()

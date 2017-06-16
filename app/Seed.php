@@ -12,4 +12,8 @@ class Seed extends Model
     {
     	return $this->belongsTo('App/User');
     }
+
+    public function onfarm(){
+    	return $this->belongsTo('App\Onfarm');
+    }
 }

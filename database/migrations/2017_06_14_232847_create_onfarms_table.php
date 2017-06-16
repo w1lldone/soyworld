@@ -18,8 +18,6 @@ class CreateOnfarmsTable extends Migration
             $table->string('name', '250');
             $table->string('description', '500')->nullable();
             $table->integer('user_id')->unsigned();
-            $table->integer('seed_id')->unsigned()->nullable();
-            $table->integer('seed_quantity')->nullable();
             $table->integer('area')->nullable();
             $table->timestamp('planted_at')->nullable();
             $table->timestamps();
