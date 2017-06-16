@@ -31,7 +31,7 @@ td > a, td > button {
 	margin-right: 10px;
 }
 
-.light-text {
+.text-light {
 	font-weight: 500;
     color: #555;
 }
@@ -48,4 +48,10 @@ td > a, td > button {
 
 a.round-link:hover {
 	color: #fff;
+}
+
+a.round-link.disabled {
+	cursor: not-allowed;
+	opacity: .65;
+	pointer-events: none;
 }

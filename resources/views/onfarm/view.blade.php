@@ -28,7 +28,7 @@
                 <div class="project-title d-flex align-items-center pt-4 py-4">
                   {{-- <div class="image has-shadow"><img src="/img/project-1.jpg" alt="..." class="img-fluid"></div> --}}
                   <div class="text">
-                    <h3 class="h4">Tanam kedelai bulan juli</h3><small>Muhammad Alahudin, Kelompok Tani makmur</small>
+                    <h3 class="text-light">Tanam kedelai bulan juli</h3><small>Muhammad Alahudin, Kelompok Tani makmur</small>
                   </div>
                 </div>
                 {{-- <div class="project-date"><span class="hidden-sm-down">Today at 4:24 AM</span></div> --}}
@@ -40,7 +40,7 @@
               	@endisset
               	@empty ($seed)
                    <div class="text text-center">
-    	               <h3 class="light-text">Benih belum dibeli</h3>
+    	               <h3 class="text-light">Benih belum dibeli</h3>
     	               <a class="round-link" href="/seed/create/1">Beli</a>
                    </div>
               	@endempty
@@ -52,8 +52,8 @@
               	@endisset
               	@empty ($seed)
                    <div class="text text-center">
-    	               <h3 class="light-text">Benih belum ditanam</h3>
-    	               <a class="round-link bg-orange btn disabled" href="/plant/create/1">tanam</a>
+    	               <h3 class="text-light">Benih belum ditanam</h3>
+    	               <a class="round-link bg-orange disabled" href="/plant/create/1">tanam</a>
                    </div>
               	@endempty
               </div>
