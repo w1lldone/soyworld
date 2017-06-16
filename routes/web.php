@@ -28,3 +28,8 @@ Route::group(['prefix' => 'onfarm'], function()
 	Route::post('/', 'OnFarmController@store');
 	Route::get('/{onfarm}/view', 'OnFarmController@view');
 });
+
+Route::group(['prefix' => 'seed'], function()
+{
+	Route::get('/create/{onfarm}', 'SeedController@create');
+});

@@ -45,7 +45,7 @@
                    </div>
               	@endempty
               </div>
-              <div class="statistic col-lg-4 clearfix align-items-center" style="border-right: none; margin-bottom: inherit;">
+              <div class="statistic project col-lg-4 clearfix align-items-center" style="border-right: none; margin-bottom: inherit;">
               	@isset ($onfarm->planted_at)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
 	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>27 Mei, 2017</sup></strong></div>
@@ -56,6 +56,9 @@
                      @isset ($onfarm->seed)
       	               <a class="round-link bg-orange" href="/plant/create/1">tanam</a>
                      @endisset
+                     @empty ($onfarm->seed)
+                         <small>Lakukan pembelian benih dulu</small>
+                     @endempty
                    </div>
               	@endempty
               </div>
@@ -64,11 +67,11 @@
 	    </div>
     </section>
 
-	<section class="dashboard-header">
+	<section class="dashboard-header pb-0">
       <div class="container-fluid">
         <div class="row">
           {{-- AKTIVITAS TANAM --}}
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
@@ -138,7 +141,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="articles card">
               <div class="card-close">
                 <div class="dropdown">
@@ -179,20 +182,73 @@
               </div>
             </div>
           </div>
-          <div class="chart col-lg-3 col-12">
-            <!-- TOTAL BIAYA   -->
-            <div class="bar-chart has-shadow bg-white pb-3">
-              <div class="title"><strong class="text-violet">Rp. 553.000</strong><br><small>Total biaya pra-panen</small></div>
+        </div>
+      </div>
+    </section>
+    <section class="client no-padding-top ">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Work Amount  -->
+          <div class="col-lg-4">
+            <div class="work-amount card">
+              <div class="card-close">
+                <div class="dropdown">
+                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3>Total biaya pra-panen</h3><small>Lorem ipsum dolor sit amet.</small>
+                <div class="chart text-center"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                  <div class="text"><strong>90</strong><br><span>Hours</span></div>
+                  <canvas id="pieChart" style="display: block; width: 180px; height: 180px;" width="180" height="180"></canvas>
+                </div>
+              </div>
             </div>
-            <!-- BELUM PANEN-->
-            <div class="statistic d-flex align-items-center bg-white has-shadow">
-              <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
-              <div class="text"><a href="/panen/create/1" style="text-decoration: none;"><b>Belum panen</b><br><small>Klik untuk panen</small></a></div>
+          </div>
+          <!-- Client Profile -->
+          <div class="col-lg-4">
+            <div class="client card">
+              <div class="card-close">
+                <div class="dropdown">
+                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <div class="client-avatar"><img src="/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
+                  <div class="status bg-green"></div>
+                </div>
+                <div class="client-title">
+                  <h3>Jason Doe</h3><span>Web Developer</span><a href="#">Follow</a>
+                </div>
+                <div class="client-info">
+                  <div class="row">
+                    <div class="col-4"><strong>20</strong><br><small>Photos</small></div>
+                    <div class="col-4"><strong>54</strong><br><small>Videos</small></div>
+                    <div class="col-4"><strong>235</strong><br><small>Tasks</small></div>
+                  </div>
+                </div>
+                <div class="client-social d-flex justify-content-between"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a><a href="#" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+              </div>
             </div>
-            <!-- SUDAH PANEN-->
-            <div class="statistic d-flex align-items-center bg-white has-shadow">
-              <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
-              <div class="text"><a href="/panen/create/1" style="text-decoration: none;"><b>Panen pada:</b><br><small>30 Agustus, 2017</small></a></div>
+          </div>
+          <!-- Total Overdue             -->
+          <div class="col-lg-4">
+            <div class="overdue card">
+              <div class="card-close">
+                <div class="dropdown">
+                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3>Total Overdue</h3><small>Lorem ipsum dolor sit amet.</small>
+                <div class="number text-center">$20,000</div>
+                <div class="chart"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                  <canvas id="lineChart1" style="display: block;" width="287" height="143">                               </canvas>
+                </div>
+              </div>
             </div>
           </div>
         </div>
