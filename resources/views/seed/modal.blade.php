@@ -7,24 +7,35 @@
       </div>
       <div class="modal-body">
         <p>Supplier kelompok tani - <b>{{ $onfarm->user->poktan->name }}</b></p>
-        <form>
-          {{-- <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="Email Address" class="form-control">
+        <form action="/supplier" method="POST">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label>Nama</label>
+            <input type="text" placeholder="Nama supplier" name="name" class="form-control">
           </div>
           <div class="form-group">       
-            <label>Password</label>
-            <input type="password" placeholder="Password" class="form-control">
+            <label>Keterangan</label>
+            <input type="text" name="description" placeholder="Keterangan supplier (jenis barang)" class="form-control">
           </div>
           <div class="form-group">       
-            <input type="submit" value="Signin" class="btn btn-primary">
-          </div> --}}
-        </form>
+            <label>Alamat</label>
+            <input type="text" placeholder="Alamat supplier" name="address" class="form-control">
+          </div>
+          <div class="form-group">       
+            <label>Kontak</label>
+            <input type="text" placeholder="No Hp / Telepon supplier" name="contact" class="form-control">
+          </div>
+          @if (auth()->user()->privilage->is_superadmin)
+            <input type="hidden" name="poktan_id" value="{{ $onfarm->user->poktan->id }}">
+            <input type="hidden" name="user_id" value="{{ $onfarm->user->id }}">
+          @endif
+          <input type="hidden" name="url" value="{{ $url }}">
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

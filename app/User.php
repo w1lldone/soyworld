@@ -49,6 +49,11 @@ class User extends Authenticatable
     /*
     * CUSTOM METHOD SECTION
     */
+    public function isSuperadmin()
+    {
+        return $this->privilage->is_superadmin;
+    }
+
     public static function addUser($request)
     {
         return static::create([

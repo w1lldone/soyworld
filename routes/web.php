@@ -33,3 +33,8 @@ Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
 });
+
+Route::group(['prefix' => 'supplier'], function()
+{
+	Route::post('/', 'SupplierController@store');
+});

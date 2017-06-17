@@ -28,10 +28,11 @@ class SeedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Onfarm $onfarm)
+    public function create(Onfarm $onfarm, Request $request)
     {
         $this->authorize('createSeed', $onfarm);
-        return view('seed.create', compact('onfarm'));
+        $url = $request->fullUrl();
+        return view('seed.create', compact(['onfarm', 'url']));
     }
 
     /**

@@ -25,7 +25,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				{{-- HORIZONTAL FORM --}}
-				<div class="col-md-8 offset-md-2">
+				<div class="col-md-8 offset-md-1">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
 					    <h3 class="h4">Form pembelian bibit</h3>
@@ -42,9 +42,9 @@
 					          <div class="input-group">
 					            <select name="supplier_id" class="form-control">
 					            	<option></option>
-					            	{{-- @foreach (\App\Supplier::all() as $supplier)
-					            		<option value="{{$supplier->id}}">{{$supplier->name}}</option>
-					            	@endforeach --}}
+					            	@foreach ($onfarm->user->poktan->supplier as $supplier)
+					            		<option value="{{$supplier->id}}">{{$supplier->name}} &dash; {{$supplier->description}}</option>
+					            	@endforeach
 					            </select>
 					            <span class="input-group-btn">
 						          <button data-target="#addSupplier" data-toggle="modal" class="btn btn-primary" title="Tambah supplier" type="button">+</button>
