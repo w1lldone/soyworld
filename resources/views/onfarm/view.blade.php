@@ -23,6 +23,7 @@
 	<section class="dashboard-counts no-padding-bottom">
 	    <div class="container-fluid">
     	  <div class="project">
+        @include('layouts.alerts')
             <div class="row bg-white has-shadow" style="padding: 5px 15px;">
               <div class="col-lg-4 d-flex align-items-center justify-content-between">
                 <div class="project-title d-flex align-items-center pt-4 py-4">

@@ -24,6 +24,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
+				@include('layouts.alerts')
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
