@@ -47,7 +47,7 @@
 					            	@endforeach --}}
 					            </select>
 					            <span class="input-group-btn">
-						          <button class="btn btn-primary" title="Tambah supplier" data-toggle="tooltip" type="button">+</button>
+						          <button data-target="#addSupplier" data-toggle="modal" class="btn btn-primary" title="Tambah supplier" type="button">+</button>
 						        </span>
 					          </div>
 					        </div>
@@ -110,6 +110,8 @@
 		</div>
 	</section>
 </div>
+@endsection
 
-
+@section('modal')
+	@include('seed.modal')
 @endsection

@@ -43,9 +43,8 @@
         <!-- Side Navbar -->
         @yield('sidebar')
         <div class="content-inner scroll" style="width: 100%">
-
           @yield('content')
-
+          @yield('modal')
           <footer class="main-footer">
             <div class="container-fluid">
               <div class="row">
