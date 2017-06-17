@@ -1,0 +1,2 @@
+#Information system for post-harvest soybean control
+This information system was build to control soybean post-harvest system (case study on Tani Makmur Prambanan soybean farmers, Yogyakarta, Indonesia)
