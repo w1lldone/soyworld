@@ -31,7 +31,7 @@
 					    <h3 class="h4">Form pembelian bibit</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/onfarm" enctype="multipart/form-data">
+					    <form class="form-horizontal" method="POST" action="/seed" enctype="multipart/form-data">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
 					      <input type="hidden" name="user_id" value="{{$onfarm->user_id}}">
@@ -50,6 +50,9 @@
 						          <button data-target="#addSupplier" data-toggle="modal" class="btn btn-primary" title="Tambah supplier" type="button">+</button>
 						        </span>
 					          </div>
+					          @if ($errors->has('supplier_id'))
+						          <small class="form-text text-danger">{{ $errors->first('supplier_id') }}</small>
+					          @endif
 					        </div>
 					      </div>
 					      {{-- INPUT QUANTITY --}}
@@ -57,7 +60,7 @@
 					        <label class="col-sm-3 form-control-label">Jumlah bibit</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma"><span class="input-group-addon">Kg</span>
+                                <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
                               </div>
 					          @if ($errors->has('quantity'))
 						          <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
@@ -69,10 +72,10 @@
 					        <label class="col-sm-3 form-control-label">Harga kedelai per Kg</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <span class="input-group-addon">Rp.</span><input type="number" name="quantity" class="form-control" placeholder="Harga kedelai per Kg">
+                                <span class="input-group-addon">Rp.</span><input type="number" name="price" class="form-control" placeholder="Harga kedelai per Kg" value="{{ old('price') }}">
                               </div>
-					          @if ($errors->has('quantity'))
-						          <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
+					          @if ($errors->has('price'))
+						          <small class="form-text text-danger">{{ $errors->first('price') }}</small>
 					          @endif
 					        </div>
 					      </div>

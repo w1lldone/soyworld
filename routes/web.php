@@ -23,15 +23,16 @@ Route::resource('user', 'UserController');
 
 Route::group(['prefix' => 'onfarm'], function()
 {
-	Route::get('/', 'OnFarmController@index');
-	Route::get('/create', 'OnFarmController@create');
-	Route::post('/', 'OnFarmController@store');
-	Route::get('/{onfarm}/view', 'OnFarmController@view');
+	Route::get('/', 'OnfarmController@index');
+	Route::get('/create', 'OnfarmController@create');
+	Route::post('/', 'OnfarmController@store');
+	Route::get('/{onfarm}/view', 'OnfarmController@view');
 });
 
 Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
+	Route::post('/', 'SeedController@store');
 });
 
 Route::group(['prefix' => 'supplier'], function()

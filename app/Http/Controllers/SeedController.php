@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use App\Seed;
 use Illuminate\Http\Request;
 use App\Onfarm;
+use Illuminate\Support\Facades\Validator;
 
 class SeedController extends Controller
 {
     function __construct()
     {
         $this->middleware('auth');
+    }
+
+    protected function validator($request)
+    {
+        return Validator::make($request, [
+            'supplier_id' => 'required',
+            'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
+            'name' => 'required',
+        ]);
     }
 
     /**
@@ -43,7 +54,9 @@ class SeedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        return $request;
     }
 
     /**

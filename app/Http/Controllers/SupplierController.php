@@ -7,6 +7,11 @@ use App\Supplier;
 
 class SupplierController extends Controller
 {
+	function __construct()
+	{
+		$this->middleware('auth');
+	}
+
     public function store(Request $request)
     {
     	if (!auth()->user()->isSuperadmin()) {
