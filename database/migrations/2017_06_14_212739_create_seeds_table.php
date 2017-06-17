@@ -16,7 +16,6 @@ class CreateSeedsTable extends Migration
         Schema::create('seeds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 150)->nullable();
-            $table->integer('user_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('quantity');
             $table->integer('price');

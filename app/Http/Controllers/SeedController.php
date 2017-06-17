@@ -18,6 +18,7 @@ class SeedController extends Controller
     {
         return Validator::make($request, [
             'supplier_id' => 'required',
+            'onfarm_id' => 'required|unique:seeds,onfarm_id',
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
             'name' => 'required',
@@ -56,7 +57,9 @@ class SeedController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        return $request;
+        $seed = Seed::addSeed($request);
+
+        return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil melakukan pembelian benih');
     }
 
     /**

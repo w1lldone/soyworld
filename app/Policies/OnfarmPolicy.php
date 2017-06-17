@@ -42,7 +42,7 @@ class OnfarmPolicy
 
     public function createSeed(User $user, Onfarm $onfarm)
     {
-        return $user->id === $onfarm->user->id;
+        return ($user->id === $onfarm->user->id) && empty($onfarm->seed) ;
     }
 
     /**

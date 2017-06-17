@@ -34,7 +34,10 @@
 					    <form class="form-horizontal" method="POST" action="/seed" enctype="multipart/form-data">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
-					      <input type="hidden" name="user_id" value="{{$onfarm->user_id}}">
+					      <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}">
+					      @if ($errors->has('onfarm_id'))
+					          <p class="form-text text-danger">{{ $errors->first('onfarm_id') }}</p>
+				          @endif
 					      {{-- INPUT SUPPLIER --}}
 					      <div class="form-group row {{ $errors->has('supplier') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Supplier</label>
@@ -69,7 +72,7 @@
 					      </div>
 					      {{-- INPUT PRICE --}}
 					      <div class="form-group row {{ $errors->has('price') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Harga kedelai per Kg</label>
+					        <label class="col-sm-3 form-control-label">Harga benih per Kg</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
                                 <span class="input-group-addon">Rp.</span><input type="number" name="price" class="form-control" placeholder="Harga kedelai per Kg" value="{{ old('price') }}">

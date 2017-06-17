@@ -36,12 +36,12 @@
               <div class="statistic col-lg-4 clearfix align-items-center" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
 	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
-	               <div class="text text-right float-right"><strong>700 Kg</strong><br><small>Benih digunakan</small></div>
+	               <div class="text text-right float-right"><strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small></div>
               	@endisset
               	@empty ($onfarm->seed)
                    <div class="text text-center">
     	               <h3 class="text-light">Benih belum dibeli</h3>
-    	               <a class="round-link" href="/seed/create/1">Beli</a>
+    	               <a class="round-link" href="/seed/create/{{$onfarm->id}}">Beli</a>
                    </div>
               	@endempty
               </div>
