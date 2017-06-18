@@ -37,6 +37,16 @@ class OnfarmController extends Controller
 
     public function plant(Request $request, Onfarm $onfarm)
     {
-        
+        if (!empty($onfarm->planted_at)) {
+            return back()->with('danger', 'Benih sudah ditanam');
+        }
+
+        $this->validate($request,[
+            'planted_at' => 'required'
+        ]);
+
+        $onfarm->update(request(['planted_at']));
+
+        return back()->with('success', 'Benih berhasil ditanam');
     }
 }
