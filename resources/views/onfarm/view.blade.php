@@ -231,7 +231,16 @@
   <script type="text/javascript">
       $('.datepicker').datepicker({
         autoclose: true,
-        format: 'yyyy-mm-dd',
+        format: {
+          // see more http://jsfiddle.net/shhb5La2/15/
+          // https://github.com/uxsolutions/bootstrap-datepicker/issues/888
+          toDisplay: function(dt) {
+            return moment(dt).format("dd-MM-yyyy");
+          },
+          toValue: function(dt) {
+            return moment(dt, "yyyy-mm-dd").to date();
+          }
+        },
         todayBtn: "linked",
       });
   </script>
