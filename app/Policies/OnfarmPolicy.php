@@ -42,12 +42,7 @@ class OnfarmPolicy
 
     public function createSeed(User $user, Onfarm $onfarm)
     {
-        return ($user->id === $onfarm->user->id) && empty($onfarm->seed) ;
-    }
-
-    public function plantSeed(User $user, Onfarm $onfarm)
-    {
-        return ($user->id === $onfarm->user->id) && !empty($onfarm->seed) && empty($onfarm->planted_at);
+        return ($user->id === $onfarm->user->id);
     }
 
     /**
@@ -59,7 +54,7 @@ class OnfarmPolicy
      */
     public function update(User $user, Onfarm $onfarm)
     {
-        //
+        return ($user->id === $onfarm->user->id);
     }
 
     /**

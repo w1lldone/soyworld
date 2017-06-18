@@ -229,7 +229,11 @@
 @section('script')
 
   <script type="text/javascript">
-      $('.datepicker').datepicker();
+      $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+        todayBtn: "linked",
+      });
   </script>
 
 @endsection

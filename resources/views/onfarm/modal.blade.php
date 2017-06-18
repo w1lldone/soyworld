@@ -12,7 +12,7 @@
           {{-- INPUT NAME --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>
-              <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control">
+              <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker">
           </div>
       </div>
       <div class="modal-footer">
