@@ -64,13 +64,13 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
                 @isset ($onfarm->planted_at)
                  <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-                 <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>27 Mei, 2017</sup></strong></div>
+                 <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
                 @endisset
                 @empty ($onfarm->planted_at)
                    <div class="text text-center">
                      <h3 class="text-light">Benih belum ditanam</h3>
                      @isset ($onfarm->seed)
-                       <a class="round-link bg-orange" href="/plant/create/1">tanam</a>
+                       <a class="round-link bg-orange" href="" data-toggle="modal" data-target="#plantSeed">tanam</a>
                      @endisset
                      @empty ($onfarm->seed)
                          <small>Lakukan pembelian benih dulu</small>
@@ -87,7 +87,7 @@
                    <div class="text text-center">
     	               <h3 class="text-light">Kedelai belum dipanen</h3>
                      @isset ($onfarm->planted_at)
-      	               <a class="round-link bg-info" href="/plant/create/1">Panen</a>
+      	               <a class="round-link bg-info" href="" data-toggle="modal" data-target="#harvest">Panen</a>
                      @endisset
                      @empty ($onfarm->planted_at)
                          <small>Lakukan penanaman dulu</small>
@@ -218,66 +218,18 @@
         </div>
       </div>
     </section>
-    <section class="client no-padding-top ">{{-- 
-      <div class="container-fluid">
-        <div class="row">
-          <!-- Work Amount  -->
-          <div class="col-lg-4">
-            <div class="work-amount card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                </div>
-              </div>
-              <div class="card-body">
-                <h3>Panen</h3><small>Total kedelai hasil panen</small>
-                
-              </div>
-            </div>
-          </div>
-          <!-- Client Profile -->
-          <div class="col-lg-4">
-            <div class="client card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                </div>
-              </div>
-              <div class="card-body text-center">
-                <div class="client-title">
-                  <h3>Jason Doe</h3><span>Web Developer</span><a href="#">Follow</a>
-                </div>
-                <div class="client-info">
-                  <div class="row">
-                    <div class="col-4"><strong>20</strong><br><small>Photos</small></div>
-                    <div class="col-4"><strong>54</strong><br><small>Videos</small></div>
-                    <div class="col-4"><strong>235</strong><br><small>Tasks</small></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Total Overdue             -->
-          <div class="col-lg-4">
-            <div class="overdue card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                </div>
-              </div>
-              <div class="card-body">
-                <h3>Biaya pra-panen</h3><small>Total biaya pra-panen penanaman kedelai</small>
-                <div class="number text-center">Rp. 340.000</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-     --}}</section>
 </div>
 
+@endsection
+
+@section('modal')
+  @include('onfarm.modal')
+@endsection
+
+@section('script')
+
+  <script type="text/javascript">
+      $('.datepicker').datepicker();
+  </script>
 
 @endsection

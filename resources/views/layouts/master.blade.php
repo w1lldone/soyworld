@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <!-- DATEPICKER FOR BOOTSTRAP -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.css') }}">
     <!-- Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
@@ -70,11 +72,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="{{ asset('js/charts-home.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 
     <script type="text/javascript">
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })
     </script>
+
+    @yield('script')
+
   </body>
 </html>

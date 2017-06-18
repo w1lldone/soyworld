@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Onfarm extends Model
 {
     protected $guarded = ['id'];
+    protected $dates = ['updated_at', 'planted_at'];
 
     /*
 	* RELATIONS SECTION

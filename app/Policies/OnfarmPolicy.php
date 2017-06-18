@@ -45,6 +45,11 @@ class OnfarmPolicy
         return ($user->id === $onfarm->user->id) && empty($onfarm->seed) ;
     }
 
+    public function plantSeed(User $user, Onfarm $onfarm)
+    {
+        return ($user->id === $onfarm->user->id) && !empty($onfarm->seed) && empty($onfarm->planted_at);
+    }
+
     /**
      * Determine whether the user can update the onfarm.
      *

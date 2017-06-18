@@ -34,4 +34,9 @@ class OnfarmController extends Controller
     	$onfarm = Onfarm::addOnfarm($request);
     	return $onfarm;
     }
+
+    public function plant(Request $request, Onfarm $onfarm)
+    {
+        
+    }
 }
