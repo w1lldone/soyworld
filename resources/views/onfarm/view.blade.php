@@ -105,17 +105,45 @@
         <div class="row">
           {{-- ACTIVITY --}}
           <div class="col-lg-6">
+            <div class="articles card">
+              <div class="card-close">
+                <div class="dropdown">
+                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
+                    <a href="/activity/create/{{$onfarm->id}}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-header d-flex align-items-center">
+                <h2 class="h3">Aktivitas tanam   </h2>
+                <div class="badge badge-rounded bg-green">4 New       </div>
+              </div>
+              <div class="card-body no-padding">
+                @foreach ($onfarm->activity as $activity)
+                  <div class="item d-flex align-items-center">
+                    <div class="image"><img src="/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="text"><a href="#">
+                        <h3 class="h5">{{ $activity->name }}</h3></a><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+          {{-- COST --}}
+          <div class="col-lg-6">
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
                   <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
                   <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-                    <a href="/activity/create/{{ $onfarm->id }}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
+                    <a href="/cost/create/{{ $onfarm->id }}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Biaya tanam</a>
                   </div>
                 </div>
               </div>
               <div class="card-header">
-                <h3 class="h4">Aktifitas tanam</h3>
+                <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
                 <!-- Item-->
@@ -172,47 +200,6 @@
                     </div>
                   </div>
                   <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="articles card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                </div>
-              </div>
-              <div class="card-header d-flex align-items-center">
-                <h2 class="h3">Biaya pra-panen   </h2>
-                <div class="badge badge-rounded bg-green">4 New       </div>
-              </div>
-              <div class="card-body no-padding">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-4.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-5.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
                 </div>
               </div>
             </div>

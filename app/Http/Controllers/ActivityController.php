@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Onfarm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ActivityController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+    * VALIDATION REQUEST
+    */
+    protected function validator($request)
+    {
+        return Validator::make($request, [
+            'onfarm_id' => 'required',
+            'name' => 'required',
+            'date' => 'required|date',
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +56,11 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $activity = Activity::addActivity($request);
+
+        return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil menambah aktivitas tanam');
     }
 
     /**

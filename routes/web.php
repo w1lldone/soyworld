@@ -44,4 +44,5 @@ Route::group(['prefix' => 'supplier'], function()
 Route::group(['prefix' => 'activity'], function()
 {
 	Route::get('/create/{onfarm}', 'ActivityController@create');
+	Route::post('/', 'ActivityController@store');
 });

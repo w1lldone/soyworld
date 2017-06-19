@@ -15,8 +15,8 @@
 <ul class="breadcrumb">
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
-    {{-- <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li> --}}
-    <li class="breadcrumb-item active">Aktivitas tanam</li>
+    <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li>
+    <li class="breadcrumb-item active">Tambah Aktivitas tanam</li>
   </div>
 </ul>
 
@@ -35,7 +35,7 @@
 					    <form class="form-horizontal" method="POST" action="/activity" enctype="multipart/form-data">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
-					      {{-- <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}"> --}}
+					      <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}">
 					      @if ($errors->has('onfarm_id'))
 					          <p class="form-text text-danger">{{ $errors->first('onfarm_id') }}</p>
 				          @endif

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-	protected $guarded = ['id'];
+    protected $guarded = ['id'];
+	protected $dates = ['date'];
     /*
 	* RELATION SECTION
     */
@@ -16,5 +17,19 @@ class Activity extends Model
 
     public function onfarm(){
     	return $this->belongsTo('App\Onfarm');
+    }
+
+    /**
+    * CUSTOM METHOD SECTION
+    */
+
+    public static function addActivity($request)
+    {
+        return static::create([
+            'onfarm_id' => $request->onfarm_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'date' => $request->date,
+        ]);
     }
 }
