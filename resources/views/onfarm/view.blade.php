@@ -64,7 +64,7 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
                 @isset ($onfarm->planted_at)
                  <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-                 <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
+                 <div class="text text-right float-right"><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong><br><small>Tanggal tanam</small></div>
                 @endisset
                 @empty ($onfarm->planted_at)
                    <div class="text text-center">
@@ -81,7 +81,7 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit; border-right: none;">
               	@isset ($onfarm->harvest)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>27 Mei, 2017</sup></strong></div>
+	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
               	@endisset
               	@empty ($onfarm->harvest)
                    <div class="text text-center">
@@ -103,13 +103,15 @@
 	<section class="dashboard-header pb-0">
       <div class="container-fluid">
         <div class="row">
-          {{-- AKTIVITAS TANAM --}}
+          {{-- ACTIVITY --}}
           <div class="col-lg-6">
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
                   <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
+                    <a href="/activity/create/{{ $onfarm->id }}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
+                  </div>
                 </div>
               </div>
               <div class="card-header">
@@ -227,13 +229,5 @@
 @endsection
 
 @section('script')
-
-  <script type="text/javascript">
-      $('.datepicker').datepicker({
-        autoclose: true,
-        format: 'yyyy-mm-dd',
-        todayBtn: "linked",
-      });
-  </script>
 
 @endsection

@@ -15,6 +15,7 @@
 <ul class="breadcrumb">
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
+    {{-- <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li> --}}
     <li class="breadcrumb-item active">Aktivitas tanam</li>
   </div>
 </ul>
@@ -31,46 +32,57 @@
 					    <h3 class="h4">Tambah aktivitas tanam</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/seed" enctype="multipart/form-data">
+					    <form class="form-horizontal" method="POST" action="/activity" enctype="multipart/form-data">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
-					      <input type="hidden" name="onfarm_id" >
+					      {{-- <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}"> --}}
 					      @if ($errors->has('onfarm_id'))
 					          <p class="form-text text-danger">{{ $errors->first('onfarm_id') }}</p>
 				          @endif
-					      {{-- INPUT SUPPLIER --}}
-					      {{-- INPUT QUANTITY --}}
-					      <div class="form-group row {{ $errors->has('quantity') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Jumlah bibit</label>
+					      {{-- INPUT NAME --}}
+					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+					        <label class="col-sm-3 form-control-label">Nama kegiatan</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
+                                <input type="text" name="name" class="form-control" placeholder="Nama aktivitas tanam" value="{{ old('name') }}">
                               </div>
-					          @if ($errors->has('quantity'))
-						          <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
+					          @if ($errors->has('name'))
+						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
 					          @endif
 					        </div>
 					      </div>
-					      {{-- INPUT PRICE --}}
-					      <div class="form-group row {{ $errors->has('price') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Harga benih per Kg</label>
+					      {{-- INPUT DATE --}}
+					      <div class="form-group row {{ $errors->has('date') ? ' has-danger' : '' }}">
+					        <label class="col-sm-3 form-control-label">Tanggal</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <span class="input-group-addon">Rp.</span><input type="number" name="price" class="form-control" placeholder="Harga kedelai per Kg" value="{{ old('price') }}">
+                                <input data-provide="datepicker" type="text" placeholder="Tanggal aktivitas" name="date" class="form-control datepicker" value="{{ old('date') }}" required>
                               </div>
-					          @if ($errors->has('price'))
-						          <small class="form-text text-danger">{{ $errors->first('price') }}</small>
+					          @if ($errors->has('date'))
+						          <small class="form-text text-danger">{{ $errors->first('date') }}</small>
+					          @endif
+					        </div>
+					      </div>
+					      {{-- INPUT DESCRIPTION --}}
+					      <div class="form-group row {{ $errors->has('description') ? ' has-danger' : '' }}">
+					        <label class="col-sm-3 form-control-label">Deskripsi kegiatan</label>
+					        <div class="col-sm-9">
+					          <div class="input-group">
+                                <textarea class="form-control"></textarea>
+                              </div>
+					          @if ($errors->has('description'))
+						          <small class="form-text text-danger">{{ $errors->first('description') }}</small>
 					          @endif
 					        </div>
 					      </div>
 					      {{-- INPUT PHOTO --}}
-					      <div class="form-group row {{ $errors->has('photo1') ? ' has-danger' : '' }}">
+					      <div class="form-group row {{ $errors->has('photo') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Foto</label>
 					        <div class="col-sm-9 mb-1">
-					          <input name="photo1" type="file" class="form-control form-control-success">
+					          <input name="photo[1]" type="file" class="form-control form-control-success">
 					        </div>
 					        <div class="col-sm-9 offset-sm-3">
-					          <input name="photo2" type="file" class="form-control form-control-success">
+					          <input name="photo[2]" type="file" class="form-control form-control-success">
 					        </div>
 					      </div>
 					      <div class="form-group row">       

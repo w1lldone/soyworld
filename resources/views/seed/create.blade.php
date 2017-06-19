@@ -15,6 +15,7 @@
 <ul class="breadcrumb">
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
+    <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li>
     <li class="breadcrumb-item active">Pembelian bibit</li>
   </div>
 </ul>

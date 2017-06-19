@@ -43,5 +43,5 @@ Route::group(['prefix' => 'supplier'], function()
 
 Route::group(['prefix' => 'activity'], function()
 {
-	Route::get('/create', 'ActivityController@create');
+	Route::get('/create/{onfarm}', 'ActivityController@create');
 });
