@@ -106,19 +106,32 @@
           {{-- ACTIVITY --}}
           <div class="col-lg-6">
             <div class="articles card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-                    <a href="/activity/create/{{$onfarm->id}}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
+              @can('createActivity', $onfarm)
+                <div class="card-close">
+                  <div class="dropdown">
+                    <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
+                      <a href="/activity/create/{{$onfarm->id}}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              @endcan
               <div class="card-header d-flex align-items-center">
                 <h2 class="h3">Aktivitas tanam   </h2>
-                <div class="badge badge-rounded bg-green">4 New       </div>
+                <div class="badge badge-rounded bg-green">4 New</div>
               </div>
               <div class="card-body no-padding">
+                @if ($onfarm->activity->isEmpty())
+                  <div class="py-4 text-center">
+                    <h4 class="text-light text-muted">Belum ada aktivitas tanam</h4>
+                    @cannot('createActivity', $onfarm)
+                        <p class="text-muted m-0">Lakukan penanaman terlebih dahulu</p>
+                    @endcannot
+                    @can('createActivity', $onfarm)
+                      <a class="round-link bg-green d-inline-block text-white" href="/activity/create/{{$onfarm->id}}">Tambahkan</a>
+                    @endcan
+                  </div>
+                @endif
                 @foreach ($onfarm->activity as $activity)
                   <div class="item d-flex align-items-center">
                     <div class="image"><img src="{{ empty($activity->photo) ? "/img/logo/logo-only.svg" : $activity->photo }}" alt="..." class="img-fluid rounded-circle"></div>
