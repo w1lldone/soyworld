@@ -20,6 +20,10 @@ class Onfarm extends Model
         return $this->hasOne('App\Seed');
     }
 
+    public function activity(){
+        return $this->hasMany('App\Activity');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */

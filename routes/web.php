@@ -40,3 +40,8 @@ Route::group(['prefix' => 'supplier'], function()
 {
 	Route::post('/', 'SupplierController@store');
 });
+
+Route::group(['prefix' => 'activity'], function()
+{
+	Route::get('/create', 'ActivityController@create');
+});
