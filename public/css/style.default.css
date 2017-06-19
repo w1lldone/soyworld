@@ -1234,7 +1234,7 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 
 .articles .item img {
   padding: 3px;
-  border: 1px solid #5cb85c;
+  /*border: 1px solid #5cb85c;*/
 }
 
 .articles .item h3 {
