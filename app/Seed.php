@@ -43,7 +43,7 @@ class Seed extends Model
     public function addPhoto($path)
     {
         return $this->seed_photo()->create([
-            'path' => $path,
+            'path' => '/uploads/'.$path,
         ]);
     }
 
