@@ -36,4 +36,13 @@ class Onfarm extends Model
     		'description' => $request->description,
 		]);
     }
+
+    public function addActivity()
+    {
+        return $this->activity()->create([
+            'name' => request('name'),
+            'description' => request('description'),
+            'date' => request()->has('date') ? request('date') : request('planted_at'),
+        ]);
+    }
 }

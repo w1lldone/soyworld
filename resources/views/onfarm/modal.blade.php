@@ -9,10 +9,19 @@
         <form action="/onfarm/{{$onfarm->id}}/plant" method="POST">
           {{ method_field('PUT') }}
           {{ csrf_field() }}
-          {{-- INPUT NAME --}}
+          {{-- HIDDEN INPUT --}}
+          <input type="hidden" name="name" value="Penanaman bibit">
+          <input type="hidden" name="description" value="Penanaman bibit '{{$onfarm->name}}' sejumlah {{ $onfarm->seed->quantity }}">
+          {{-- DATE INPUT --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>
               <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker">
+          </div>
+          {{-- PHOTOS INPUT --}}
+          <div class="form-group">
+              <label>Foto</label>
+              <input type="file" name="photo[0]" class="form-control">
+              <input type="file" name="photo[2]" class="form-control">
           </div>
       </div>
       <div class="modal-footer">

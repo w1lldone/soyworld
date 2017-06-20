@@ -29,7 +29,7 @@ class Activity extends Model
             'onfarm_id' => $request->onfarm_id,
             'name' => $request->name,
             'description' => $request->description,
-            'date' => $request->date,
+            'date' => $request->has('date') ? $request->date : $request->planted_at,
         ]);
     }
 }
