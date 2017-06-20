@@ -28,7 +28,7 @@
             <div class="row bg-white has-shadow mb-2 p-3">
               <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                 <div class="project-title d-flex align-items-center">
-                  <div class="image has-shadow"><img src="/img/project-1.jpg" alt="..." class="img-fluid"></div>
+                  <div class="image has-shadow"><img src="{{ $onfarm->seed->seed_photo->first()->path }}" alt="..." class="img-fluid"></div>
                   <div class="text">
                     <h3 class="h4">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}</small>
                   </div>
