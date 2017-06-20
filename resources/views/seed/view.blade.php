@@ -85,12 +85,17 @@
             </div>
             {{-- CARD FOOTER --}}
             <div class="card-footer text-right">
-              <a href="/seed/{{$seed->id}}/edit" class="btn btn-warning d-inline">Edit</a>
-              <form method="POST" action="/seed/{{$seed->id}}" class="d-inline">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-danger">Hapus</button>
-              </form>
+              @can('delete', $seed)
+                <form method="POST" action="/seed/{{$seed->id}}" class="d-inline">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+                  <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+              @endcan
+              @can('update', $seed)
+                <a href="/seed/{{$seed->id}}/edit" class="btn btn-warning">Edit</a>
+              @endcan
+              <a href="/onfarm/{{$seed->onfarm->id}}/view" class="btn btn-success">Kembali</a>
             </div>
           </div>
         </div>
