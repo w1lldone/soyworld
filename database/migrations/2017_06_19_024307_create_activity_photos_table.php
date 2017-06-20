@@ -16,7 +16,7 @@ class CreateActivityPhotosTable extends Migration
         Schema::create('activity_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('activity_id')->unsigned();
-            $table->string('link', 250);
+            $table->string('path', 250);
             $table->timestamps();
         });
     }
