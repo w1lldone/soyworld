@@ -28,7 +28,7 @@
             <div class="row bg-white has-shadow mb-2 p-3">
               <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                 <div class="project-title d-flex align-items-center">
-                  <div class="image has-shadow"><img src="{{ $onfarm->seed->seed_photo->first()->path }}" alt="..." class="img-fluid"></div>
+                  {{-- <div class="image has-shadow"><img src="{{ $onfarm->seed->seed_photo->first()->path }}" alt="..." class="img-fluid"></div> --}}
                   <div class="text">
                     <h3 class="h4">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}</small>
                   </div>
@@ -52,7 +52,10 @@
               <div class="statistic col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
 	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
-	               <div class="text text-right float-right"><strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small></div>
+                 <a title="Klik untuk detail benih" data-toggle="tooltip" class="text text-right float-right" href="/seed/{{$onfarm->id}}/view">
+                   <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
+                 </a>
+	               {{-- <div></div> --}}
               	@endisset
               	@empty ($onfarm->seed)
                    <div class="text text-center">

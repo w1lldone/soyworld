@@ -65,3 +65,7 @@ a.round-link.disabled {
 		margin-top: 65px;
 	}
 }
+
+a.text {
+	text-decoration: none;
+}
