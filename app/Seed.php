@@ -25,6 +25,10 @@ class Seed extends Model
         return $this->hasMany('App\SeedPhoto');
     }
 
+    public function supplier(){
+        return $this->belongsTo('App\Supplier');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */

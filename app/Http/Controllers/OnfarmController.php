@@ -18,7 +18,7 @@ class OnfarmController extends Controller
     	return view('onfarm.index', compact('onfarms'));
     }
 
-    public function view(Onfarm $onfarm)
+    public function show(Onfarm $onfarm)
     {
 
         return view('onfarm.view', compact('onfarm'));

@@ -71,7 +71,7 @@ class SeedController extends Controller
      */
     public function show(Seed $seed)
     {
-        //
+        return view('seed.view', compact('seed'));
     }
 
     /**

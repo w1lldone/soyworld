@@ -26,13 +26,14 @@ Route::group(['prefix' => 'onfarm'], function()
 	Route::get('/', 'OnfarmController@index');
 	Route::get('/create', 'OnfarmController@create');
 	Route::post('/', 'OnfarmController@store');
-	Route::get('/{onfarm}/view', 'OnfarmController@view');
+	Route::get('/{onfarm}/view', 'OnfarmController@show');
 	Route::put('/{onfarm}/plant', 'OnfarmController@plant');
 });
 
 Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
+	Route::get('/{seed}/view', 'SeedController@show');
 	Route::post('/', 'SeedController@store');
 });
 
