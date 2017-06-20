@@ -58,6 +58,7 @@ class SeedController extends Controller
         $this->validator($request->all())->validate();
 
         $seed = Seed::addSeed($request);
+        $seed->getPhoto($request);
 
         return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil melakukan pembelian benih');
     }

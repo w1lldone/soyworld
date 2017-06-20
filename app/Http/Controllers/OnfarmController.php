@@ -32,7 +32,7 @@ class OnfarmController extends Controller
     public function store(Request $request)
     {
     	$onfarm = Onfarm::addOnfarm($request);
-    	return $onfarm;
+    	return redirect('/onfarm')->with('success', 'Onfarm kedelai berhasil dibuat');
     }
 
     public function plant(Request $request, Onfarm $onfarm)

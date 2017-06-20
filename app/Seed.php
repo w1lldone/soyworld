@@ -21,6 +21,10 @@ class Seed extends Model
     	return $this->belongsTo('App\Onfarm');
     }
 
+    public function seed_photo(){
+        return $this->hasMany('App\SeedPhoto');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
@@ -34,5 +38,23 @@ class Seed extends Model
     		'price' => $request->price,
     		'name' => $request->name,
 		]);
+    }
+
+    public function addPhoto($path)
+    {
+        return $this->seed_photo()->create([
+            'path' => $path,
+        ]);
+    }
+
+    public function getPhoto($request)
+    {
+        foreach ($request->photo as $photo) {
+            if (!empty($photo)) {
+                $this->addPhoto($photo->store("seed/$request->onfarm_id", 'uploads'));
+            }
+        }
+
+        return true;
     }
 }
