@@ -26,7 +26,7 @@
     <div class="container-fluid">
       <div class="row">
         {{-- HORIZONTAL FORM --}}
-        <div class="col-md-8 offset-md-1">
+        <div class="col-md-12 offset-lg-1 col-lg-9">
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <h3 class="h4">{{ $seed->name }}</h3>
@@ -34,32 +34,63 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-12 mb-4">
-                  <h3 class="text-light">Foto</h3>
+                  <h3>Foto</h3>
                   @foreach ($seed->seed_photo as $photo)
                     <img src="{{ $photo->path }}" class="img-fluid" style=" height: 200px">
                   @endforeach
                 </div>
+                {{-- SEED DATA --}}
                 <div class="col-sm-6">
-                  <h3 class="text-light">Data benih</h3>
+                  <h3>Data benih</h3>
                   <div class="d-flex justify-content-between">
                     <div>Supplier:</div>
-                    <h4><span class="badge badge-primary">{{ $seed->supplier->name }}</span></h4>
+                    <span>{{ $seed->supplier->name }}</span>
                   </div>
                   <div class="d-flex justify-content-between">
+                    <div>Petani:</div>
+                    <span>{{ $seed->onfarm->user->name }}</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div>Tanggal beli:</div>
+                    <span>{{ $seed->created_at->toFormattedDateString() }}</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div>Tanggal tanam:</div>
+                    @empty ($seed->onfarm->planted_at)
+                        <span>Belum ditanam</span>
+                    @endempty
+                    @isset ($seed->onfarm->planted_at)
+                      <span>{{ $seed->onfarm->planted_at->toFormattedDateString() }}</span>
+                    @endisset
+                  </div>
+                </div>
+                {{-- FARMER DATA --}}
+                <div class="col-sm-6">
+                  <h3><br></h3>
+                  <div class="d-flex justify-content-between">
                     <div>Jumlah:</div>
-                    <h4><span class="badge badge-success">{{ $seed->quantity }} Kg</span></h4>
+                    <span>{{ $seed->quantity }} Kg</span>
                   </div>
                   <div class="d-flex justify-content-between">
                     <div>Harga per Kg:</div>
-                    <h4><span class="badge badge-warning">Rp. {{ number_format($seed->price, 0, ",", ".") }}</span></h4>
+                    <span>Rp. {{ number_format($seed->price, 0, ",", ".") }}</span>
                   </div>
                   <hr>
                   <div class="d-flex justify-content-between">
                     <div>Harga total:</div>
-                    <h4><span class="badge badge-warning">Rp. {{ number_format($seed->price*$seed->quantity, 0, ",", ".") }}</span></h4>
+                    <span>Rp. {{ number_format($seed->price*$seed->quantity, 0, ",", ".") }}</span>
                   </div>
                 </div>
               </div>
+            </div>
+            {{-- CARD FOOTER --}}
+            <div class="card-footer text-right">
+              <a href="/seed/{{$seed->id}}/edit" class="btn btn-warning d-inline">Edit</a>
+              <form method="POST" action="/seed/{{$seed->id}}" class="d-inline">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger">Hapus</button>
+              </form>
             </div>
           </div>
         </div>
