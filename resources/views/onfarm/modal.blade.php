@@ -2,7 +2,7 @@
   <div role="document" class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="exampleModalLabel" class="modal-title">Penanaman bibit kedelai</h4>
+        <h4 id="exampleModalLabel" class="modal-title">Penanaman benih kedelai</h4>
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
@@ -10,8 +10,8 @@
           {{ method_field('PUT') }}
           {{ csrf_field() }}
           {{-- HIDDEN INPUT --}}
-          <input type="hidden" name="name" value="Penanaman bibit">
-          <input type="hidden" name="description" value="Penanaman bibit '{{$onfarm->name}}' sejumlah {{ $onfarm->seed->quantity }}">
+          <input type="hidden" name="name" value="Penanaman benih">
+          <input type="hidden" name="description" value="Penanaman benih '{{$onfarm->name}}' sejumlah {{ $onfarm->seed->quantity }}">
           {{-- DATE INPUT --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>
