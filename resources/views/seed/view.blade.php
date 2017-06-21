@@ -27,6 +27,7 @@
       <div class="row">
         {{-- HORIZONTAL FORM --}}
         <div class="col-md-12 offset-lg-1 col-lg-9">
+          @include('layouts.alerts')
           <div class="card">
             <div class="card-header d-flex align-items-center">
               <h3 class="h4">{{ $seed->name }}</h3>

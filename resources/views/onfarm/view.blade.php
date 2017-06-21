@@ -230,7 +230,9 @@
 @endsection
 
 @section('modal')
-  @include('onfarm.modal')
+  @isset ($onfarm->seed)
+    @include('onfarm.modal')
+  @endisset
 @endsection
 
 @section('script')

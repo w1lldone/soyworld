@@ -8,7 +8,7 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Pembelian bibit</h2>
+    <h2 class="no-margin-bottom">Pembelian benih</h2>
   </div>
 </header>
 <!-- Breadcrumb-->
@@ -16,7 +16,7 @@
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
     <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li>
-    <li class="breadcrumb-item active">Pembelian bibit</li>
+    <li class="breadcrumb-item active">Pembelian benih</li>
   </div>
 </ul>
 
@@ -29,7 +29,7 @@
 				<div class="col-md-8 offset-md-1">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Data pembelian bibit</h3>
+					    <h3 class="h4">Data pembelian benih</h3>
 					  </div>
 					  <div class="card-body">
 					    <form class="form-horizontal" method="POST" action="/seed" enctype="multipart/form-data">
@@ -61,7 +61,7 @@
 					      </div>
 					      {{-- INPUT QUANTITY --}}
 					      <div class="form-group row {{ $errors->has('quantity') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Jumlah bibit</label>
+					        <label class="col-sm-3 form-control-label">Jumlah benih</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
                                 <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
@@ -84,7 +84,7 @@
 					        </div>
 					      </div>
 					      {{-- INPUT PHOTO --}}
-					      <div class="form-group row {{ $errors->has('photo1') ? ' has-danger' : '' }}">
+					      <div class="form-group row {{ $errors->has('photo') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Foto</label>
 					        <div class="col-sm-9 mb-1">
 					          <input name="photo[0]" type="file" class="form-control form-control-success">
@@ -97,7 +97,7 @@
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Keterangan</label>
 					        <div class="col-sm-9">
-					          <input name="name" id="inputHorizontalSuccess" type="text" value="pembelian bibit {{ $onfarm->name }}" class="form-control form-control-success" value="{{ old('name') }}" required>
+					          <input name="name" id="inputHorizontalSuccess" type="text" value="pembelian benih {{ $onfarm->name }}" class="form-control form-control-success" value="{{ old('name') }}" required>
 					          @if ($errors->has('name'))
 						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
 					          @endif

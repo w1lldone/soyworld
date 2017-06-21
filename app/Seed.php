@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\SeedPhoto;
+use Illuminate\Support\Facades\Storage;
 
 class Seed extends Model
 {
@@ -44,21 +46,64 @@ class Seed extends Model
 		]);
     }
 
-    public function addPhoto($path)
-    {
-        return $this->seed_photo()->create([
-            'path' => '/uploads/'.$path,
-        ]);
-    }
+    // public function addPhoto($path)
+    // {
+    //     return $this->seed_photo()->create([
+    //         'path' => '/uploads/'.$path,
+    //     ]);
+    // }
 
-    public function getPhoto($request)
+    public function addPhoto($request)
     {
+
         foreach ($request->photo as $photo) {
             if (!empty($photo)) {
-                $this->addPhoto($photo->store("seed/$request->onfarm_id", 'uploads'));
+                $this->seed_photo()->create([
+                    'path' => '/uploads/'.$this->uploadPhoto($photo),
+                ]);
             }
         }
 
-        return true;
+        return $this->seed_photo;
+    }
+
+    public function uploadPhoto($photo)
+    {
+        return $photo->store("seed/$this->onfarm_id", 'uploads');
+    }
+
+    // public function getPhoto($request)
+    // {
+    //     foreach ($request->photo as $photo) {
+    //         if (!empty($photo)) {
+    //             $this->addPhoto($photo->store("seed/$request->onfarm_id", 'uploads'));
+    //         }
+    //     }
+
+    //     return true;
+    // }
+
+    public function replacePhoto($photos)
+    {
+
+        // $i = 0;
+        foreach ($photos as $photo) {
+
+            if (!empty($photo)) {
+
+                // $old = SeedPhoto::find($request->photo_id[$i]);
+                // Storage::disk('root')->delete($old->path);
+                $old->update([
+                    'path' => $this->uploadPhoto($photo),
+                ]);
+
+            }
+
+            // $i++;
+
+        }
+
+        return $this->seed_photo;
+
     }
 }

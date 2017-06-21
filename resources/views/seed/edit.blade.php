@@ -8,7 +8,7 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Edit pembelian bibit</h2>
+    <h2 class="no-margin-bottom">Edit pembelian benih</h2>
   </div>
 </header>
 <!-- Breadcrumb-->
@@ -16,7 +16,7 @@
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
     <li class="breadcrumb-item"><a href="/onfarm/{{$seed->onfarm->id}}/view">Detail</a></li>
-    <li class="breadcrumb-item active">Edit pembelian bibit</li>
+    <li class="breadcrumb-item active">Edit pembelian benih</li>
   </div>
 </ul>
 
@@ -29,14 +29,26 @@
 				<div class="col-md-8 offset-md-1">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Data pembelian bibit</h3>
+					    <h3 class="h4">Data pembelian benih</h3>
 					  </div>
 					  <div class="card-body">
+					  	{{-- INPUT PHOTO --}}
+					      <div class="form-group row {{ $errors->has('photo1') ? ' has-danger' : '' }}">
+					        <label class="col-sm-3 form-control-label">Foto</label>
+					        @foreach ($seed->seed_photo as $photo)
+						        <div class="col-sm-9 mb-1 {{ $loop->first ? '': 'offset-sm-3' }}">
+						          <img src="{{ $photo->path }}" class="img-fluid" style="width: 200px;">
+						          <form method="POST" action="/seed/photo/{{ $photo->id }}">
+							          <input title="Ganti foto" data-toggle="tooltip" name="photo[{{ $loop->index }}]" type="file" class="form-control form-control-success">
+						          </form>
+						        </div>
+					        @endforeach
+					      </div>
 					    <form class="form-horizontal" method="POST" action="/seed/{{$seed->id}}" enctype="multipart/form-data">
 					      {{ method_field('PUT') }}
 					      {{ csrf_field() }}
 					      {{-- INPUT SUPPLIER --}}
-					      <div class="form-group row {{ $errors->has('supplier') ? ' has-danger' : '' }}">
+					      <div class="form-group row {{ $errors->has('supplier_id') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Supplier</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
@@ -54,7 +66,7 @@
 					      </div>
 					      {{-- INPUT QUANTITY --}}
 					      <div class="form-group row {{ $errors->has('quantity') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Jumlah bibit</label>
+					        <label class="col-sm-3 form-control-label">Jumlah benih</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
                                 <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ $seed->quantity }}"><span class="input-group-addon">Kg</span>
@@ -76,22 +88,12 @@
 					          @endif
 					        </div>
 					      </div>
-					      {{-- INPUT PHOTO --}}
-					      <div class="form-group row {{ $errors->has('photo1') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Foto</label>
-					        @foreach ($seed->seed_photo as $photo)
-						        <div class="col-sm-9 mb-1 {{ $loop->first ? '': 'offset-sm-3' }}">
-						          <img src="{{ $photo->path }}" class="img-fluid" style="width: 200px;">
-						          <input name="photo[{{ $loop->index }}]" type="file" class="form-control form-control-success">
-						          <input type="hidden" name="photo_id[{{ $loop->index }}]" value="{{ $photo->id }}">
-						        </div>
-					        @endforeach
-					      </div>
+					      
 					      {{-- INPUT NAME --}}
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Keterangan</label>
 					        <div class="col-sm-9">
-					          <input name="name" id="inputHorizontalSuccess" type="text" value="pembelian bibit {{ $seed->onfarm->name }}" class="form-control form-control-success" value="{{ $seed->name }}" required>
+					          <input name="name" id="inputHorizontalSuccess" type="text" value="pembelian benih {{ $seed->onfarm->name }}" class="form-control form-control-success" value="{{ $seed->name }}" required>
 					          @if ($errors->has('name'))
 						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
 					          @endif

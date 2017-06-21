@@ -15,6 +15,6 @@ class File
 
 	public function upload($file, $dir, $disk = 'uploads')
 	{
-		
+		return $file->store($dir, $disk);
 	}
 }
