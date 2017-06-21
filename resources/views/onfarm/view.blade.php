@@ -137,7 +137,7 @@
                 @endif
                 @foreach ($onfarm->activity as $activity)
                   <div class="item d-flex align-items-center">
-                    <div class="image"><img src="{{ empty($activity->photo) ? "/img/logo/logo-only.svg" : $activity->photo }}" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="text"><a href="#">
                         <h3 class="h5">{{ $activity->name }}</h3></a><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
                     </div>

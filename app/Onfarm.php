@@ -39,10 +39,14 @@ class Onfarm extends Model
 
     public function addActivity()
     {
-        return $this->activity()->create([
+        $activity = $this->activity()->create([
             'name' => request('name'),
             'description' => request('description'),
             'date' => request()->has('date') ? request('date') : request('planted_at'),
         ]);
+
+        $activity->uploadPhoto(request('photo'), $this->id);
+
+        return $activity;
     }
 }

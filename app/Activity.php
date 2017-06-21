@@ -32,4 +32,27 @@ class Activity extends Model
             'date' => $request->has('date') ? $request->date : $request->planted_at,
         ]);
     }
+
+    public function addPhoto($path)
+    {
+        return $this->activity_photo()->create([
+            'path' => '/uploads/'.$path,
+        ]);
+    }
+
+    public function uploadPhoto($photos, $id)
+    {
+        foreach ($photos as $photo) {
+            if (!empty($photo)) {
+                $this->addPhoto($photo->store("activity/$id", 'uploads'));
+            }
+        }
+
+        return true;
+    }
+
+    public function getFirstPhoto()
+    {
+        return $this->activity_photo->isEmpty() ? "/img/logo/logo-only.svg" : $this->activity_photo->first()->path;
+    }
 }

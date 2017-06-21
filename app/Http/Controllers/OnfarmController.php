@@ -46,7 +46,7 @@ class OnfarmController extends Controller
         ]);
 
         $onfarm->update(request(['planted_at']));
-        $onfarm->addActivity();
+        $activity = $onfarm->addActivity();
 
         return back()->with('success', 'Benih berhasil ditanam');
     }

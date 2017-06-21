@@ -6,7 +6,7 @@
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        <form action="/onfarm/{{$onfarm->id}}/plant" method="POST">
+        <form action="/onfarm/{{$onfarm->id}}/plant" method="POST" enctype="multipart/form-data">
           {{ method_field('PUT') }}
           {{ csrf_field() }}
           {{-- HIDDEN INPUT --}}
