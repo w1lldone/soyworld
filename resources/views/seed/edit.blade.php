@@ -27,6 +27,7 @@
 			<div class="row">
 				{{-- HORIZONTAL FORM --}}
 				<div class="col-md-8 offset-md-1">
+					@include('layouts.alerts')
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
 					    <h3 class="h4">Data pembelian benih</h3>
@@ -38,8 +39,9 @@
 					        @foreach ($seed->seed_photo as $photo)
 						        <div class="col-sm-9 mb-1 {{ $loop->first ? '': 'offset-sm-3' }}">
 						          <img src="{{ $photo->path }}" class="img-fluid" style="width: 200px;">
-						          <form method="POST" action="/seed/photo/{{ $photo->id }}">
-							          <input title="Ganti foto" data-toggle="tooltip" name="photo[{{ $loop->index }}]" type="file" class="form-control form-control-success">
+						          <form method="POST" action="/seedphoto/{{ $photo->id }}" enctype="multipart/form-data">
+						          	  {{ csrf_field() }}
+							          <input title="Ganti foto" data-toggle="tooltip" name="photo" type="file" class="form-control form-control-success" onchange="this.form.submit()">
 						          </form>
 						        </div>
 					        @endforeach

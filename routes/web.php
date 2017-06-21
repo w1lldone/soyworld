@@ -49,3 +49,8 @@ Route::group(['prefix' => 'activity'], function()
 	Route::get('/create/{onfarm}', 'ActivityController@create');
 	Route::post('/', 'ActivityController@store');
 });
+
+Route::group(['prefix' => 'seedphoto'], function()
+{
+	Route::post('/{seedPhoto}', 'SeedPhotoController@update');
+});
