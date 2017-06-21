@@ -62,6 +62,6 @@ class SeedPolicy
      */
     public function delete(User $user, Seed $seed)
     {
-        return $user->id === $seed->onfarm->user_id;
+        
     }
 }

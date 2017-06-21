@@ -34,6 +34,7 @@ Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
 	Route::get('/{seed}/view', 'SeedController@show');
+	Route::get('/{seed}/edit', 'SeedController@edit');
 	Route::post('/', 'SeedController@store');
 });
 
