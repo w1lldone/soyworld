@@ -1501,21 +1501,21 @@ section.charts div[class*="col-"] {
 .form-control::-moz-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: #aaa;
 }
 
 .form-control::-webkit-input-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: #aaa;
 }
 
 .form-control:-ms-input-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: #aaa;
 }
 
@@ -2368,7 +2368,7 @@ fieldset[disabled] a.btn {
  * 3. TYPE
  */
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -2389,8 +2389,8 @@ a:focus, a:hover {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 600;
   line-height: 1.1;
   color: inherit;
 }
