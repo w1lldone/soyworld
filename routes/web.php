@@ -52,5 +52,7 @@ Route::group(['prefix' => 'activity'], function()
 
 Route::group(['prefix' => 'seedphoto'], function()
 {
+	Route::post('/', 'SeedPhotoController@store');
 	Route::post('/{seedPhoto}', 'SeedPhotoController@update');
+	Route::delete('/{seedPhoto}', 'SeedPhotoController@destroy');
 });

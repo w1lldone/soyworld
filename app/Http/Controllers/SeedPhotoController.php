@@ -39,7 +39,8 @@ class SeedPhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $photo = SeedPhoto::addPhoto($request);
+        return back()->with('success', 'Foto berhasil ditambahkan');
     }
 
     /**
@@ -85,6 +86,7 @@ class SeedPhotoController extends Controller
      */
     public function destroy(SeedPhoto $seedPhoto)
     {
-        //
+        $seedPhoto->deletePhoto();
+        return back()->with('success', 'Foto berhasil dihapus');
     }
 }

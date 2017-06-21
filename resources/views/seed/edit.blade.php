@@ -39,12 +39,26 @@
 					        @foreach ($seed->seed_photo as $photo)
 						        <div class="col-sm-9 mb-1 {{ $loop->first ? '': 'offset-sm-3' }}">
 						          <img src="{{ $photo->path }}" class="img-fluid" style="width: 200px;">
-						          <form method="POST" action="/seedphoto/{{ $photo->id }}" enctype="multipart/form-data">
-						          	  {{ csrf_field() }}
-							          <input title="Ganti foto" data-toggle="tooltip" name="photo" type="file" class="form-control form-control-success" onchange="this.form.submit()">
-						          </form>
+						          <div class="d-flex flex-row">
+							          <form method="POST" class="pr-4" action="/seedphoto/{{ $photo->id }}" enctype="multipart/form-data">
+							          	  {{ csrf_field() }}
+								          <input onclick="return confirm('Foto akan langsung diganti. Apa anda yakin?')" title="Ganti foto" data-toggle="tooltip" name="photo" type="file" class="form-control form-control-success" onchange="this.form.submit()">
+							          </form>
+							          <form method="POST" action="/seedphoto/{{ $photo->id }}">
+							        		{{ csrf_field() }}
+							        		{{ method_field('DELETE') }}
+							        		<button type="submit" onclick="return confirm('Foto akan langsung dihapus. Apa anda yakin menghapus foto?')" class="btn btn-danger">Hapus foto</button>
+							        	</form>
+						          </div>
 						        </div>
 					        @endforeach
+					        <div class="col-sm-9 offset-sm-3">
+					        	<form method="POST" action="/seedphoto" enctype="multipart/form-data">
+					        		{{ csrf_field() }}
+					        		<input type="hidden" name="seed_id" value="{{ $seed->id }}">
+					        		<input title="Tambah foto" data-toggle="tooltip" name="photo" type="file" class="form-control form-control-success" onchange="this.form.submit()">
+					        	</form>
+					        </div>
 					      </div>
 					    <form class="form-horizontal" method="POST" action="/seed/{{$seed->id}}" enctype="multipart/form-data">
 					      {{ method_field('PUT') }}
