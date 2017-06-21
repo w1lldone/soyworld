@@ -81,10 +81,10 @@
 						      <div class="form-group row {{ $errors->has('photo') ? ' has-danger' : '' }}">
 						        <label class="col-sm-3 form-control-label">Foto</label>
 						        <div class="col-sm-9 mb-1">
-						          <input name="photo[1]" type="file" class="form-control form-control-success">
+						          <input name="photo[0]" type="file" class="form-control form-control-success">
 						        </div>
 						        <div class="col-sm-9 offset-sm-3">
-						          <input name="photo[2]" type="file" class="form-control form-control-success">
+						          <input name="photo[1]" type="file" class="form-control form-control-success">
 						        </div>
 						      </div>
 						      <div class="form-group row">       

@@ -59,6 +59,7 @@ class ActivityController extends Controller
         $this->validator($request->all())->validate();
 
         $activity = Activity::addActivity($request);
+        $activity->uploadPhoto($request->photo, $request->onfarm_id);
 
         return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil menambah aktivitas tanam');
     }

@@ -136,12 +136,14 @@
                   </div>
                 @endif
                 @foreach ($onfarm->activity as $activity)
-                  <div class="item d-flex align-items-center">
-                    <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
-                    <div class="text"><a href="#">
-                        <h3 class="h5">{{ $activity->name }}</h3></a><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
+                  <a class="item-link" href="/activity/{{ $activity->id }}/view">
+                    <div class="item d-flex align-items-center">
+                      <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
+                      <div class="text">
+                          <h3 class="h5">{{ $activity->name }}</h3><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 @endforeach
               </div>
             </div>

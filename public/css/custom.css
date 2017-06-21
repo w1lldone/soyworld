@@ -69,3 +69,15 @@ a.round-link.disabled {
 a.text {
 	text-decoration: none;
 }
+
+/*CARD LINK*/
+.item-link:hover, .item-link:nth-of-type(even):hover {
+  background-color: #eceeef;
+}
+.item-link:active {
+  background-color: #eceeef;
+}
+
+.item-link:nth-of-type(even) {
+	background: #fafafa;
+}
