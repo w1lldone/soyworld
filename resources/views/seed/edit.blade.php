@@ -48,7 +48,7 @@
 							          <form method="POST" action="/seedphoto/{{ $photo->id }}">
 							        		{{ csrf_field() }}
 							        		{{ method_field('DELETE') }}
-							        		<button type="submit" onclick="return confirm('Foto akan langsung dihapus. Apa anda yakin menghapus foto?')" class="btn btn-danger">Hapus foto</button>
+							        		<button title="Hapus foto" data-toggle="tooltip" type="submit" onclick="return confirm('Foto akan langsung dihapus. Apa anda yakin menghapus foto?')" class="btn btn-danger"><i class="fa fa-trash"></i></button>
 							        	</form>
 						          </div>
 						        </div>
