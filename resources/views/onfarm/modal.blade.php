@@ -11,7 +11,7 @@
           {{ csrf_field() }}
           {{-- HIDDEN INPUT --}}
           <input type="hidden" name="name" value="Penanaman benih">
-          <input type="hidden" name="description" value="Penanaman benih '{{$onfarm->name}}' sejumlah {{ $onfarm->seed->quantity }}">
+          <input type="hidden" name="description" value="Penanaman benih '{{$onfarm->name}}' sejumlah {{ $onfarm->seed->quantity }} Kg">
           {{-- DATE INPUT --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>

@@ -28,7 +28,7 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
-    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
+    <script src="{{ asset('css/font-awesome.css') }}"></script>
     <!-- Font Icons CSS-->
     <link rel="stylesheet" href="{{ asset('icons-reference/styles.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('garden-icons/styles.css') }}"> --}}

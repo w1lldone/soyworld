@@ -49,6 +49,7 @@ Route::group(['prefix' => 'activity'], function()
 	Route::get('/create/{onfarm}', 'ActivityController@create');
 	Route::post('/', 'ActivityController@store');
 	Route::get('/{activity}/view', 'ActivityController@show');
+	Route::get('/{activity}/edit', 'ActivityController@edit');
 });
 
 Route::group(['prefix' => 'seedphoto'], function()
