@@ -70,7 +70,7 @@
 						        <label class="col-sm-3 form-control-label">Deskripsi kegiatan</label>
 						        <div class="col-sm-9">
 						          <div class="input-group">
-	                                <textarea class="form-control"></textarea>
+	                                <textarea name="description" class="form-control"></textarea>
 	                              </div>
 						          @if ($errors->has('description'))
 							          <small class="form-text text-danger">{{ $errors->first('description') }}</small>

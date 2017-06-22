@@ -20,11 +20,22 @@ class ActivityController extends Controller
     */
     protected function validator($request)
     {
-        return Validator::make($request, [
-            'onfarm_id' => 'required',
-            'name' => 'required',
-            'date' => 'required|date',
-        ]);
+        switch (request()->method()) {
+            case 'POST':
+                return Validator::make($request, [
+                    'onfarm_id' => 'required',
+                    'name' => 'required',
+                    'date' => 'required|date',
+                ]);
+                break;
+            
+            case 'PUT':
+                return Validator::make($request, [
+                    'name' => 'required',
+                    'date' => 'required|date',
+                ]);
+                break;
+        }
     }
     /**
      * Display a listing of the resource.
@@ -83,6 +94,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
+        $this->authorize('update', $activity);
         return view('activity.edit', compact('activity'));
     }
 
@@ -95,7 +107,17 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        $this->authorize('update', $activity);
+        $this->validator($request->all())->validate();
+
+        $activity->update([
+            'name' => $request->name,
+            'date' => $request->date,
+            'description' => $request->description,
+        ]);
+
+        return redirect("/activity/$activity->id/view")->with('success', 'Aktivitas tanam berhasil dirubah');
+
     }
 
     /**

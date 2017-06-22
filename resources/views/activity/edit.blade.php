@@ -83,7 +83,7 @@
 						        <label class="col-sm-3 form-control-label">Tanggal</label>
 						        <div class="col-sm-9">
 						          <div class="input-group">
-	                                <input data-provide="datepicker" type="text" placeholder="Tanggal aktivitas" name="date" class="form-control datepicker" value="{{ $activity->date }}" required>
+	                                <input data-provide="datepicker" type="text" placeholder="Tanggal aktivitas" name="date" class="form-control datepicker" value="{{ $activity->date->toDateString() }}" required>
 	                              </div>
 						          @if ($errors->has('date'))
 							          <small class="form-text text-danger">{{ $errors->first('date') }}</small>
@@ -95,7 +95,7 @@
 						        <label class="col-sm-3 form-control-label">Deskripsi kegiatan</label>
 						        <div class="col-sm-9">
 						          <div class="input-group">
-	                                <textarea class="form-control">{{ $activity->description }}</textarea>
+	                                <textarea name="description" class="form-control">{{ $activity->description }}</textarea>
 	                              </div>
 						          @if ($errors->has('description'))
 							          <small class="form-text text-danger">{{ $errors->first('description') }}</small>

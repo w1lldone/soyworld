@@ -50,6 +50,7 @@ Route::group(['prefix' => 'activity'], function()
 	Route::post('/', 'ActivityController@store');
 	Route::get('/{activity}/view', 'ActivityController@show');
 	Route::get('/{activity}/edit', 'ActivityController@edit');
+	Route::put('/{activity}', 'ActivityController@update');
 });
 
 Route::group(['prefix' => 'seedphoto'], function()
