@@ -10,6 +10,13 @@ class ActivityPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        if ($user->isSuperadmin()) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view the activity.
      *
@@ -42,7 +49,7 @@ class ActivityPolicy
      */
     public function update(User $user, Activity $activity)
     {
-        //
+        return $user->id === $activity->onfarm->user_id;
     }
 
     /**
