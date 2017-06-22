@@ -81,3 +81,77 @@ a.text {
 .item-link {
 	border-bottom: 1px solid #eee;
 }
+
+/* CUSTOM INPUT */
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    /*max-width: 80%;*/
+    font-size: 1rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 7px 7px;
+    border-radius: 0.25rem;
+    /* 10px 20px */
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+/* style 1 */
+
+.inputfile-1 + label {
+    color: #fff;
+    background-color: #796AEE;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #503ce9;
+}
+
+/* style 2 */
+
+.inputfile-warning + label {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.inputfile-warning:focus + label,
+.inputfile-warning.has-focus + label,
+.inputfile-warning + label:hover {
+    background-color: #ec971f;
+}
