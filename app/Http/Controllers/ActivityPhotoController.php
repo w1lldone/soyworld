@@ -82,6 +82,7 @@ class ActivityPhotoController extends Controller
      */
     public function destroy(ActivityPhoto $activityPhoto)
     {
-        //
+        $activityPhoto->deletePhoto();
+        return back()->with('success', 'Foto berhasil dihapus');
     }
 }

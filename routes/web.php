@@ -64,4 +64,5 @@ Route::group(['prefix' => 'activityphoto'], function()
 {
 	Route::post('/', 'ActivityPhotoController@store');
 	Route::post('/{activityPhoto}', 'ActivityPhotoController@update');
+	Route::delete('/{activityPhoto}', 'ActivityPhotoController@destroy');
 });
