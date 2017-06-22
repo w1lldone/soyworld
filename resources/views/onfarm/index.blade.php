@@ -44,17 +44,19 @@
 					          <th>#</th>
 					          <th>Nama</th>
 					          <th>Petani</th>
-					          <th>Poktan</th>
+					          <th>Benih</th>
+					          <th>Tanam</th>
 					          <th>Aktivitas terakhir</th>
 					        </tr>
 					      </thead>
 					      <tbody>
 					      	@foreach ($onfarms as $onfarm)
 					      		<tr>
-						      		<th scope="row">{{ $onfarm->created_at->toFormattedDateString() }}</th>
+						      		<th scope="row">{{ $loop->index+1 }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
 						      		<td>{{ $onfarm->user->name }}</td>
-						      		<td>{{ $onfarm->user->poktan->name }}</td>
+						      		<td><a href="{{ !empty($onfarm->seed) ? '/seed/'.$onfarm->seed->id.'/view' : '#' }}">{{ !empty($onfarm->seed) ? $onfarm->seed->quantity.' Kg' : '-' }}</a></td>
+						      		<td>{{ !empty($onfarm->planted_at) ? $onfarm->planted_at->toFormattedDateString() : 'Belum ditanam' }}</td>
 						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
 						      	</tr>
 					      	@endforeach
