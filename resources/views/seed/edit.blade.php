@@ -42,8 +42,8 @@
 						          <div class="d-flex flex-row">
 							          <form method="POST" class="pr-2" action="/seedphoto/{{ $photo->id }}" enctype="multipart/form-data">
 							          	  {{ csrf_field() }}
-								          <input onclick="return confirm('Foto akan langsung diganti. Apa anda yakin?')" name="photo" type="file" class="inputfile inputfile-warning" id="file-1" onchange="this.form.submit()">
-								          <label for="file-1"><i class="fa fa-edit"></i><span style="color: inherit;">Ubah foto&hellip;</span></label>
+								          <input onclick="return confirm('Foto akan langsung diganti. Apa anda yakin?')" name="photo" type="file" class="inputfile inputfile-warning" id="file-{{$loop->index}}" onchange="this.form.submit()">
+								          <label for="file-{{$loop->index}}"><i class="fa fa-edit"></i><span style="color: inherit;">Ubah foto&hellip;</span></label>
 							          </form>
 							          <form method="POST" action="/seedphoto/{{ $photo->id }}">
 							        		{{ csrf_field() }}
