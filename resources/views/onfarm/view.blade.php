@@ -125,10 +125,7 @@
               @can('createActivity', $onfarm)
                 <div class="card-close">
                   <div class="dropdown">
-                    <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                    <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-                      <a href="/activity/create/{{$onfarm->id}}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Aktivitas tanam</a>
-                    </div>
+                    <a href="/activity/create/{{$onfarm->id}}" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
                   </div>
                 </div>
               @endcan
