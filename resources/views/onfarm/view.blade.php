@@ -35,9 +35,16 @@
                 </div>
                 <div class="project-date"><span class="hidden-sm-down">dibuat: {{ $onfarm->created_at->toFormattedDateString() }}</span></div>
               </div>
-              <div class="right-col col-lg-6 d-flex align-items-center justify-content-between" style="border-right: none;">
-                  <h4 class="my-0">Total biaya pra-panen:</h4>
-                  <h4 class="my-0"><span class="badge badge-info" style="font-size: inherit;">Rp. 503.000</span></h4>
+              <div class="col-lg-6 d-flex align-items-center" style="border-right: none;">
+                <div class="row p-1">
+                  <h4 class="">Luas tanam:</h4>
+                  <h4 class="">Total biaya pra-panen:</h4>
+                </div>
+                <div class="row p-1">
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">8000 m<sup>2</sup></span></h4>
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. 503.000</span></h4>
+                </div>
+
               </div>
             </div>
             {{-- DATA SECTION --}}

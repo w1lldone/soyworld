@@ -42,10 +42,11 @@ class OnfarmController extends Controller
         }
 
         $this->validate($request,[
-            'planted_at' => 'required'
+            'planted_at' => 'required',
+            'area' => 'required|numeric',
         ]);
 
-        $onfarm->update(request(['planted_at']));
+        $onfarm->update(request(['planted_at', 'area']));
         $activity = $onfarm->addActivity();
 
         return back()->with('success', 'Benih berhasil ditanam');
