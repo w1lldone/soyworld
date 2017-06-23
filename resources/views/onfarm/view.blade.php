@@ -41,7 +41,13 @@
                   <h4 class="">Total biaya pra-panen:</h4>
                 </div>
                 <div class="row p-1">
-                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">{{ empty($onfarm->area) ? "belum ditanam" : $onfarm->area.' m2' }}</span></h4>
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">
+                    @if (empty($onfarm->area))
+                      Belum ditanam
+                    @else
+                      {{ $onfarm->area }} m<sup>2</sup>
+                    @endif
+                  </span></h4>
                   <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. 503.000</span></h4>
                 </div>
 

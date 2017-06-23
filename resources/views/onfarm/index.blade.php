@@ -55,8 +55,23 @@
 						      		<th scope="row">{{ $loop->index+1 }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
 						      		<td>{{ $onfarm->user->name }}</td>
-						      		<td><a href="/seed/{{ !empty($onfarm->seed) ? $onfarm->seed->id.'/view' : 'create/'.$onfarm->id }}">{{ !empty($onfarm->seed) ? $onfarm->seed->quantity.' Kg' : 'Beli benih' }}</a></td>
-						      		<td>{{ !empty($onfarm->planted_at) ? $onfarm->planted_at->toFormattedDateString() : 'Belum ditanam' }}</td>
+						      		<td>
+						      			@if (empty($onfarm->seed))
+						      				<a href="/seed/create/{{ $onfarm->id }}" title="Klik untuk membeli" data-toggle="tooltip">Belum dibeli</a>
+					      				@else
+					      					<a href="/seed/{{ $onfarm->seed->id }}/view" title="Klik untuk melihat detail" data-toggle="tooltip">{{ $onfarm->seed->quantity }} Kg</a>
+						      			@endif
+
+						      		</td>
+						      		<td>
+						      			@empty ($onfarm->planted_at)
+						      				Belum ditanam
+						      			@endempty
+						      			@isset ($onfarm->planted_at)
+						      			    {{ $onfarm->planted_at->toFormattedDateString() }}
+						      			@endisset
+						      		</td>
+						      		{{-- <td>{{ !empty($onfarm->planted_at) ? $onfarm->planted_at->toFormattedDateString() : 'Belum ditanam' }}</td> --}}
 						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
 						      	</tr>
 					      	@endforeach
