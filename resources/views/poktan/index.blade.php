@@ -8,7 +8,7 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Anggota</h2>
+    <h2 class="no-margin-bottom">Kelompok tani</h2>
   </div>
 </header>
 <!-- Breadcrumb-->
@@ -28,15 +28,11 @@
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
-					      <a href="/user/create" title="Tambah anggota" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
-					     {{--  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-					      <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-						      <a href="/user/create" class="dropdown-item"> <i class="fa fa-plus"></i>Tambah anggota</a>
-					      </div> --}}
+					      <a href="#" title="Tambah kelompok tani" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Daftar Anggota</h3>
+					    <h3 class="h4">Daftar kelompok tani</h3>
 					  </div>
 					  <div class="card-body">
 					    <table class="table">
@@ -44,22 +40,22 @@
 					        <tr>
 					          <th>#</th>
 					          <th>Nama</th>
-					          <th>Email</th>
-					          <th>Kontak</th>
-					          <th>Kewenangan</th>
+					          <th>Ketua</th>
+					          <th>Alamat</th>
+					          <th>Anggota</th>
 					          <th>Action</th>
 					        </tr>
 					      </thead>
 					      <tbody>
-					      	@foreach ($users as $user)
+					      	@foreach ($poktans as $poktan)
 				      		  <tr>
 					      	    <th scope="row">{{ $loop->index+1 }}</th>
-					      	    <td>{{ $user->name }}</td>
-					      	    <td>{{ $user->email }}</td>
-					      	    <td>{{ $user->contact }}</td>
-					      	    <td>{{ $user->privilage->name }}</td>
+					      	    <td>{{ $poktan->name }}</td>
+					      	    <td>{{ $poktan->leader->name }}</td>
+					      	    <td>{{ $poktan->address }}</td>
+					      	    <td>{{ \App\User::where('poktan_id', $poktan->id)->count() }} petani</td>
 					      	    <td style="display: flex;">
-									<a href="/user/{{$user->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
+									<a href="/user/{{$poktan->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
 										<i class="fa fa-edit"></i>
 									</a>
 					      	    </td>

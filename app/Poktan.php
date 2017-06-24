@@ -16,6 +16,10 @@ class Poktan extends Model
 		return $this->hasMany('App\User');
 	}
 
+	public function leader(){
+		return $this->belongsTo('App\User', 'leader_user_id', 'id');
+	}
+
 	public function supplier(){
 		return $this->hasMany('App\Supplier');
 	}

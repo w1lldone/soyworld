@@ -12,10 +12,16 @@
   <span class="heading">Utama</span>
   <ul class="list-unstyled">
     <li> <a href="/home"><i class="icon-home"></i>Home</a></li>
-    <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Anggota </a>
-      <ul id="dashvariants" class="collapse list-unstyled">
+    <li><a href="#user" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Anggota </a>
+      <ul id="user" class="collapse list-unstyled">
         <li><a href="/user">Daftar Anggota</a></li>
         <li><a href="/user/create">Tambah Anggota</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#poktan" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-group"></i>Kelompok Tani </a>
+      <ul id="poktan" class="collapse list-unstyled"> 
+        <li><a href="/poktan">Daftar kelompok tani</a></li>
       </ul>
     </li>
   </ul><span class="heading">Kedelai</span>
