@@ -76,6 +76,7 @@
 				      	        <label class="col-sm-3 form-control-label">Kelompok tani</label>
 				      	        <div class="col-sm-9">
 				      	          <select id="poktan_id" name="poktan_id" class="form-control">
+				      	          	<option value="">PILIH KELOMPOK TANI</option>
 				      	          	@foreach (\App\Poktan::all() as $poktan)
 				      	          		<option value="{{ $poktan->id }}">{{ $poktan->name }}</option>
 				      	          	@endforeach
