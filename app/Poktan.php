@@ -23,4 +23,16 @@ class Poktan extends Model
 	public function supplier(){
 		return $this->hasMany('App\Supplier');
 	}
+
+	/**
+	* CUSTOM METHOD
+	*/
+	public static function addPoktan($request)
+	{
+		return static::create([
+			'name' => $request->name,
+			'address' => $request->address,
+			'leader_user_id' => $request->leader_user_id,
+		]);
+	}
 }

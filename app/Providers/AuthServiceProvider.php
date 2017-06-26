@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Seed' => 'App\Policies\SeedPolicy',
         'App\Onfarm' => 'App\Policies\OnfarmPolicy',
         'App\Activity' => 'App\Policies\ActivityPolicy',
+        'App\Poktan' => 'App\Policies\PoktanPolicy',
     ];
 
     /**

@@ -55,7 +55,7 @@
 					      	    <td>{{ $poktan->address }}</td>
 					      	    <td>{{ \App\User::where('poktan_id', $poktan->id)->count() }} petani</td>
 					      	    <td style="display: flex;">
-									<a href="/user/{{$poktan->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
+									<a href="/poktan/{{$poktan->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
 										<i class="fa fa-edit"></i>
 									</a>
 					      	    </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poktan;
+use App\User;
 use Illuminate\Http\Request;
 
 class PoktanController extends Controller
@@ -25,7 +26,10 @@ class PoktanController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Poktan::class);
+        $leaders = User::where('privilage_id', 2)->get();
+
+        return view('poktan.create', compact('leaders'));
     }
 
     /**
@@ -36,7 +40,7 @@ class PoktanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
