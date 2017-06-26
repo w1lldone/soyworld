@@ -42,6 +42,7 @@ Route::group(['prefix' => 'seed'], function()
 Route::group(['prefix' => 'supplier'], function()
 {
 	Route::post('/', 'SupplierController@store');
+	Route::get('/', 'SupplierController@index');
 });
 
 Route::group(['prefix' => 'poktan'], function()

@@ -19,9 +19,15 @@
       </ul>
     </li>
     <li>
-      <a href="#poktan" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-flag-o"></i>Kelompok Tani </a>
+      <a href="#poktan" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-address-book-o"></i>Kelompok Tani </a>
       <ul id="poktan" class="collapse list-unstyled"> 
         <li><a href="/poktan">Daftar kelompok tani</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#supplier" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-opencart"></i>Supplier </a>
+      <ul id="supplier" class="collapse list-unstyled"> 
+        <li><a href="/supplier">Daftar Supplier</a></li>
       </ul>
     </li>
   </ul><span class="heading">Kedelai</span>

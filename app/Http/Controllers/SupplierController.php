@@ -22,4 +22,10 @@ class SupplierController extends Controller
 
     	return redirect("$request->url");
     }
+
+    public function index()
+    {
+        $suppliers = Supplier::all();
+        return view('supplier.index',compact('suppliers'));
+    }
 }
