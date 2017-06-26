@@ -91,11 +91,23 @@
 					      </div>
 					      {{-- INPUT PRIVILAGES --}}
 					      <div class="form-group row">
-					        <label class="col-sm-3 form-control-label">Kewenangan</label>
+					        <label id="select" class="col-sm-3 form-control-label">Kewenangan</label>
 					        <div class="col-sm-9">
-					          <select name="privilage_id" class="form-control">
+					          <select id="privilage" name="privilage_id" class="form-control">
                                 @foreach ($privilages as $privilage)
                                 	<option value="{{ $privilage->id }}">{{ $privilage->name }}</option>
+                                @endforeach
+                              </select>
+					        </div>
+					      </div>
+					      {{-- HIDDEN INPUT POKTAN --}}
+					      <div id="selectPoktan" class="form-group row" style="display: none;">
+					        <label class="col-sm-3 form-control-label">Kelompok tani</label>
+					        <div class="col-sm-9">
+					          <select name="privilage_id" class="form-control">
+					          	<option value="">PILIH KELOMPOK TANI</option>
+                                @foreach (\App\Poktan::all() as $poktan)
+                                	<option value="{{ $poktan->id }}">{{ $poktan->name }}</option>
                                 @endforeach
                               </select>
 					        </div>
@@ -114,6 +126,16 @@
 		</div>
 	</section>
 </div>
+@endsection
 
-
+@section('script')
+	<script type="text/javascript">
+		$('#privilage').change(function() {
+			if ($(this).val() === '2') {
+				$('#selectPoktan').show()
+			} else{
+				$('#selectPoktan').hide()
+			}
+		});
+	</script>
 @endsection
