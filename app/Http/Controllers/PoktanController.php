@@ -79,7 +79,7 @@ class PoktanController extends Controller
      */
     public function edit(Poktan $poktan)
     {
-        //
+        return view('poktan.edit', compact('poktan'));
     }
 
     /**
