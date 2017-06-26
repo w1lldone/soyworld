@@ -29,7 +29,7 @@
 				@include('layouts.alerts')
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Form tambah anggota</h3>
+					    <h3 class="h4">Data kelompok tani</h3>
 					  </div>
 					  <div class="card-body">
 					    <form class="form-horizontal" method="POST" action="/poktan">

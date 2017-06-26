@@ -28,7 +28,7 @@
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
-					      <a href="#" title="Tambah kelompok tani" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
+					      <a href="/poktan/create" title="Tambah kelompok tani" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">
