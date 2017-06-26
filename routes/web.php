@@ -51,6 +51,7 @@ Route::group(['prefix' => 'poktan'], function()
 	Route::post('/', 'PoktanController@store');
 	Route::get('/create', 'PoktanController@create');
 	Route::get('/{poktan}/edit', 'PoktanController@edit');
+	Route::put('/{poktan}', 'PoktanController@update');
 });
 
 Route::group(['prefix' => 'activity'], function()

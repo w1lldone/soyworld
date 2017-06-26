@@ -79,6 +79,8 @@ class PoktanController extends Controller
      */
     public function edit(Poktan $poktan)
     {
+        $this->authorize('update', $poktan);
+
         return view('poktan.edit', compact('poktan'));
     }
 
@@ -91,7 +93,13 @@ class PoktanController extends Controller
      */
     public function update(Request $request, Poktan $poktan)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $poktan->update(request([
+            'name', 'address', 'leader_user_id', 
+        ]));
+
+        return redirect('/poktan')->with('success', 'Berhasil mengubah kelompok tani!');
     }
 
     /**

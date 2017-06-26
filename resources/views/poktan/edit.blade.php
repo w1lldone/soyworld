@@ -28,8 +28,9 @@
 					    <h3 class="h4">Data kelompok tani</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/poktan">
+					    <form class="form-horizontal" method="POST" action="/poktan/{{ $poktan->id }}">
 					      {{ csrf_field() }}
+					      {{ method_field('PUT') }}
 					      {{-- INPUT NAME --}}
 					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Nama</label>
