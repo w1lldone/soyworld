@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Poktan;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class PoktanController extends Controller
@@ -11,6 +12,14 @@ class PoktanController extends Controller
     function __construct()
     {
         $this->middleware('auth');
+    }
+
+    protected function validator($request)
+    {
+        return Validator::make($request, [
+            'name' => 'required',
+            'leader_user_id' => 'required|exists:users,id',
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -44,7 +53,11 @@ class PoktanController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validator($request->all())->validate();
+
+        $poktan = Poktan::addPoktan($request);
+
+        return redirect('/poktan')->with('success', 'Tambah kelompok tani berhasil!');
     }
 
     /**

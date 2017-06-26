@@ -47,6 +47,7 @@ Route::group(['prefix' => 'supplier'], function()
 Route::group(['prefix' => 'poktan'], function()
 {
 	Route::get('/', 'PoktanController@index');
+	Route::post('/', 'PoktanController@store');
 	Route::get('/create', 'PoktanController@create');
 });
 
