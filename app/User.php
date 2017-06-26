@@ -63,6 +63,7 @@ class User extends Authenticatable
             'address' => $request->address,
             'password' => bcrypt($request->address),
             'privilage_id' => $request->privilage_id,
+            'poktan_id' => $request->privilage_id == 2 ? $request->poktan_id : null,
         ]);
     }
 }
