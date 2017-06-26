@@ -46,7 +46,8 @@
       </header>
       <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
-        @yield('sidebar')
+        {{-- @yield('sidebar') --}}
+        @include('layouts.sidebar')
         <div class="content-inner scroll" style="width: 100%">
           @yield('content')
           @yield('modal')

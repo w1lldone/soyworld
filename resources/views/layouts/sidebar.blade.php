@@ -12,10 +12,10 @@
   <span class="heading">Utama</span>
   <ul class="list-unstyled">
     <li> <a href="/home"><i class="icon-home"></i>Home</a></li>
-    <li><a href="#user" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>Anggota </a>
+    <li><a href="#user" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user-o"></i>Anggota </a>
       <ul id="user" class="collapse list-unstyled">
         <li><a href="/user">Daftar Anggota</a></li>
-        <li><a href="/user/create">Tambah Anggota</a></li>
+        <li><a href="/user/create"><i class="fa fa-plus"></i>Tambah Anggota</a></li>
       </ul>
     </li>
     <li>
@@ -32,7 +32,7 @@
     </li>
   </ul><span class="heading">Kedelai</span>
   <ul class="list-unstyled">
-    <li> <a href="/onfarm"> <i class="icon-grid"></i>On farm </a></li>
+    <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
     <li> <a href="#"> <i class="icon-form"></i>Pasca panen </a></li>
     <li> <a href="#"> <i class="icon-form"></i>Gudang </a></li>
   </ul>

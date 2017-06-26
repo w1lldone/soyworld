@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('sidebar')
-	@include('layouts.sidebar')
-@endsection
+
 
 @section('content')
 <!-- Page Header-->
