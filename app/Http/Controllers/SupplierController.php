@@ -31,12 +31,10 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-        if (!$request->has('poktan_id')) $request->poktan_id = auth()->user()->poktan->id;
-        
+        if (!$request->has('poktan_id')) $request->poktan_id = auth()->user()->poktan->id;        
         $this->validator($request->all())->validate();
 
     	$supplier = Supplier::addSupplier($request);
-
         $url = $request->has('url') ? $request->url : "/supplier" ;
 
         return redirect($url)->with('success', 'Berhasil menambah suppler!');
@@ -46,5 +44,10 @@ class SupplierController extends Controller
     {
         $suppliers = Supplier::all();
         return view('supplier.index',compact('suppliers'));
+    }
+
+    public function edit(Request $request, Supplier $supplier)
+    {
+        return view('supplier.edit', compact('supplier'));
     }
 }
