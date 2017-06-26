@@ -12,12 +12,15 @@ class SupplierController extends Controller
 		$this->middleware('auth');
 	}
 
+    public function create()
+    {
+        return view('supplier.create');
+    }
+
     public function store(Request $request)
     {
-    	if (!auth()->user()->isSuperadmin()) {
-    		$request->user_id = auth()->user()->id;
-    		$request->poktan_id = auth()->user()->poktan->id;
-    	}
+        if (!$request->has('poktan_id')) $request->poktan_id = auth()->user()->poktan->id;
+
     	$supplier = Supplier::addSupplier($request);
 
     	return redirect("$request->url");

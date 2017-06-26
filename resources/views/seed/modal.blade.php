@@ -1,3 +1,4 @@
+{{-- ADD SUPPLIER MODAL --}}
 <div id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="addSupplierLabel" aria-hidden="true" class="modal fade text-left">
   <div role="document" class="modal-dialog">
     <div class="modal-content">
@@ -32,7 +33,6 @@
           {{-- INPUT FOR SUPERADMIN --}}
           @if (auth()->user()->isSuperadmin())
             <input type="hidden" name="poktan_id" value="{{ $onfarm->user->poktan->id }}">
-            <input type="hidden" name="user_id" value="{{ $onfarm->user->id }}">
           @endif
           <input type="hidden" name="url" value="{{ $url }}">
       </div>

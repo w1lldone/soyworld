@@ -21,7 +21,6 @@ class Supplier extends Model
 	{
 		return static::create([
 			'name' => $request->name,
-			'user_id' => $request->user_id,
 			'poktan_id' => $request->poktan_id,
 			'description' => $request->description,
 			'address' => $request->address,

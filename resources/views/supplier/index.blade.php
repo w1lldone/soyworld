@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-
-
 @section('content')
 <!-- Page Header-->
 <header class="page-header">
@@ -26,7 +24,7 @@
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
-					      <a href="/supplier/create" title="Tambah kelompok tani" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
+					      <a href="/supplier/create" title="Tambah supplier" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">

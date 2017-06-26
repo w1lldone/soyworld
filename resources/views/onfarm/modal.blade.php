@@ -1,3 +1,4 @@
+{{-- PLANT SEED MODAL --}}
 <div id="plantSeed" tabindex="-1" role="dialog" aria-labelledby="plantSeedLabel" aria-hidden="true" class="modal fade text-left">
   <div role="document" class="modal-dialog">
     <div class="modal-content">
