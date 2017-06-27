@@ -28,7 +28,7 @@
 					    <h3 class="h4">Data biaya on farm - {{ $onfarm->name }}</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/onfarm-cost" enctype="multipart/form-data">
+					    <form class="form-horizontal" method="POST" action="/onfarmcost">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
 					      <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}">

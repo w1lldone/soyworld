@@ -19,4 +19,19 @@ class OnfarmCost extends Model
     public function supplier(){
     	return $this->belongsTo('App\Supplier');
     }
+
+    /**
+    * CUSTOM METHOD SECTION
+    */
+
+    public static function addCost($request)
+    {
+        return static::create([
+            'onfarm_id' => $request->onfarm_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'supplier_id' => $request->supplier_id,
+            'price' => $request->price,
+        ]);
+    }
 }

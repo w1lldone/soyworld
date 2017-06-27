@@ -5,9 +5,27 @@ namespace App\Http\Controllers;
 use App\OnfarmCost;
 use App\Onfarm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OnfarmCostController extends Controller
 {
+
+    public function validator($request)
+    {
+        switch (request()->method()) {
+            case 'POST':
+                return Validator::make($request, [
+                    'name' => 'required',
+                    'supplier_id' => 'required|exists:suppliers,id',
+                    'price' => 'required|numeric',
+                ]);
+                break;
+            
+            case 'PUT':
+                
+                break;
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +56,11 @@ class OnfarmCostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $onfarmCost = OnfarmCost::addCost($request);
+
+        return redirect("/onfarm/$onfarmCost->onfarm_id/view")->with('success', 'Berhasil menambah biaya!');
     }
 
     /**

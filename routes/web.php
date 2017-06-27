@@ -83,4 +83,5 @@ Route::group(['prefix' => 'activityphoto'], function()
 Route::group(['prefix' => 'onfarmcost'], function()
 {
 	Route::get('/create/{onfarm}', 'OnfarmCostController@create');
+	Route::post('/', 'OnfarmCostController@store');
 });

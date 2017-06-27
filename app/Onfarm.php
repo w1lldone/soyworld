@@ -25,7 +25,7 @@ class Onfarm extends Model
     }
 
     public function cost(){
-        return $this->hasMany('App\OnfarmCost', 'onfarm_cost_id', 'id');
+        return $this->hasMany('App\OnfarmCost', 'onfarm_id', 'id');
     }
 
     /*

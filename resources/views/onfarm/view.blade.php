@@ -170,61 +170,19 @@
                 <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
+                @foreach ($onfarm->cost as $cost)
+                  <!-- Item-->
+                  <div class="item d-flex justify-content-between">
+                    <div class="info d-flex">
+                      <div class="icon"><i class="icon-rss-feed"></i></div>
+                      <div class="title">
+                        <h5>Rp. {{ $cost->price }}</h5>
+                        <p>{{ $cost->name." - ".$cost->description }}</p>
+                      </div>
                     </div>
+                    <div class="date text-right"><strong>24</strong><span>May</span></div>
                   </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item        -->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
