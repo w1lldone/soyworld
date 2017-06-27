@@ -26,6 +26,7 @@ class SupplierController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Supplier::class);
         return view('supplier.create');
     }
 
@@ -48,6 +49,17 @@ class SupplierController extends Controller
 
     public function edit(Request $request, Supplier $supplier)
     {
+        $this->authorize('update', $supplier);
         return view('supplier.edit', compact('supplier'));
+    }
+
+    public function update(Request $request, Supplier $supplier)
+    {
+        $this->validator($request->all())->validate();
+        $supplier->update(request([
+            'name', 'description', 'address', 'contact', 'poktan_id',
+        ]));
+
+        return redirect('/supplier')->with('success', 'Supplier berhasil diupdate');
     }
 }

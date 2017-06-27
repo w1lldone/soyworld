@@ -45,6 +45,7 @@ Route::group(['prefix' => 'supplier'], function()
 	Route::get('/', 'SupplierController@index');
 	Route::get('/{supplier}/edit', 'SupplierController@edit');
 	Route::get('/create', 'SupplierController@create');
+	Route::put('/{supplier}', 'SupplierController@update');
 });
 
 Route::group(['prefix' => 'poktan'], function()
