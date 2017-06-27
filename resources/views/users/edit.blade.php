@@ -77,7 +77,7 @@
 					      <div id="selectPoktan" class="form-group row" style="display: none;">
 					        <label class="col-sm-3 form-control-label">Kelompok tani</label>
 					        <div class="col-sm-9">
-					          <select id="poktan" name="poktan_id" class="form-control">
+					          <select id="poktanid" name="poktan_id" class="form-control">
 					          	<option value="">PILIH KELOMPOK TANI</option>
                                 @foreach (\App\Poktan::all() as $poktan)
                                 	<option value="{{ $poktan->id }}">{{ $poktan->name }}</option>
@@ -104,22 +104,15 @@
 @section('script')
 	<script type="text/javascript">
 
-		$(function() {
+		$(function(){
+			$("#privilage").val("{{ $user->privilage_id }}");
+			$("#poktanid").val("{{ $user->poktan_id }}");
+
 			if ('{{ $user->privilage_id }}' === '2') {
 				$('#selectPoktan').show()
 			}
-		})
+		});
 		
-
-
-		$(function(){
-			$("#privilage").val("{{ $user->privilage_id }}");
-		});
-
-		$(function(){
-			$("#poktan").val("{{ $poktan->poktan_id }}");
-		});
-
 		$('#privilage').change(function() {
 			if ($(this).val() === '2') {
 				$('#selectPoktan').show()

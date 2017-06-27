@@ -55,8 +55,8 @@ class UserController extends Controller
 
     public function update(User $user, Request $request)
     {
-        $request->has('name') ? $user->update(request(['name', 'contact', 'address', 'privilage_id'])) : $user;
+        $user->update(request(['name', 'contact', 'address', 'privilage_id', 'poktan_id']));
 
-        return redirect('/user');
+        return redirect('/user')->with('success', 'berhasil mengubah user');
     }
 }
