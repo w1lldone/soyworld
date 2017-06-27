@@ -24,6 +24,10 @@ class Onfarm extends Model
         return $this->hasMany('App\Activity');
     }
 
+    public function cost(){
+        return $this->hasMany('App\OnfarmCost', 'onfarm_cost_id', 'id');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */

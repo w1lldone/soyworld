@@ -14,6 +14,10 @@ class Supplier extends Model
     	return $this->belongsTo('App\Poktan');
     }
 
+    public function onfarm_cost(){
+    	return $this->hasMany('App\OnfarmCost', 'onfarm_cost_id', 'id');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
