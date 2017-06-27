@@ -104,7 +104,7 @@
 					      <div id="selectPoktan" class="form-group row" style="display: none;">
 					        <label class="col-sm-3 form-control-label">Kelompok tani</label>
 					        <div class="col-sm-9">
-					          <select name="privilage_id" class="form-control">
+					          <select name="poktan_id" class="form-control">
 					          	<option value="">PILIH KELOMPOK TANI</option>
                                 @foreach (\App\Poktan::all() as $poktan)
                                 	<option value="{{ $poktan->id }}">{{ $poktan->name }}</option>
