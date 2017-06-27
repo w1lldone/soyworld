@@ -133,7 +133,8 @@
               </div>
               <div class="card-body no-padding">
                 @if ($onfarm->activity->isEmpty())
-                  <div class="py-4 text-center">
+                  <div class="pt-2 pb-4 text-center">
+                    <img src="/img/stock/watering-can.svg" class="img-fluid" width="150px">
                     <h4 class="text-light text-muted">Belum ada aktivitas tanam</h4>
                     @cannot('createActivity', $onfarm)
                         <p class="text-muted m-0">Lakukan penanaman terlebih dahulu</p>
