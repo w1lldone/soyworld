@@ -170,6 +170,13 @@
                 <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
+                @if ($onfarm->cost->count() == 0)
+                  <div class="item pt-2 pb-4 text-center">
+                    <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Belum ada biaya tanam</h4>
+                    <a class="round-link bg-green d-inline-block text-white" href="/onfarmcost/create/{{$onfarm->id}}">Tambahkan</a>
+                  </div>
+                @endif
                 @foreach ($onfarm->cost as $cost)
                   <!-- Item-->
                   <div class="item d-flex justify-content-between">
