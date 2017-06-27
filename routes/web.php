@@ -79,3 +79,8 @@ Route::group(['prefix' => 'activityphoto'], function()
 	Route::post('/{activityPhoto}', 'ActivityPhotoController@update');
 	Route::delete('/{activityPhoto}', 'ActivityPhotoController@destroy');
 });
+
+Route::group(['prefix' => 'onfarmcost'], function()
+{
+	Route::get('/create/{onfarm}', 'OnfarmCostController@create');
+});

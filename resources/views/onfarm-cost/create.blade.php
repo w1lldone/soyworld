@@ -35,13 +35,35 @@
 					      @if ($errors->has('onfarm_id'))
 					          <p class="form-text text-danger">{{ $errors->first('onfarm_id') }}</p>
 				          @endif
+				          {{-- INPUT NAME --}}
+					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+					        <label class="col-sm-3 form-control-label">Keterangan</label>
+					        <div class="col-sm-9">
+					          <input name="name" id="inputHorizontalSuccess" type="text" placeholder="Contoh : pembelian pupuk/perstisida" class="form-control form-control-success" value="{{ old('name') }}" required>
+					          @if ($errors->has('name'))
+						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+					          @endif
+					        </div>
+					      </div>
+					      {{-- INPUT DESCRIPTION --}}
+						      <div class="form-group row {{ $errors->has('description') ? ' has-danger' : '' }}">
+						        <label class="col-sm-3 form-control-label">Deskripsi</label>
+						        <div class="col-sm-9">
+						          <div class="input-group">
+	                                <textarea name="description" class="form-control"></textarea>
+	                              </div>
+						          @if ($errors->has('description'))
+							          <small class="form-text text-danger">{{ $errors->first('description') }}</small>
+						          @endif
+						        </div>
+						      </div>
 					      {{-- INPUT SUPPLIER --}}
 					      <div class="form-group row {{ $errors->has('supplier') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Supplier</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
 					            <select name="supplier_id" class="form-control">
-					            	<option></option>
+					            	<option value="">PILIH SUPPLIER</option>
 					            	@foreach ($onfarm->user->poktan->supplier as $supplier)
 					            		<option value="{{$supplier->id}}">{{$supplier->name}} &dash; {{$supplier->description}}</option>
 					            	@endforeach
@@ -57,26 +79,17 @@
 					      </div>
 					      {{-- INPUT PRICE --}}
 					      <div class="form-group row {{ $errors->has('price') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Harga benih per Kg</label>
+					        <label class="col-sm-3 form-control-label">Biaya</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <span class="input-group-addon">Rp.</span><input type="number" name="price" class="form-control" placeholder="Harga kedelai per Kg" value="{{ old('price') }}">
+                                <span class="input-group-addon">Rp.</span><input type="number" name="price" class="form-control" placeholder="Biaya total" value="{{ old('price') }}">
                               </div>
 					          @if ($errors->has('price'))
 						          <small class="form-text text-danger">{{ $errors->first('price') }}</small>
 					          @endif
 					        </div>
 					      </div>
-					      {{-- INPUT NAME --}}
-					      <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Keterangan</label>
-					        <div class="col-sm-9">
-					          <input name="name" id="inputHorizontalSuccess" type="text" value="pembelian benih {{ $onfarm->name }}" class="form-control form-control-success" value="{{ old('name') }}" required>
-					          @if ($errors->has('name'))
-						          <small class="form-text text-danger">{{ $errors->first('name') }}</small>
-					          @endif
-					        </div>
-					      </div>
+					      
 
 					      <div class="form-group row">       
 					        <div class="col-sm-9 offset-sm-3">

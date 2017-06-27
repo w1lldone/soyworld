@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OnfarmCost;
+use App\Onfarm;
 use Illuminate\Http\Request;
 
 class OnfarmCostController extends Controller
@@ -22,9 +23,11 @@ class OnfarmCostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Onfarm $onfarm)
     {
-        //
+        $this->authorize('createSeed', $onfarm);
+        $url = request()->fullUrl();
+        return view('onfarm-cost.create', compact(['onfarm', 'url']));
     }
 
     /**

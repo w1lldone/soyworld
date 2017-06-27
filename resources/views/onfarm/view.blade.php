@@ -162,10 +162,7 @@
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-                    <a href="/cost/create/{{ $onfarm->id }}" class="dropdown-item edit"> <i class="fa fa-plus"></i>Biaya tanam</a>
-                  </div>
+                  <a href="/onfarmcost/create/{{ $onfarm->id }}" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
                 </div>
               </div>
               <div class="card-header">
