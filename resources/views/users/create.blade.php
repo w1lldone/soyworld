@@ -90,14 +90,18 @@
 					        </div>
 					      </div>
 					      {{-- INPUT PRIVILAGES --}}
-					      <div class="form-group row">
+					      <div class="form-group row {{ $errors->has('privilage_id') ? ' has-danger' : '' }}">
 					        <label id="select" class="col-sm-3 form-control-label">Kewenangan</label>
 					        <div class="col-sm-9">
 					          <select id="privilage" name="privilage_id" class="form-control">
+					          	<option value="">PILIH KEWENANGAN</option>
                                 @foreach ($privilages as $privilage)
                                 	<option value="{{ $privilage->id }}">{{ $privilage->name }}</option>
                                 @endforeach
                               </select>
+                              @if ($errors->has('privilage_id'))
+						          <small class="form-text text-danger">{{ $errors->first('privilage_id') }}</small>
+					          @endif
 					        </div>
 					      </div>
 					      {{-- HIDDEN INPUT POKTAN --}}

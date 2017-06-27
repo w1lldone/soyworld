@@ -58,19 +58,23 @@
 					        <div class="col-sm-9">
 					          <input name="contact" id="inputHorizontalSuccess" type="text" placeholder="0812306*****" class="form-control form-control-success " value="{{$user->contact }}" required>
 					          @if ($errors->has('contact'))
-						          <small class="form-text text-danger">{{ $user->contact }}</small>
+						          <small class="form-text text-danger">{{ $errors->first('contact') }}</small>
 					          @endif
 					        </div>
 					      </div>
 					      {{-- INPUT PRIVILAGES --}}
-					      <div class="form-group row">
+					      <div class="form-group row {{ $errors->has('privilage_id') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Kewenangan</label>
 					        <div class="col-sm-9">
 					          <select id="privilage" name="privilage_id" class="form-control">
+					          	<option value="">PILIH KEWENANGAN</option>
                                 @foreach ($privilages as $privilage)
                                 	<option value="{{ $privilage->id }}">{{ $privilage->name }}</option>
                                 @endforeach
                               </select>
+                              @if ($errors->has('privilage_id'))
+						          <small class="form-text text-danger">{{ $errors->first('privilage_id') }}</small>
+					          @endif
 					        </div>
 					      </div>
 					      {{-- HIDDEN INPUT POKTAN --}}
