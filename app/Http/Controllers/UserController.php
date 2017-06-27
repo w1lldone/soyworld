@@ -16,13 +16,25 @@ class UserController extends Controller
 
     protected function validator($data)
     {
-    	return Validator::make($data, [
-    		'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'contact' => 'required|string|min:10',
-            'address' => 'required|string',
-		]);
+    	switch (request()->method()) {
+            case 'POST':
+                return Validator::make($data, [
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|string|email|max:255|unique:users',
+                    'password' => 'required|string|min:6|confirmed',
+                    'contact' => 'required|string|min:10',
+                    'address' => 'required|string',
+                    'privilage_id' => 'required|exists:privilages,id',
+                ]);
+
+            case 'PUT':
+                return Validator::make($data, [
+                    'name' => 'required|string|max:255',
+                    'contact' => 'required|string|min:10',
+                    'address' => 'required|string',
+                    'privilage_id' => 'required|exists:privilages,id',
+                ]);            
+        }
     }
 
     public function index()
@@ -55,6 +67,8 @@ class UserController extends Controller
 
     public function update(User $user, Request $request)
     {
+        $this->validator($request->all())->validate();
+
         $user->update(request(['name', 'contact', 'address', 'privilage_id', 'poktan_id']));
 
         return redirect('/user')->with('success', 'berhasil mengubah user');
