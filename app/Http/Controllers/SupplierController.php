@@ -55,6 +55,7 @@ class SupplierController extends Controller
 
     public function update(Request $request, Supplier $supplier)
     {
+        $this->authorize('update', $supplier);
         $this->validator($request->all())->validate();
         $supplier->update(request([
             'name', 'description', 'address', 'contact', 'poktan_id',
