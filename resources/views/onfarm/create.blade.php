@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-
-
 @section('content')
 <!-- Page Header-->
 <header class="page-header">

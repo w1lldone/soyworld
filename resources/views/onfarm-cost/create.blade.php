@@ -4,7 +4,7 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Pembelian benih</h2>
+    <h2 class="no-margin-bottom">Tambah biaya onfarm</h2>
   </div>
 </header>
 <!-- Breadcrumb-->
@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
     <li class="breadcrumb-item"><a href="/onfarm/{{$onfarm->id}}/view">Detail</a></li>
-    <li class="breadcrumb-item active">Pembelian benih</li>
+    <li class="breadcrumb-item active">Biaya on farm</li>
   </div>
 </ul>
 
@@ -25,10 +25,10 @@
 				<div class="col-md-8 offset-md-1">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Data pembelian benih</h3>
+					    <h3 class="h4">Data biaya on farm - {{ $onfarm->name }}</h3>
 					  </div>
 					  <div class="card-body">
-					    <form class="form-horizontal" method="POST" action="/seed" enctype="multipart/form-data">
+					    <form class="form-horizontal" method="POST" action="/onfarm-cost" enctype="multipart/form-data">
 					      {{ csrf_field() }}
 					      {{-- HIDDEN INPUT --}}
 					      <input type="hidden" name="onfarm_id" value="{{$onfarm->id}}">
@@ -55,18 +55,6 @@
 					          @endif
 					        </div>
 					      </div>
-					      {{-- INPUT QUANTITY --}}
-					      <div class="form-group row {{ $errors->has('quantity') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Jumlah benih</label>
-					        <div class="col-sm-9">
-					          <div class="input-group">
-                                <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
-                              </div>
-					          @if ($errors->has('quantity'))
-						          <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
-					          @endif
-					        </div>
-					      </div>
 					      {{-- INPUT PRICE --}}
 					      <div class="form-group row {{ $errors->has('price') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Harga benih per Kg</label>
@@ -77,16 +65,6 @@
 					          @if ($errors->has('price'))
 						          <small class="form-text text-danger">{{ $errors->first('price') }}</small>
 					          @endif
-					        </div>
-					      </div>
-					      {{-- INPUT PHOTO --}}
-					      <div class="form-group row {{ $errors->has('photo') ? ' has-danger' : '' }}">
-					        <label class="col-sm-3 form-control-label">Foto</label>
-					        <div class="col-sm-9 mb-1">
-					          <input name="photo[0]" type="file" class="form-control form-control-success">
-					        </div>
-					        <div class="col-sm-9 offset-sm-3">
-					          <input name="photo[1]" type="file" class="form-control form-control-success">
 					        </div>
 					      </div>
 					      {{-- INPUT NAME --}}

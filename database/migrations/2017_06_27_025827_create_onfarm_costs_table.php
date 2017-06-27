@@ -17,6 +17,7 @@ class CreateOnfarmCostsTable extends Migration
             $table->increments('id');
             $table->string('name', 250);
             $table->string('description', 500)->nullable();
+            $table->integer('price')->nullable();
             $table->integer('onfarm_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->timestamps();
