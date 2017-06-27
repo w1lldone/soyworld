@@ -162,18 +162,19 @@ a.text {
 
 ::-webkit-scrollbar-track
 {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: #F5F5F5;
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar
 {
   width: 7px;
-  background-color: #F5F5F5;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb
 {
+  border-radius: 5px;
   background-color: #2f333e;
   border: 1px solid #555555;
 }
