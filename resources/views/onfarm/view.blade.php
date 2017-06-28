@@ -170,7 +170,7 @@
                 <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
-                @if ($onfarm->cost->count() == 0)
+                @if ($onfarm->seed == null)
                   <div class="item pt-2 pb-4 text-center">
                     <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
                     <h4 class="text-light text-muted">Belum ada biaya tanam</h4>
@@ -196,7 +196,7 @@
                     <div class="info d-flex">
                       <div class="icon"><i class="icon-rss-feed"></i></div>
                       <div class="title">
-                        <h5>Rp. {{ $onfarm->seedCost() }}</h5>
+                        <h5>Rp. {{ $onfarm->formattedSeedCost() }}</h5>
                         <p>{{ $onfarm->seed->name }}</p>
                       </div>
                     </div>
