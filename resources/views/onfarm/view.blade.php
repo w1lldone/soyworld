@@ -46,7 +46,7 @@
                       {{ $onfarm->area }} m<sup>2</sup>
                     @endif
                   </span></h4>
-                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. 503.000</span></h4>
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. {{ $onfarm->onfarmCost() }}</span></h4>
                 </div>
 
               </div>

@@ -53,4 +53,12 @@ class Onfarm extends Model
 
         return $activity;
     }
+
+    public function onfarmCost()
+    {
+        $seedCost = empty($this->seed) ? 0 : $this->seed->price*$this->seed->quantity ;
+        $onfarmCost = empty($this->cost) ? 0 : $this->cost->sum('price') ;
+
+        return number_format($seedCost + $onfarmCost, 0, ",", ".");
+    }
 }

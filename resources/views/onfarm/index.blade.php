@@ -45,6 +45,7 @@
 					          <th>Petani</th>
 					          <th>Benih</th>
 					          <th>Tanam</th>
+					          <th>Biaya</th>
 					          <th>Aktivitas terakhir</th>
 					        </tr>
 					      </thead>
@@ -70,7 +71,9 @@
 						      			    {{ $onfarm->planted_at->toFormattedDateString() }}
 						      			@endisset
 						      		</td>
-						      		{{-- <td>{{ !empty($onfarm->planted_at) ? $onfarm->planted_at->toFormattedDateString() : 'Belum ditanam' }}</td> --}}
+						      		<td>
+						      			Rp. {{ $onfarm->onfarmCost() }}
+						      		</td>
 						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
 						      	</tr>
 					      	@endforeach
