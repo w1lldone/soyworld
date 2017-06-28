@@ -144,9 +144,10 @@
                     @endcan
                   </div>
                 @endif
+                <!-- ACTIVITY LIST -->
                 @foreach ($onfarm->activity as $activity)
                   <a class="item-link" href="/activity/{{ $activity->id }}/view">
-                    <div class="item d-flex align-items-center">
+                    <div class="item d-flex align-items-center py-2">
                       <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
                       <div class="text">
                           <h3 class="h5">{{ $activity->name }}</h3><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
@@ -177,31 +178,35 @@
                     <a class="round-link bg-green d-inline-block text-white" href="/onfarmcost/create/{{$onfarm->id}}">Tambahkan</a>
                   </div>
                 @endif
+                <!-- COST LIST -->
                 @foreach ($onfarm->cost as $cost)
-                  <!-- COST -->
-                  <div class="item d-flex justify-content-between">
-                    <div class="info d-flex">
-                      <div class="icon"><i class="icon-rss-feed"></i></div>
-                      <div class="title">
-                        <h5>Rp. {{ $cost->formattedPrice() }}</h5>
-                        <p>{{ $cost->name." - ".$cost->description }}</p>
+                  <a href="#" class="item-link">
+                    <div class="item d-flex justify-content-between">
+                      <div class="info d-flex">
+                        <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+                        <div class="title">
+                          <h5>Rp. {{ $cost->formattedPrice() }}</h5>
+                          <p>{{ $cost->name." - ".$cost->description }}</p>
+                        </div>
                       </div>
+                      <div class="date text-right"><strong>24</strong><span>May</span></div>
                     </div>
-                    <div class="date text-right"><strong>24</strong><span>May</span></div>
-                  </div>
+                  </a>
                 @endforeach
                 @if (!empty($onfarm->seed))
                   <!-- SEED COST -->
-                  <div class="item d-flex justify-content-between">
-                    <div class="info d-flex">
-                      <div class="icon"><i class="icon-rss-feed"></i></div>
-                      <div class="title">
-                        <h5>Rp. {{ $onfarm->formattedSeedCost() }}</h5>
-                        <p>{{ $onfarm->seed->name }}</p>
+                  <a href="/seed/{{ $onfarm->seed->id }}/view" class="item-link">
+                    <div class="item d-flex justify-content-between">
+                      <div class="info d-flex">
+                        <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+                        <div class="title">
+                          <h5>Rp. {{ $onfarm->formattedSeedCost() }}</h5>
+                          <p>{{ $onfarm->seed->name }}</p>
+                        </div>
                       </div>
+                      <div class="date text-right"><strong>24</strong><span>May</span></div>
                     </div>
-                    <div class="date text-right"><strong>24</strong><span>May</span></div>
-                  </div>
+                  </a>
                 @endif
               </div>
             </div>

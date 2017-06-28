@@ -73,6 +73,7 @@ a.text {
 /*CARD LINK*/
 .item-link:hover {
   background-color: #eceeef;
+  text-decoration: none;
 }
 .item-link:active {
   background-color: #eceeef;
@@ -80,6 +81,7 @@ a.text {
 
 .item-link {
 	border-bottom: 1px solid #eee;
+  display: block;
 }
 
 /* CUSTOM INPUT */
