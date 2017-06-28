@@ -123,7 +123,7 @@
               @can('createActivity', $onfarm)
                 <div class="card-close">
                   <div class="dropdown">
-                    <a href="/activity/create/{{$onfarm->id}}" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    <a href="/activity/create/{{$onfarm->id}}" class="text-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
                   </div>
                 </div>
               @endcan
@@ -170,7 +170,7 @@
                 <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
-                @if ($onfarm->seed == null)
+                @if ($onfarm->seed == null && $onfarm->cost->count() == 0)
                   <div class="item pt-2 pb-4 text-center">
                     <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
                     <h4 class="text-light text-muted">Belum ada biaya tanam</h4>
@@ -183,7 +183,7 @@
                     <div class="info d-flex">
                       <div class="icon"><i class="icon-rss-feed"></i></div>
                       <div class="title">
-                        <h5>Rp. {{ $cost->price }}</h5>
+                        <h5>Rp. {{ $cost->formattedPrice() }}</h5>
                         <p>{{ $cost->name." - ".$cost->description }}</p>
                       </div>
                     </div>
