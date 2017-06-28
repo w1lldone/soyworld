@@ -58,14 +58,4 @@ class Seed extends Model
 
         return $this->seed_photo;
     }
-
-    public function seedCost()
-    {
-        return $this->price*$this->quantity;
-    }
-
-    public function formattedSeedCost()
-    {
-        return number_format($this->seedCost(), 0, ",", ".");
-    }
 }
