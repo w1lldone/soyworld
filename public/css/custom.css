@@ -80,6 +80,10 @@ a.text {
   text-decoration: none;
 }
 
+.item-link:focus {
+  text-decoration: none;
+}
+
 .item-link {
 	border-bottom: 1px solid #eee;
   display: block;
