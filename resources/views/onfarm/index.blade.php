@@ -72,7 +72,7 @@
 						      			@endisset
 						      		</td>
 						      		<td>
-						      			Rp. {{ $onfarm->onfarmCost() }}
+						      			Rp. {{ $onfarm->formattedOnfarmCost() }}
 						      		</td>
 						      		<td>{{ $onfarm->updated_at->diffForHumans() }}</td>
 						      	</tr>

@@ -46,7 +46,7 @@
                       {{ $onfarm->area }} m<sup>2</sup>
                     @endif
                   </span></h4>
-                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. {{ $onfarm->onfarmCost() }}</span></h4>
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. {{ $onfarm->formattedOnfarmCost() }}</span></h4>
                 </div>
 
               </div>
@@ -178,7 +178,7 @@
                   </div>
                 @endif
                 @foreach ($onfarm->cost as $cost)
-                  <!-- Item-->
+                  <!-- COST -->
                   <div class="item d-flex justify-content-between">
                     <div class="info d-flex">
                       <div class="icon"><i class="icon-rss-feed"></i></div>
@@ -190,6 +190,19 @@
                     <div class="date text-right"><strong>24</strong><span>May</span></div>
                   </div>
                 @endforeach
+                @if (!empty($onfarm->seed))
+                  <!-- SEED COST -->
+                  <div class="item d-flex justify-content-between">
+                    <div class="info d-flex">
+                      <div class="icon"><i class="icon-rss-feed"></i></div>
+                      <div class="title">
+                        <h5>Rp. {{ $onfarm->seed->seedCost() }}</h5>
+                        <p>{{ $onfarm->seed->name }}</p>
+                      </div>
+                    </div>
+                    <div class="date text-right"><strong>24</strong><span>May</span></div>
+                  </div>
+                @endif
               </div>
             </div>
           </div>
