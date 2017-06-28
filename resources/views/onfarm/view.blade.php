@@ -196,7 +196,7 @@
                     <div class="info d-flex">
                       <div class="icon"><i class="icon-rss-feed"></i></div>
                       <div class="title">
-                        <h5>Rp. {{ $onfarm->seed->seedCost() }}</h5>
+                        <h5>Rp. {{ $onfarm->seedCost() }}</h5>
                         <p>{{ $onfarm->seed->name }}</p>
                       </div>
                     </div>
