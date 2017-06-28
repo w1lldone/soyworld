@@ -14,6 +14,7 @@
   <div class="container-fluid">
     <li class="breadcrumb-item"><a href="/onfarm">On farm</a></li>
     <li class="breadcrumb-item"><a href="/onfarm/{{$activity->onfarm->id}}/view">Detail</a></li>
+    <li class="breadcrumb-item"><a href="/activity/{{$activity->id}}/view">Aktivitas tanam</a></li>
     <li class="breadcrumb-item active">Edit aktivitas tanam</li>
   </div>
 </ul>
