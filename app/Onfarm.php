@@ -49,7 +49,7 @@ class Onfarm extends Model
             'date' => request()->has('date') ? request('date') : request('planted_at'),
         ]);
 
-        $activity->uploadPhoto(request('photo'), $this->id);
+        if(!empty(request('photo'))) $activity->uploadPhoto(request('photo'), $this->id);
 
         return $activity;
     }
