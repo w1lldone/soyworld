@@ -34,4 +34,9 @@ class OnfarmCost extends Model
             'price' => $request->price,
         ]);
     }
+
+    public function formattedPrice()
+    {
+        return number_format($this->price, 0, ',', '.');
+    }
 }
