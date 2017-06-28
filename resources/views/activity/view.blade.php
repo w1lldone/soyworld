@@ -38,6 +38,7 @@
                   <h3>Foto</h3>
                   @empty ($activity->activity_photo->first())
                       <div class="text-center">
+                        <img src="/img/stock/image.svg" width="200px">
                         <h4 class="text-muted text-light">Tidak ada foto</h4>
                       </div>
                   @endempty
