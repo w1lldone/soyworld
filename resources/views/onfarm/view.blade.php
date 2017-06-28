@@ -180,7 +180,7 @@
                 @endif
                 <!-- COST LIST -->
                 @foreach ($onfarm->cost as $cost)
-                  <a href="#" class="item-link">
+                  <a href="/onfarmcost/{{ $cost->id }}/view" class="item-link">
                     <div class="item d-flex justify-content-between">
                       <div class="info d-flex">
                         <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>

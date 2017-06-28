@@ -45,7 +45,7 @@ class OnfarmCostController extends Controller
     {
         $this->authorize('createSeed', $onfarm);
         $url = request()->fullUrl();
-        return view('onfarm-cost.create', compact(['onfarm', 'url']));
+        return view('onfarmCost.create', compact(['onfarm', 'url']));
     }
 
     /**
@@ -71,7 +71,7 @@ class OnfarmCostController extends Controller
      */
     public function show(OnfarmCost $onfarmCost)
     {
-        //
+        return view('onfarmCost.view', compact('onfarmCost'));
     }
 
     /**
