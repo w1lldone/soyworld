@@ -55,7 +55,9 @@
               	@isset ($onfarm->seed)
                  <a title="Rincian benih" data-toggle="tooltip" class="d-block" href="/seed/{{$onfarm->seed->id}}/view" style="text-decoration: none;">
   	               <div class="icon float-left"><img src="/img/stock/bean.svg" class="img-fluid"></div>
-                   <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
+                   <p class="text-right m-0">
+                     <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
+                   </p>
                  </a>
 	               {{-- <div></div> --}}
               	@endisset
