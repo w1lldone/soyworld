@@ -36,6 +36,12 @@
               <div class="row">
                 <div class="col-sm-12 mb-4">
                   <h3>Foto</h3>
+                  @empty ($seed->seed_photo->first())
+                      <div class="text-center">
+                        <img src="/img/stock/image.svg" width="100px">
+                        <h4 class="text-muted text-light">Tidak ada foto</h4>
+                      </div>
+                  @endempty
                   @foreach ($seed->seed_photo as $photo)
                     <img src="{{ $photo->path }}" class="img-fluid" style=" height: 200px">
                   @endforeach
