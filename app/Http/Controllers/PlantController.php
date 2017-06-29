@@ -71,7 +71,7 @@ class PlantController extends Controller
      */
     public function edit(Onfarm $onfarm)
     {
-        //
+        return view('plant.edit', compact('onfarm'));
     }
 
     /**

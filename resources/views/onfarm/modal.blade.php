@@ -15,12 +15,12 @@
           {{-- DATE INPUT --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>
-              <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker">
+              <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker" required>
           </div>
           {{-- AREA INPUT --}}
           <div class="form-group">
               <label>Luas lahan (m<sup>2</sup>)</label>
-              <input type="number" placeholder="Luas lahan dalam meter persegi" name="area" class="form-control">
+              <input type="number" placeholder="Luas lahan dalam meter persegi" name="area" class="form-control" required>
           </div>
           {{-- PHOTOS INPUT --}}
           <div class="form-group">
