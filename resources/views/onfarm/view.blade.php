@@ -51,14 +51,16 @@
             </div>
             {{-- DATA SECTION --}}
             <div class="row bg-white has-shadow" style="padding: 5px 15px;">
+              {{-- SEED --}}
               <div class="statistic col-sm-4" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
-                 <a title="Rincian benih" data-toggle="tooltip" class="d-block" href="/seed/{{$onfarm->seed->id}}/view" style="text-decoration: none;">
   	               <div class="icon float-left"><img src="/img/stock/bean.svg" class="img-fluid"></div>
                    <p class="text-right m-0">
-                     <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
+                     <strong>{{ $onfarm->seed->quantity }} Kg</strong>
+                     <sup><a title="Edit benih" data-toggle="tooltip" href="/seed/{{$onfarm->seed->id}}/edit"><i class="fa fa-edit"></i></a></sup>
+                     <br>
+                     <small>Benih digunakan</small>
                    </p>
-                 </a>
 	               {{-- <div></div> --}}
               	@endisset
               	@empty ($onfarm->seed)
@@ -68,10 +70,16 @@
                    </div>
               	@endempty
               </div>
+              {{-- PLANTED --}}
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
                 @isset ($onfarm->planted_at)
                  <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-                 <div class="text text-right float-right"><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong><br><small>Tanggal tanam</small></div>
+                 <p class="text-right m-0">
+                  <strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong>
+                  <sup><a title="Edit penanaman" data-toggle="tooltip" href="/plant/{{$onfarm->id}}/edit"><i class="fa fa-edit"></i></a></sup>
+                  <br>
+                  <small>Tanggal tanam</small>
+                 </p>
                 @endisset
                 @empty ($onfarm->planted_at)
                    <div class="text text-center">
@@ -85,6 +93,7 @@
                    </div>
                 @endempty
               </div>
+              {{-- HARVEST --}}
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit; border-right: none;">
               	@isset ($onfarm->harvest)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
