@@ -47,7 +47,8 @@
 					          <th class="hidden-sm-down">Tanam</th>
 					          <th class="hidden-sm-down">Biaya</th>
 					          <th class="hidden-sm-down">Aktivitas terakhir</th>
-					          <th class="hidden-sm-down">Tindakan</th>
+					          <th class="hidden-md-up">Status</th>
+					          <th></th>
 					        </tr>
 					      </thead>
 					      <tbody>
@@ -78,15 +79,18 @@
 						      		<td class="hidden-sm-down">{{ $onfarm->updated_at->diffForHumans() }}</td>
 						      		<td class="hidden-md-up">
 						      			<div class="d-flex">
-						      				<a title="Bibit sudah dibeli" data-toggle="tooltip"><span class="badge badge-success">B</span></a>
-							      			<a title="Bibit sudah ditanam" data-toggle="tooltip"><span class="badge badge-info">T</span></a>
-							      			<a title="Bibit belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
+						      				<a class="ml-1" title="Bibit {{ empty($onfarm->seed) ? 'belum' : 'sudah' }} dibeli" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->seed) ? 'muted' : 'success' }}">B</span></a>
+							      			<a class="ml-1" title="Bibit {{ empty($onfarm->planted_at) ? 'belum' : 'sudah' }} ditanam" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->planted_at) ? 'muted' : 'info' }}">T</span></a>
+							      			<a class="ml-1" title="Bibit belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
 						      			</div>
 						      		</td>
 						      		<td>
 						      			<div class="btn-group">
 						      			  <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
 						      			  <div class="dropdown-menu dropdown-menu-right">
+						      			  	@if (!empty($onfarm->seed))
+						      			  		<a href="/seed/{{$onfarm->seed->id}}/view" class="dropdown-item">Lihat benih</a>
+						      			  	@endif
 					      			        <a class="dropdown-item" href="#">Edit</a>
 					      			        <div class="dropdown-divider"></div>	      			  
 						      			  	@can('createSeed', $onfarm)
