@@ -30,6 +30,11 @@ Route::group(['prefix' => 'onfarm'], function()
 	Route::put('/{onfarm}/plant', 'OnfarmController@plant');
 });
 
+Route::group(['prefix' => 'plant'], function()
+{
+	Route::post('/{onfarm}', 'PlantController@store');
+});
+
 Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
