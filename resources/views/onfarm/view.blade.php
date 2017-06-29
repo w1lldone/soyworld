@@ -51,13 +51,6 @@
             </div>
             {{-- DATA SECTION --}}
             <div class="row bg-white has-shadow" style="padding: 5px 15px;">
-              {{-- <div class="col-lg-4 d-flex align-items-center justify-content-between">
-                <div class="project-title d-flex align-items-center pt-4 py-4">
-                  <div class="text">
-                    <h3 class="text-light">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}, {{ $onfarm->user->poktan->name }}</small>
-                  </div>
-                </div>
-              </div> --}}
               <div class="statistic col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
 	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
