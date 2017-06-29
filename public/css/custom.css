@@ -185,3 +185,12 @@ a.text {
   background-color: #b3b3b3;
   border: 1px solid #b3b3b3;
 }
+
+/*CUSTOM BADGE*/
+.badge-muted {
+  background-color: #c3c3c3;
+}
+
+.badge-muted[href]:focus, .badge-muted[href]:hover {
+  background-color: #4b5257;
+}

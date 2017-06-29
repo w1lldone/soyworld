@@ -40,20 +40,20 @@
 					    <table class="table table-hover">
 					      <thead>
 					        <tr>
-					          <th>#</th>
+					          <th class="hidden-sm-down">#</th>
 					          <th>Nama</th>
 					          <th class="hidden-sm-down">Petani</th>
 					          <th class="hidden-sm-down">Benih</th>
 					          <th class="hidden-sm-down">Tanam</th>
 					          <th class="hidden-sm-down">Biaya</th>
 					          <th class="hidden-sm-down">Aktivitas terakhir</th>
-					          <th>Tindakan</th>
+					          <th class="hidden-sm-down">Tindakan</th>
 					        </tr>
 					      </thead>
 					      <tbody>
 					      	@foreach ($onfarms as $onfarm)
 					      		<tr>
-						      		<th scope="row">{{ $loop->index+1 }}</th>
+						      		<th class="hidden-sm-down" scope="row">{{ $loop->index+1 }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
 						      		<td class="hidden-sm-down">{{ $onfarm->user->name }}</td>
 						      		<td class="hidden-sm-down">
@@ -76,6 +76,13 @@
 						      			Rp. {{ $onfarm->formattedOnfarmCost() }}
 						      		</td>
 						      		<td class="hidden-sm-down">{{ $onfarm->updated_at->diffForHumans() }}</td>
+						      		<td class="hidden-md-up">
+						      			<div class="d-flex">
+						      				<a title="Bibit sudah dibeli" data-toggle="tooltip"><span class="badge badge-success">B</span></a>
+							      			<a title="Bibit sudah ditanam" data-toggle="tooltip"><span class="badge badge-info">T</span></a>
+							      			<a title="Bibit belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
+						      			</div>
+						      		</td>
 						      		<td>
 						      			<div class="btn-group">
 						      			  <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
