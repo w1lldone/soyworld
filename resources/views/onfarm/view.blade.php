@@ -73,7 +73,7 @@
               {{-- PLANTED --}}
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
                 @isset ($onfarm->planted_at)
-                 <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
+                 <div class="icon float-left"><img src="/img/stock/garden-tools.svg" class="img-fluid"></div>
                  <p class="text-right m-0">
                   <strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong>
                   <sup><a title="Edit penanaman" data-toggle="tooltip" href="/plant/{{$onfarm->id}}/edit"><i class="fa fa-edit"></i></a></sup>

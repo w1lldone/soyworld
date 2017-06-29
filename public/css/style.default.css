@@ -836,8 +836,8 @@ section.dashboard-counts .icon {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  min-width: 40px;
-  max-width: 40px;
+  min-width: 60px;
+  max-width: 60px;
   border-radius: 50%;
 }
 
