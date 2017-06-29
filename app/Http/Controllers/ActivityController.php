@@ -54,7 +54,7 @@ class ActivityController extends Controller
      */
     public function create(Onfarm $onfarm)
     {
-        $this->authorize('createSeed', $onfarm);
+        $this->authorize('createActivity', $onfarm);
 
         return view('activity.create', compact('onfarm'));
     }

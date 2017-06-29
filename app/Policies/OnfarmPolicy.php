@@ -42,12 +42,17 @@ class OnfarmPolicy
 
     public function createSeed(User $user, Onfarm $onfarm)
     {
-        return ($user->id === $onfarm->user->id) || $user->isSuperadmin();
+        return ($user->id === $onfarm->user->id || $user->isSuperadmin()) && empty($onfarm->seed);
     }
 
     public function createActivity(User $user, Onfarm $onfarm)
     {
         return (($user->id === $onfarm->user->id) || $user->isSuperadmin()) && !empty($onfarm->planted_at);
+    }
+
+    public function createCost(User $user, Onfarm $onfarm)
+    {
+        return $user->id === $onfarm->user->id || $user->isSuperadmin();
     }
 
     /**
