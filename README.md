@@ -14,6 +14,7 @@ This information system was build to control soybean post-harvest system (case s
 + [Sergey Tikhonov](https://www.iconfinder.com/sergey9198); [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 + [Igor Verizub](https://www.iconfinder.com/igorverizub); [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 + [Alexandre Luis](https://www.iconfinder.com/stormicons); [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
++ [Oliver Pitsch](https://www.iconfinder.com/addictedtocoffee); [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/)
 + [Font Awesome](http://fontawesome.io/)
 
 ## License
