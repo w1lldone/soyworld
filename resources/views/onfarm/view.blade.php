@@ -53,7 +53,7 @@
             <div class="row bg-white has-shadow" style="padding: 5px 15px;">
               <div class="statistic col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
-	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
+	               <div class="icon float-left"><img src="/img/stock/bean.svg" class="img-fluid"></div>
                  <a title="Klik untuk detail benih" data-toggle="tooltip" class="text text-right float-right" href="/seed/{{$onfarm->seed->id}}/view">
                    <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
                  </a>
