@@ -194,3 +194,10 @@ a.text {
 .badge-muted[href]:focus, .badge-muted[href]:hover {
   background-color: #4b5257;
 }
+
+/*LEFT ALIGN ON SMALL*/
+@media(max-width: 575px){
+  .text-right.left-on-sm {
+    text-align: left !important;
+  }
+}

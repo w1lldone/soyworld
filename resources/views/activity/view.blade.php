@@ -55,8 +55,8 @@
                   <p>{{ $activity->name }}</p>
                 </div>
                 <div class="col-sm-6">
-                  <h3 class="text-right">Tanggal pelaksanaan</h3>
-                  <p class="text-right">{{ $activity->created_at->toFormattedDateString() }}</p>
+                  <h3 class="text-right left-on-sm">Tanggal pelaksanaan</h3>
+                  <p class="text-right left-on-sm">{{ $activity->created_at->toFormattedDateString() }}</p>
                 </div>
                 <div class="col-sm-12">
                   <h3>Deskripsi kegiatan</h3>

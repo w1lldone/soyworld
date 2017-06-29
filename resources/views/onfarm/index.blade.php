@@ -81,13 +81,14 @@
 						      			<div class="d-flex">
 						      				<a class="ml-1" title="Bibit {{ empty($onfarm->seed) ? 'belum' : 'sudah' }} dibeli" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->seed) ? 'muted' : 'success' }}">B</span></a>
 							      			<a class="ml-1" title="Bibit {{ empty($onfarm->planted_at) ? 'belum' : 'sudah' }} ditanam" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->planted_at) ? 'muted' : 'info' }}">T</span></a>
-							      			<a class="ml-1" title="Bibit belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
+							      			<a class="ml-1" title="Kedelai belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
 						      			</div>
 						      		</td>
 						      		<td>
 						      			<div class="btn-group">
 						      			  <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
 						      			  <div class="dropdown-menu dropdown-menu-right">
+						      			  	<a href="/onfarm/{{$onfarm->id}}/view" class="dropdown-item">Lihat rincian</a>
 						      			  	@if (!empty($onfarm->seed))
 						      			  		<a href="/seed/{{$onfarm->seed->id}}/view" class="dropdown-item">Lihat benih</a>
 						      			  	@endif
