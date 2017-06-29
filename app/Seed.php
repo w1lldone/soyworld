@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\SeedPhoto;
 
 class Seed extends Model
 {
@@ -21,6 +22,14 @@ class Seed extends Model
     	return $this->belongsTo('App\Onfarm');
     }
 
+    public function seed_photo(){
+        return $this->hasMany('App\SeedPhoto');
+    }
+
+    public function supplier(){
+        return $this->belongsTo('App\Supplier');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
@@ -34,5 +43,19 @@ class Seed extends Model
     		'price' => $request->price,
     		'name' => $request->name,
 		]);
+    }
+
+    public function addPhoto($request)
+    {
+
+        foreach ($request->photo as $photo) {
+            if (!empty($photo)) {
+                $this->seed_photo()->create([
+                    'path' => '/uploads/'.$photo->store("seed/$this->id", 'uploads'),
+                ]);
+            }
+        }
+
+        return $this->seed_photo;
     }
 }

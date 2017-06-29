@@ -10,12 +10,12 @@ class OnfarmPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        if ($user->privilage->is_superadmin) {
-            return true;
-        }
-    }
+    // public function before($user, $ability)
+    // {
+    //     if ($user->privilage->is_superadmin) {
+    //         return true;
+    //     }
+    // }
 
     /**
      * Determine whether the user can view the onfarm.
@@ -42,7 +42,17 @@ class OnfarmPolicy
 
     public function createSeed(User $user, Onfarm $onfarm)
     {
-        return ($user->id === $onfarm->user->id);
+        return ($user->id === $onfarm->user->id || $user->isSuperadmin()) && empty($onfarm->seed);
+    }
+
+    public function createActivity(User $user, Onfarm $onfarm)
+    {
+        return (($user->id === $onfarm->user->id) || $user->isSuperadmin()) && !empty($onfarm->planted_at);
+    }
+
+    public function createCost(User $user, Onfarm $onfarm)
+    {
+        return $user->id === $onfarm->user->id || $user->isSuperadmin();
     }
 
     /**
@@ -54,7 +64,7 @@ class OnfarmPolicy
      */
     public function update(User $user, Onfarm $onfarm)
     {
-        return ($user->id === $onfarm->user->id);
+        return ($user->id === $onfarm->user->id) || $user->isSuperadmin();
     }
 
     /**

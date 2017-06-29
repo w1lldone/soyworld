@@ -18,7 +18,7 @@ class OnfarmController extends Controller
     	return view('onfarm.index', compact('onfarms'));
     }
 
-    public function view(Onfarm $onfarm)
+    public function show(Onfarm $onfarm)
     {
 
         return view('onfarm.view', compact('onfarm'));
@@ -32,11 +32,23 @@ class OnfarmController extends Controller
     public function store(Request $request)
     {
     	$onfarm = Onfarm::addOnfarm($request);
-    	return $onfarm;
+    	return redirect('/onfarm')->with('success', 'Onfarm kedelai berhasil dibuat');
     }
 
     public function plant(Request $request, Onfarm $onfarm)
     {
-        
+        if (!empty($onfarm->planted_at)) {
+            return back()->with('danger', 'Benih sudah ditanam');
+        }
+
+        $this->validate($request,[
+            'planted_at' => 'required',
+            'area' => 'required|numeric',
+        ]);
+
+        $onfarm->update(request(['planted_at', 'area']));
+        $activity = $onfarm->addActivity();
+
+        return back()->with('success', 'Benih berhasil ditanam');
     }
 }

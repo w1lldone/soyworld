@@ -36,9 +36,9 @@ class SeedPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user, Onfarm $onfarm)
+    public function create(User $user)
     {
-        return $user->id === $onfarm->user->id;
+        // 
     }
 
     /**
@@ -50,7 +50,7 @@ class SeedPolicy
      */
     public function update(User $user, Seed $seed)
     {
-        //
+        return $user->id === $seed->onfarm->user_id;
     }
 
     /**
@@ -62,6 +62,6 @@ class SeedPolicy
      */
     public function delete(User $user, Seed $seed)
     {
-        //
+        
     }
 }

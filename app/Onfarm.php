@@ -20,6 +20,14 @@ class Onfarm extends Model
         return $this->hasOne('App\Seed');
     }
 
+    public function activity(){
+        return $this->hasMany('App\Activity');
+    }
+
+    public function cost(){
+        return $this->hasMany('App\OnfarmCost', 'onfarm_id', 'id');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
@@ -31,5 +39,40 @@ class Onfarm extends Model
     		'user_id' => $request->user_id,
     		'description' => $request->description,
 		]);
+    }
+
+    public function addActivity()
+    {
+        $activity = $this->activity()->create([
+            'name' => request('name'),
+            'description' => request('description'),
+            'date' => request()->has('date') ? request('date') : request('planted_at'),
+        ]);
+
+        if(!empty(request('photo'))) $activity->uploadPhoto(request('photo'), $this->id);
+
+        return $activity;
+    }
+
+    public function seedCost()
+    {
+        return empty($this->seed) ? 0 : $this->seed->quantity*$this->seed->price;
+    }
+
+    public function onfarmCost()
+    {
+        $onfarmCost = empty($this->cost) ? 0 : $this->cost->sum('price') ;
+
+        return $this->seedCost() + $onfarmCost;
+    }
+
+    public function formattedSeedCost()
+    {
+        return number_format($this->seedCost(), 0, ',', '.');
+    }
+
+    public function formattedOnfarmCost()
+    {
+        return number_format($this->onfarmCost(), 0, ",", ".");
     }
 }

@@ -14,6 +14,10 @@ class Supplier extends Model
     	return $this->belongsTo('App\Poktan');
     }
 
+    public function onfarm_cost(){
+    	return $this->hasMany('App\OnfarmCost', 'onfarm_cost_id', 'id');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
@@ -21,7 +25,6 @@ class Supplier extends Model
 	{
 		return static::create([
 			'name' => $request->name,
-			'user_id' => $request->user_id,
 			'poktan_id' => $request->poktan_id,
 			'description' => $request->description,
 			'address' => $request->address,

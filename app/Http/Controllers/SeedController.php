@@ -16,13 +16,25 @@ class SeedController extends Controller
 
     protected function validator($request)
     {
-        return Validator::make($request, [
-            'supplier_id' => 'required',
-            'onfarm_id' => 'required|unique:seeds,onfarm_id',
-            'quantity' => 'required|numeric',
-            'price' => 'required|numeric',
-            'name' => 'required',
-        ]);
+        switch (request()->method()) {
+            case 'POST':
+                return Validator::make($request, [
+                    'supplier_id' => 'required',
+                    'onfarm_id' => 'required|unique:seeds,onfarm_id',
+                    'quantity' => 'required|numeric',
+                    'price' => 'required|numeric',
+                    'name' => 'required',
+                ]);
+            
+            case 'PUT':
+                return Validator::make($request, [
+                    'supplier_id' => 'required',
+                    'quantity' => 'required|numeric',
+                    'price' => 'required|numeric',
+                    'name' => 'required',
+                ]);
+        }
+        
     }
 
     /**
@@ -58,6 +70,7 @@ class SeedController extends Controller
         $this->validator($request->all())->validate();
 
         $seed = Seed::addSeed($request);
+        if (!empty($request->photo[0])) $seed->addPhoto($request);
 
         return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil melakukan pembelian benih');
     }
@@ -70,7 +83,7 @@ class SeedController extends Controller
      */
     public function show(Seed $seed)
     {
-        //
+        return view('seed.view', compact('seed'));
     }
 
     /**
@@ -81,7 +94,8 @@ class SeedController extends Controller
      */
     public function edit(Seed $seed)
     {
-        //
+        $this->authorize('edit', $seed);
+        return view('seed.edit', compact('seed'));
     }
 
     /**
@@ -93,7 +107,11 @@ class SeedController extends Controller
      */
     public function update(Request $request, Seed $seed)
     {
-        //
+        $this->validator($request->all())->validate();
+        $seed->update(request([
+            'name', 'supplier_id', 'quantity', 'price'
+        ]));
+        return redirect("/seed/$seed->id/view")->with('success', 'Benih berhasi diubah');
     }
 
     /**

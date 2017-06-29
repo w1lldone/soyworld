@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('sidebar')
-	@include('layouts.sidebar')
-@endsection
-
 @section('content')
 <!-- Page Header-->
 <header class="page-header">
@@ -28,31 +24,40 @@
             <div class="row bg-white has-shadow mb-2 p-3">
               <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                 <div class="project-title d-flex align-items-center">
-                  <div class="image has-shadow"><img src="/img/project-1.jpg" alt="..." class="img-fluid"></div>
+                  {{-- <div class="image has-shadow"><img src="{{ $onfarm->seed->seed_photo->first()->path }}" alt="..." class="img-fluid"></div> --}}
                   <div class="text">
                     <h3 class="h4">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}</small>
                   </div>
                 </div>
                 <div class="project-date"><span class="hidden-sm-down">dibuat: {{ $onfarm->created_at->toFormattedDateString() }}</span></div>
               </div>
-              <div class="right-col col-lg-6 d-flex align-items-center justify-content-between" style="border-right: none;">
-                  <h4 class="my-0">Total biaya pra-panen:</h4>
-                  <h4 class="my-0"><span class="badge badge-info" style="font-size: inherit;">Rp. 503.000</span></h4>
+              <div class="col-lg-6 d-flex align-items-center" style="border-right: none;">
+                <div class="row p-1">
+                  <h4 class="">Luas tanam:</h4>
+                  <h4 class="">Total biaya pra-panen:</h4>
+                </div>
+                <div class="row p-1">
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">
+                    @if (empty($onfarm->area))
+                      Belum ditanam
+                    @else
+                      {{ $onfarm->area }} m<sup>2</sup>
+                    @endif
+                  </span></h4>
+                  <h4 class=""><span class="badge badge-info" style="font-size: inherit;">Rp. {{ $onfarm->formattedOnfarmCost() }}</span></h4>
+                </div>
+
               </div>
             </div>
             {{-- DATA SECTION --}}
             <div class="row bg-white has-shadow" style="padding: 5px 15px;">
-              {{-- <div class="col-lg-4 d-flex align-items-center justify-content-between">
-                <div class="project-title d-flex align-items-center pt-4 py-4">
-                  <div class="text">
-                    <h3 class="text-light">{{ $onfarm->name }}</h3><small>{{ $onfarm->user->name }}, {{ $onfarm->user->poktan->name }}</small>
-                  </div>
-                </div>
-              </div> --}}
               <div class="statistic col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
               	@isset ($onfarm->seed)
 	               <div class="icon bg-green float-left"><i class="fa fa-line-chart"></i></div>
-	               <div class="text text-right float-right"><strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small></div>
+                 <a title="Klik untuk detail benih" data-toggle="tooltip" class="text text-right float-right" href="/seed/{{$onfarm->seed->id}}/view">
+                   <strong>{{ $onfarm->seed->quantity }} Kg</strong><br><small>Benih digunakan</small>
+                 </a>
+	               {{-- <div></div> --}}
               	@endisset
               	@empty ($onfarm->seed)
                    <div class="text text-center">
@@ -64,7 +69,7 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit;">
                 @isset ($onfarm->planted_at)
                  <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-                 <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
+                 <div class="text text-right float-right"><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong><br><small>Tanggal tanam</small></div>
                 @endisset
                 @empty ($onfarm->planted_at)
                    <div class="text text-center">
@@ -81,7 +86,7 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit; border-right: none;">
               	@isset ($onfarm->harvest)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>27 Mei, 2017</sup></strong></div>
+	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
               	@endisset
               	@empty ($onfarm->harvest)
                    <div class="text text-center">
@@ -103,115 +108,97 @@
 	<section class="dashboard-header pb-0">
       <div class="container-fluid">
         <div class="row">
-          {{-- AKTIVITAS TANAM --}}
+          {{-- ACTIVITY --}}
+          <div class="col-lg-6">
+            <div class="articles card">
+              @can('createActivity', $onfarm)
+                <div class="card-close">
+                  <div class="dropdown">
+                    <a href="/activity/create/{{$onfarm->id}}" class="text-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                  </div>
+                </div>
+              @endcan
+              <div class="card-header d-flex align-items-center">
+                <h2 class="h3">Aktivitas tanam   </h2>
+                <div class="badge badge-rounded bg-green">4 New</div>
+              </div>
+              <div class="card-body no-padding">
+                @if ($onfarm->activity->isEmpty())
+                  <div class="pt-2 pb-4 text-center">
+                    <img src="/img/stock/watering-can.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Belum ada aktivitas tanam</h4>
+                    @cannot('createActivity', $onfarm)
+                        <p class="text-muted m-0">Lakukan penanaman terlebih dahulu</p>
+                    @endcannot
+                    @can('createActivity', $onfarm)
+                      <a class="round-link bg-green d-inline-block text-white" href="/activity/create/{{$onfarm->id}}">Tambahkan</a>
+                    @endcan
+                  </div>
+                @endif
+                <!-- ACTIVITY LIST -->
+                @foreach ($onfarm->activity as $activity)
+                  <a class="item-link" href="/activity/{{ $activity->id }}/view">
+                    <div class="item d-flex align-items-center py-2">
+                      <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
+                      <div class="text">
+                          <h3 class="h5">{{ $activity->name }}</h3><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
+                      </div>
+                    </div>
+                  </a>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+          {{-- COST --}}
           <div class="col-lg-6">
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                  <a href="/onfarmcost/create/{{ $onfarm->id }}" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
                 </div>
               </div>
               <div class="card-header">
-                <h3 class="h4">Aktifitas tanam</h3>
+                <h3 class="h4">Biaya tanam</h3>
               </div>
               <div class="card-body no-padding">
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
+                @if ($onfarm->seed == null && $onfarm->cost->count() == 0)
+                  <div class="item pt-2 pb-4 text-center">
+                    <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Belum ada biaya tanam</h4>
+                    <a class="round-link bg-green d-inline-block text-white" href="/onfarmcost/create/{{$onfarm->id}}">Tambahkan</a>
                   </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
+                @endif
+                <!-- COST LIST -->
+                @foreach ($onfarm->cost as $cost)
+                  <a href="/onfarmcost/{{ $cost->id }}/view" class="item-link">
+                    <div class="item d-flex justify-content-between">
+                      <div class="info d-flex">
+                        <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+                        <div class="title">
+                          <h5>Rp. {{ $cost->formattedPrice() }}</h5>
+                          <p>{{ $cost->name." - ".$cost->description }}</p>
+                        </div>
+                      </div>
+                      <div class="date text-right"><strong>24</strong><span>May</span></div>
                     </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item        -->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
+                  </a>
+                @endforeach
+                @if (!empty($onfarm->seed))
+                  <!-- SEED COST -->
+                  <a href="/seed/{{ $onfarm->seed->id }}/view" class="item-link">
+                    <div class="item d-flex justify-content-between">
+                      <div class="info d-flex">
+                        <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+                        <div class="title">
+                          <h5>Rp. {{ $onfarm->formattedSeedCost() }}</h5>
+                          <p>{{ $onfarm->seed->name }}</p>
+                        </div>
+                      </div>
+                      <div class="date text-right"><strong>24</strong><span>May</span></div>
                     </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-                <!-- Item-->
-                <div class="item d-flex justify-content-between">
-                  <div class="info d-flex">
-                    <div class="icon"><i class="icon-rss-feed"></i></div>
-                    <div class="title">
-                      <h5>Lorem ipsum dolor sit amet.</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed.</p>
-                    </div>
-                  </div>
-                  <div class="date text-right"><strong>24</strong><span>May</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="articles card">
-              <div class="card-close">
-                <div class="dropdown">
-                  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                  <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                </div>
-              </div>
-              <div class="card-header d-flex align-items-center">
-                <h2 class="h3">Biaya pra-panen   </h2>
-                <div class="badge badge-rounded bg-green">4 New       </div>
-              </div>
-              <div class="card-body no-padding">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-4.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
-                </div>
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="/img/avatar-5.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="text"><a href="#">
-                      <h3 class="h5">Lorem Ipsum Dolor</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
-                </div>
+                  </a>
+                @endif
               </div>
             </div>
           </div>
@@ -223,26 +210,11 @@
 @endsection
 
 @section('modal')
-  @include('onfarm.modal')
+  @isset ($onfarm->seed)
+    @include('onfarm.modal')
+  @endisset
 @endsection
 
 @section('script')
-
-  <script type="text/javascript">
-      $('.datepicker').datepicker({
-        autoclose: true,
-        format: {
-          // see more http://jsfiddle.net/shhb5La2/15/
-          // https://github.com/uxsolutions/bootstrap-datepicker/issues/888
-          toDisplay: function(dt) {
-            return moment(dt).format("dd-MM-yyyy");
-          },
-          toValue: function(dt) {
-            return moment(dt, "yyyy-mm-dd").to date();
-          }
-        },
-        todayBtn: "linked",
-      });
-  </script>
 
 @endsection

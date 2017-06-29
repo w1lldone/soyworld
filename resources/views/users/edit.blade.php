@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('sidebar')
-	@include('layouts.sidebar')
-@endsection
+
 
 @section('content')
 <!-- Page Header-->
@@ -14,7 +12,7 @@
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
   <div class="container-fluid">
-    <li class="breadcrumb-item"><a href="/anggota">Anggota</a></li>
+    <li class="breadcrumb-item"><a href="/user">Anggota</a></li>
     <li class="breadcrumb-item active">Edit anggota</li>
   </div>
 </ul>
@@ -60,17 +58,33 @@
 					        <div class="col-sm-9">
 					          <input name="contact" id="inputHorizontalSuccess" type="text" placeholder="0812306*****" class="form-control form-control-success " value="{{$user->contact }}" required>
 					          @if ($errors->has('contact'))
-						          <small class="form-text text-danger">{{ $user->contact }}</small>
+						          <small class="form-text text-danger">{{ $errors->first('contact') }}</small>
 					          @endif
 					        </div>
 					      </div>
 					      {{-- INPUT PRIVILAGES --}}
-					      <div class="form-group row">
+					      <div class="form-group row {{ $errors->has('privilage_id') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Kewenangan</label>
 					        <div class="col-sm-9">
-					          <select name="privilage_id" class="form-control">
+					          <select id="privilage" name="privilage_id" class="form-control">
+					          	<option value="">PILIH KEWENANGAN</option>
                                 @foreach ($privilages as $privilage)
                                 	<option value="{{ $privilage->id }}">{{ $privilage->name }}</option>
+                                @endforeach
+                              </select>
+                              @if ($errors->has('privilage_id'))
+						          <small class="form-text text-danger">{{ $errors->first('privilage_id') }}</small>
+					          @endif
+					        </div>
+					      </div>
+					      {{-- HIDDEN INPUT POKTAN --}}
+					      <div id="selectPoktan" class="form-group row" style="display: none;">
+					        <label class="col-sm-3 form-control-label">Kelompok tani</label>
+					        <div class="col-sm-9">
+					          <select id="poktanid" name="poktan_id" class="form-control">
+					          	<option value="">PILIH KELOMPOK TANI</option>
+                                @foreach (\App\Poktan::all() as $poktan)
+                                	<option value="{{ $poktan->id }}">{{ $poktan->name }}</option>
                                 @endforeach
                               </select>
 					        </div>
@@ -89,6 +103,26 @@
 		</div>
 	</section>
 </div>
+@endsection
 
+@section('script')
+	<script type="text/javascript">
 
+		$(function(){
+			$("#privilage").val("{{ $user->privilage_id }}");
+			$("#poktanid").val("{{ $user->poktan_id }}");
+
+			if ('{{ $user->privilage_id }}' === '2') {
+				$('#selectPoktan').show()
+			}
+		});
+		
+		$('#privilage').change(function() {
+			if ($(this).val() === '2') {
+				$('#selectPoktan').show()
+			} else{
+				$('#selectPoktan').hide()
+			}
+		});
+	</script>
 @endsection

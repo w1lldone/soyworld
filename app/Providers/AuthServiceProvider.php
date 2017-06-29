@@ -15,6 +15,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Seed' => 'App\Policies\SeedPolicy',
         'App\Onfarm' => 'App\Policies\OnfarmPolicy',
+        'App\Activity' => 'App\Policies\ActivityPolicy',
+        'App\Poktan' => 'App\Policies\PoktanPolicy',
+        'App\Supplier' => 'App\Policies\SupplierPolicy',
     ];
 
     /**

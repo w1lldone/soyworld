@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('sidebar')
-	@include('layouts.sidebar')
-@endsection
-
 @section('content')
 <!-- Page Header-->
 <header class="page-header">
@@ -28,10 +24,11 @@
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
-					      <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+					      <a href="/user/create" title="Tambah anggota" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
+					     {{--  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
 					      <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
 						      <a href="/user/create" class="dropdown-item"> <i class="fa fa-plus"></i>Tambah anggota</a>
-					      </div>
+					      </div> --}}
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">
@@ -58,7 +55,7 @@
 					      	    <td>{{ $user->contact }}</td>
 					      	    <td>{{ $user->privilage->name }}</td>
 					      	    <td style="display: flex;">
-									<a href="/user/{{$user->id}}/edit" type="button" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
+									<a href="/user/{{$user->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
 										<i class="fa fa-edit"></i>
 									</a>
 					      	    </td>
