@@ -25,17 +25,13 @@
 					  <div class="card-close">
 					    <div class="dropdown">
 					      <a href="/user/create" title="Tambah anggota" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
-					     {{--  <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-					      <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-						      <a href="/user/create" class="dropdown-item"> <i class="fa fa-plus"></i>Tambah anggota</a>
-					      </div> --}}
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">
 					    <h3 class="h4">Daftar Anggota</h3>
 					  </div>
 					  <div class="card-body">
-					    <table class="table">
+					    <table class="table table-hover">
 					      <thead>
 					        <tr>
 					          <th>#</th>
@@ -55,9 +51,14 @@
 					      	    <td>{{ $user->contact }}</td>
 					      	    <td>{{ $user->privilage->name }}</td>
 					      	    <td style="display: flex;">
-									<a href="/user/{{$user->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
-										<i class="fa fa-edit"></i>
-									</a>
+					      			<div class="btn-group">
+					      			  <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
+					      			  <div class="dropdown-menu dropdown-menu-right">
+					      			  	<a href="/user/{{$user->id}}/edit" class="dropdown-item">Edit</a>
+					      			  	<a href="/user/{{$user->id}}/edit?data=email" class="dropdown-item">Ganti email</a>
+					      			  	<a href="/user/{{$user->id}}/edit?data=password" class="dropdown-item">Ganti password</a>
+					      			  </div>
+					      			</div>
 					      	    </td>
 					      	  </tr>
 					      	@endforeach
