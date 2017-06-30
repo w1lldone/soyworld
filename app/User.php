@@ -66,4 +66,9 @@ class User extends Authenticatable
             'poktan_id' => $request->privilage_id == 2 ? $request->poktan_id : null,
         ]);
     }
+
+    public function hasRole($role)
+    {
+        return $this->privilage->name === $role;
+    }
 }

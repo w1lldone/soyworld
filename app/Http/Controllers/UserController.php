@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-    	$this->middleware('auth');
+    	$this->middleware(['auth', 'role:admin']);
     }
 
     protected function validator($data)

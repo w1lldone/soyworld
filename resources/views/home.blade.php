@@ -15,6 +15,9 @@
 	<section class="dashboard-header">
 	  <div class="container-fluid">
 	    <div class="row">
+	      <div class="col-12">
+		      @include('layouts.alerts')
+	      </div>
 	      <!-- Statistics -->
 	      <div class="statistics col-lg-3 col-12">
 	        <div class="statistic d-flex align-items-center bg-white has-shadow">
