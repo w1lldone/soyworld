@@ -46,8 +46,11 @@
       </header>
       <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
-        {{-- @yield('sidebar') --}}
-        @include('layouts.sidebar')
+        @foreach (\App\Privilage::all() as $privilage)
+          @if(auth()->user()->hasRole($privilage->name))
+            @include("layouts.sidebars.$privilage->name")
+          @endif
+        @endforeach
         <div class="content-inner scroll" style="width: 100%">
           @yield('content')
           @yield('modal')

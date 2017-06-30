@@ -43,7 +43,7 @@ class SupplierController extends Controller
 
     public function index()
     {
-        $suppliers = Supplier::all();
+        $suppliers = auth()->user()->getSupplier();
         return view('supplier.index',compact('suppliers'));
     }
 

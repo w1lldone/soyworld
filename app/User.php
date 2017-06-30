@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Poktan');
     }
 
+    public function onfarm(){
+        return $this->hasMany('App\Onfarm');
+    }
+
 
     /*
     * CUSTOM METHOD SECTION
@@ -70,5 +74,15 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->privilage->name === $role;
+    }
+
+    public function getOnfarm()
+    {
+        return $this->isSuperadmin() ? \App\Onfarm::all() : $this->onfarm;
+    }
+
+    public function getSupplier()
+    {
+        return $this->isSuperadmin() ? \App\Supplier::all() : $this->poktan->supplier;
     }
 }
