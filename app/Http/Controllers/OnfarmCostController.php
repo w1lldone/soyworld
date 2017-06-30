@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class OnfarmCostController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function validator($request)
     {
         switch (request()->method()) {

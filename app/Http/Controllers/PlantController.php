@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PlantController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function validator($request)
     {
