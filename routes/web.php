@@ -34,6 +34,7 @@ Route::group(['prefix' => 'plant'], function()
 {
 	Route::post('/{onfarm}', 'PlantController@store');
 	Route::get('/{onfarm}/edit', 'PlantController@edit');
+	Route::put('/{onfarm}', 'PlantController@update');
 });
 
 Route::group(['prefix' => 'seed'], function()

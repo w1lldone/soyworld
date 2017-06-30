@@ -83,7 +83,8 @@ class PlantController extends Controller
      */
     public function update(Request $request, Onfarm $onfarm)
     {
-        //
+        $onfarm->update(request(['planted_at', 'area']));
+        return redirect("/onfarm/$onfarm->id/view")->with('success', 'Berhasil mengubah data tanam!');
     }
 
     /**
