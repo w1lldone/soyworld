@@ -51,6 +51,7 @@
             @include("layouts.sidebars.$privilage->name")
           @endif
         @endforeach
+        
         <div class="content-inner scroll" style="width: 100%">
           @yield('content')
           @yield('modal')
