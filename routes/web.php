@@ -21,6 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('user', 'UserController');
 
+Route::group(['prefix' => 'user'], function()
+{
+	Route::put('/{user}/email', 'UserController@changeEmail');
+});
+
 Route::group(['prefix' => 'onfarm'], function()
 {
 	Route::get('/', 'OnfarmController@index');

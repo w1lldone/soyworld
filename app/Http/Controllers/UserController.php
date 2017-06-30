@@ -76,4 +76,20 @@ class UserController extends Controller
 
         return redirect('/user')->with('success', 'berhasil mengubah user');
     }
+
+    public function changeEmail(User $user, Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|string|email|unique:users',
+        ]);
+
+        $user->update(request(['email']));
+
+        return back()->with('success', 'Berhasil mengubah email!');
+    }
+
+    public function password(User $user, Request $request)
+    {
+        
+    }
 }
