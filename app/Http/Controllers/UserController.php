@@ -88,8 +88,16 @@ class UserController extends Controller
         return back()->with('success', 'Berhasil mengubah email!');
     }
 
-    public function password(User $user, Request $request)
+    public function changePassword(User $user, Request $request)
     {
-        
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $user->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return back()->with('success', 'Berhasil merubah password');
     }
 }

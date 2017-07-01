@@ -22,6 +22,7 @@
 			<div class="row">
 				{{-- HORIZONTAL FORM --}}
 				<div class="col-md-8 offset-md-2">
+					@include('layouts.alerts')
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
 					    <h3 class="h4">Form ganti password</h3>

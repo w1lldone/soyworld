@@ -24,6 +24,7 @@ Route::resource('user', 'UserController');
 Route::group(['prefix' => 'user'], function()
 {
 	Route::put('/{user}/email', 'UserController@changeEmail');
+	Route::put('/{user}/password', 'UserController@changePassword');
 });
 
 Route::group(['prefix' => 'onfarm'], function()
