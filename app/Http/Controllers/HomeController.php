@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.admin');
+        
+        return view('home.'.auth()->user()->privilage->name);
     }
 }
