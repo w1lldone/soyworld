@@ -832,13 +832,17 @@ nav.navbar .dropdown-menu h3 {
 * ==========================================================
 */
 section.dashboard-counts .icon {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
   min-width: 60px;
   max-width: 60px;
   border-radius: 50%;
+}
+
+section.dashboard-counts .icon i {
+  font-size: 2rem;
 }
 
 section.dashboard-counts .title {
