@@ -852,6 +852,10 @@ section.dashboard-counts .title {
   margin: 0 20px;
 }
 
+section.dashboard-counts .title .badge {
+  font-size: 1.5rem;
+}
+
 section.dashboard-counts .progress {
   margin-top: 10px;
 }

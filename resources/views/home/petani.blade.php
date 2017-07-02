@@ -14,99 +14,96 @@
 	  <div class="container-fluid">
 	    <div class="row bg-white has-shadow">
 	      <!-- Item -->
-	      <div class="col-xl-3 col-sm-6">
+	      <div class="col-xl-4 col-sm-6">
 	        <div class="item d-flex align-items-center">
-	          <div class="icon bg-violet"><i class="icon-user"></i></div>
-	          <div class="title"><span>New<br>Clients</span>
-	            <div class="progress">
-	              <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
-	            </div>
+	          <div class="icon bg-green"><i class="icon-user"></i></div>
+	          <div class="title">
+	          	<span class="badge bg-green">Rp. 3.000.000</span>
+	          	<br>
+	          	<span>Profit bulan ini</span>
 	          </div>
-	          <div class="number"><strong>25</strong></div>
 	        </div>
 	      </div>
 	      <!-- Item -->
-	      <div class="col-xl-3 col-sm-6">
+	      <div class="col-xl-4 col-sm-6">
 	        <div class="item d-flex align-items-center">
-	          <div class="icon bg-red"><i class="icon-padnote"></i></div>
-	          <div class="title"><span>Work<br>Orders</span>
-	            <div class="progress">
-	              <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
-	            </div>
+	          <div class="icon bg-orange"><i class="icon-bill"></i></div>
+	          <div class="title">
+	          	<span class="badge bg-orange">530 Kg</span>
+	          	<br>
+	          	<span>Panen bulan ini</span>
 	          </div>
-	          <div class="number"><strong>70</strong></div>
 	        </div>
 	      </div>
 	      <!-- Item -->
-	      <div class="col-xl-3 col-sm-6">
+	      <div class="col-xl-4 col-sm-6">
 	        <div class="item d-flex align-items-center">
-	          <div class="icon bg-green"><i class="icon-bill"></i></div>
-	          <div class="title"><span>New<br>Invoices</span>
-	            <div class="progress">
-	              <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
-	            </div>
+	          <div class="icon bg-violet"><i class="icon-check"></i></div>
+	          <div class="title">
+	          	<span class="badge bg-violet">200 Kg</span>
+	          	<br>
+	          	<span>Stok gudang</span>
 	          </div>
-	          <div class="number"><strong>44</strong></div>
-	        </div>
-	      </div>
-	      <!-- Item -->
-	      <div class="col-xl-3 col-sm-6">
-	        <div class="item d-flex align-items-center">
-	          <div class="icon bg-orange"><i class="icon-check"></i></div>
-	          <div class="title"><span>Open<br>Cases</span>
-	            <div class="progress">
-	              <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
-	            </div>
-	          </div>
-	          <div class="number"><strong>35</strong></div>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 	</section>
-	<!-- Dashboard Header Section    -->
-	<section class="dashboard-header">
-	  <div class="container-fluid">
-	    <div class="row">
-	      <div class="col-12">
-		      @include('layouts.alerts')
-	      </div>
-	      <!-- Statistics -->
-	      <div class="statistics col-lg-3 col-12">
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-	          <div class="text"><strong>234</strong><br><small>Applications</small></div>
-	        </div>
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
-	          <div class="text"><strong>152</strong><br><small>Interviews</small></div>
-	        </div>
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-	          <div class="text"><strong>147</strong><br><small>Forwards</small></div>
-	        </div>
-	      </div>
-	      <!-- Line Chart            -->
-	      <div class="chart col-lg-6 col-12">
-	        <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
-	          <canvas id="lineCahrt"></canvas>
-	        </div>
-	      </div>
-	      <div class="chart col-lg-3 col-12">
-	        <!-- Bar Chart   -->
-	        <div class="bar-chart has-shadow bg-white">
-	          <div class="title"><strong class="text-violet">95%</strong><br><small>Current Server Uptime</small></div>
-	          <canvas id="barChartHome"></canvas>
-	        </div>
-	        <!-- Numbers-->
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
-	          <div class="text"><strong>99.9%</strong><br><small>Success Rate</small></div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</section>
+
+	<!-- LIST SECTION -->
+	<section class="dashboard-header pb-0">
+      <div class="container-fluid">
+        <div class="row">
+          {{-- ACTIVITY --}}
+          <div class="col-lg-7">
+            <div class="articles card">
+              @can('create', \App\Onfarm::class)
+                <div class="card-close">
+                  <div class="dropdown">
+                    <a href="/onfarm/create" class="text-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                  </div>
+                </div>
+              @endcan
+              <div class="card-header d-flex align-items-center">
+                <h2 class="h3">Penanaman kedelai</h2>
+                <div class="badge badge-rounded bg-green">4 New</div>
+              </div>
+              <div class="card-body">
+                @if (auth()->user()->onfarm->isEmpty())
+                  <div class="pt-2 pb-4 text-center">
+                    <img src="/img/stock/watering-can.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Belum ada on farm kedelai</h4>
+                    @cannot('createActivity', $onfarm)
+                        <p class="text-muted m-0">buat on farm terlrbih dahulu</p>
+                    @endcannot
+                    @can('create', \App\Onfarm::class)
+                      <a class="round-link bg-green d-inline-block text-white" href="/onfarm/create">Tambahkan</a>
+                    @endcan
+                  </div>
+                @endif
+                <!-- ONFARM LIST -->
+                <table class="table table-hover mb-0">
+                	<tbody>
+		                @foreach (auth()->user()->onfarm as $onfarm)
+			                <tr>
+    		                  <td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
+    		                  <td>
+              	      			<div class="d-flex">
+              	      				<a title="Bibit {{ empty($onfarm->seed) ? 'belum' : 'sudah' }} dibeli" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->seed) ? 'muted' : 'success' }}">B</span></a>
+              		      			<a title="Bibit {{ empty($onfarm->planted_at) ? 'belum' : 'sudah' }} ditanam" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->planted_at) ? 'muted' : 'info' }}">T</span></a>
+              		      			<a title="Kedelai belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
+              	      			</div>
+    		                  </td>
+			                </tr>
+		                @endforeach
+                	</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 </div>
 
 

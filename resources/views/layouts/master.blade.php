@@ -46,11 +46,7 @@
       </header>
       <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
-        @foreach (\App\Privilage::all() as $privilage)
-          @if(auth()->user()->hasRole($privilage->name))
-            @include("layouts.sidebars.$privilage->name")
-          @endif
-        @endforeach
+        @include("layouts.sidebars.".auth()->user()->privilage->name)
         
         <div class="content-inner scroll" style="width: 100%">
           @yield('content')
