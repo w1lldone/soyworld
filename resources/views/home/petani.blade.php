@@ -18,7 +18,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-green"><i class="icon-user"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-green">Rp. 3.000.000</span>
+	          	<span class="badge bg-green">Rp. 0</span>
 	          	<br>
 	          	<span>Profit bulan ini</span>
 	          </div>
@@ -29,7 +29,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-orange"><i class="icon-bill"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-orange">530 Kg</span>
+	          	<span class="badge bg-orange">0 Kg</span>
 	          	<br>
 	          	<span>Panen bulan ini</span>
 	          </div>
@@ -40,7 +40,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-violet"><i class="icon-check"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-violet">200 Kg</span>
+	          	<span class="badge bg-violet">0 Kg</span>
 	          	<br>
 	          	<span>Stok gudang</span>
 	          </div>
@@ -54,9 +54,9 @@
 	<section class="dashboard-header pb-0">
       <div class="container-fluid">
         <div class="row">
-          {{-- ACTIVITY --}}
           <div class="col-lg-7">
-            <div class="articles card">
+            {{-- ONFARM --}}
+            <div class="articles card mb-3">
               @can('create', \App\Onfarm::class)
                 <div class="card-close">
                   <div class="dropdown">
@@ -94,6 +94,40 @@
               		      			<a title="Kedelai belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
               	      			</div>
     		                  </td>
+			                </tr>
+		                @endforeach
+                	</tbody>
+                </table>
+              </div>
+            </div>
+          
+          	{{-- COST --}}
+            <div class="articles card">
+              <div class="card-header d-flex align-items-center">
+                <h2 class="h3">Pengeluaran terakhir</h2>
+              </div>
+              <div class="card-body">
+                @if (auth()->user()->onfarm_cost->isEmpty())
+                  <div class="pt-2 pb-4 text-center">
+                    <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Belum ada pengeluaran</h4>
+                  </div>
+                @endif
+                <!-- ONFARM LIST -->
+                <table class="table table-hover mb-0">
+                	<thead>
+                		<tr>
+                			<th>Pengeluaran</th>
+                			<th>On farm</th>
+                			<th>Jumlah</th>
+                		</tr>
+                	</thead>
+                	<tbody>
+		                @foreach (auth()->user()->onfarm_cost as $cost)
+			                <tr>
+    		                  <td><a href="/onfarmcost/{{$cost->id}}/view">{{ $cost->name }}</a></td>
+    		                  <td>{{ $cost->onfarm->name }}</td>
+    		                  <td>Rp. {{ $cost->formattedPrice() }}</td>
 			                </tr>
 		                @endforeach
                 	</tbody>
