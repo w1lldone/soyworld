@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Onfarm');
     }
 
+    public function onfarm_cost()
+    {
+        return $this->hasManyThrough('App\OnfarmCost', 'App\Onfarm');
+    }
+
 
     /*
     * CUSTOM METHOD SECTION
