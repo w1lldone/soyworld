@@ -4,7 +4,7 @@
     <div class="avatar"><img src="/img/person.svg" alt="..." class="img-fluid rounded-circle"></div>
     <div class="title">
       <h1 class="h4">{{auth()->user()->name}}</h1>
-      <p>Web Designer</p>
+      <p>{{ auth()->user()->privilage->name }}</p>
     </div>
   </div>
 
