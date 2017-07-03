@@ -37,7 +37,7 @@ class OnfarmPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->privilage->name === 'petani';
     }
 
     public function createSeed(User $user, Onfarm $onfarm)
