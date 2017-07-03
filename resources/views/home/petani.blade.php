@@ -60,11 +60,11 @@
               @can('create', \App\Onfarm::class)
                 <div class="card-close">
                   <div class="dropdown">
-                    <a href="/onfarm/create" class="text-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    <a href="/onfarm/create" class="text-white" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
                   </div>
                 </div>
               @endcan
-              <div class="card-header d-flex align-items-center">
+              <div class="card-header d-flex align-items-center bg-violet">
                 <h2 class="h3">Penanaman kedelai</h2>
                 <div class="badge badge-rounded bg-green">4 New</div>
               </div>
@@ -103,7 +103,7 @@
           
           	{{-- COST --}}
             <div class="articles card">
-              <div class="card-header d-flex align-items-center">
+              <div class="card-header d-flex align-items-center bg-orange">
                 <h2 class="h3">Pengeluaran terakhir</h2>
               </div>
               <div class="card-body">
@@ -118,15 +118,13 @@
                 	<thead>
                 		<tr>
                 			<th>Pengeluaran</th>
-                			<th>On farm</th>
                 			<th>Jumlah</th>
                 		</tr>
                 	</thead>
                 	<tbody>
 		                @foreach (auth()->user()->onfarm_cost as $cost)
 			                <tr>
-    		                  <td><a href="/onfarmcost/{{$cost->id}}/view">{{ $cost->name }}</a></td>
-    		                  <td>{{ $cost->onfarm->name }}</td>
+    		                  <td><a href="/onfarmcost/{{$cost->id}}/view">{{ $cost->name }} - {{ $cost->onfarm->name }}</a></td>
     		                  <td>Rp. {{ $cost->formattedPrice() }}</td>
 			                </tr>
 		                @endforeach
@@ -135,6 +133,35 @@
               </div>
             </div>
           </div>
+          {{-- PROFILE --}}
+          <div class="col-lg-5">
+	          <div class="client card">
+	            <div class="card-close">
+	              <div class="dropdown">
+	                <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+	                <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
+		                <a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a>
+		                <a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Pengaturan</a></div>
+	              </div>
+	            </div>
+	            <div class="card-body text-center">
+	              <div class="client-avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
+	                <div class="status bg-green"></div>
+	              </div>
+	              <div class="client-title">
+	                <h3>{{ auth()->user()->name }}</h3><span>{{ auth()->user()->privilage->name }}</span><a class="bg-orange" href="#">Edit</a>
+	              </div>
+	              <div class="client-info">
+	                <div class="row">
+	                  <div class="col-4"><strong>20</strong><br><small>Supplier</small></div>
+	                  <div class="col-4"><strong>9</strong><br><small>Aktivitas</small></div>
+	                  <div class="col-4"><strong>2</strong><br><small>Penanaman</small></div>
+	                </div>
+	              </div>
+	              <div class="client-social d-flex justify-content-between"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a><a href="#" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+	            </div>
+	          </div>
+	        </div>
         </div>
       </div>
     </section>
