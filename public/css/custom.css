@@ -36,6 +36,8 @@ td > a, td > button {
     color: #555;
 }
 
+/*ROUND LINK*/
+
 .round-link {
 	padding: 2px 30px;
     border-radius: 40px;

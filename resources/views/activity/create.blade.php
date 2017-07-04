@@ -25,7 +25,7 @@
 				<div class="col-md-8 offset-md-1">
 					<div class="card">
 					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Tambah aktivitas tanam</h3>
+					    <h3 class="h4">Tambah aktivitas tanam - {{ $onfarm->name }}</h3>
 					  </div>
 					  <div class="card-body">
 					  	{{-- IF USER CAN CREATE ACTIVITY --}}
