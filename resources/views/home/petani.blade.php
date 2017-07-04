@@ -12,12 +12,10 @@
 	<!-- Dashboard Counts Section-->
 	<section class="dashboard-counts no-padding-bottom">
 	  <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          @include('layouts.alerts')
-        </div>
-      </div>
 	    <div class="row bg-white has-shadow">
+          <div class="col-12">
+            @include('layouts.alerts')
+          </div>
 	      <!-- Item -->
 	      <div class="col-xl-4 col-sm-6">
 	        <div class="item d-flex align-items-center">
@@ -145,7 +143,7 @@
 	                <div class="status bg-green"></div>
 	              </div>
 	              <div class="client-title">
-	                <h3>{{ auth()->user()->name }}</h3><span>{{ auth()->user()->privilage->name }}</span><a class="bg-orange" href="#">Edit</a>
+	                <h3>{{ auth()->user()->name }}</h3><span>{{ auth()->user()->privilage->name }}</span><a class="bg-orange" href="/profile/edit">Edit</a>
 	              </div>
 	              <div class="client-info">
 	                <div class="row">

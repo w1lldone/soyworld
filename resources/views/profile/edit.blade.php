@@ -4,14 +4,14 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Anggota</h2>
+    <h2 class="no-margin-bottom">Edit profil</h2>
   </div>
 </header>
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
   <div class="container-fluid">
-    <li class="breadcrumb-item"><a href="/user">Anggota</a></li>
-    <li class="breadcrumb-item active">Edit anggota</li>
+    <li class="breadcrumb-item"><a href="/home">Beranda</a></li>
+    <li class="breadcrumb-item active">Edit profil</li>
   </div>
 </ul>
 
