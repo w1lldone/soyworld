@@ -12,6 +12,11 @@
 	<!-- Dashboard Counts Section-->
 	<section class="dashboard-counts no-padding-bottom">
 	  <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          @include('layouts.alerts')
+        </div>
+      </div>
 	    <div class="row bg-white has-shadow">
 	      <!-- Item -->
 	      <div class="col-xl-4 col-sm-6">
