@@ -75,4 +75,20 @@ class Onfarm extends Model
     {
         return number_format($this->onfarmCost(), 0, ",", ".");
     }
+
+    // URL SECTION
+    public function viewUrl()
+    {
+        return "/onfarm/$this->id/view";
+    }
+
+    public function editUrl()
+    {
+        return "/onfarm/$this->id/edit";
+    }
+
+    public function createActivityUrl()
+    {
+        return "/activity/create/$this->id";
+    }
 }
