@@ -27,6 +27,13 @@ Route::group(['prefix' => 'user'], function()
 	Route::put('/{user}/password', 'UserController@changePassword');
 });
 
+Route::group(['prefix' => 'profile'], function()
+{
+	Route::get('/view', 'ProfileController@show');
+	Route::get('/edit', 'ProfileController@edit');
+	Route::put('/', 'ProfileController@update');
+});
+
 Route::group(['prefix' => 'onfarm'], function()
 {
 	Route::get('/', 'OnfarmController@index');
