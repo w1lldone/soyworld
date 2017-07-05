@@ -32,6 +32,8 @@ Route::group(['prefix' => 'profile'], function()
 	Route::get('/view', 'ProfileController@show');
 	Route::get('/edit', 'ProfileController@edit');
 	Route::put('/', 'ProfileController@update');
+	Route::get('/email', 'ProfileController@editEmail');
+	Route::put('/email', 'ProfileController@updateEmail');
 });
 
 Route::group(['prefix' => 'onfarm'], function()

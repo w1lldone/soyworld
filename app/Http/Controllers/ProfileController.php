@@ -80,6 +80,12 @@ class ProfileController extends Controller
         return view('profile.edit', compact(['user', 'privilage']));
     }
 
+    public function editEmail()
+    {
+        $user = auth()->user();
+        return view('profile.email', compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -96,6 +102,17 @@ class ProfileController extends Controller
         ]));
 
         return redirect('/home')->with('success', 'Berhasil mengubah profil!');
+    }
+
+    public function updateEmail(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|unique:users'
+        ]);
+
+        $user = auth()->user()->update(request(['email']));
+
+        return redirect('/home')->with('success', 'Berhasil mengubah email!');
     }
 
     /**
