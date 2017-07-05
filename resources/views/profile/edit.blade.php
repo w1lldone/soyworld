@@ -10,7 +10,7 @@
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
   <div class="container-fluid">
-    <li class="breadcrumb-item"><a href="/home">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="/profile">Profil</a></li>
     <li class="breadcrumb-item active">Edit profil</li>
   </div>
 </ul>
