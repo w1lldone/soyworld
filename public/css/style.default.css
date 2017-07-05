@@ -403,6 +403,10 @@ nav.side-navbar .title h1 a{
   font-size: inherit;
 }
 
+nav.side-navbar .title h1 a:hover{
+  color: #796AEE;
+}
+
 nav.side-navbar .title p {
   font-size: 0.9em;
   font-weight: 200;
