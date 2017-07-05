@@ -6,6 +6,7 @@ use App\User;
 use App\Privilage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -64,7 +65,7 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('profile.view');
     }
 
     /**
@@ -84,6 +85,12 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         return view('profile.email', compact('user'));
+    }
+
+    public function editPassword()
+    {
+        $user = auth()->user();
+        return view('profile.password', compact('user'));
     }
 
     /**
@@ -113,6 +120,25 @@ class ProfileController extends Controller
         $user = auth()->user()->update(request(['email']));
 
         return redirect('/home')->with('success', 'Berhasil mengubah email!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $user = auth()->user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->with('danger', 'Password lama tidak cocok!');
+        }
+
+        $user->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect('/home')->with('success', 'Berhasil mengubah password!');
     }
 
     /**
