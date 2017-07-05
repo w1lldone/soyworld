@@ -36,37 +36,6 @@ class ProfileController extends Controller
         return view('profile.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        // 
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -108,7 +77,7 @@ class ProfileController extends Controller
             'name', 'address', 'contact', 'privilage_id', 'poktan_id',
         ]));
 
-        return redirect('/home')->with('success', 'Berhasil mengubah profil!');
+        return redirect('/profile')->with('success', 'Berhasil mengubah profil!');
     }
 
     public function updateEmail(Request $request)
@@ -119,7 +88,7 @@ class ProfileController extends Controller
 
         $user = auth()->user()->update(request(['email']));
 
-        return redirect('/home')->with('success', 'Berhasil mengubah email!');
+        return redirect('/profile')->with('success', 'Berhasil mengubah email!');
     }
 
     public function updatePassword(Request $request)
@@ -138,7 +107,7 @@ class ProfileController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect('/home')->with('success', 'Berhasil mengubah password!');
+        return redirect('/profile')->with('success', 'Berhasil mengubah password!');
     }
 
     /**
