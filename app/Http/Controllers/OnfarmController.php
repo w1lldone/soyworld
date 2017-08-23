@@ -34,4 +34,14 @@ class OnfarmController extends Controller
     	$onfarm = Onfarm::addOnfarm($request);
     	return redirect('/onfarm')->with('success', 'Onfarm kedelai berhasil dibuat');
     }
+
+    public function destroy(Onfarm $onfarm)
+    {
+        $onfarm->seed()->delete();
+        $onfarm->activity()->delete();
+        $onfarm->cost()->delete();
+        $onfarm->harvest()->delete();
+        $onfarm->delete();
+        return redirect('/onfarm')->with('success', 'berhasil menghapus on farm!');
+    }
 }

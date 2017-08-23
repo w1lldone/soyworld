@@ -45,6 +45,7 @@ Route::group(['prefix' => 'onfarm'], function()
 	Route::post('/', 'OnfarmController@store');
 	Route::get('/{onfarm}/view', 'OnfarmController@show');
 	Route::put('/{onfarm}/plant', 'OnfarmController@plant');
+	Route::delete('/{onfarm}', 'OnfarmController@destroy');
 });
 
 Route::group(['prefix' => 'plant'], function()

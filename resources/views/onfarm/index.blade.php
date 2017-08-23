@@ -83,7 +83,7 @@
 						      			</div>
 						      		</td>
 						      		<td>
-						      			<div class="btn-group">
+						      			<div class="btn-group dropup">
 						      			  <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
 						      			  <div class="dropdown-menu dropdown-menu-right">
 						      			  	<a href="/onfarm/{{$onfarm->id}}/view" class="dropdown-item">Lihat rincian</a>
@@ -101,6 +101,12 @@
 						      			  	@can('createCost', $onfarm)
 						      			  	    <a href="/onfarmcost/create/{{$onfarm->id}}" class="dropdown-item">Tambah biaya</a>
 						      			  	@endcan
+						      			  	<div class="dropdown-divider"></div>
+						      			  	<form action="/onfarm/{{$onfarm->id}}" method="POST">
+						      			  		{{ csrf_field() }}
+						      			  		{{ method_field('DELETE') }}
+						      			  		<button onclick="return confirm('Anda yakin akan menghapus on farm?')" type="submit" class="dropdown-item" style="-webkit-appearance: inherit;">Hapus</button>
+						      			  	</form>
 
 						      			  </div>
 						      			</div>
