@@ -70,6 +70,7 @@
 					          @endif
 					        </div>
 					      </div>
+					      {{-- INPUT KELOMPOK TANI --}}
 					      @if (auth()->user()->isSuperadmin())
 				      	      <div class="form-group row {{ $errors->has('poktan_id') ? ' has-danger' : '' }}">
 				      	        <label class="col-sm-3 form-control-label">Kelompok tani</label>
