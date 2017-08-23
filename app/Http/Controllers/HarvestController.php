@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Harvest;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class HarvestController extends Controller
@@ -11,6 +12,15 @@ class HarvestController extends Controller
     function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function validator($request)
+    {
+        return Validator::make($request, [
+            'onfarm_id' => 'required|unique:harvests',
+            'weight' => 'required|numeric',
+            'harvested_at' => 'required|date',
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -40,7 +50,15 @@ class HarvestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $harvest = Harvest::create(request([
+            'onfarm_id', 'harvested_at'
+        ]));
+
+        $harvest->addPostharvest($request);
+
+        return $harvest->load('postharvest');
     }
 
     /**
