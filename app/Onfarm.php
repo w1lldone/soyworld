@@ -28,6 +28,10 @@ class Onfarm extends Model
         return $this->hasMany('App\OnfarmCost', 'onfarm_id', 'id');
     }
 
+    public function harvest(){
+        return $this->hasOne('App\Harvest');
+    }
+
     /*
 	* CUSTOM METHOD SECTION
     */
