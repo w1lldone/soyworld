@@ -110,3 +110,7 @@ Route::group(['prefix' => 'onfarmcost'], function()
 	Route::post('/', 'OnfarmCostController@store');
 	Route::get('/{onfarmCost}/view', 'OnfarmCostController@show');
 });
+
+Route::group(['prefix' => 'harvest'], function(){
+	Route::get('/create', 'HarvestController@create');
+});
