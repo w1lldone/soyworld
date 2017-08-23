@@ -97,7 +97,7 @@
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit; border-right: none;">
               	@isset ($onfarm->harvest)
 	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-	               <div class="text text-right float-right"><small>Tanggal tanam</small><br><strong>{{ $onfarm->planted_at->toFormattedDateString() }}</sup></strong></div>
+	               <div class="text text-right float-right"><small>Tanggal panen</small><br><strong>{{ $onfarm->harvest->harvested_at->toFormattedDateString() }}</sup></strong></div>
               	@endisset
               	@empty ($onfarm->harvest)
                    <div class="text text-center">
