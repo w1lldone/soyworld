@@ -20,7 +20,7 @@ class SupplierController extends Controller
             'description' => 'required',
             'address' => 'required',
             'contact' => 'required',
-            'poktan_id' => 'required|exists:poktans,id',
+            'poktan_id' => 'exists:poktans,id',
         ]);
     }
 
@@ -32,7 +32,7 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-        if (!$request->has('poktan_id')) $request->poktan_id = auth()->user()->poktan->id;        
+        if (!$request->has('poktan_id')) $request->poktan_id = auth()->user()->poktan->id;
         $this->validator($request->all())->validate();
 
     	$supplier = Supplier::addSupplier($request);
