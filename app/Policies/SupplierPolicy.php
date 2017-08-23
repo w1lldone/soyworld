@@ -61,6 +61,6 @@ class SupplierPolicy
      */
     public function delete(User $user, Supplier $supplier)
     {
-        //
+        return $supplier->poktan_id === $user->poktan_id;
     }
 }
