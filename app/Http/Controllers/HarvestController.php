@@ -39,6 +39,12 @@ class HarvestController extends Controller
      */
     public function create()
     {
+        if (request()->has('onfarm_id')) {
+            $onfarm = \App\Onfarm::find(request('onfarm_id'));
+            if ($onfarm->planted_at == null) {
+                return redirect("onfarm/$onfarm->id/view")->with('danger', 'Kedelai belum ditanam!');
+            }
+        }
         return view('harvest.create');
     }
 

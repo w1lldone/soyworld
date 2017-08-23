@@ -42,11 +42,11 @@
 					          <select name="onfarm_id" class="form-control">
 					          	<option></option>
 					          	@if (auth()->user()->isSuperadmin())
-					          		@foreach (\App\Onfarm::doesntHave('harvest')->get() as $onfarm)
+					          		@foreach (\App\Onfarm::where('planted_at', '><', null)->doesntHave('harvest')->get() as $onfarm)
 	                      	<option value="{{ $onfarm->id }}">{{ $onfarm->name }}</option>
 	                      @endforeach
 					          	@else
-					          		@foreach (auth()->user()->onfarm()->doesntHave('harvest')->get() as $onfarm)
+					          		@foreach (auth()->user()->onfarm()->doesntHave('harvest')->where('planted_at', '><', null)->get() as $onfarm)
 	                      	<option value="{{ $onfarm->id }}">{{ $onfarm->name }}</option>
 	                      @endforeach
 					          	@endif
