@@ -50,11 +50,19 @@
 					      	    <td>{{ $supplier->address }}</td>
 					      	    <td>{{ $supplier->description }}</td>
 					      	    <td>{{ $supplier->poktan->name }}</td>
-					      	    <td style="display: flex;">
-									<a href="/supplier/{{$supplier->id}}/edit" title="Edit" class="btn btn-primary btn-simple btn-xs" data-toggle="tooltip">
-										<i class="fa fa-edit"></i>
-									</a>
-					      	    </td>
+				      	        <td style="display: flex;">
+				      	    	  <div class="btn-group">
+				      	    	    <button class="btn btn-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></button>
+				      	    	    <div class="dropdown-menu dropdown-menu-right">
+				      	    	      <a href="/supplier/{{$supplier->id}}/edit" class="dropdown-item">Edit</a>
+				      	    	      <form action="/supplier/{{$supplier->id}}" method="POST">
+				      	    	      	{{ csrf_field() }}
+				      	    	      	{{ method_field('DELETE') }}
+				      	    	      	<button onclick="return confirm('Anda yakin akan menghapus supplier?')" type="submit" class="dropdown-item" style="-webkit-appearance: inherit;">Hapus</button>
+				      	    	      </form>
+				      	    	    </div>
+				      	    	  </div>
+				      	        </td>
 					      	  </tr>
 					      	@endforeach
 					      </tbody>

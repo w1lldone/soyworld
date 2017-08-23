@@ -63,4 +63,11 @@ class SupplierController extends Controller
 
         return redirect('/supplier')->with('success', 'Supplier berhasil diupdate');
     }
+
+    public function destroy(Supplier $supplier)
+    {
+        $supplier->delete();
+
+        return redirect('/supplier')->with('success', 'Berhasil menghapus supplier!');
+    }
 }
