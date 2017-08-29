@@ -28,7 +28,9 @@ class HarvestController extends Controller
      */
     public function index()
     {
-        //
+        $harvests = auth()->user()->isSuperadmin() ? Harvest::latest()->paginate(10) : auth()->user()->harvest()->paginate(10);
+
+        return view('harvest.index', compact('harvests'));
     }
 
     /**
