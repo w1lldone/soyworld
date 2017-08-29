@@ -16,6 +16,7 @@ class CreatePostharvestsTable extends Migration
         Schema::create('postharvests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('harvest_id')->unsigned();
+            $table->date('date')->nullable();
             $table->string('name', 100)->nullable();
             $table->integer('cost')->nullable();
             $table->timestamps();
