@@ -8,14 +8,14 @@ use App\Harvest;
 class StockController extends Controller
 {
 
-	public function store(Request $request, Harvest $harvest)
+	public function store(Request $request)
 	{
 		$this->validate($request, [
-			'quantity' => 'required|numeric'
-			'harvest_id' => 'required|exist:harvests'
+			'quantity' => 'required|numeric',
+			'harvest_id' => 'required|exists:harvests,id',
 		]);
 
-		$harvest = Harvest::where('harvest_id', $request->harvest_id)->first()->update([
+		$harvest = Harvest::find($request->harvest_id)->update([
 			'initial_stock' => $request->quantity,
 			'ending_stock' => $request->quantity,
 		]);
