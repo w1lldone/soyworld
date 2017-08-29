@@ -30,7 +30,7 @@
 					  <div class="card-header d-flex align-items-center">
 					    <h3 class="h4">Daftar kelompok tani</h3>
 					  </div>
-					  <div class="card-body">
+					  <div class="card-body table-responsive">
 					    <table class="table">
 					      <thead>
 					        <tr>
