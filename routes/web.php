@@ -118,3 +118,7 @@ Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/create', 'HarvestController@create');
 	Route::post('/', 'HarvestController@store');
 });
+
+Route::group(['prefix' => 'stock'], function(){
+	Route::post('/', 'StockController@store');
+});
