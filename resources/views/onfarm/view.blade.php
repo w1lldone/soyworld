@@ -57,9 +57,12 @@
   	               <div class="icon float-left"><img src="/img/stock/bean.svg" class="img-fluid"></div>
                    <p class="text-right m-0">
                      <strong>{{ $onfarm->seed->quantity }} Kg</strong>
-                     <sup><a title="Edit benih" data-toggle="tooltip" href="/seed/{{$onfarm->seed->id}}/edit"><i class="fa fa-edit"></i></a></sup>
+                     {{-- <sup><a title="Edit benih" data-toggle="tooltip" href="/seed/{{$onfarm->seed->id}}/edit"><i class="fa fa-edit"></i></a></sup> --}}
                      <br>
                      <small>Benih digunakan</small>
+                     <br>
+                     <a href="/seed/{{$onfarm->seed->id}}/edit" class="round-link bg-orange">Edit</a>
+                     <a href="/seed/{{$onfarm->seed->id}}/view" class="round-link bg-green">Detail</a>
                    </p>
 	               {{-- <div></div> --}}
               	@endisset
@@ -76,9 +79,11 @@
                  <div class="icon float-left"><img src="/img/stock/garden-tools.svg" class="img-fluid"></div>
                  <p class="text-right m-0">
                   <strong>{{ $onfarm->planted_at->toFormattedDateString() }}</strong>
-                  <sup><a title="Edit penanaman" data-toggle="tooltip" href="/plant/{{$onfarm->id}}/edit"><i class="fa fa-edit"></i></a></sup>
+                  {{-- <sup><a title="Edit penanaman" data-toggle="tooltip" href="/plant/{{$onfarm->id}}/edit"><i class="fa fa-edit"></i></a></sup> --}}
                   <br>
                   <small>Tanggal tanam</small>
+                  <br>
+                  <a href="/plant/{{$onfarm->id}}/edit" class="round-link bg-orange">Edit</a>
                  </p>
                 @endisset
                 @empty ($onfarm->planted_at)
@@ -131,7 +136,6 @@
               @endcan
               <div class="card-header d-flex align-items-center">
                 <h2 class="h3">Aktivitas tanam   </h2>
-                <div class="badge badge-rounded bg-green">4 New</div>
               </div>
               <div class="card-body no-padding">
                 @if ($onfarm->activity->isEmpty())
