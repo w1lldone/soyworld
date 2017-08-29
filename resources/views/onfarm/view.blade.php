@@ -101,13 +101,20 @@
               {{-- HARVEST --}}
               <div class="statistic project col-sm-4 clearfix align-items-center" style="margin-bottom: inherit; border-right: none;">
               	@isset ($onfarm->harvest)
-	               <div class="icon bg-orange float-left"><i class="fa fa-calendar-o"></i></div>
-	               <div class="text text-right float-right"><small>Tanggal panen</small><br><strong>{{ $onfarm->harvest->harvested_at->toFormattedDateString() }}</sup></strong></div>
+	               <div class="icon float-left"><img src="/img/stock/garden-tools.svg" class="img-fluid"></div>
+                 <p class="text-right m-0">
+                  <strong>{{ $onfarm->harvest->harvested_at->toFormattedDateString() }}</strong>
+                  {{-- <sup><a title="Edit penanaman" data-toggle="tooltip" href="/plant/{{$onfarm->id}}/edit"><i class="fa fa-edit"></i></a></sup> --}}
+                  <br>
+                  <small>Tanggal panen</small>
+                  <br>
+                  <a href="/harvest/{{$onfarm->harvest->id}}/view" class="round-link bg-green">Detail</a>
+                 </p>
               	@endisset
               	@empty ($onfarm->harvest)
                    <div class="text text-center">
     	               <h3 class="text-light">Kedelai belum dipanen</h3>
-                     @isset ($onfarm->planted_at)
+                     @isset($onfarm->planted_at)
       	               <a class="round-link bg-info" href="/harvest/create?onfarm_id={{$onfarm->id}}">Panen</a>
                      @endisset
                      @empty ($onfarm->planted_at)

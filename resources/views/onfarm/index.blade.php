@@ -36,7 +36,9 @@
 					        <tr>
 					          <th class="hidden-sm-down">#</th>
 					          <th>Nama</th>
-					          <th class="hidden-sm-down">Petani</th>
+					          @if (auth()->user()->isSuperadmin())
+						          <th class="hidden-sm-down">Petani</th>
+					          @endif
 					          <th class="hidden-sm-down">Benih</th>
 					          <th class="hidden-sm-down">Tanam</th>
 					          <th class="hidden-sm-down">Biaya</th>
@@ -50,7 +52,9 @@
 					      		<tr>
 						      		<th class="hidden-sm-down" scope="row">{{ $loop->index+1 }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
-						      		<td class="hidden-sm-down">{{ $onfarm->user->name }}</td>
+						      		@if (auth()->user()->isSuperadmin())
+							      		<td class="hidden-sm-down">{{ $onfarm->user->name }}</td>
+						      		@endif
 						      		<td class="hidden-sm-down">
 						      			@if (empty($onfarm->seed))
 						      				<a href="/seed/create/{{ $onfarm->id }}" title="Klik untuk membeli" data-toggle="tooltip">Belum dibeli</a>
