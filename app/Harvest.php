@@ -19,7 +19,7 @@ class Harvest extends Model
 	{
 		return $this->postharvest()->create([
 			'name' => 'panen '.$this->onfarm->name,
-			'weight' => $request->weight,
+			'cost' => $request->cost,
 		]);
 	}
     

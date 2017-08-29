@@ -18,7 +18,6 @@ class HarvestController extends Controller
     {
         return Validator::make($request, [
             'onfarm_id' => 'required|unique:harvests',
-            'weight' => 'required|numeric',
             'harvested_at' => 'required|date',
         ]);
     }
