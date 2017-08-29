@@ -64,8 +64,9 @@
                                     {{ csrf_field() }}
                                     <div class="row">
                                       <div class="col-12 form-group input-group">
-                                        <input type="number" class="form-control" placeholder="Masukkan stok" aria-describedby="basic-addon1">
+                                        <input name="quantity" type="number" class="form-control" placeholder="Masukkan stok" aria-describedby="basic-addon1">
                                         <span class="input-group-addon" id="basic-addon1">Kg</span>
+                                        <input type="hidden" name="harvest_id" value="{{ $harvest->id }}">
                                       </div>
                                       <div class="col-12 clearfix">
                                         <button type="submit" class="btn btn-primary float-right">Simpan</button>
