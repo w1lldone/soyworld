@@ -103,7 +103,7 @@
                    <div class="text text-center">
     	               <h3 class="text-light">Kedelai belum dipanen</h3>
                      @isset ($onfarm->planted_at)
-      	               <a class="round-link bg-info" href="" data-toggle="modal" data-target="#harvest">Panen</a>
+      	               <a class="round-link bg-info" href="/harvest/create?onfarm_id={{$onfarm->id}}">Panen</a>
                      @endisset
                      @empty ($onfarm->planted_at)
                          <small>Lakukan penanaman dulu</small>

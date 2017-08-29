@@ -20,15 +20,11 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-				@include('layouts.alerts')
+				  @include('layouts.alerts')
 					<div class="card">
 					  <div class="card-close">
 					    <div class="dropdown">
 					      <a href="/onfarm/create" title="Tambah onfarm kedelai" data-placement="left" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
-					      {{-- <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-					      <div aria-labelledby="closeCard" class="dropdown-menu has-shadow">
-						      <a href="/onfarm/create" class="dropdown-item"> <i class="fa fa-plus"></i>On farm kedelai</a>
-					      </div> --}}
 					    </div>
 					  </div>
 					  <div class="card-header d-flex align-items-center">
