@@ -10,7 +10,7 @@
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
 	<div class="container-fluid">
-		<li class="breadcrumb-item"><a href="/onfarm">Panen</a></li>
+		<li class="breadcrumb-item"><a href="/harvest">Panen</a></li>
 		<li class="breadcrumb-item active">Tambah pemanenan</li>
 	</div>
 </ul>

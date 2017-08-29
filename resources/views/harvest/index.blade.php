@@ -20,7 +20,7 @@
   	<div class="container-fluid">
   	  <div class="row">
   	    <div class="col-12">
-  	      @include('layouts.alers')
+  	      @include('layouts.alerts')
   	      <div class="card">
   	        <div class="card-close">
   	          <div class="dropdown">
@@ -36,15 +36,53 @@
   	              <tr>
   	                <th class="hidden-sm-down">#</th>
   	                <th>Nama</th>
-  	                <th class="hidden-sm-down">Petani</th>
-  	                <th class="hidden-sm-down">Benih</th>
-  	                <th class="hidden-sm-down">Tanam</th>
-  	                <th class="hidden-sm-down">Biaya</th>
-  	                <th class="hidden-sm-down">Aktivitas terakhir</th>
-  	                <th class="hidden-md-up">Status</th>
-  	                <th></th>
+                    @if (auth()->user()->isSuperadmin())
+    	                <th>Petani</th>
+                    @endif
+                    <th>Tanggal panen</th>
+  	                <th>Sisa stok</th>
   	              </tr>
   	            </thead>
+                <tbody>
+                  @foreach ($harvests as $harvest)
+                    <tr>
+                      <td>{{ $harvests->toArray()['from']+$loop->index }}</td>
+                      <td>Panen {{ $harvest->onfarm->name }}</td>
+                      @if (auth()->user()->isSuperadmin())
+                        <td>{{ $harvest->onfarm->user->name }}</td>
+                      @endif
+                      <td>{{ $harvest->harvested_at->format('j F Y') }}</td>
+                      <td>
+                        @if (empty($harvest->ending_stock))
+                          <button data-toggle="modal" data-target="#tambahStok{{$harvest->id}}" class="round-link btn">Tambah stok</button>
+                          <div class="modal fade" id="tambahStok{{$harvest->id}}">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-body">
+                                  <h2>Tambah stok</h2>
+                                  <form action="/stock" method="POST">
+                                    {{ csrf_field() }}
+                                    <div class="row">
+                                      <div class="col-12 form-group input-group">
+                                        <input type="number" class="form-control" placeholder="Masukkan stok" aria-describedby="basic-addon1">
+                                        <span class="input-group-addon" id="basic-addon1">Kg</span>
+                                      </div>
+                                      <div class="col-12 clearfix">
+                                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @else
+                          {{ $harvest->ending_stock }}
+                        @endif
+                      </td>
+                    </tr>
+                   @endforeach   
+                </tbody>
   	          </table>
   	        </div>
   	      </div>
@@ -54,3 +92,4 @@
   	
   </section>
 </div>
+@endsection
