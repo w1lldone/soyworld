@@ -22,6 +22,11 @@ class Harvest extends Model
 			'cost' => $request->cost,
 		]);
 	}
+
+	public function getSaleStatusAttribute()
+	{
+		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
+	}
     
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
