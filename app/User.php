@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\OnfarmCost', 'App\Onfarm');
     }
 
+    public function harvest()
+    {
+        return $this->hasManyThrough('App\Harvest', 'App\Onfarm');
+    }
+
 
     /*
     * CUSTOM METHOD SECTION
