@@ -18,7 +18,6 @@ class CreatePostharvestsTable extends Migration
             $table->integer('harvest_id')->unsigned();
             $table->string('name', 100)->nullable();
             $table->integer('cost')->nullable();
-            $table->integer('weight')->nullable();
             $table->timestamps();
         });
     }
