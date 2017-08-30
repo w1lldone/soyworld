@@ -15,7 +15,6 @@
 </ul> --}}
 
 <div class="content-wrapper">
-
   <section class="dashboard-counts no-padding-bottom">
     <div class="container-fluid">
       <div class="row bg-white has-shadow py-2">
@@ -35,7 +34,7 @@
         <div class="col-xl-6 col-sm-6">
           <div class="item">
             <div class="title clearfix">
-              <span class="float-left">Stok on sale</span>
+              <span class="float-left">Stok dijual</span>
               <span class="badge bg-orange float-right">{{ \App\Harvest::onSaleStock() }} Kg</span>
             </div>
           </div>
@@ -62,7 +61,7 @@
   	          <table class="table table-hover">
   	            <thead>
   	              <tr>
-  	                <th class="hidden-sm-down">#</th>
+  	                <th>#</th>
   	                <th>Nama</th>
                     @if (auth()->user()->isSuperadmin())
     	                <th>Petani</th>
@@ -75,7 +74,7 @@
                   @foreach ($harvests as $harvest)
                     <tr>
                       <td>{{ $harvests->toArray()['from']+$loop->index }}</td>
-                      <td>Panen {{ $harvest->onfarm->name }}</td>
+                      <td><a href="/harvest/{{$harvest->id}}/view">Panen {{ $harvest->onfarm->name }}</a></td>
                       @if (auth()->user()->isSuperadmin())
                         <td>{{ $harvest->onfarm->user->name }}</td>
                       @endif
