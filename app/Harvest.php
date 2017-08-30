@@ -41,6 +41,11 @@ class Harvest extends Model
 
 		return $stock;
 	}
+
+	public function stockPercent()
+	{
+		return $this->ending_stock/$this->initial_stock*100;
+	}
     
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
