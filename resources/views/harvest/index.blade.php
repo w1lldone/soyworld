@@ -15,12 +15,40 @@
 </ul> --}}
 
 <div class="content-wrapper">
+
+  <section class="dashboard-counts no-padding-bottom">
+    <div class="container-fluid">
+      <div class="row bg-white has-shadow py-2">
+        <div class="col-12">
+          @include('layouts.alerts')
+        </div>
+        <!-- Item -->
+        <div class="col-xl-6 col-sm-6">
+          <div class="item">
+            <div class="title clearfix">
+              <span class="float-left">Stok total</span>
+              <span class="badge bg-info float-right">{{ \App\Harvest::totalStock() }} Kg</span>
+            </div>
+          </div>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-6 col-sm-6">
+          <div class="item">
+            <div class="title clearfix">
+              <span class="float-left">Stok on sale</span>
+              <span class="badge bg-orange float-right">{{ \App\Harvest::onSaleStock() }} Kg</span>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </section>
+
   <!-- TABLE SECTION -->
-  <section class="tables">
+  <section class="tables pt-2">
   	<div class="container-fluid">
   	  <div class="row">
   	    <div class="col-12">
-  	      @include('layouts.alerts')
   	      <div class="card">
   	        <div class="card-close">
   	          <div class="dropdown">
