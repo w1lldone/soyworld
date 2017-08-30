@@ -63,7 +63,7 @@ class HarvestController extends Controller
             'onfarm_id', 'harvested_at'
         ]));
 
-        $harvest->addPostharvest($request);
+        // $harvest->addPostharvest($request);
 
         return $harvest->load('postharvest');
     }
