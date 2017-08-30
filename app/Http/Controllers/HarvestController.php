@@ -76,7 +76,7 @@ class HarvestController extends Controller
      */
     public function show(Harvest $harvest)
     {
-        //
+        return view('harvest.view', compact('harvest'));
     }
 
     /**
