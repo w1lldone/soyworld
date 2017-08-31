@@ -117,6 +117,7 @@ Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/', 'HarvestController@index');
 	Route::get('/create', 'HarvestController@create');
 	Route::get('/{harvest}/view', 'HarvestController@show');
+	Route::get('/{harvest}/postharvest', 'PostharvestController@create');
 	Route::post('/', 'HarvestController@store');
 });
 
