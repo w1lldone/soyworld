@@ -40,6 +40,14 @@
 	  	    <!-- Item -->
 	  	    <div class="col-xl-4 col-sm-6">
 	  	      <div class="item mx-2" style="border: none;">
+	  	      @if ($harvest->initial_stock == 0)
+	  	      	<div class="text-muted text-center">
+	  	      	  <i class="fa fa-archive fa-3x"></i>
+	  	      	  <p class="text-light m-0">Stok belum tersedia</p>
+	  	      	  <button data-toggle="modal" data-target="#tambahStok{{$harvest->id}}" class="round-link btn m-0">Tambah stok</button>
+	  	      	</div>
+			    @include('harvest.modal')
+	  	      @else
 	  	      	<div class="clearfix">
 	  	      	  <h4 class="float-left">Stok awal</h4>
 	  	      	  <h4 class="float-right">{{ $harvest->initial_stock }} Kg</h4>
@@ -48,9 +56,13 @@
 	  	      	  <h4 class="float-left">Terjual</h4>
 	  	      	  <h4 class="float-right">{{ $harvest->initial_stock-$harvest->ending_stock }} Kg</h4>
 	  	      	</div>
-	  	        <div class="progress mt-2">
-	  	          <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $harvest->stockPercent()  }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-	  	        </div>
+	  	      	<div>
+	  	          <span>Status stok:</span>
+		  	      <div class="progress mt-0">
+		  	        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ $harvest->stockPercent()  }}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ $harvest->stockPercent() }}%</div>
+		  	      </div>
+	  	      	</div>
+	  	      @endif
 	  	      </div>
 	  	    </div>  
 	  	    <!-- Item -->
@@ -84,25 +96,35 @@
 	          	<div class="recent-updates card">
 	          	  <div class="card-close">
 	          	    <div class="dropdown">
-	          	      <a href="#" class="text-white" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+	          	      <a href="/harvest/{{$harvest->id}}/postharvest" class="text-white" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
 	          	    </div>
 	          	  </div>
 	          	  <div class="card-header bg-blue text-white">
 	          	    <h3 class="h4">Penanganan pasca panen</h3>
 	          	  </div>
 	          	  <div class="card-body no-padding">
-	          	    <a href="/postharvest/1/view" class="item-link">
-	          	  	  <div class="item d-flex justify-content-between">
-	          	  	    <div class="info d-flex">
-	          	  	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
-	          	  	      <div class="title">
-	          	  	        <h5>Pengeringan</h5>
-	          	  	        <p>Rp. 5000</p>
-	          	  	      </div>
-	          	  	    </div>
-	          	  	    <div class="date text-right"><strong>24</strong><span>May</span></div>
-	          	  	  </div>
-	          	  	</a>
+	          	    @if ($harvest->postharvest->isEmpty())
+	          	      <div class="text-muted text-center py-3">
+	          	        <i class="fa fa-balance-scale fa-5x"></i>
+	          	        <p class="text-light mt-2">Belum ada penanganan</p>
+	          	        <a href="/harvest/{{$harvest->id}}/postharvest" class="round-link">Tambah penanganan</a>
+	          	      </div>
+	          	    @else
+	          	      @foreach ($harvest->postharvest as $postharvest)
+          	            <a href="/postharvest/{{ $postharvest->id }}/view" class="item-link">
+          	          	  <div class="item d-flex justify-content-between">
+          	          	    <div class="info d-flex">
+          	          	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+          	          	      <div class="title">
+          	          	        <h5>{{ $postharvest->name }}</h5>
+          	          	        <p>Biaya: Rp. {{ $postharvest->cost }}</p>
+          	          	      </div>
+          	          	    </div>
+          	          	    <div class="date text-right"><strong>24</strong><span>May</span></div>
+          	          	  </div>
+          	          	</a>
+	          	      @endforeach
+	          	    @endif
 	          	  </div>
 	          	</div>
 	          </div>
@@ -113,18 +135,27 @@
 	          	    <h3 class="h4">Penjualan</h3>
 	          	  </div>
 	          	  <div class="card-body no-padding">
-	          	    <a href="/postharvest/1/view" class="item-link">
-	          	  	  <div class="item d-flex justify-content-between">
-	          	  	    <div class="info d-flex">
-	          	  	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
-	          	  	      <div class="title">
-	          	  	        <h5>Rp. 50.000</h5>
-	          	  	        <p>PT. Tahu tuna pacitan</p>
-	          	  	      </div>
-	          	  	    </div>
-	          	  	    <div class="date text-right"><strong>24</strong><span>May</span></div>
-	          	  	  </div>
-	          	  	</a>
+	          	  	@if (empty($harvest->transaction_detail))
+  	  	    	      <div class="text-muted text-center py-3">
+  	  	    	        <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+  	  	    	        <p class="text-light m-0">Belum ada penjualan</p>
+  	  	    	      </div>
+	          	  	@else
+	          	  	  @foreach ($harvest->postharvest as $postharvest)
+	          	  	  	<a href="/postharvest/1/view" class="item-link">
+		          	  	  <div class="item d-flex justify-content-between">
+		          	  	    <div class="info d-flex">
+		          	  	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+		          	  	      <div class="title">
+		          	  	        <h5>Rp. 50.000</h5>
+		          	  	        <p>PT. Tahu tuna pacitan</p>
+		          	  	      </div>
+		          	  	    </div>
+		          	  	    <div class="date text-right"><strong>24</strong><span>May</span></div>
+		          	  	  </div>
+		          	  	</a>
+	          	  	  @endforeach
+	          	  	@endif
 	          	  </div>
 	          	</div>
 	          </div>
