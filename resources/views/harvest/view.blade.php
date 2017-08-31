@@ -20,10 +20,8 @@
 	  <!-- SECTION SUMMARY -->
 	  <section class="dashboard-counts no-padding-bottom">
 	  	<div class="container-fluid">
+	  	  @include('layouts.alerts')
 	  	  <div class="row bg-white has-shadow py-2">
-	  	    <div class="col-12">
-	  	      @include('layouts.alerts')
-	  	    </div>
 	  	    <!-- Item -->
 	  	    <div class="col-xl-4 col-sm-6 ">
 	  	      <div class="item mx-2" style="border: none;">
