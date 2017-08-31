@@ -62,7 +62,7 @@
 											<input value="{{ old('date') }}" data-provide="datepicker" type="text" placeholder="Tanggal penanganan" name="date" class="form-control datepicker" required>
 											<span class="input-group-addon""><i class="fa fa-calendar"></i></span>
 											@if ($errors->has('date'))
-											<small class="form-text text-danger">{{ $errors->first('date') }}</small>
+											  <small class="form-text text-danger">{{ $errors->first('date') }}</small>
 											@endif
 										</div>
 									</div>
@@ -72,8 +72,8 @@
 									<label class="col-sm-3 form-control-label">Biaya</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('cost') }}" type="number" placeholder="Kosongkan jika tidak ada biaya" name="cost" class="form-control">
-											<span class="input-group-addon""><i class="fa fa-calendar"></i></span>
+										  <span class="input-group-addon"">Rp.</span>
+											<input value="{{ !empty(old('cost')) ? old('cost') : 0 }}" type="number" placeholder="Kosongkan jika tidak ada biaya" name="cost" class="form-control">
 											@if ($errors->has('cost'))
 											<small class="form-text text-danger">{{ $errors->first('cost') }}</small>
 											@endif
