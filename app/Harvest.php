@@ -46,6 +46,21 @@ class Harvest extends Model
 	{
 		return $this->ending_stock/$this->initial_stock*100;
 	}
+
+	public function harvestCost()
+	{
+		return $this->postharvest->sum('cost');
+	}
+
+	public function totalCost()
+	{
+		return $this->onfarm->onfarmCost()+$this->harvestCost();
+	}
+
+	public function formattedTotalCost()
+	{
+		return number_format($this->totalCost(), 0, ',', '.');
+	}
     
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
