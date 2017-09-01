@@ -12,6 +12,7 @@ class PostharvestController extends Controller
     function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:createPostHarvest,harvest')->only('create');
     }
 
     public function validator($request)
@@ -51,6 +52,7 @@ class PostharvestController extends Controller
      */
     public function create(Harvest $harvest)
     {
+        // $this->authorize('createPostharvest', $harvest);
         return view('postharvest.create', compact('harvest'));
     }
 
@@ -118,6 +120,9 @@ class PostharvestController extends Controller
      */
     public function destroy(Postharvest $postharvest)
     {
-        //
+        $harvestId = $postharvest->harvest_id;
+        $postharvest->delete();
+
+        return redirect("harvest/$harvestId/view")->with('success', 'Berhasil menghapus penanganan!');
     }
 }
