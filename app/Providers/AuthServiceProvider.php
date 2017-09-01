@@ -18,6 +18,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Activity' => 'App\Policies\ActivityPolicy',
         'App\Poktan' => 'App\Policies\PoktanPolicy',
         'App\Supplier' => 'App\Policies\SupplierPolicy',
+        'App\Postharvest' => 'App\Policies\PostharvestPolicy',
+        'App\Harvest' => 'App\Policies\HarvestPolicy',
     ];
 
     /**
