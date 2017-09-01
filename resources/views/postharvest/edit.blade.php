@@ -4,15 +4,15 @@
 <!-- Page Header-->
 <header class="page-header">
 	<div class="container-fluid">
-		<h2 class="no-margin-bottom">Tambah penanganan</h2>
+		<h2 class="no-margin-bottom">Edit penanganan</h2>
 	</div>
 </header>
 <!-- Breadcrumb-->
 <ul class="breadcrumb">
 	<div class="container-fluid">
 		<li class="breadcrumb-item"><a href="/harvest">Panen</a></li>
-		<li class="breadcrumb-item"><a href="/harvest/{{request('harvest_id')}}/view">Detail panen</a></li>
-		<li class="breadcrumb-item active">Tambah penanganan</li>
+		<li class="breadcrumb-item"><a href="/harvest/{{ $postharvest->harvest_id }}/view">Detail panen</a></li>
+		<li class="breadcrumb-item active">Edit penanganan</li>
 	</div>
 </ul>
 
@@ -29,25 +29,22 @@
 							<h3 class="h4">Form penanganan pasca panen</h3>
 						</div>
 						<div class="card-body">
-							<form class="form-horizontal" method="POST" action="/postharvest">
+							<form class="form-horizontal" method="POST" action="/postharvest/{{$postharvest->id}}">
 								{{ csrf_field() }}
+								{{ method_field('PUT') }}
 								{{-- INPUT HARVEST --}}
-								<div class="form-group row {{ $errors->has('harvest_id') ? ' has-danger' : '' }}">
+								<div class="form-group row">
 									<label class="col-sm-3 form-control-label">Pemanenan</label>
 									<div class="col-sm-9">
-										<p class="form-control-static">Panen {{ $harvest->onfarm->name }}</p>
-										<input type="hidden" name="harvest_id" value="{{ $harvest->id }}">
+										<p class="form-control-static">Panen {{ $postharvest->harvest->onfarm->name }}</p>
 									</div>
-									@if ($errors->has('harvest_id'))
-										  <small class="form-text text-danger">{{ $errors->first('harvest_id') }}</small>
-									  @endif
 								</div>
 								{{-- INPUT NAME --}}
 								<div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
 									<label class="col-sm-3 form-control-label">Kegiatan</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('name') }}" type="text" placeholder="Nama kegiatan" name="name" class="form-control" required>
+											<input value="{{ $postharvest->name }}" type="text" placeholder="Nama kegiatan" name="name" class="form-control" required>
 										</div>
 										@if ($errors->has('name'))
 										  <small class="form-text text-danger">{{ $errors->first('name') }}</small>
@@ -59,7 +56,7 @@
 									<label class="col-sm-3 form-control-label">Tanggal</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('date') }}" data-provide="datepicker" type="text" placeholder="Tanggal penanganan" name="date" class="form-control datepicker" required>
+											<input value="{{ $postharvest->date }}" data-provide="datepicker" type="text" placeholder="Tanggal penanganan" name="date" class="form-control datepicker" required>
 											<span class="input-group-addon""><i class="fa fa-calendar"></i></span>
 										</div>
 										@if ($errors->has('date'))
@@ -73,7 +70,7 @@
 									<div class="col-sm-9">
 										<div class="input-group">
 										  <span class="input-group-addon"">Rp.</span>
-											<input value="{{ !empty(old('cost')) ? old('cost') : 0 }}" type="number" placeholder="Kosongkan jika tidak ada biaya" name="cost" class="form-control">
+											<input value="{{ $postharvest->cost }}" type="number" placeholder="Kosongkan jika tidak ada biaya" name="cost" class="form-control">
 										</div>
 										@if ($errors->has('cost'))
 										  <small class="form-text text-danger">{{ $errors->first('cost') }}</small>
