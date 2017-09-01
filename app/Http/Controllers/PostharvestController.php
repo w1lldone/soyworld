@@ -16,12 +16,22 @@ class PostharvestController extends Controller
 
     public function validator($request)
     {
-        return Validator::make($request, [
-            'harvest_id' => 'required|exists:harvests,id',
-            'name' => 'required|string',
-            'date' => 'required|date',
-            'cost' => 'present|numeric',
-        ]);
+        switch (request()->method()) {
+            case 'POST':
+               return Validator::make($request, [
+                   'harvest_id' => 'required|exists:harvests,id',
+                   'name' => 'required|string',
+                   'date' => 'required|date',
+                   'cost' => 'required|numeric',
+               ]);
+           case 'PUT':
+               return Validator::make($request, [
+                   'name' => 'required|string',
+                   'date' => 'required|date',
+                   'cost' => 'required|numeric',
+               ]);
+        }
+        
     }
 
     /**
@@ -80,7 +90,7 @@ class PostharvestController extends Controller
      */
     public function edit(Postharvest $postharvest)
     {
-        //
+        return view('postharvest.edit', compact('postharvest'));
     }
 
     /**
@@ -92,7 +102,8 @@ class PostharvestController extends Controller
      */
     public function update(Request $request, Postharvest $postharvest)
     {
-        //
+        $this->validator($request->all())->validate();
+        return $request;
     }
 
     /**
