@@ -23,24 +23,24 @@
 	  	  @include('layouts.alerts')
 	  	  <div class="row bg-white has-shadow py-2">
 	  	    <!-- Item -->
-	  	    <div class="col-xl-4 col-sm-6 ">
+	  	    <div class="col-lg-4 col-sm-6 ">
 	  	      <div class="item mx-2" style="border: none;">
 	  	        <div class="clearfix">
-	  	          <h4 class="float-left m-0">Onfarm:</h4>
-	  	          <a class="round-link mt-0 float-right" href="/onfarm/{{$harvest->onfarm->id}}/view">Detail</a>
+	  	          <span class="float-left m-0"><strong>Tanam:</strong></span>
+	  	          <span class="float-right">{{ $harvest->onfarm->planted_at->format('j F Y') }}</span>
 	  	        </div>
-	  	        <div class="clearfix mt-2">
-	  	          <h4 class="float-left">Penanaman:</h4>
+	  	        <div class="clearfix">
+	  	          <span class="float-left"><strong>Panen:</strong></span>
 	  	          <span class="float-right">{{ $harvest->harvested_at->format('j F Y') }}</span>
 	  	        </div>
-	  	        <div class="clearfix mt-2">
-	  	          <h4 class="float-left">Status:</h4>
+	  	        <div class="clearfix">
+	  	          <span class="float-left"><strong>Status:</strong></span>
 	  	          <span class="float-right">{{ $harvest->sale_status }}</span>
 	  	        </div>
 	  	      </div>
 	  	    </div>
 	  	    <!-- Item -->
-	  	    <div class="col-xl-4 col-sm-6">
+	  	    <div class="col-lg-4 col-sm-6">
 	  	      <div class="item mx-2" style="border: none;">
 	  	      @if ($harvest->initial_stock == 0)
 	  	      	<div class="text-muted text-center">
@@ -68,7 +68,7 @@
 	  	      </div>
 	  	    </div>  
 	  	    <!-- Item -->
-	  	    <div class="col-xl-4 col-sm-6">
+	  	    <div class="col-lg-4 col-sm-6">
 	  	      <div class="item mx-2">
   	            <div class="clearfix">
   	              <p class="float-left m-0">Total biaya</p>
@@ -84,14 +84,25 @@
   	              <p class="float-right m-0">Rp. 1.000.000</p>
   	            </div>
 	  	      </div>
-	  	    </div>        
+	  	    </div> 
 	  	  </div>
+	  	  <div class="clearfix mt-2">
+	  	  	<h2 class="d-inline"><span class="badge badge-default mr-4">Tindakan:</span></h2>
+	  	    <form method="POST" class="d-inline" action="/harvest/{{ $harvest->id }}/sale">
+	  	    	{{ csrf_field() }}
+	  	    	{{ method_field('PUT') }}
+	  	      <input type="hidden" name="on_sale" value="{{ $harvest->salesAction() }}">
+	  	      <button onclick="return confirm('Apa anda yakin akan mengubah status penjualan?')" class="btn btn-sm btn-warning" type="submit">Jual kedelai</button>
+	  	    </form>
+	  	    <a href="/onfarm/{{ $harvest->onfarm_id }}/view" class="btn btn-info btn-sm">Detail tanam</a>
+	  	    <a href="/harvest/{{ $harvest->onfarm_id }}/stock" class="btn btn-success btn-sm">Ubah stok</a>
+	  	  </div> 
 	  	</div>
 	  </section>
 
 	  <!-- SECTION POSTHARVEST -->
 	  <section class="py-3">
-	      <div class="container-fluid">
+	    <div class="container-fluid">
 	        <div class="row">
 	          <!-- POSTHARVEST HANDLING -->
 	          <div class="col-lg-6">
@@ -162,7 +173,7 @@
 	          	</div>
 	          </div>
 	        </div>
-	      </div>
-	    </section>
+	      </div>    
+      </section>
 	</div>
 @endsection
