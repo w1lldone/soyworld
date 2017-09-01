@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Postharvest extends Model
 {
 	public function harvest(){
-		return $this->beongsTo('App\Harvest');
+		return $this->belongsTo('App\Harvest');
 	}
     
     protected $guarded = ['id'];
