@@ -9,6 +9,12 @@ class Postharvest extends Model
 	public function harvest(){
 		return $this->belongsTo('App\Harvest');
 	}
+
+	public function formattedCost()
+	{
+		return number_format($this->cost, 0, ',', '.');
+	}
     
     protected $guarded = ['id'];
+    protected $dates = ['date'];
 }
