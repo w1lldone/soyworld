@@ -99,7 +99,7 @@ class HarvestController extends Controller
      */
     public function update(Request $request, Harvest $harvest)
     {
-        //
+        
     }
 
     /**
