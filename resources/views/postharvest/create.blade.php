@@ -11,7 +11,7 @@
 <ul class="breadcrumb">
 	<div class="container-fluid">
 		<li class="breadcrumb-item"><a href="/harvest">Panen</a></li>
-		<li class="breadcrumb-item"><a href="/harvest/{{request('harvest_id')}}/view">Detail panen</a></li>
+		<li class="breadcrumb-item"><a href="/harvest/{{$harvest->id}}/view">Detail panen</a></li>
 		<li class="breadcrumb-item active">Tambah penanganan</li>
 	</div>
 </ul>

@@ -48,7 +48,7 @@
                 <form method="POST" action="/postharvest/{{$postharvest->id}}" class="d-inline">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-danger">Hapus</button>
+                  <button onclick="return confirm('Apakah anda yakin menghapus penanganan?')" type="submit" class="btn btn-danger">Hapus</button>
                 </form>
               @endcan
               @can('update', $postharvest)

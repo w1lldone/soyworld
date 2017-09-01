@@ -12,6 +12,7 @@
 	<div class="container-fluid">
 		<li class="breadcrumb-item"><a href="/harvest">Panen</a></li>
 		<li class="breadcrumb-item"><a href="/harvest/{{ $postharvest->harvest_id }}/view">Detail panen</a></li>
+		<li class="breadcrumb-item"><a href="/postharvest/{{ $postharvest->id }}">Penanganan</a></li>
 		<li class="breadcrumb-item active">Edit penanganan</li>
 	</div>
 </ul>
