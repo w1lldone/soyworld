@@ -33,6 +33,10 @@
 	  	          <h4 class="float-left">Penanaman:</h4>
 	  	          <span class="float-right">{{ $harvest->harvested_at->format('j F Y') }}</span>
 	  	        </div>
+	  	        <div class="clearfix mt-2">
+	  	          <h4 class="float-left">Status:</h4>
+	  	          <span class="float-right">{{ $harvest->sale_status }}</span>
+	  	        </div>
 	  	      </div>
 	  	    </div>
 	  	    <!-- Item -->
@@ -109,7 +113,7 @@
 	          	      </div>
 	          	    @else
 	          	      @foreach ($harvest->postharvest as $postharvest)
-          	            <a href="/postharvest/{{ $postharvest->id }}/view" class="item-link">
+          	            <a href="/postharvest/{{ $postharvest->id }}/edit" class="item-link">
           	          	  <div class="item d-flex justify-content-between">
           	          	    <div class="info d-flex">
           	          	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>

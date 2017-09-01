@@ -68,6 +68,7 @@
                     @endif
                     <th>Tanggal panen</th>
   	                <th>Sisa stok</th>
+                    <th>Status</th>
   	              </tr>
   	            </thead>
                 <tbody>
@@ -87,6 +88,7 @@
                           {{ $harvest->ending_stock }}
                         @endif
                       </td>
+                      <td>{{ $harvest->sale_status }}</td>
                     </tr>
                    @endforeach   
                 </tbody>
