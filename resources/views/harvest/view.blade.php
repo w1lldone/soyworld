@@ -88,12 +88,6 @@
 	  	  </div>
 	  	  <div class="clearfix mt-2">
 	  	  	<h2 class="d-inline"><span class="badge badge-default mr-4">Tindakan:</span></h2>
-	  	    <form method="POST" class="d-inline" action="/harvest/{{ $harvest->id }}/sale">
-	  	    	{{ csrf_field() }}
-	  	    	{{ method_field('PUT') }}
-	  	      <input type="hidden" name="on_sale" value="{{ $harvest->salesAction() }}">
-	  	      <button onclick="return confirm('Apa anda yakin akan mengubah status penjualan?')" class="btn btn-sm btn-warning" type="submit">{{ $harvest->on_sale ? 'Berhenti jual' : 'Jual kedelai' }}</button>
-	  	    </form>
 	  	    <a href="/onfarm/{{ $harvest->onfarm_id }}/view" class="btn btn-info btn-sm">Detail tanam</a>
 	  	    <a href="/harvest/{{ $harvest->onfarm_id }}/stock" class="btn btn-success btn-sm">Ubah stok</a>
 	  	  </div> 
@@ -144,8 +138,14 @@
 	          <!-- PENJUALAN -->
 	          <div class="col-lg-6">
 	          	<div class="recent-updates card">
-	          	  <div class="card-header bg-green text-white">
-	          	    <h3 class="h4">Penjualan</h3>
+	          	  <div class="card-header bg-green text-white clearfix">
+	          	    <h3 class="h4 d-inline">Penjualan</h3>
+	          	    <form method="POST" class="d-inline" action="/harvest/{{ $harvest->id }}/sale">
+	          	    	{{ csrf_field() }}
+	          	    	{{ method_field('PUT') }}
+	          	      <input type="hidden" name="on_sale" value="{{ $harvest->salesAction() }}">
+	          	      <button onclick="return confirm('Apa anda yakin akan mengubah status penjualan?')" class="btn text-green btn-sm btn-white float-right" type="submit">{{ $harvest->on_sale ? 'Berhenti jual' : 'Jual kedelai' }}</button>
+	          	    </form>
 	          	  </div>
 	          	  <div class="card-body no-padding">
 	          	  	@if (empty($harvest->transaction_detail))

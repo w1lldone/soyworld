@@ -203,3 +203,34 @@ a.text {
     text-align: left !important;
   }
 }
+
+/*WHTIE BUTTON*/
+.btn-white {
+  /*color: grey;*/
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn-white:hover {
+  /*color: grey;*/
+  background-color: #eee;
+  border-color: #eee;
+}
+
+.btn-white:focus, .btn-white.focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);
+          box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);
+}
+
+.btn-info.disabled, .btn-info:disabled {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+}
+
+.btn-white:active, .btn-white.active,
+.show > .btn-white.dropdown-toggle {
+  color: grey;
+  background-color: #eee;
+  background-image: none;
+  border-color: #2aabd2;
+}
