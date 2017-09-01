@@ -28,6 +28,16 @@ class Harvest extends Model
 		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
 	}
 
+	public function salesAction()
+	{
+		if ($this->on_sale) {
+			return 0;
+		} else {
+			return 1;
+		}
+		
+	}
+
 	public static function totalStock()
 	{
 		$stock = auth()->user()->isSuperadmin() ? Harvest::all()->sum('ending_stock') : auth()->user()->harvest->sum('ending_stock');
