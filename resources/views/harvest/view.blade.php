@@ -113,7 +113,7 @@
 	          	      </div>
 	          	    @else
 	          	      @foreach ($harvest->postharvest as $postharvest)
-          	            <a href="/postharvest/{{ $postharvest->id }}/edit" class="item-link">
+          	            <a href="/postharvest/{{ $postharvest->id }}" class="item-link">
           	          	  <div class="item d-flex justify-content-between">
           	          	    <div class="info d-flex">
           	          	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
