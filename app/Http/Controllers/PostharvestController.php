@@ -79,7 +79,7 @@ class PostharvestController extends Controller
      */
     public function show(Postharvest $postharvest)
     {
-        //
+        return view('postharvest.view', compact('postharvest'));
     }
 
     /**
@@ -103,7 +103,11 @@ class PostharvestController extends Controller
     public function update(Request $request, Postharvest $postharvest)
     {
         $this->validator($request->all())->validate();
-        return $request;
+        $postharvest->update(request([
+            'name', 'date', 'cost',
+        ]));
+
+        return redirect("/harvest/$postharvest->harvest_id/view")->with('success', 'berhasil mengubah penanganan!');
     }
 
     /**
