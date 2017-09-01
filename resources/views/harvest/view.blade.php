@@ -35,7 +35,7 @@
 	  	        </div>
 	  	        <div class="clearfix">
 	  	          <span class="float-left"><strong>Status:</strong></span>
-	  	          <span class="float-right">{{ $harvest->sale_status }}</span>
+	  	          <span class="float-right badge badge-pill {{ $harvest->on_sale ? 'badge-success' : 'badge-warning' }}" style="font-size: 100%">{{ $harvest->sale_status }}</span>
 	  	        </div>
 	  	      </div>
 	  	    </div>
@@ -92,7 +92,7 @@
 	  	    	{{ csrf_field() }}
 	  	    	{{ method_field('PUT') }}
 	  	      <input type="hidden" name="on_sale" value="{{ $harvest->salesAction() }}">
-	  	      <button onclick="return confirm('Apa anda yakin akan mengubah status penjualan?')" class="btn btn-sm btn-warning" type="submit">Jual kedelai</button>
+	  	      <button onclick="return confirm('Apa anda yakin akan mengubah status penjualan?')" class="btn btn-sm btn-warning" type="submit">{{ $harvest->on_sale ? 'Berhenti jual' : 'Jual kedelai' }}</button>
 	  	    </form>
 	  	    <a href="/onfarm/{{ $harvest->onfarm_id }}/view" class="btn btn-info btn-sm">Detail tanam</a>
 	  	    <a href="/harvest/{{ $harvest->onfarm_id }}/stock" class="btn btn-success btn-sm">Ubah stok</a>
