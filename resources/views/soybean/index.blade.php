@@ -26,7 +26,7 @@
 	    	<div class="col-12">
 			    @include('soybean.navpill')
 			    <div class="my-4 clearfix d-flex justify-content-between align-items-center">
-				    <h2 class="m-0 px-1"><span class="badge badge-primary p-2">Stok <b>420 Kg</b></span></h2>
+				    <h2 class="m-0 px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::where('on_sale', 1)->get()->sum('ending_stock') }} Kg</b></span></h2>
 				    <h2 class="m-0 px-1"><span class="badge badge-success p-2">Harga <b>Rp. 8000/Kg</b></span></h2>
 				    <button class="btn btn-info ml-auto"><i class="fa fa-plus"></i> Pesan kedelai</button>
 {{-- 				    <form class="ml-auto">
@@ -49,36 +49,18 @@
 	      	    </tr>
 	      	  </thead>
 	      	  <tbody>
-	      	    <tr>
-	      	      <th scope="row" class="align-middle">1</th>
-	      	      <td>
-	      	      	<b class="text-primary">Mark</b><br>
-	      	      	Kelompok tani makmur - <b>Yogyakarta</b>
-	      	      </td>
-	      	      <td class="align-middle">120 Kg</td>
-	      	      <td class="align-middle">3 Mei 2017</td>
-	      	      <td class="align-middle">12 Agustus 2017</td>
-	      	    </tr>
-	      	    <tr>
-	      	      <th scope="row" class="align-middle">2</th>
-	      	      <td>
-	      	      	<b class="text-primary">Mark</b><br>
-	      	      	Kelompok tani makmur - <b>Yogyakarta</b>
-	      	      </td>
-	      	      <td class="align-middle">120 Kg</td>
-	      	      <td class="align-middle">3 Mei 2017</td>
-	      	      <td class="align-middle">12 Agustus 2017</td>
-	      	    </tr>
-	      	    <tr>
-	      	      <th scope="row" class="align-middle">3</th>
-	      	      <td>
-	      	      	<b class="text-primary">Mark</b><br>
-	      	      	Kelompok tani makmur - <b>Yogyakarta</b>
-	      	      </td>
-	      	      <td class="align-middle">120 Kg</td>
-	      	      <td class="align-middle">3 Mei 2017</td>
-	      	      <td class="align-middle">12 Agustus 2017</td>
-	      	    </tr>
+	      	  	@foreach (\App\Harvest::where('on_sale', 1)->get() as $harvest)
+	      	  		<tr>
+	      	  		  <th scope="row" class="align-middle">1</th>
+	      	  		  <td>
+	      	  		  	<b class="text-primary">{{ $harvest->onfarm->user->name }}</b><br>
+	      	  		  	{{ $harvest->onfarm->user->poktan->name }} - <b>Yogyakarta</b>
+	      	  		  </td>
+	      	  		  <td class="align-middle">{{ $harvest->ending_stock }} Kg</td>
+	      	  		  <td class="align-middle">{{ $harvest->harvested_at->format('j F Y') }} </td>
+	      	  		  <td class="align-middle">{{ $harvest->onfarm->planted_at->format('j F Y') }}</td>
+	      	  		</tr>
+	      	  	@endforeach
 	      	  </tbody>
 	      	</table>
 	    	</div>
