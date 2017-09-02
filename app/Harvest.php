@@ -52,6 +52,11 @@ class Harvest extends Model
 		return $stock;
 	}
 
+	public static function readyStock()
+	{
+		return static::where('on_sale', 1)->where('ending_stock', '<>', 0)->get();
+	}
+
 	public function stockPercent()
 	{
 		return $this->ending_stock/$this->initial_stock*100;
