@@ -13,6 +13,14 @@ class Transaction extends Model
     	return $this->hasMany('App\TransactionDetail');
     }
 
+    public function status(){
+        return $this->belongsTo('App\Status');
+    }
+
+    /**
+    * CUSTOM METHOD SECTION
+    */
+
     public function addDetail($harvestId, $quantity)
     {
     	return $this->transaction_detail()->create([
@@ -21,10 +29,6 @@ class Transaction extends Model
     		'price' => \App\Price::latest()->first()->nominal,
 		]);
     }
-
-    /**
-	* CUSTOM METHOD SECTION
-    */
 
     public static function newTransaction($request)
     {
@@ -51,6 +55,21 @@ class Transaction extends Model
 				return $transaction->load('transaction_detail.harvest');
 			}
 		}
+    }
+
+    public function getTotalQuantityAttribute()
+    {
+        return $this->transaction_detail->sum('quantity');
+    }
+
+    public function getTotalPaymentAttribute()
+    {
+        return $this->transaction_detail->sum('total_price');
+    }
+
+    public function formattedTotalPayment()
+    {
+        return number_format($this->total_payment, 0, ',', '.');
     }
 
     protected $guarded = ['id'];

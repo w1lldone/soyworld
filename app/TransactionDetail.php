@@ -14,6 +14,11 @@ class TransactionDetail extends Model
 	public function transaction(){
 		return $this->belongsTo('App\Transaction');
 	}
+
+	public function getTotalPriceAttribute()
+	{
+		return $this->price*$this->quantity;
+	}
 	
 	protected $guarded = ['id'];   
 }
