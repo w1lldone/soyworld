@@ -11,7 +11,7 @@ class TransactionController extends Controller
     function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:create,App\Transaction')->only('create');
+        // $this->middleware('can:create,App\Transaction')->only('create');
     }
 
     public function validator($request)

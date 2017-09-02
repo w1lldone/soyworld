@@ -30,7 +30,7 @@ class TransactionPolicy
      */
     public function create(User $user)
     {
-        return $user->privilage_id == 4;
+        return $user->privilage_id == 4 && !$user->hasActiveTrans();
     }
 
     /**

@@ -59,6 +59,9 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\Harvest', 'App\Onfarm');
     }
 
+    public function transaction(){
+        return $this->hasMany('App\Transaction');
+    }
 
     /*
     * CUSTOM METHOD SECTION
@@ -94,5 +97,10 @@ class User extends Authenticatable
     public function getSupplier()
     {
         return $this->isSuperadmin() ? \App\Supplier::all() : $this->poktan->supplier;
+    }
+
+    public function hasActiveTrans()
+    {
+        return !empty($this->transaction()->where('status_id', 1)->first());
     }
 }
