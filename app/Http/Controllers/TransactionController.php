@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
     function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:create,App\Transaction')->only('create');
+    }
+
+    public function validator($request)
+    {
+        $max = \App\Harvest::readyStock()->sum('ending_stock');
+
+        return Validator::make($request, [
+            'quantity' => "required|numeric|max:$max",
+            'delivered_to' => "required|string",
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +51,9 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        return Transaction::newTransaction($request);
     }
 
     /**
