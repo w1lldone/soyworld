@@ -30,7 +30,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = auth()->user()->transaction;
+        $transactions = auth()->user()->transaction()->latest()->get();
         return view('transaction.index', compact('transactions'));
     }
 
