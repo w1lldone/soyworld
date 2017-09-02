@@ -20,7 +20,8 @@
 	<section class="forms">
 		<div class="container-fluid">
 			<div class="row">
-				{{-- HORIZONTAL FORM --}}
+			@can('create', \App\Transaction::class)
+			  {{-- HORIZONTAL FORM --}}
 				<div class="col-md-8 offset-md-2">
 					@include('layouts.alerts')
 					<div class="card">
@@ -71,6 +72,17 @@
 						</div>
 					</div>
 				</div>
+			@else
+			  <div class="col-md-8 offset-md-2">
+			  	<div class="text-center p-4 text-muted">
+			  		<i class="fa fa-exclamation fa-5x my-4"></i>
+			  		<h2 >Tidak dapat melakukan pembelian</h2>
+			  		<span>Anda memiliki transaksi aktif. Mohon selesaikan transaksi terlebih dahulu.</span>
+			  		<a href="/transaction" class="btn btn-primary btn-round my-4">Lihat transaksi</a>
+			  	</div>
+			  </div>
+			@endcan
+				
 			</div>
 		</div>
 	</section>
