@@ -34,6 +34,8 @@ class Transaction extends Model
     		'delivered_to' => $request->delivered_to, 
 		]);
 
+        $transaction->update(['code' => $transaction->user_id.$transaction->id.$transaction->created_at->format('dmy')]);
+
 		foreach (\App\Harvest::readyStock() as $stock) {
 			if ($request->quantity > $stock->ending_stock) {
 				$transaction->addDetail($stock->id, $stock->ending_stock);
