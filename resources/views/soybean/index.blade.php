@@ -1,20 +1,21 @@
 @extends('layouts.master')
 
-@section('content')
-<!-- Page Header-->
-<header class="page-header" style="box-shadow: none">
-  <div class="container-fluid">
-    {{-- <h2 class="no-margin-bottom">Daftar stok kedelai</h2> --}}
-  </div>
-</header>
+@section('new_styles')
+	<style type="text/css">
+		.page {
+			background: white !important;
+		}
+	</style>
+@endsection
 
+@section('content')
 <div class="content-wrapper">
 	<!-- Dashboard Counts Section-->
 	<section class="dashboard-counts p-0" style="background: white">
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-12">
-	        @include('layouts.alerts')
+				  <h3 class="text-fade mb-3">Kedelai</h3>
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar kedelai Onfarm dan Pasca panen</h1>
 	        <div class="text-muted">
 	          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> 42 Petani</span>

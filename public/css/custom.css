@@ -11,7 +11,8 @@
 }
 
 .content-wrapper {
-	min-height: calc(100% - 102px);
+  /*min-height: calc(100% - 102px);*/
+	min-height: calc(100% - 35px);
 }
 
 button.logout {
@@ -233,4 +234,9 @@ a.text {
   background-color: #eee;
   background-image: none;
   border-color: #2aabd2;
+}
+
+/*TEXT FADE*/
+.text-fade {
+  color: #aaa !important;
 }

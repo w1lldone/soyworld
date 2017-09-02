@@ -1,20 +1,21 @@
 @extends('layouts.master')
 
-@section('content')
-<!-- Page Header-->
-<header class="page-header" style="box-shadow: none">
-  <div class="container-fluid">
-    {{-- <h2 class="no-margin-bottom">Daftar stok kedelai</h2> --}}
-  </div>
-</header>
+@section('new_styles')
+	<style type="text/css">
+		.page {
+			background: white !important;
+		}
+	</style>
+@endsection
 
+@section('content')
 <div class="content-wrapper">
 	<!-- Dashboard Counts Section-->
-	<section class="dashboard-counts p-0" style="background: white">
+	<section class="dashboard-counts p-0">
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-12">
-	        @include('layouts.alerts')
+		      <h3 class="text-fade mb-3">Transaksi</h3>
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar transaksi pembelian kedelai</h1>
 	        <div class="text-muted">
 	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Total pembelian kedelai"><i class="fa fa-balance-scale mr-2"></i> {{ $transactions->sum('total_quantity') }} Kg</span>
@@ -44,6 +45,7 @@
 			      	      <th>Jumlah kedelai</th>
 			      	      <th class="hidden-sm-down">Total pembayaran</th>
 			      	      <th>Status</th>
+			      	      <th>Tindakan</th>
 			      	    </tr>
 			      	  </thead>
 			      	  <tbody>
@@ -57,6 +59,9 @@
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
 			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>
 			      	  		  <td class="align-middle"><span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%">{{ $transaction->status->name }}</span></td>
+			      	  		  <td class="align-middle">
+			      	  		  	<a class="btn btn-outline-info" href="/transaction/{{ $transaction->id }}"><i class="fa fa-info"></i></a>
+			      	  		  </td>
 			      	  		</tr>
 			      	  	@endforeach
 			      	  </tbody>
