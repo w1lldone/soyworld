@@ -15,10 +15,10 @@
 	    <div class="row">
 	      <div class="col-12">
 	        @include('layouts.alerts')
-	        <h1 class="text-light" style="font-size: 2rem;">Daftar kedelai Onfarm dan Pasca panen</h1>
+	        <h1 class="text-light" style="font-size: 2rem;">Daftar transaksi pembelian kedelai</h1>
 	        <div class="text-muted">
-	          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> Total pembelian: {{ $transactions->sum('total_quantity') }} Kg</span>
-	          <span class="pr-4"> <i class="fa fa-envira mr-3"></i> Panen terakhir: 7 Agustus 2017</span>
+	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Total pembelian kedelai"><i class="fa fa-balance-scale mr-2"></i> {{ $transactions->sum('total_quantity') }} Kg</span>
+	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Total nilai transaksi"> <i class="fa fa-credit-card mr-2"></i> Rp. {{ number_format($transactions->sum('total_payment'), 0, ',', '.') }}</span>
 	        </div>
 	      </div>
 	    </div>

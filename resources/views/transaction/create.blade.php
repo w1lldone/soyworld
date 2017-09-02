@@ -77,7 +77,7 @@
 			  	<div class="text-center p-4 text-muted">
 			  		<i class="fa fa-exclamation fa-5x my-4"></i>
 			  		<h2 >Tidak dapat melakukan pembelian</h2>
-			  		<span>Anda memiliki transaksi aktif. Mohon selesaikan transaksi terlebih dahulu.</span>
+			  		<span>Anda memiliki transaksi pending. Mohon selesaikan transaksi terlebih dahulu.</span>
 			  		<a href="/transaction" class="btn btn-primary btn-round my-4">Lihat transaksi</a>
 			  	</div>
 			  </div>

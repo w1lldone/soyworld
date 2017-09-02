@@ -16,9 +16,9 @@
 	      <div class="col-12">
 	        @include('layouts.alerts')
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar kedelai Onfarm dan Pasca panen</h1>
-	        <div class="inline text-muted">
-	          <i class="fa fa-user-o"></i><span class="pl-3 pr-4">42 Petani</span>
-	          <i class="fa fa-envira"></i><span class="pl-3 pr-4">Panen terakhir: 7 Agustus 2017</span>
+	        <div class="text-muted">
+	          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> 42 Petani</span>
+	          <span class="pr-4"><i class="fa fa-envira mr-3"></i> Panen terakhir: 7 Agustus 2017</span>
 	        </div>
 	      </div>
 	    </div>
@@ -26,8 +26,8 @@
 	    	<div class="col-12">
 			    @include('soybean.navpill')
 			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
-				    <h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::where('on_sale', 1)->get()->sum('ending_stock') }} Kg</b></span></h2>
-				    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. 8000/Kg</b></span></h2>
+				    <h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
+				    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. {{ \App\Price::latestPrice() }}/Kg</b></span></h2>
 				    <a class="btn btn-info ml-auto" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
 {{-- 				    <form class="ml-auto">
 				      <div class="input-group">
@@ -50,7 +50,7 @@
 		      	    </tr>
 		      	  </thead>
 		      	  <tbody>
-		      	  	@foreach (\App\Harvest::where('on_sale', 1)->get() as $harvest)
+		      	  	@foreach (\App\Harvest::readyStock() as $harvest)
 		      	  		<tr>
 		      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 		      	  		  <td>
