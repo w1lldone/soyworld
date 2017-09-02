@@ -131,3 +131,5 @@ Route::resource('postharvest', 'PostharvestController');
 Route::group(['prefix' => 'soybean'], function(){
 	Route::get('/', 'SoybeanController@index');
 });
+
+Route::resource('transaction', 'TransactionController');
