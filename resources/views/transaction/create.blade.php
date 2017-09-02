@@ -30,7 +30,14 @@
 						<div class="card-body">
 							<form class="form-horizontal" method="POST" action="/transaction">
 								{{ csrf_field() }}
-								{{-- INPUT QUANTITY --}}
+                {{-- BADGE --}}
+                <div class="row">
+                  <div class="col-sm-9 offset-sm-3 d-flex">
+                    <h2 class="px-1"><span class="badge badge-primary p-2 text-white">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
+                    <h2 class="px-1"><span class="badge badge-success p-2 text-white">Harga <b>Rp. 8000/Kg</b></span></h2>
+                  </div>
+                </div>
+                {{-- INPUT QUANTITY --}}
 								<div class="form-group row {{ $errors->has('quantity') ? ' has-danger' : '' }}">
 									<label class="col-sm-3 form-control-label">Jumlah kedelai</label>
 									<div class="col-sm-9">

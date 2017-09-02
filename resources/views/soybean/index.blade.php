@@ -28,7 +28,6 @@
 			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
 				    <h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::where('on_sale', 1)->get()->sum('ending_stock') }} Kg</b></span></h2>
 				    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. 8000/Kg</b></span></h2>
-				    <br>
 				    <a class="btn btn-info ml-auto" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
 {{-- 				    <form class="ml-auto">
 				      <div class="input-group">
