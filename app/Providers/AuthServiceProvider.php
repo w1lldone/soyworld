@@ -20,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Supplier' => 'App\Policies\SupplierPolicy',
         'App\Postharvest' => 'App\Policies\PostharvestPolicy',
         'App\Harvest' => 'App\Policies\HarvestPolicy',
+        'App\Transaction' => 'App\Policies\TransactionPolicy',
     ];
 
     /**
