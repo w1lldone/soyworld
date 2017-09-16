@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Harvest extends Model
 {
 
+	/*RELATION SECTION*/
 	public function postharvest(){
 		return $this->hasMany('App\Postharvest');
 	}
@@ -15,6 +16,11 @@ class Harvest extends Model
 		return $this->belongsTo('App\Onfarm');
 	}
 
+	public function transaction_detail(){
+		return $this->hasMany('App\TransactionDetail');
+	}
+
+	/*CUSTOM METHOD SECTION*/
 	public function addPostharvest($request)
 	{
 		return $this->postharvest()->create([
