@@ -118,18 +118,18 @@
 	          	      </div>
 	          	    @else
 	          	      @foreach ($harvest->postharvest as $postharvest)
-          	            <a href="/postharvest/{{ $postharvest->id }}" class="item-link">
-          	          	  <div class="item d-flex justify-content-between">
-          	          	    <div class="info d-flex">
-          	          	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
-          	          	      <div class="title">
-          	          	        <h5>{{ $postharvest->name }}</h5>
-          	          	        <p>Biaya: Rp. {{ $postharvest->cost }}</p>
-          	          	      </div>
-          	          	    </div>
-          	          	    <div class="date text-right"><strong>24</strong><span>May</span></div>
-          	          	  </div>
-          	          	</a>
+	      	            <a href="/postharvest/{{ $postharvest->id }}" class="item-link">
+	      	          	  <div class="item d-flex justify-content-between">
+	      	          	    <div class="info d-flex">
+	      	          	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
+	      	          	      <div class="title">
+	      	          	        <h5>{{ $postharvest->name }}</h5>
+	      	          	        <p>Biaya: Rp. {{ $postharvest->cost }}</p>
+	      	          	      </div>
+	      	          	    </div>
+	      	          	    <div class="date text-right"><strong>24</strong><span>May</span></div>
+	      	          	  </div>
+	      	          	</a>
 	          	      @endforeach
 	          	    @endif
 	          	  </div>
@@ -148,20 +148,20 @@
 	          	    </form>
 	          	  </div>
 	          	  <div class="card-body no-padding">
-	          	  	@if (empty($harvest->transaction_detail))
+	          	  	@if ($harvest->transaction_detail()->count() == 0)
   	  	    	      <div class="text-muted text-center py-3">
   	  	    	        <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
   	  	    	        <p class="text-light m-0">Belum ada penjualan</p>
   	  	    	      </div>
 	          	  	@else
-	          	  	  @foreach ($harvest->postharvest as $postharvest)
+	          	  	  @foreach ($harvest->transaction_detail as $sale)
 	          	  	  	<a href="/postharvest/1/view" class="item-link">
 		          	  	  <div class="item d-flex justify-content-between">
 		          	  	    <div class="info d-flex">
 		          	  	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
 		          	  	      <div class="title">
-		          	  	        <h5>Rp. 50.000</h5>
-		          	  	        <p>PT. Tahu tuna pacitan</p>
+		          	  	        <h5>{{ $sale->formattedTotalPrice() }}</h5>
+		          	  	        <p>{{ $sale->transaction->user->name }}</p>
 		          	  	      </div>
 		          	  	    </div>
 		          	  	    <div class="date text-right"><strong>24</strong><span>May</span></div>

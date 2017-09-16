@@ -81,11 +81,11 @@
                       @endif
                       <td>{{ $harvest->harvested_at->format('j F Y') }}</td>
                       <td>
-                        @if (empty($harvest->ending_stock))
+                        @if (empty($harvest->ending_stock) && $harvest->on_sale == 0)
                           <button data-toggle="modal" data-target="#tambahStok{{$harvest->id}}" class="round-link btn">Tambah stok</button>
                           @include('harvest.modal')
                         @else
-                          {{ $harvest->ending_stock }}
+                          {{ $harvest->ending_stock }} Kg
                         @endif
                       </td>
                       <td>{{ $harvest->sale_status }}</td>
