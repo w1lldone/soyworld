@@ -133,3 +133,4 @@ Route::group(['prefix' => 'soybean'], function(){
 });
 
 Route::resource('transaction', 'TransactionController');
+Route::resource('sales', 'SalesController', ['parameters' => ['sales' => 'transaction']]);

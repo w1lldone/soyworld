@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class SalesController extends Controller
 {
     function __construct()
     {
@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function index()
     {
         $transactions = Transaction::latest()->get();
-        return view('order.index', compact('transactions'));
+        return view('sales.index', compact('transactions'));
     }
 
     /**
@@ -51,7 +51,7 @@ class OrderController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        return view('order.view', compact('transaction'));
+        return view('sales.view', compact('transaction'));
     }
 
     /**
@@ -74,7 +74,23 @@ class OrderController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $transaction->update(request(['status_id']));
+
+        switch ($request->status_id) {
+            case 2:
+                $status = 'Pesanan diproses!';
+                break;
+
+            case 3:
+                $status = 'Pesanan selesai!';   
+                break;
+            
+            default:
+                $status = 'Pesanan dibatalkan';
+                break;
+        }
+
+        return redirect('/sales')->with('success', $status);
     }
 
     /**
