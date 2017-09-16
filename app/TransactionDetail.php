@@ -19,6 +19,11 @@ class TransactionDetail extends Model
 	{
 		return $this->price*$this->quantity;
 	}
+
+	public function formattedTotalPrice()
+	{
+		return number_format($this->total_price, 0, ',', '.');
+	}
 	
 	protected $guarded = ['id'];   
 }

@@ -15,9 +15,9 @@
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-12">
+	      	<!-- BREADCRUMB -->
 		      <div class="breadcrumb text-fade">
-		      	<a class="breadcrumb-item h3" href="/transaction">Transaksi</a>
-		      	<span class="breadcrumb-item h3 active">Detail</span>
+		      	<span class="breadcrumb-item h3 active">Transaksi</span>
 		      </div>
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar transaksi pembelian kedelai</h1>
 	        <div class="text-muted">

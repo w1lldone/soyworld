@@ -65,7 +65,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        return view('transaction.view', compact('transaction'));
     }
 
     /**
