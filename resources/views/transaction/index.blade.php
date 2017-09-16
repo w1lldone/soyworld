@@ -15,7 +15,10 @@
 	  <div class="container">
 	    <div class="row">
 	      <div class="col-12">
-		      <h3 class="text-fade mb-3">Transaksi</h3>
+		      <div class="breadcrumb text-fade">
+		      	<a class="breadcrumb-item h3" href="/transaction">Transaksi</a>
+		      	<span class="breadcrumb-item h3 active">Detail</span>
+		      </div>
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar transaksi pembelian kedelai</h1>
 	        <div class="text-muted">
 	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Total pembelian kedelai"><i class="fa fa-balance-scale mr-2"></i> {{ $transactions->sum('total_quantity') }} Kg</span>
