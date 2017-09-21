@@ -27,7 +27,7 @@ class TransactionDetail extends Model
             {
                 $query2->where('user_id', auth()->id());
             });
-        })->latest();
+        });
 	}
 
 	public function getTotalPriceAttribute()

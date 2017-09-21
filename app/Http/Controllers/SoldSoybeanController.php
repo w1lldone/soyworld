@@ -19,7 +19,25 @@ class SoldSoybeanController extends Controller
      */
     public function index()
     {
-        $sales = Detail::salesHistory()->latest()->get();
+        $sales = Detail::salesHistory();
+
+        if (!empty(request('month'))) {
+            $month = request('month');
+            $sales = $sales->where('created_at', 'like', "%$month%");
+        }
+
+        switch (request('sort')) {
+            case 'oldest':
+                $sales = $sales->oldest();
+                break;
+            
+            default:
+                $sales = $sales->latest();
+                break;
+        }
+
+        $sales = $sales->oldest()->get();
+
         $sold = $sales->sum('quantity');
         $income = number_format($sales->sum('total_price'), 0, ',', '.');
 

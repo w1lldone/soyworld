@@ -49,8 +49,20 @@
   	  <div class="row">
   	    <div class="col-12">
   	      <div class="card">
-  	        <div class="card-close">
-  	        </div>
+            <div class="card-body">
+              <form class="form-inline">
+                <label class="mr-sm-2" for="sort">Urutkan</label>
+                <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort">
+                  <option value="latest">Terbaru</option>
+                  <option value="oldest">Terlama</option>
+                </select>
+
+                <label class="mr-sm-2" for="month">Bulan</label>
+                <input name="month" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{ request('month') }}" type="month" id="month">
+
+                <button type="submit" class="btn btn-primary ml-auto">Submit</button>
+              </form>
+            </div>
   	        <div class="card-body table-responsive">
   	          <table class="table table-hover">
   	            <thead>
@@ -79,4 +91,12 @@
   	</div>
   </section>
 </div>
+@endsection
+
+@section('script')
+  <script type="text/javascript">
+    $(function(){
+      $("#sort").val("{{ request('sort') }}");
+    });
+  </script>
 @endsection
