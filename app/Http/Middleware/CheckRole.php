@@ -15,7 +15,7 @@ class CheckRole
      */
     public function handle($request, Closure $next, $role)
     {
-        if (!$request->user()->hasRole($role) || !$request->user()->isSuperadmin()) {
+        if (!$request->user()->hasRole($role) && !$request->user()->isSuperadmin()) {
             return redirect('home')->with('danger', 'Maaf anda tidak bisa mengakses halaman tersebut');
         }
         return $next($request);

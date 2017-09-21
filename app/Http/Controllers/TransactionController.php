@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'role:industri']);
         // $this->middleware('can:create,App\Transaction')->only('create');
     }
 

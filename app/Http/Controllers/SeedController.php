@@ -12,6 +12,7 @@ class SeedController extends Controller
     function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:petani');
     }
 
     protected function validator($request)

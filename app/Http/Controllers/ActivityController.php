@@ -12,7 +12,7 @@ class ActivityController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'role:petani']);
     }
 
     /**

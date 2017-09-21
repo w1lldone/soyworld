@@ -11,7 +11,7 @@ class PoktanController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'role:petani']);
     }
 
     protected function validator($request)

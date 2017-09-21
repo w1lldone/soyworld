@@ -8,6 +8,11 @@ use App\Harvest;
 class StockController extends Controller
 {
 
+	function __construct()
+	{
+		$this->middleware(['auth', 'role:petani']);
+	}
+
 	public function store(Request $request)
 	{
 		$this->validate($request, [

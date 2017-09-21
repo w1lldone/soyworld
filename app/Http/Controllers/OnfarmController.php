@@ -9,7 +9,7 @@ class OnfarmController extends Controller
 {
 	function __construct()
 	{
-		$this->middleware('auth');
+		$this->middleware(['auth', 'role:petani']);
 	}
 
     public function index()
