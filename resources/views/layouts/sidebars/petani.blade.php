@@ -22,6 +22,6 @@
   <ul class="list-unstyled">
     <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
     <li> <a href="/harvest"> <i class="fa fa-archive"></i>Pasca panen </a></li>
-    <li> <a href="#"> <i class="icon-form"></i>Gudang </a></li>
+    <li> <a href="/sold"> <i class="fa fa-shopping-cart"></i>Penjualan </a></li>
   </ul>
 </nav>

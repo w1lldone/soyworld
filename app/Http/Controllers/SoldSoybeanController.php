@@ -19,15 +19,11 @@ class SoldSoybeanController extends Controller
      */
     public function index()
     {
-        $detail = Detail::whereHas('harvest', function($query1)
-        {
-            $query1->whereHas('onfarm', function($query2)
-            {
-                $query2->where('user_id', auth()->id());
-            });
-        })->latest()->get();
+        $sales = Detail::salesHistory()->latest()->get();
+        $sold = $sales->sum('quantity');
+        $income = number_format($sales->sum('total_price'), 0, ',', '.');
 
-        return $detail;
+        return view('sold.index', compact(['sales', 'sold', 'income']));
     }
 
     /**
