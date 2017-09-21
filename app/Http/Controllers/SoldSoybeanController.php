@@ -30,6 +30,10 @@ class SoldSoybeanController extends Controller
             case 'oldest':
                 $sales = $sales->oldest();
                 break;
+
+            case 'expensive':
+                $sales = $sales->orderBy('quantity', 'desc');
+                break;
             
             default:
                 $sales = $sales->latest();

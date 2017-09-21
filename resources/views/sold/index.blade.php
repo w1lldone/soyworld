@@ -55,6 +55,7 @@
                 <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort">
                   <option value="latest">Terbaru</option>
                   <option value="oldest">Terlama</option>
+                  <option value="expensive">Termahal</option>
                 </select>
 
                 <label class="mr-sm-2" for="month">Bulan</label>
