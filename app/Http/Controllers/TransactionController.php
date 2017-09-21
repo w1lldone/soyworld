@@ -54,7 +54,9 @@ class TransactionController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        return Transaction::newTransaction($request);
+        $transaction = Transaction::newTransaction($request);
+
+        return redirect('/transaction')->with('success', 'Berhasil melakukan transaksi!');
     }
 
     /**

@@ -28,6 +28,7 @@
 	    </div>
 	    <div class="row">
 	    	<div class="col-12">
+	    		@include('layouts.alerts')
 			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
 				    <a class="btn btn-info" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
 				    <form class="ml-auto">
