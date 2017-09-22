@@ -82,7 +82,7 @@ class Harvest extends Model
 	{
 		return number_format($this->totalCost(), 0, ',', '.');
 	}
-    
+
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
 }

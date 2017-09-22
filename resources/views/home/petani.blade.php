@@ -21,9 +21,9 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-green"><i class="icon-user"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-green">Rp. 0</span>
+	          	<span class="badge bg-green">Rp. {{ auth()->user()->thisMonthIncome() }}</span>
 	          	<br>
-	          	<span>Profit bulan ini</span>
+	          	<span>Pemasukan bulan ini</span>
 	          </div>
 	        </div>
 	      </div>
@@ -32,7 +32,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-orange"><i class="icon-bill"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-orange">0 Kg</span>
+	          	<span class="badge bg-orange">{{ auth()->user()->thisMonthHarvest() }} Kg</span>
 	          	<br>
 	          	<span>Panen bulan ini</span>
 	          </div>
@@ -43,7 +43,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-violet"><i class="icon-check"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-violet">0 Kg</span>
+	          	<span class="badge bg-violet">{{ \App\Harvest::onSaleStock() }} Kg</span>
 	          	<br>
 	          	<span>Stok gudang</span>
 	          </div>
@@ -104,10 +104,10 @@
           	{{-- COST --}}
             <div class="articles card">
               <div class="card-header d-flex align-items-center bg-orange">
-                <h2 class="h3">Pengeluaran terakhir</h2>
+                <h2 class="h3">Penjualan terakhir</h2>
               </div>
               <div class="card-body">
-                @if (auth()->user()->onfarm_cost->isEmpty())
+                @if (empty(auth()->user()->latestSales()))
                   <div class="pt-2 pb-4 text-center">
                     <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
                     <h4 class="text-light text-muted">Belum ada pengeluaran</h4>
@@ -116,10 +116,11 @@
                 <!-- ONFARM LIST -->
                 <table class="table table-hover mb-0">
                 	<tbody>
-		                @foreach (auth()->user()->onfarm_cost as $cost)
+		                @foreach (auth()->user()->latestSales() as $sale)
 			                <tr>
-    		                  <td><a href="/onfarmcost/{{$cost->id}}/view">{{ $cost->name }} - {{ $cost->onfarm->name }}</a></td>
-    		                  <td>Rp. {{ $cost->formattedPrice() }}</td>
+    		                  <td>{{ $sale->transaction->user->name }}</td>
+    		                  <td>{{ $sale->quantity }} Kg</td>
+    		                  <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
 			                </tr>
 		                @endforeach
                 	</tbody>

@@ -103,4 +103,22 @@ class User extends Authenticatable
     {
         return !empty($this->transaction()->where('status_id', 1)->first());
     }
+
+    public function thisMonthIncome()
+    {
+        $date = date('Y-m');
+        $income = \App\TransactionDetail::salesHistory()->where('created_at', 'like', "%$date%")->get()->sum('total_price');
+        return number_format($income, 0, ',', '.');
+    }
+
+    public function thisMonthHarvest()
+    {
+       $date = date('Y-m');
+       return $this->harvest()->where('harvested_at', 'like', "%$date%")->get()->sum('initial_stock');
+    }
+
+    public function latestSales()
+    {
+        return \App\TransactionDetail::salesHistory()->latest()->take(5)->get();
+    }
 }
