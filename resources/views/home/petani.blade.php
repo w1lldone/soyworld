@@ -100,8 +100,10 @@
                 </table>
               </div>
             </div>
-          
-          	{{-- COST --}}
+          </div>
+          {{-- PROFILE --}}
+          <div class="col-lg-5">
+          	{{-- SALES --}}
             <div class="articles card">
               <div class="card-header d-flex align-items-center bg-orange">
                 <h2 class="h3">Penjualan terakhir</h2>
@@ -110,7 +112,7 @@
                 @if (empty(auth()->user()->latestSales()))
                   <div class="pt-2 pb-4 text-center">
                     <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
-                    <h4 class="text-light text-muted">Belum ada pengeluaran</h4>
+                    <h4 class="text-light text-muted">Belum ada penjualan</h4>
                   </div>
                 @endif
                 <!-- ONFARM LIST -->
@@ -118,18 +120,15 @@
                 	<tbody>
 		                @foreach (auth()->user()->latestSales() as $sale)
 			                <tr>
-    		                  <td>{{ $sale->transaction->user->name }}</td>
-    		                  <td>{{ $sale->quantity }} Kg</td>
-    		                  <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
+    		                  <td>{{ $sale->transaction->user->name }} <br> <small>{{ $sale->created_at->format('j F Y') }}</small></td>
+    		                  <td>Rp. {{ $sale->formattedTotalPrice() }} <br> <b class="text-muted">{{ $sale->quantity}} Kg</b></td>
 			                </tr>
 		                @endforeach
                 	</tbody>
                 </table>
               </div>
             </div>
-          </div>
-          {{-- PROFILE --}}
-          <div class="col-lg-5">
+          {{-- 
 	          <div class="client card">
 	            <div class="card-close">
 	              <div class="dropdown">
@@ -156,7 +155,7 @@
 	              <div class="client-social d-flex justify-content-between"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a><a href="#" target="_blank"><i class="fa fa-twitter"></i></a><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a><a href="#" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></div>
 	            </div>
 	          </div>
-	        </div>
+	         --}}</div>
         </div>
       </div>
     </section>
