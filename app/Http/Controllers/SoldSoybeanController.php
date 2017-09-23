@@ -75,9 +75,9 @@ class SoldSoybeanController extends Controller
      * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(Detail $detail)
     {
-        //
+        return view('sold.view', compact('detail'));
     }
 
     /**

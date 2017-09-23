@@ -44,6 +44,7 @@ class SoybeanSold extends Notification
     {
         return [
             'message' => 'Kedelai anda dibeli',
+            'icon' => 'fa fa-shopping-cart bg-green',
             'buyer' => $this->detail->transaction->user->name,
             'action' => '/sold/'.$this->detail->id,
         ];

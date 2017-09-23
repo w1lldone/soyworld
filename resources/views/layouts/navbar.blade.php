@@ -35,7 +35,7 @@
               @foreach (auth()->user()->notifications as $notification)
                 <li><a rel="nofollow" href="{{ $notification->data['action'] }}" class="dropdown-item"> 
                   <div class="notification">
-                    <div class="notification-content"><i class="fa fa-envelope bg-green"></i>{{ $notification->data['message'] }}</div>
+                    <div class="notification-content"><i class="fa fa-shopping-cart bg-green"></i>{{ $notification->data['message'] }}</div>
                     <div class="notification-time"><small>{{ $notification->created_at->diffForHumans() }}</small></div>
                   </div></a>
                 </li>
