@@ -41,6 +41,9 @@ class Transaction extends Model
             $user = $detail->harvest->onfarm->user;
             $user->notify(new \App\Notifications\SoybeanSold($detail));
         }
+        foreach (\App\Privilage::find(1)->user as $user) {
+            $user->notify(new \App\Notifications\NewTransaction($this));
+        }
     }
 
     public function addDetail($harvestId, $quantity)

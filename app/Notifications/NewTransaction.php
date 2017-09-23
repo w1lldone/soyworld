@@ -7,20 +7,19 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SoybeanSold extends Notification
+class NewTransaction extends Notification
 {
     use Queueable;
 
-    protected $detail;
-
+    public $transaction;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($detail)
+    public function __construct($transaction)
     {
-        $this->detail = $detail;
+        $this->transaction = $transaction;
     }
 
     /**
@@ -34,7 +33,7 @@ class SoybeanSold extends Notification
         return ['database'];
     }
 
-     /**
+    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -43,9 +42,9 @@ class SoybeanSold extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Kedelai anda dibeli',
+            'message' => 'Pesanan baru',
             'icon' => 'fa fa-shopping-cart bg-green',
-            'action' => '/sold/'.$this->detail->id,
+            'action' => '/sales/'.$this->transaction->id,
         ];
     }
 }
