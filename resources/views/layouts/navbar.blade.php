@@ -33,7 +33,7 @@
                 </div>
               @endif
               @foreach (auth()->user()->unreadNotifications as $notification)
-                <li><a rel="nofollow" href="/notification/{{ $notification->id }}" class="dropdown-item"> 
+                <li><a rel="nofollow" href="/notifications/{{ $notification->id }}" class="dropdown-item"> 
                   <div class="notification">
                     <div class="notification-content"><i class="fa fa-shopping-cart bg-green"></i>{{ $notification->data['message'] }}</div>
                     <div class="notification-time"><small>{{ $notification->created_at->diffForHumans() }}</small></div>
@@ -60,7 +60,7 @@
                     <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
                     <div class="notification-time"><small>10 minutes ago</small></div>
                   </div></a></li> --}}
-              <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
+              <li><a rel="nofollow" href="/notifications" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
             </ul>
           </li>
           <!-- Messages                        -->

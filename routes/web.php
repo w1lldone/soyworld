@@ -136,4 +136,7 @@ Route::resource('transaction', 'TransactionController');
 Route::resource('sales', 'SalesController', ['parameters' => ['sales' => 'transaction']]);
 Route::resource('sold', 'SoldSoybeanController', ['parameters' => ['sold' => 'detail']]);
 
-Route::get('/notification/{id}', 'NotificationController@show');
+Route::group(['prefix' => 'notifications'], function(){
+	Route::get('/', 'NotificationController@index');
+	Route::get('/{id}', 'NotificationController@show');
+});

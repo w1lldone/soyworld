@@ -245,3 +245,17 @@ a.text {
   cursor: hand;
   cursor: pointer;
 }
+
+/*Notification*/
+.notification-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px !important;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.notification-read {
+  opacity: 0.6;
+}
