@@ -25,6 +25,24 @@ class Transaction extends Model
     * CUSTOM METHOD SECTION
     */
 
+    public function cancelTransaction()
+    {
+        foreach ($this->transaction_detail as $detail) {
+            $detail->harvest()->update([
+                'ending_stock' => $detail->harvest->ending_stock+$detail->quantity,
+            ]);
+        }
+        $this->update(['status_id' => 4]);
+    }
+
+    public function sendSoldNotification()
+    {
+        foreach ($this->transaction_detail as $detail) {
+            $user = $detail->harvest->onfarm->user;
+            $user->notify(new \App\Notifications\SoybeanSold($detail));
+        }
+    }
+
     public function addDetail($harvestId, $quantity)
     {
     	return $this->transaction_detail()->create([

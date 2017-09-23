@@ -55,6 +55,7 @@ class TransactionController extends Controller
         $this->validator($request->all())->validate();
 
         $transaction = Transaction::newTransaction($request);
+        $transaction->sendSoldNotification();
 
         return redirect('/transaction')->with('success', 'Berhasil melakukan transaksi!');
     }

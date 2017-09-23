@@ -27,6 +27,10 @@ class TransactionDetail extends Model
             {
                 $query2->where('user_id', auth()->id());
             });
+        })
+        ->whereHas('transaction', function($query)
+        {
+        	$query->where('status_id', '<>', 4);
         });
 	}
 

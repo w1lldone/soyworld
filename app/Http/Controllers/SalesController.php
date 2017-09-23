@@ -74,19 +74,21 @@ class SalesController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        $transaction->update(request(['status_id']));
 
         switch ($request->status_id) {
             case 2:
                 $status = 'Pesanan diproses!';
+                $transaction->update(request(['status_id']));
                 break;
 
             case 3:
-                $status = 'Pesanan selesai!';   
+                $status = 'Pesanan selesai!';
+                $transaction->update(request(['status_id']));   
                 break;
             
             default:
                 $status = 'Pesanan dibatalkan';
+                $transaction->cancelTransaction();
                 break;
         }
 
