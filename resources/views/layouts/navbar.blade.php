@@ -32,7 +32,7 @@
                   <h4>Tidak ada notifikasi</h4>
                 </div>
               @endif
-              @foreach (auth()->user()->notifications as $notification)
+              @foreach (auth()->user()->unreadNotifications as $notification)
                 <li><a rel="nofollow" href="/notification/{{ $notification->id }}" class="dropdown-item"> 
                   <div class="notification">
                     <div class="notification-content"><i class="fa fa-shopping-cart bg-green"></i>{{ $notification->data['message'] }}</div>
