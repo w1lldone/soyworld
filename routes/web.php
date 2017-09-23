@@ -135,3 +135,5 @@ Route::group(['prefix' => 'soybean'], function(){
 Route::resource('transaction', 'TransactionController');
 Route::resource('sales', 'SalesController', ['parameters' => ['sales' => 'transaction']]);
 Route::resource('sold', 'SoldSoybeanController', ['parameters' => ['sold' => 'detail']]);
+
+Route::get('/notification/{id}', 'NotificationController@show');
