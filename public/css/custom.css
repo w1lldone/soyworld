@@ -240,3 +240,8 @@ a.text {
 .text-fade {
   color: #aaa !important;
 }
+
+.linked-row {
+  cursor: hand;
+  cursor: pointer;
+}

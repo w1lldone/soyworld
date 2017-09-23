@@ -76,7 +76,7 @@
   	            </thead>
                 <tbody>
                   @foreach ($sales as $sale)
-                    <tr>
+                    <tr class="linked-row" data-href="/sold/{{ $sale->id }}">
                       <td>{{ $sale->transaction->user->name }}</td>
                       <td>{{ $sale->quantity }} Kg</td>
                       <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
@@ -98,6 +98,10 @@
   <script type="text/javascript">
     $(function(){
       $("#sort").val("{{ request('sort') }}");
+    });
+
+    $(".linked-row").click(function() {
+        window.location = $(this).data("href");
     });
   </script>
 @endsection
