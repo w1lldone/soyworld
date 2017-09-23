@@ -24,9 +24,23 @@
 
         @if (auth()->check())
           <!-- Notifications-->
-          <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
+          <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">{{ auth()->user()->unreadNotifications()->count() }}</span></a>
             <ul aria-labelledby="notifications" class="dropdown-menu">
-              <li><a rel="nofollow" href="#" class="dropdown-item"> 
+              @if (auth()->user()->unreadNotifications()->count() == 0)
+                <div class="text-center text-muted" style="padding: 10px">
+                  <i class="fa fa-3x fa-bell-o mb-3"></i>
+                  <h4>Tidak ada notifikasi</h4>
+                </div>
+              @endif
+              @foreach (auth()->user()->notifications as $notification)
+                <li><a rel="nofollow" href="{{ $notification->data['action'] }}" class="dropdown-item"> 
+                  <div class="notification">
+                    <div class="notification-content"><i class="fa fa-envelope bg-green"></i>{{ $notification->data['message'] }}</div>
+                    <div class="notification-time"><small>{{ $notification->created_at->diffForHumans() }}</small></div>
+                  </div></a>
+                </li>
+              @endforeach
+              {{-- <li><a rel="nofollow" href="#" class="dropdown-item"> 
                   <div class="notification">
                     <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
                     <div class="notification-time"><small>4 minutes ago</small></div>
@@ -45,7 +59,7 @@
                   <div class="notification">
                     <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
                     <div class="notification-time"><small>10 minutes ago</small></div>
-                  </div></a></li>
+                  </div></a></li> --}}
               <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
             </ul>
           </li>
