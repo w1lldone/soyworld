@@ -15,7 +15,7 @@
           {{-- DATE INPUT --}}
           <div class="form-group">
               <label>Tanggal tanam - {{ $onfarm->name }}</label>
-              <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker" required>
+              <input data-provide="datepicker" data-date-format="yyyy-mm-dd" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker" required>
           </div>
           {{-- AREA INPUT --}}
           <div class="form-group">

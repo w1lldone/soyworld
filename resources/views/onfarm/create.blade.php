@@ -35,10 +35,10 @@
 						        <label class="col-sm-3 form-control-label">Petani</label>
 						        <div class="col-sm-9">
 						          <select name="input_user" class="form-control">
-	                                @foreach (\App\User::all() as $user)
-	                                	<option value="{{ $user->id }}">{{ $user->name }}</option>
-	                                @endforeach
-	                              </select>
+                        @foreach (\App\User::all() as $user)
+                        	<option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                      </select>
 						        </div>
 						      </div>
 					      @endif
@@ -63,7 +63,6 @@
 					          @endif
 					        </div>
 					      </div>
-
 					      <div class="form-group row">       
 					        <div class="col-sm-9 offset-sm-3">
 					          <input type="submit" value="Simpan" class="btn btn-primary">

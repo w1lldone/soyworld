@@ -59,7 +59,7 @@
                 </select>
 
                 <label class="mr-sm-2" for="month">Bulan</label>
-                <input name="month" class="form-control mb-2 mr-sm-2 mb-sm-0" value="{{ request('month') }}" type="month" id="month">
+                <input value="{{ request('month') }}" data-provide="datepicker" type="text" data-date-format="yyyy-mm" data-date-view-mode="months" data-date-min-view-mode="months" placeholder="pilih bulan" name="month" class="form-control datepicker">
 
                 <button type="submit" class="btn btn-primary ml-auto">Submit</button>
               </form>
@@ -96,6 +96,12 @@
 
 @section('script')
   <script type="text/javascript">
+    // $(".datepicker").datepicker( {
+    //     format: "yyyy-mm",
+    //     viewMode: "months", 
+    //     minViewMode: "months"
+    // });
+
     $(function(){
       $("#sort").val("{{ request('sort') }}");
     });

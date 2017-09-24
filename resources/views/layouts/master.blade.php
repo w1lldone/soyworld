@@ -88,7 +88,7 @@
     <script type="text/javascript">
         $('.datepicker').datepicker({
           autoclose: true,
-          format: 'yyyy-mm-dd',
+          // format: 'yyyy-mm-dd',
           todayBtn: "linked",
         });
     </script>
