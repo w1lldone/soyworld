@@ -92,6 +92,8 @@ class SalesController extends Controller
                 break;
         }
 
+        $transaction->user->notify(new \App\Notifications\TransactionConfirmation($transaction));
+
         return redirect('/sales')->with('success', $status);
     }
 

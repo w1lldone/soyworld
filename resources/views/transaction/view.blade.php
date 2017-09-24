@@ -20,7 +20,7 @@
 		      	<a class="breadcrumb-item h3" href="/transaction">Transaksi</a>
 		      	<span class="breadcrumb-item h3 active">Detail</span>
 		      </div>
-	        <h1 class="text-light" style="font-size: 2rem;">Detail transaksi - #{{ $transaction->code }}</h1>
+	        <h1 class="text-light" style="font-size: 2rem;">Detail transaksi #{{ $transaction->code }}</h1>
 	        <span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%" data-toggle="tooltip" data-placement="bottom" title="Status">{{ $transaction->status->name }}</span>
 {{-- 	        <div class="text-muted">
 	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Jumlah kedelai"><i class="fa fa-balance-scale mr-2"></i> {{ $transaction->total_quantity }} Kg</span>
