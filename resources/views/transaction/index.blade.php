@@ -31,11 +31,30 @@
 	    		@include('layouts.alerts')
 			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
 				    <a class="btn btn-info" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
-				    <form class="ml-auto">
+				    <form class="ml-auto my-2 form form-inline" method="GET" action="/transaction">
+				    	<div class="input-group mr-md-2">
+				        {{-- <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control"> --}}
+				        <select class="form-control" name="status">
+				        	<option value="">Pilih status...</option>
+				        	<option value="pending">Pending</option>
+				        	<option value="confirmed">Diproses</option>
+				        	<option value="finished">Selesai</option>
+				        	<option value="canceled">Gagal</option>
+				        </select>
+				      </div>
+				      <div class="input-group mr-md-2">
+				        {{-- <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control"> --}}
+				        <select class="form-control" name="sort">
+				        	<option value="">Urutkan...</option>
+				        	<option value="pending">Terbaru</option>
+				        	<option value="confirmed">Terlama</option>
+				        	<option value="finished">Termahal</option>
+				        </select>
+				      </div>
 				      <div class="input-group">
 				        <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control">
 				        <span class="input-group-btn">
-									<button type="button" class="btn btn-primary">Cari</button>
+									<button type="input" class="btn btn-primary">Cari</button>
 								</span>
 				      </div>
 				    </form>
@@ -49,23 +68,19 @@
 			      	      <th>Jumlah kedelai</th>
 			      	      <th class="hidden-sm-down">Total pembayaran</th>
 			      	      <th>Status</th>
-			      	      <th>Tindakan</th>
 			      	    </tr>
 			      	  </thead>
 			      	  <tbody>
 			      	  	@foreach ($transactions as $transaction)
-			      	  		<tr>
+			      	  		<tr class="linked-row" data-href="/transaction/{{ $transaction->id }}">
 			      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 			      	  		  <td>
-			      	  		  	<b class="text-primary">{{ $transaction->code }}</b><br>
+			      	  		  	<b class="text-primary">#{{ $transaction->code }}</b><br>
 			      	  		  	{{ $transaction->created_at->diffForHumans() }}
 			      	  		  </td>
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
 			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>
 			      	  		  <td class="align-middle"><span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%">{{ $transaction->status->name }}</span></td>
-			      	  		  <td class="align-middle">
-			      	  		  	<a class="btn btn-outline-info" href="/transaction/{{ $transaction->id }}"><i class="fa fa-info"></i></a>
-			      	  		  </td>
 			      	  		</tr>
 			      	  	@endforeach
 			      	  </tbody>
@@ -76,6 +91,7 @@
 	  </div>
 	</section>
 </div>
-
-
+@endsection
+@section('script')
+	
 @endsection
