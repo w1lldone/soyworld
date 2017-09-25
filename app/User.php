@@ -117,6 +117,12 @@ class User extends Authenticatable
        return $this->harvest()->where('harvested_at', 'like', "%$date%")->get()->sum('initial_stock');
     }
 
+    public function thisMonthPurchase()
+    {
+        $date = date('Y-m');
+        return $this->transaction()->where('created_at', 'like', "%$date%")->get()->sum('total_quantity');
+    }
+
     public function latestSales()
     {
         return \App\TransactionDetail::salesHistory()->latest()->take(5)->get();

@@ -23,7 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+        switch (auth()->user()->privilage->name) {
+            case 'industri':
+                $sum['price'] = \App\Price::latestPrice();
+                $sum['purchase'] = auth()->user()->thisMonthPurchase();
+                $sum['stock'] = \App\Harvest::readyStock()->sum('ending_stock');
+
+                return view('home.industri', compact(['sum']));
+                break;
+            
+            default:
+                # code...
+                break;
+        }
         return view('home.'.auth()->user()->privilage->name);
     }
 }

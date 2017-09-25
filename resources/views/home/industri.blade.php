@@ -21,9 +21,9 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-green"><i class="icon-user"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-green">Rp. 0</span>
+	          	<span class="badge bg-green">Rp. {{ $sum['price'] }}</span>
 	          	<br>
-	          	<span>Profit bulan ini</span>
+	          	<span>Harga kedelai terkini</span>
 	          </div>
 	        </div>
 	      </div>
@@ -32,9 +32,9 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-orange"><i class="icon-bill"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-orange">0 Kg</span>
+	          	<span class="badge bg-orange">{{ $sum['purchase'] }} Kg</span>
 	          	<br>
-	          	<span>Panen bulan ini</span>
+	          	<span>Pembelian bulan ini</span>
 	          </div>
 	        </div>
 	      </div>
@@ -43,7 +43,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-violet"><i class="icon-check"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-violet">0 Kg</span>
+	          	<span class="badge bg-violet">{{ $sum['stock'] }} Kg</span>
 	          	<br>
 	          	<span>Stok gudang</span>
 	          </div>
