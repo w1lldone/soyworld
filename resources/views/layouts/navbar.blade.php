@@ -60,18 +60,24 @@
                     <div class="notification-content"><i class="fa fa-twitter bg-blue"></i>You have 2 followers</div>
                     <div class="notification-time"><small>10 minutes ago</small></div>
                   </div></a></li> --}}
-              <li><a rel="nofollow" href="/notifications" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
+              <li><a rel="nofollow" href="/notifications" class="dropdown-item all-notifications text-center"> <strong>view all notifications</strong></a></li>
             </ul>
           </li>
           <!-- Messages                        -->
-          <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange">10</span></a>
+          <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-user-o"></i></a>
             <ul aria-labelledby="notifications" class="dropdown-menu">
-              <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                  <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
+              <li>
+                <a rel="nofollow" href="/profile" class="dropdown-item d-flex"> 
+                  <div class="msg-profile"> <img src="/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                   <div class="msg-body">
-                    <h3 class="h5">Jason Doe</h3><span>Sent You Message</span>
-                  </div></a></li>
-              <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
+                    <h3 class="h5">{{ auth()->user()->name }}</h3><span>{{ auth()->user()->privilage->name }}</span>
+                  </div>
+                </a>
+              </li>
+              <li><a class="dropdown-item" href="/profile/edit"><i class="fa fa-cog"></i>Ubah profil</a></li>
+              <li><a class="dropdown-item" href="/profile/email"><i class="fa fa-envelope"></i>Ubah email</a></li>
+              <li><a class="dropdown-item" href="/profile/password"><i class="fa fa-lock"></i>Ubah password</a></li>
+              {{-- <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
                   <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
                   <div class="msg-body">
                     <h3 class="h5">Frank Williams</h3><span>Sent You Message</span>
@@ -80,8 +86,8 @@
                   <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
                   <div class="msg-body">
                     <h3 class="h5">Ashley Wood</h3><span>Sent You Message</span>
-                  </div></a></li>
-              <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages    </strong></a></li>
+                  </div></a></li> --}}
+              {{-- <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages    </strong></a></li> --}}
             </ul>
           </li>
           <!-- Logout    -->
