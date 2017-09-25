@@ -98,4 +98,5 @@ class Transaction extends Model
     }
 
     protected $guarded = ['id'];
+    protected $dates = ['updated_at'];
 }

@@ -91,6 +91,9 @@
           // format: 'yyyy-mm-dd',
           todayBtn: "linked",
         });
+        $(".linked-row").click(function() {
+            window.location = $(this).data("href");
+        });
     </script>
 
     @yield('script')

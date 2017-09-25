@@ -120,7 +120,7 @@ class User extends Authenticatable
     public function thisMonthPurchase()
     {
         $date = date('Y-m');
-        return $this->transaction()->where('created_at', 'like', "%$date%")->get()->sum('total_quantity');
+        return $this->transaction()->where('created_at', 'like', "%$date%")->where('status_id', 3)->get()->sum('total_quantity');
     }
 
     public function latestSales()

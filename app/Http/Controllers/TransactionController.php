@@ -31,7 +31,7 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = auth()->user()->transaction()->latest()->get();
-        $total['quantity'] = auth()->user()->transaction()->where('status_id', 3)->get()->sum('total_quantity');
+        $total['quantity'] = auth()->user()->thisMonthPurchase();
         $total['value'] = number_format(auth()->user()->transaction()->where('status_id', 3)->get()->sum('total_payment'), 0, ',', '.');
         return view('transaction.index', compact(['transactions', 'total']));
     }

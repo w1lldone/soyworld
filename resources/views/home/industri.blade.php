@@ -61,8 +61,7 @@
             {{-- ONFARM --}}
             <div class="articles card mb-3">
               <div class="card-header d-flex align-items-center bg-violet">
-                <h2 class="h3">Penanaman kedelai</h2>
-                <div class="badge badge-rounded bg-green">4 New</div>
+                <h2 class="h3">Transaksi terakhir</h2>
               </div>
               <div class="card-body">
 {{--                 @if (auth()->user()->onfarm->isEmpty())
@@ -77,44 +76,12 @@
                 <!-- ONFARM LIST -->
                 <table class="table table-hover mb-0">
                 	<tbody>
-		                {{-- @foreach (auth()->user()->onfarm as $onfarm)
-			                <tr>
-    		                  <td><a href="{{ $onfarm->viewUrl() }}">{{ $onfarm->name }}</a></td>
-    		                  <td>
-              	      			<div class="d-flex">
-              	      				<a title="Bibit {{ empty($onfarm->seed) ? 'belum' : 'sudah' }} dibeli" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->seed) ? 'muted' : 'success' }}">B</span></a>
-              		      			<a title="Bibit {{ empty($onfarm->planted_at) ? 'belum' : 'sudah' }} ditanam" data-toggle="tooltip"><span class="badge badge-{{ empty($onfarm->planted_at) ? 'muted' : 'info' }}">T</span></a>
-                              <a title="Kedelai belum dipanen" data-toggle="tooltip"><span class="badge badge-muted">P</span></a>
-              	      			</div>
-    		                  </td>
-			                </tr>
-		                @endforeach --}}
-                	</tbody>
-                </table>
-              </div>
-            </div>
-          
-          	{{-- COST --}}
-            <div class="articles card">
-              <div class="card-header d-flex align-items-center bg-orange">
-                <h2 class="h3">Pengeluaran terakhir</h2>
-              </div>
-              <div class="card-body">
-{{--                 @if (auth()->user()->onfarm_cost->isEmpty())
-                  <div class="pt-2 pb-4 text-center">
-                    <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
-                    <h4 class="text-light text-muted">Belum ada pengeluaran</h4>
-                  </div>
-                @endif --}}
-                <!-- ONFARM LIST -->
-                <table class="table table-hover mb-0">
-                	<tbody>
-{{-- 		                @foreach (auth()->user()->onfarm_cost as $cost)
-			                <tr>
-    		                  <td><a href="/onfarmcost/{{$cost->id}}/view">{{ $cost->name }} - {{ $cost->onfarm->name }}</a></td>
-    		                  <td>Rp. {{ $cost->formattedPrice() }}</td>
-			                </tr>
-		                @endforeach --}}
+                		@foreach ($transactions as $transaction)
+                			<tr class="linked-row" data-href="/transaction/{{ $transaction->id }}">
+                				<td><b>#{{ $transaction->code }}</b><br><span>{{ $transaction->total_quantity }} Kg</span></td>
+                				<td class="text-right"><small>{{ $transaction->updated_at->diffForHumans() }}</small> <br> <span class="badge badge-{{ $transaction->status->status_color }}">{{ $transaction->status->name }}</span> </td>
+                			</tr>
+                		@endforeach
                 	</tbody>
                 </table>
               </div>

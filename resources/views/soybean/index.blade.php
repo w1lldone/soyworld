@@ -16,8 +16,6 @@
 	    <div class="row">
 	      <div class="col-12">
 	      	<div class="breadcrumb">
-					  <a href="#" class="text-fade h3 breadcrumb-item">Kedelai</a>
-					  <a href="#" class="text-fade h3 breadcrumb-item">Kedelai</a>
 					  <a href="#" class="h3 breadcrumb-item active">Kedelai</a>
 	      	</div>
 	        <h1 class="text-light" style="font-size: 2rem;">Daftar kedelai Onfarm dan Pasca panen</h1>

@@ -29,7 +29,9 @@ class HomeController extends Controller
                 $sum['purchase'] = auth()->user()->thisMonthPurchase();
                 $sum['stock'] = \App\Harvest::readyStock()->sum('ending_stock');
 
-                return view('home.industri', compact(['sum']));
+                $transactions = auth()->user()->transaction()->orderBy('updated_at', 'desc')->take(5)->get();
+
+                return view('home.industri', compact(['sum', 'transactions']));
                 break;
             
             default:
