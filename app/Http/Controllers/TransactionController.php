@@ -30,7 +30,42 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = auth()->user()->transaction()->latest()->get();
+        // $transactions = auth()->user()->transaction()->latest()->get();
+        $transactions = auth()->user()->transaction();
+
+        if (!empty(request('status'))) {
+            $transactions = $transactions->whereHas('status', function($query)
+            {
+                $query->where('name', request('status'));
+            });
+        }
+
+        switch (request('sort')) {
+
+            case 'oldest':
+                $transactions = $transactions->oldest()->get();
+                break;
+
+            case 'latest':
+                $transactions = $transactions->latest()->get();
+                break;
+
+            case 'expensive':
+                $transactions = $transactions->get()->sortByDesc('total_payment')->values()->all();
+                break;
+
+            case 'cheap':
+                $transactions = $transactions->get()->sortBy('total_payment')->values()->all();
+                break;
+
+            default:
+                $transactions = $transactions->latest()->get();
+                break;
+            
+        }
+
+
+
         $total['quantity'] = auth()->user()->thisMonthPurchase();
         $total['value'] = number_format(auth()->user()->transaction()->where('status_id', 3)->get()->sum('total_payment'), 0, ',', '.');
         return view('transaction.index', compact(['transactions', 'total']));
