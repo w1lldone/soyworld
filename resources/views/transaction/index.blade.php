@@ -53,10 +53,11 @@
 					        </select>
 					      </div>
 					      <div class="input-group">
-					        <input id="inlineFormInput" name="keyword" type="text" placeholder="Cari transaksi" class="form-control">
+					        <input id="inlineFormInput" name="keyword" type="text" placeholder="Cari transaksi" class="form-control" value="{{ request('keyword') }}">
 					        <span class="input-group-btn">
 										<button type="input" class="btn btn-primary">Cari</button>
 									</span>
+									<a href="/transaction" class="btn btn-warning ml-2"><i class="fa fa-refresh"></i></a>
 					      </div>
 					    </form>
 				    </div>

@@ -40,6 +40,11 @@ class TransactionController extends Controller
             });
         }
 
+        if (!empty(request('keyword'))) {
+            $keyword = request('keyword');
+            $transactions = $transactions->where('code', 'like', "%$keyword%");
+        }
+
         switch (request('sort')) {
 
             case 'oldest':
