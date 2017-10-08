@@ -103,7 +103,7 @@
 	          	<div class="recent-updates card">
 	          	  <div class="card-close">
 	          	    <div class="dropdown">
-	          	      <a href="/harvest/{{$harvest->id}}/postharvest" class="text-white" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+	          	      <a href="/harvest/{{$harvest->id}}/postharvest" class="bg-white text-blue btn btn-sm" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Penanganan</a>
 	          	    </div>
 	          	  </div>
 	          	  <div class="card-header bg-blue text-white">

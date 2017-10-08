@@ -1225,7 +1225,7 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   text-decoration: none !important;
   display: block;
   margin-bottom: 0;
-  color: #555;
+  /*color: #555;*/
 }
 
 .articles .badge {

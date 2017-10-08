@@ -137,7 +137,7 @@
               @can('createActivity', $onfarm)
                 <div class="card-close">
                   <div class="dropdown">
-                    <a href="/activity/create/{{$onfarm->id}}" class="text-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+                    <a href="/activity/create/{{$onfarm->id}}" class="btn btn-sm btn-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Aktifitas tanam</a>
                   </div>
                 </div>
               @endcan
@@ -177,7 +177,7 @@
             <div class="recent-updates card">
               <div class="card-close">
                 <div class="dropdown">
-                  <a href="/onfarmcost/create/{{ $onfarm->id }}" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
+                  <a href="/onfarmcost/create/{{ $onfarm->id }}" class="btn btn-sm btn-primary" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus fa-fw"></i>Biaya</a>
                 </div>
               </div>
               <div class="card-header">
