@@ -134,15 +134,18 @@
           {{-- ACTIVITY --}}
           <div class="col-lg-6">
             <div class="articles card">
-              @can('createActivity', $onfarm)
+              {{-- @can('createActivity', $onfarm)
                 <div class="card-close">
                   <div class="dropdown">
                     <a href="/activity/create/{{$onfarm->id}}" class="btn btn-sm btn-primary" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Aktifitas tanam</a>
                   </div>
                 </div>
-              @endcan
-              <div class="card-header d-flex align-items-center">
-                <h2 class="h3">Aktivitas tanam   </h2>
+              @endcan --}}
+              <div class="card-header">
+                <h2 class="h3 d-inline">Aktivitas tanam</h2>
+                @can('createActivity', $onfarm)
+                  <a href="/activity/create/{{$onfarm->id}}" class="btn btn-sm btn-primary float-right" title="Tambah aktivitas tanam" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Aktifitas tanam</a>
+                @endcan
               </div>
               <div class="card-body no-padding">
                 @if ($onfarm->activity->isEmpty())
@@ -175,13 +178,14 @@
           {{-- COST --}}
           <div class="col-lg-6">
             <div class="recent-updates card">
-              <div class="card-close">
+              {{-- <div class="card-close">
                 <div class="dropdown">
                   <a href="/onfarmcost/create/{{ $onfarm->id }}" class="btn btn-sm btn-primary" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus fa-fw"></i>Biaya</a>
                 </div>
-              </div>
+              </div> --}}
               <div class="card-header">
-                <h3 class="h4">Biaya tanam</h3>
+                <h3 class="h4 d-inline">Biaya tanam</h3>
+                <a href="/onfarmcost/create/{{ $onfarm->id }}" class="btn btn-sm btn-primary float-right" title="Tambah biaya onfarm" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus fa-fw"></i>Biaya</a>
               </div>
               <div class="card-body no-padding">
                 @if ($onfarm->seed == null && $onfarm->cost->count() == 0)

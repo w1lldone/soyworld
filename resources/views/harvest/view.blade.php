@@ -101,13 +101,14 @@
 	          <!-- POSTHARVEST HANDLING -->
 	          <div class="col-lg-6">
 	          	<div class="recent-updates card">
-	          	  <div class="card-close">
+	          	  {{-- <div class="card-close">
 	          	    <div class="dropdown">
 	          	      <a href="/harvest/{{$harvest->id}}/postharvest" class="bg-white text-blue btn btn-sm" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Penanganan</a>
 	          	    </div>
-	          	  </div>
+	          	  </div> --}}
 	          	  <div class="card-header bg-blue text-white">
-	          	    <h3 class="h4">Penanganan pasca panen</h3>
+	          	    <h3 class="h4 d-inline">Penanganan pasca panen</h3>
+	          	    <a href="/harvest/{{$harvest->id}}/postharvest" class="bg-white text-blue btn btn-sm float-right" title="Tambah penanganan pasca panen" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Penanganan</a>
 	          	  </div>
 	          	  <div class="card-body no-padding">
 	          	    @if ($harvest->postharvest->isEmpty())
