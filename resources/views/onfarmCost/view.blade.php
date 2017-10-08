@@ -76,6 +76,7 @@
               {{-- @can('update', $seed)
                 <a href="/seed/{{$seed->id}}/edit" class="btn btn-warning">Edit</a>
               @endcan --}}
+              <a href="/onfarmcost/{{$onfarmCost->id}}/edit" class="btn btn-warning">Edit</a>
               <a href="/onfarm/{{$onfarmCost->onfarm_id}}/view" class="btn btn-success">Kembali</a>
             </div>
           </div>

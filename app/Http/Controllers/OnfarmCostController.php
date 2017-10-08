@@ -25,7 +25,11 @@ class OnfarmCostController extends Controller
                 break;
             
             case 'PUT':
-                
+                return Validator::make($request, [
+                    'name' => 'required',
+                    'supplier_id' => 'required|exists:suppliers,id',
+                    'price' => 'required|numeric',
+                ]);
                 break;
         }
     }
@@ -99,7 +103,14 @@ class OnfarmCostController extends Controller
      */
     public function update(Request $request, OnfarmCost $onfarmCost)
     {
-        //
+        $onfarmCost->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'supplier_id' => $request->supplier_id,
+            'price' => $request->price,
+        ]);
+
+        return redirect("/onfarm/$onfarmCost->onfarm_id/view")->with('success', 'Berhasil mengubah biaya!');
     }
 
     /**
