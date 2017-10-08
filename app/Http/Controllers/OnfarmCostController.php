@@ -108,6 +108,9 @@ class OnfarmCostController extends Controller
      */
     public function destroy(OnfarmCost $onfarmCost)
     {
-        //
+        $id = $onfarmCost->onfarm_id;
+        $onfarmCost->delete();
+
+        return redirect("/onfarm/$id/view");
     }
 }

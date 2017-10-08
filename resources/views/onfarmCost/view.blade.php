@@ -68,14 +68,12 @@
             </div>
             {{-- CARD FOOTER --}}
             <div class="card-footer text-right">
-              {{-- @can('delete', $seed)
-                <form method="POST" action="/seed/{{$seed->id}}" class="d-inline">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-danger">Hapus</button>
-                </form>
-              @endcan
-              @can('update', $seed)
+              <form method="POST" action="/onfarmcost/{{$onfarmCost->id}}" class="d-inline">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus biaya?')" class="btn btn-danger">Hapus</button>
+              </form>
+              {{-- @can('update', $seed)
                 <a href="/seed/{{$seed->id}}/edit" class="btn btn-warning">Edit</a>
               @endcan --}}
               <a href="/onfarm/{{$onfarmCost->onfarm_id}}/view" class="btn btn-success">Kembali</a>
