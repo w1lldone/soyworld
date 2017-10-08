@@ -17,7 +17,7 @@ class CreateSeedsTable extends Migration
             $table->increments('id');
             $table->string('name', 150)->nullable();
             $table->integer('supplier_id')->unsigned();
-            $table->integer('quantity');
+            $table->double('quantity', 3, 1);
             $table->integer('price');
             $table->integer('onfarm_id')->unsigned()->nullable();
             $table->timestamps();

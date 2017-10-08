@@ -17,8 +17,8 @@ class CreateHarvestsTable extends Migration
             $table->increments('id');
             $table->integer('onfarm_id')->unsigned();
             $table->date('harvested_at')->nullable();
-            $table->integer('initial_stock')->nullable();
-            $table->integer('ending_stock')->nullable();
+            $table->double('initial_stock', 4, 1)->nullable();
+            $table->double('ending_stock', 4, 1)->nullable();
             $table->boolean('sold')->default(0);
             $table->timestamps();
         });
