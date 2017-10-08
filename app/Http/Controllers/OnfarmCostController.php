@@ -85,7 +85,9 @@ class OnfarmCostController extends Controller
      */
     public function edit(OnfarmCost $onfarmCost)
     {
-        //
+        $onfarm = $onfarmCost->onfarm;
+
+        return view('onfarmCost.edit', compact(['onfarmCost', 'onfarm']));
     }
 
     /**
