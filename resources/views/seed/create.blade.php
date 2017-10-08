@@ -60,7 +60,7 @@
 					        <label class="col-sm-3 form-control-label">Jumlah benih</label>
 					        <div class="col-sm-9">
 					          <div class="input-group">
-                                <input type="number" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
+                                <input type="number" step="any" name="quantity" class="form-control" placeholder="Jumlah kedelai dalam Kilogram tanpa titik koma" value="{{ old('quantity') }}"><span class="input-group-addon">Kg</span>
                               </div>
 					          @if ($errors->has('quantity'))
 						          <small class="form-text text-danger">{{ $errors->first('quantity') }}</small>
