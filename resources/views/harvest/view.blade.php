@@ -127,7 +127,7 @@
 	      	          	        <p>Biaya: Rp. {{ $postharvest->cost }}</p>
 	      	          	      </div>
 	      	          	    </div>
-	      	          	    <div class="date text-right"><strong>24</strong><span>May</span></div>
+	      	          	    <div class="date text-right">{{ $postharvest->date->format('j F Y') }}</div>
 	      	          	  </div>
 	      	          	</a>
 	          	      @endforeach

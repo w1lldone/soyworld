@@ -202,7 +202,6 @@
                           <p>{{ $cost->name." - ".$cost->description }}</p>
                         </div>
                       </div>
-                      <div class="date text-right"><strong>24</strong><span>May</span></div>
                     </div>
                   </a>
                 @endforeach
