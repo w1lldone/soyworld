@@ -109,7 +109,7 @@
                 <h2 class="h3">Penjualan terakhir</h2>
               </div>
               <div class="card-body">
-                @if (empty(auth()->user()->latestSales()))
+                @if (count(auth()->user()->latestSales()) == 0)
                   <div class="pt-2 pb-4 text-center">
                     <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
                     <h4 class="text-light text-muted">Belum ada penjualan</h4>

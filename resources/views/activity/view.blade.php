@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-sm-6">
                   <h3 class="text-right left-on-sm">Tanggal pelaksanaan</h3>
-                  <p class="text-right left-on-sm">{{ $activity->created_at->toFormattedDateString() }}</p>
+                  <p class="text-right left-on-sm">{{ $activity->date->format('j F Y') }}</p>
                 </div>
                 <div class="col-sm-12">
                   <h3>Deskripsi kegiatan</h3>
@@ -65,13 +65,11 @@
             </div>
             {{-- CARD FOOTER --}}
             <div class="card-footer text-right">
-              @can('delete', $activity)
-                <form method="POST" action="/activity/{{$activity->id}}" class="d-inline">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-danger">Hapus</button>
-                </form>
-              @endcan
+              <form method="POST" action="/activity/{{$activity->id}}" class="d-inline">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button onclick="return confirm('Apakah anda yakin akan menghapus?')" type="submit" class="btn btn-danger">Hapus</button>
+              </form>
               @can('update', $activity)
                 <a href="/activity/{{$activity->id}}/edit" class="btn btn-warning">Edit</a>
               @endcan

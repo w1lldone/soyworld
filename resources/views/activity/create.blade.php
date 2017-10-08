@@ -54,7 +54,7 @@
 						        <label class="col-sm-3 form-control-label">Tanggal</label>
 						        <div class="col-sm-9">
 						          <div class="input-group">
-	                                <input data-provide="datepicker" type="text" placeholder="Tanggal aktivitas" name="date" class="form-control datepicker" value="{{ old('date') }}" required>
+	                                <input data-provide="datepicker" data-date-format="yyyy-mm-dd" type="text" placeholder="Tanggal aktivitas" name="date" class="form-control datepicker" value="{{ old('date') }}" required>
 	                              </div>
 						          @if ($errors->has('date'))
 							          <small class="form-text text-danger">{{ $errors->first('date') }}</small>

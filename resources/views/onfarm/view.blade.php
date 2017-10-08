@@ -158,12 +158,12 @@
                   </div>
                 @endif
                 <!-- ACTIVITY LIST -->
-                @foreach ($onfarm->activity as $activity)
+                @foreach ($onfarm->activity()->orderBy('date')->get() as $activity)
                   <a class="item-link" href="/activity/{{ $activity->id }}/view">
                     <div class="item d-flex align-items-center py-2">
                       <div class="image"><img src="/img/stock/watering-can.svg" alt="..." class="img-fluid rounded-circle"></div>
                       <div class="text">
-                          <h3 class="h5">{{ $activity->name }}</h3><small>Posted on {{ $activity->date->toFormattedDateString() }}.   </small>
+                          <h3 class="h5">{{ $activity->name }}</h3><small>{{ $activity->date->format('j F Y') }}.   </small>
                       </div>
                     </div>
                   </a>

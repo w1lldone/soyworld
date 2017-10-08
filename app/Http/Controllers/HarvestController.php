@@ -65,7 +65,7 @@ class HarvestController extends Controller
 
         // $harvest->addPostharvest($request);
 
-        return $harvest->load('postharvest');
+        return redirect("/harvest/$harvest->id/view");
     }
 
     /**

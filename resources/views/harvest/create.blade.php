@@ -61,7 +61,7 @@
 									<label class="col-sm-3 form-control-label">Tanggal</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('harvested_at') }}" data-provide="datepicker" type="text" placeholder="Tanggal panen" name="harvested_at" class="form-control datepicker" required>
+											<input value="{{ old('harvested_at') }}" data-date-format="yyyy-mm-dd" data-provide="datepicker" type="text" placeholder="Tanggal panen" name="harvested_at" class="form-control datepicker" required>
 											<span class="input-group-addon""><i class="fa fa-calendar"></i></span>
 											@if ($errors->has('harvested_at'))
 											<small class="form-text text-danger">{{ $errors->first('harvested_at') }}</small>

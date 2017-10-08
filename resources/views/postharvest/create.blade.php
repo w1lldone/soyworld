@@ -59,7 +59,7 @@
 									<label class="col-sm-3 form-control-label">Tanggal</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('date') }}" data-provide="datepicker" type="text" placeholder="Tanggal penanganan" name="date" class="form-control datepicker" required>
+											<input value="{{ old('date') }}" data-date-format="yyyy-mm-dd" data-provide="datepicker" type="text" placeholder="Tanggal penanganan" name="date" class="form-control datepicker" required>
 											<span class="input-group-addon""><i class="fa fa-calendar"></i></span>
 										</div>
 										@if ($errors->has('date'))

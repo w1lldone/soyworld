@@ -27,7 +27,7 @@
 	              </div>
 	            </div>
 	            <div class="card-body text-center">
-	              <div class="client-avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
+	              <div class="client-avatar"><img src="img/person.svg" alt="..." class="img-fluid rounded-circle">
 	                <div class="status bg-green"></div>
 	              </div>
 	              <div class="client-title">
@@ -36,11 +36,11 @@
 	              <div class="client-info">
 	                <div class="row">
 	                  <div class="col-12 px-4">
-	                  	<strong class="float-left">Email</strong><p class="float-right m-0">email@mail.com</p><br>
-	                  	<strong class="float-left">Alamat</strong><p class="float-right m-0">Jatiroto</p><br>
-	                  	<strong class="float-left">Kontak</strong><p class="float-right m-0">081230622288</p><br>
+	                  	<strong class="float-left">Email</strong><p class="float-right m-0">{{ auth()->user()->email }}</p><br>
+	                  	<strong class="float-left">Alamat</strong><p class="float-right m-0">{{ auth()->user()->address }}</p><br>
+	                  	<strong class="float-left">Kontak</strong><p class="float-right m-0">{{ auth()->user()->contact }}</p><br>
 	                  	@if (auth()->user()->hasRole('petani'))
-		                  	<strong class="float-left">Kelompok tani</strong><p class="float-right m-0">Tani abadi</p><br>
+		                  	<strong class="float-left">Kelompok tani</strong><p class="float-right m-0">{{ auth()->user()->poktan->name }}</p><br>
 	                  	@endif
 	                  </div>
 	                  {{-- <div class="col-4"><strong>20</strong><br><small>Supplier</small></div>

@@ -78,7 +78,7 @@ class User extends Authenticatable
             'email' => $request->email,
             'contact' => $request->contact,
             'address' => $request->address,
-            'password' => bcrypt($request->address),
+            'password' => bcrypt($request->password),
             'privilage_id' => $request->privilage_id,
             'poktan_id' => $request->privilage_id == 2 ? $request->poktan_id : null,
         ]);

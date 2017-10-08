@@ -90,6 +90,7 @@ Route::group(['prefix' => 'activity'], function()
 	Route::get('/{activity}/view', 'ActivityController@show');
 	Route::get('/{activity}/edit', 'ActivityController@edit');
 	Route::put('/{activity}', 'ActivityController@update');
+	Route::delete('/{activity}', 'ActivityController@destroy');
 });
 
 Route::group(['prefix' => 'seedphoto'], function()

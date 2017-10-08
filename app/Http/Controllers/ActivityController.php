@@ -70,7 +70,9 @@ class ActivityController extends Controller
         $this->validator($request->all())->validate();
 
         $activity = Activity::addActivity($request);
-        $activity->uploadPhoto($request->photo, $request->onfarm_id);
+        if (!empty($request->file('photos'))) {
+            $activity->uploadPhoto($request->photo, $request->onfarm_id);
+        }
 
         return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil menambah aktivitas tanam');
     }
@@ -128,6 +130,10 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        //
+        $id = $activity->onfarm_id;
+
+        $activity->delete();
+
+        return redirect("/onfarm/$id/view");
     }
 }

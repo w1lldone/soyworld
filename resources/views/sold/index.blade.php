@@ -64,28 +64,36 @@
                 <button type="submit" class="btn btn-primary ml-auto">Submit</button>
               </form>
             </div>
-  	        <div class="card-body table-responsive">
-  	          <table class="table table-hover">
-  	            <thead>
-  	              <tr>
-                    <th>Pembeli</th>
-                    <th>Jumlah kedelai</th>
-                    <th>Total pembayaran</th>
-                    <th>Tanggal transaksi</th>
-  	              </tr>
-  	            </thead>
-                <tbody>
-                  @foreach ($sales as $sale)
-                    <tr class="linked-row" data-href="/sold/{{ $sale->id }}">
-                      <td>{{ $sale->transaction->user->name }}</td>
-                      <td>{{ $sale->quantity }} Kg</td>
-                      <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
-                      <td>{{ $sale->transaction->created_at->format('j F Y') }}</td>
-                    </tr>
-                  @endforeach
-                </tbody>
-  	          </table>
-  	        </div>
+            @empty ($sales->first())
+              <div class="pt-2 pb-4 text-center">
+                <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+                <h4 class="text-light text-muted">Belum ada penjualan</h4>
+              </div>
+            @endempty
+            @if (!empty($sales->first()))
+    	        <div class="card-body table-responsive">
+    	          <table class="table table-hover">
+    	            <thead>
+    	              <tr>
+                      <th>Pembeli</th>
+                      <th>Jumlah kedelai</th>
+                      <th>Total pembayaran</th>
+                      <th>Tanggal transaksi</th>
+    	              </tr>
+    	            </thead>
+                  <tbody>
+                    @foreach ($sales as $sale)
+                      <tr class="linked-row" data-href="/sold/{{ $sale->id }}">
+                        <td>{{ $sale->transaction->user->name }}</td>
+                        <td>{{ $sale->quantity }} Kg</td>
+                        <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
+                        <td>{{ $sale->transaction->created_at->format('j F Y') }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+    	          </table>
+    	        </div>
+            @endif
   	      </div>
   	    </div>
   	  </div>
