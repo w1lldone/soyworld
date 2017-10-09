@@ -1,4 +1,9 @@
 /* your styles go here */
+
+.datepicker-dropdown {
+  z-index: 9999;
+}
+
 .side-navbar.scroll  {
 	height: calc(100vh - 80px);
 	overflow-y: auto;

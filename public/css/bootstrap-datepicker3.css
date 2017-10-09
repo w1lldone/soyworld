@@ -22,6 +22,7 @@
   top: 0;
   left: 0;
   padding: 4px;
+  z-index: 9999;
 }
 .datepicker-dropdown:before {
   content: '';

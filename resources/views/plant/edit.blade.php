@@ -31,11 +31,11 @@
 					    <form class="form-horizontal" method="POST" action="/plant/{{$onfarm->id}}">
 					      {{ method_field('PUT') }}
 					      {{ csrf_field() }}
-					      {{-- INPUT NAME --}}
+					      {{-- INPUT DATE --}}
 					      <div class="form-group row {{ $errors->has('planted_at') ? ' has-danger' : '' }}">
 					        <label class="col-sm-3 form-control-label">Tanggal tanam</label>
 					        <div class="col-sm-9">
-					          <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" name="planted_at" class="form-control datepicker" value="{{ $onfarm->planted_at->toDateString() }}" required>
+					          <input data-provide="datepicker" type="text" placeholder="Tanggal tanam" data-date-format="yyyy-mm-dd" name="planted_at" class="form-control datepicker" value="{{ $onfarm->planted_at->toDateString() }}" required>
 					          @if ($errors->has('planted_at'))
 						          <small class="form-text text-danger">{{ $errors->first('planted_at') }}</small>
 					          @endif

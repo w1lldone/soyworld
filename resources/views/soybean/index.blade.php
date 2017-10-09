@@ -61,8 +61,8 @@
 		      	  		  	{{ $harvest->onfarm->user->poktan->name }} - <b>Yogyakarta</b>
 		      	  		  </td>
 		      	  		  <td class="align-middle">{{ $harvest->ending_stock }} Kg</td>
-		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->harvested_at->format('j F Y') }} </td>
 		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->onfarm->planted_at->format('j F Y') }}</td>
+		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->harvested_at->format('j F Y') }} </td>
 		      	  		</tr>
 		      	  	@endforeach
 		      	  </tbody>
