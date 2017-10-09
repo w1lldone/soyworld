@@ -284,3 +284,8 @@ a.text {
 .soybean-data {
   font-weight: 600 !important;
 }
+
+/*STICKY*/
+.sticky-top {
+  top: 5vh;
+}
