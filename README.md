@@ -19,4 +19,4 @@ This information system was build to control soybean post-harvest system (case s
 
 ## License
 
-© 2017 Wildan Ainurrahman under the MIT License.
+© 2017 Wildan Ainurrahman under the Apache License 2.0.
