@@ -108,21 +108,22 @@
 	    		  </div>
 	    		</div>
 	    	</div>
-	    	{{-- <div class="col-md-4">
-	    		<div class="card">
-	    		  <div class="card-header text-center bg-success text-white">
-	    		    Informasi
+	    	<div class="col-md-4">
+	    		<div class="card sticky-top">
+	    		  <div class="card-header text-center bg-blue text-white">
+	    		    Informasi stok
 	    		  </div>
 	    		  <div class="card-block">
-	    		    <span class="d-inline">Sisa Stok:</span><span class="float-right soybean-data">120 Kg</span> <br>
-	    		    <span class="d-inline">Tanggal tanam:</span><span class="float-right soybean-data">22 Mei 2017</span> <br>
-	    		    <span class="d-inline">Tanggal Panen:</span><span class="float-right soybean-data">16 Agustus 2017</span> <br>
+	    		    <span class="d-inline">Stok awal:</span><span class="float-right soybean-data">{{ $onfarm->harvest->initial_stock }} Kg</span> <br>
+	    		    <span class="d-inline">Terjual:</span><span class="float-right soybean-data">{{ $onfarm->harvest->initial_stock-$onfarm->harvest->ending_stock }} Kg</span> <br>
+	    		    <span class="d-inline">Sisa:</span><span class="float-right soybean-data">{{ $onfarm->harvest->ending_stock }} Kg</span> <br>
 	    		  </div>
 	    		  <div class="card-footer text-center">
-	    		    <a href="#" class="btn btn-success">Beli kedelai</a>
+	    		    <a href="/transaction/create" class="btn bg-blue ">Beli kedelai</a>
+	    		    <a href="/soybean?tab=stok-aktif" class="btn btn-warning">Kembali</a>
 	    		  </div>
 	    		</div>
-	    	</div> --}}
+	    	</div>
 	    	<div class="col-md-4">
 	    	</div>      
 	    </div>
