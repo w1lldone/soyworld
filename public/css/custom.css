@@ -264,3 +264,23 @@ a.text {
 .notification-read {
   opacity: 0.6;
 }
+
+/*SOYBEAN SECTION*/
+.soybean-info span {
+  /*font-size: 1.5rem;*/
+  font-weight: 300;
+  /*color: #636c72 !important;*/
+}
+
+.soybean-info h5 {
+  margin-bottom: 0.1rem;
+}
+
+.soybean-info .card-header {
+  background-color: #f7f7f9;
+  box-shadow: none;
+}
+
+.soybean-data {
+  font-weight: 600 !important;
+}

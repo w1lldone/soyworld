@@ -54,11 +54,11 @@
 		      	  </thead>
 		      	  <tbody>
 		      	  	@foreach (\App\Harvest::readyStock() as $harvest)
-		      	  		<tr>
+		      	  		<tr class="linked-row" data-href="/soybean/{{ $harvest->id }}">
 		      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 		      	  		  <td>
 		      	  		  	<b class="text-primary">{{ $harvest->onfarm->user->name }}</b><br>
-		      	  		  	{{ $harvest->onfarm->user->poktan->name }} - <b>Yogyakarta</b>
+		      	  		  	{{ $harvest->onfarm->name }} - <b>Yogyakarta</b>
 		      	  		  </td>
 		      	  		  <td class="align-middle">{{ $harvest->ending_stock }} Kg</td>
 		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->onfarm->planted_at->format('j F Y') }}</td>
