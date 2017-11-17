@@ -33,6 +33,13 @@ class HomeController extends Controller
 
                 return view('home.industri', compact(['sum', 'transactions']));
                 break;
+
+            case 'admin':
+
+                $annuals = \App\Harvest::annualHarvest();
+                
+                return view('home.admin', compact(['annuals']));
+                break;
             
             default:
                 # code...
