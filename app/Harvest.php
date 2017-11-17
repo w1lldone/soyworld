@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Harvest extends Model
 {
 
-	/*RELATION SECTION*/
+	/**
+	* RELATION SECTION
+	*
+	*/
 	public function postharvest(){
 		return $this->hasMany('App\Postharvest');
 	}
@@ -20,18 +23,17 @@ class Harvest extends Model
 		return $this->hasMany('App\TransactionDetail');
 	}
 
-	/*CUSTOM METHOD SECTION*/
+	/**
+	* CUSTOM METHOD SECTION
+	*
+	*/
+
 	public function addPostharvest($request)
 	{
 		return $this->postharvest()->create([
 			'name' => 'panen '.$this->onfarm->name,
 			'cost' => $request->cost,
 		]);
-	}
-
-	public function getSaleStatusAttribute()
-	{
-		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
 	}
 
 	public function salesAction()
@@ -83,6 +85,38 @@ class Harvest extends Model
 		return number_format($this->totalCost(), 0, ',', '.');
 	}
 
+	public static function annualHarvest($year = null)
+	{
+		if (empty($year)) {
+			$year = date('Y');
+		}
+
+		$harvests = Harvest::whereYear('harvested_at', $year)->get();
+
+		for ($i=1; $i <= 12; $i++) { 
+			$date = date("Y-m", mktime(0,0,0,$i,1,$year));
+			$data[$date] = $harvests->where('periode', $date)->sum('initial_stock');
+		}
+
+		return array_values($data);
+	}
+
+	/**
+	* CUSTOM ATTRIBUTE SECTION
+	*
+	*/
+
+	public function getPeriodeAttribute()
+	{
+		return $this->harvested_at->format('Y-m');
+	}
+
+	public function getSaleStatusAttribute()
+	{
+		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
+	}
+
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
+    // protected $appends = ['periode'];
 }
