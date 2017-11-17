@@ -18,7 +18,16 @@
 	      </div>
 	      <!-- Statistics -->
 	      <div class="statistics col-lg-4 col-12">
-	      	
+	      	<!-- STOCK -->
+	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
+	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
+	      	  <div class="text"><strong>{{ $stock }} Kg</strong><br>Stok aktif</div>
+	      	</div>
+	      	<!-- HARGA KEDELAI -->
+	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
+	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
+	      	  <div class="text"><strong>Rp. {{ $price }}</strong><br>Harga kedelai</div>
+	      	</div>	      	
 	      	{{-- TRANSACTION --}}
 	      	<div class="articles card mb-3">
 	      	  <div class="card-header d-flex align-items-center bg-violet">

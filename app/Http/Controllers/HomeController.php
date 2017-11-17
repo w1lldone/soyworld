@@ -37,10 +37,11 @@ class HomeController extends Controller
             case 'admin':
 
                 $annuals = \App\Harvest::annualHarvest();
-
                 $sales = \App\Transaction::where('status_id', 1)->latest()->get();
+                $stock = \App\Harvest::onSaleStock();
+                $price = \App\Price::latestPrice();
                 
-                return view('home.admin', compact(['annuals', 'sales']));
+                return view('home.admin', compact(['annuals', 'sales', 'stock', 'price']));
                 break;
             
             default:
