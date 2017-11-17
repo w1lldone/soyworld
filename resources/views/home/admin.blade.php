@@ -18,23 +18,38 @@
 	      </div>
 	      <!-- Statistics -->
 	      <div class="statistics col-lg-4 col-12">
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-	          <div class="text"><strong>234</strong><br><small>Applications</small></div>
-	        </div>
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
-	          <div class="text"><strong>152</strong><br><small>Interviews</small></div>
-	        </div>
-	        <div class="statistic d-flex align-items-center bg-white has-shadow">
-	          <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
-	          <div class="text"><strong>147</strong><br><small>Forwards</small></div>
-	        </div>
+	      	
+	      	{{-- TRANSACTION --}}
+	      	<div class="articles card mb-3">
+	      	  <div class="card-header d-flex align-items-center bg-violet">
+	      	    <h2 class="h3">Transaksi butuh tindakan</h2>
+	      	  </div>
+	      	  <div class="card-body">
+	      	    @if ($sales->isEmpty())
+	      	      <div class="pt-2 pb-4 text-center">
+	      	        <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+	      	        <h4 class="text-light text-muted">Tidak ada Transaksi</h4>
+	      	      </div>
+      	        <a href="/sales" class="btn btn-info">Semua transaksi</a>
+	      	    @endif
+	      	    <!-- TRANSACTION LIST -->
+	      	    <table class="table table-hover mb-0">
+	      	    	<tbody>
+	      	    		@foreach ($sales as $sale)
+	      	    			<tr class="linked-row" data-href="/sales/{{ $sale->id }}">
+	      	    				<td><b>#{{ $sale->code }}</b><br><span>{{ $sale->total_quantity }} Kg</span></td>
+	      	    				<td class="text-right"><small>{{ $sale->updated_at->diffForHumans() }}</small> <br> <span class="badge badge-{{ $sale->status->status_color }}">{{ $sale->status->name }}</span> </td>
+	      	    			</tr>
+	      	    		@endforeach
+	      	    	</tbody>
+	      	    </table>
+	      	  </div>
+	      	</div>
 	      </div>
 	      <!-- Line Chart            -->
 	      <div class="col-lg-8">
 	        <div class="bar-chart-example card">
-	          <div class="card-header d-flex align-items-center">
+	          <div class="card-header d-flex align-items-center bg-violet">
 	            <h3 class="h4">Grafik panen kedelai {{ date('Y') }}</h3>
 	          </div>
 	          <div class="card-body">
@@ -53,14 +68,14 @@
 @section('script')
 	<script type="text/javascript">
 		$(document).ready(function () {
-			var ctx1 = $("canvas").get(0).getContext("2d");
-			var gradient1 = ctx1.createLinearGradient(150, 0, 150, 300);
-			gradient1.addColorStop(0, 'rgba(133, 180, 242, 0.91)');
-			gradient1.addColorStop(1, 'rgba(255, 119, 119, 0.94)');
+			// var ctx1 = $("canvas").get(0).getContext("2d");
+			// var gradient1 = ctx1.createLinearGradient(150, 0, 150, 300);
+			// gradient1.addColorStop(0, 'rgba(133, 180, 242, 0.91)');
+			// gradient1.addColorStop(1, 'rgba(255, 119, 119, 0.94)');
 
-			var gradient2 = ctx1.createLinearGradient(146.000, 0.000, 154.000, 300.000);
-			gradient2.addColorStop(0, 'rgba(104, 179, 112, 0.85)');
-			gradient2.addColorStop(1, 'rgba(76, 162, 205, 0.85)');
+			// var gradient2 = ctx1.createLinearGradient(146.000, 0.000, 154.000, 300.000);
+			// gradient2.addColorStop(0, 'rgba(104, 179, 112, 0.85)');
+			// gradient2.addColorStop(1, 'rgba(76, 162, 205, 0.85)');
 
 			// ------------------------------------------------------- //
 	    // Bar Chart

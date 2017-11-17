@@ -58,22 +58,19 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-7">
-            {{-- ONFARM --}}
+            {{-- TRANSACTION --}}
             <div class="articles card mb-3">
               <div class="card-header d-flex align-items-center bg-violet">
                 <h2 class="h3">Transaksi terakhir</h2>
               </div>
               <div class="card-body">
-{{--                 @if (auth()->user()->onfarm->isEmpty())
+                @if ($transactions->isEmpty())
                   <div class="pt-2 pb-4 text-center">
-                    <img src="/img/stock/watering-can.svg" class="img-fluid" width="150px">
-                    <h4 class="text-light text-muted">Belum ada on farm kedelai</h4>
-                    @can('create', \App\Onfarm::class)
-                      <a class="round-link bg-green d-inline-block text-white" href="/onfarm/create">Tambahkan</a>
-                    @endcan
+                    <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
+                    <h4 class="text-light text-muted">Tidak ada Transaksi</h4>
                   </div>
-                @endif --}}
-                <!-- ONFARM LIST -->
+                @endif
+                <!-- TRANSACTION LIST -->
                 <table class="table table-hover mb-0">
                 	<tbody>
                 		@foreach ($transactions as $transaction)
