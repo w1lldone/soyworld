@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
@@ -24,11 +24,6 @@
     <link rel="shortcut icon" href="/img/favicons/favicon.ico">
     <meta name="msapplication-config" content="/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <!-- Font Awesome CDN-->
-    <!-- you can replace it by local Font Awesome-->
-    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
-    <!-- Font Icons CSS-->
-    <link rel="stylesheet" href="{{ asset('icons-reference/styles.css') }}">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -37,12 +32,6 @@
     @yield('content')
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="{{ asset('js/tether.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.cookie.js') }}"> </script>
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="{{ asset('js/charts-home.js') }}"></script>
-    <script src="{{ asset('js/front.js') }}"></script>
   </body>
 </html>
