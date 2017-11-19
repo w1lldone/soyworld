@@ -12,8 +12,8 @@
       <div class="navbar-header">
         <!-- Navbar Brand -->
           <a href="/home" class="navbar-brand">
-          <div class="brand-text brand-big hidden-lg-down"><span>SIM </span><strong>Pel</strong></div>
-          <div class="brand-text brand-small"><strong>SP</strong></div></a>
+          <div class="brand-text brand-big hidden-lg-down"><span><strong>SOY</strong> </span>WORLD</div>
+          <div class="brand-text brand-small"><strong>SW</strong></div></a>
         <!-- Toggle Button-->
           <a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
       </div>
