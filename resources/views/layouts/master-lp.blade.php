@@ -9,12 +9,12 @@
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- Google fonts - Noto Sans -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet"> --}}
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/custom.css') }}"> --}}
     <!-- Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
@@ -26,23 +26,35 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
-    <script src="https://use.fontawesome.com/99347ac47f.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
     <!-- Font Icons CSS-->
-    <link rel="stylesheet" href="{{ asset('icons-reference/styles.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('icons-reference/styles.css') }}"> --}}
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+    <!-- Just an image -->
+    <nav class="navbar navbar-toggleable-md navbar-light sticky-top" style="background-color: #2f333e;">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#simpel-nav" aria-controls="simpel-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand py-0" href="#">
+          <img src="/img/logo/logo-outline.svg" width="50" height="50" alt="">
+        </a>
+      </div>
+    </nav>
+    
     @yield('content')
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="{{ asset('js/tether.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/tether.min.js') }}"></script> --}}
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.cookie.js') }}"> </script>
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.cookie.js') }}"> </script> --}}
+    {{-- <script src="{{ asset('js/jquery.validate.min.js') }}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="{{ asset('js/charts-home.js') }}"></script>
-    <script src="{{ asset('js/front.js') }}"></script>
+    {{-- <script src="{{ asset('js/front.js') }}"></script> --}}
   </body>
 </html>
