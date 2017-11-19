@@ -10,13 +10,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="630.77521mm"
+   width="112.03883mm"
    height="88.146721mm"
-   viewBox="0 0 2235.0303 312.3309"
+   viewBox="0 0 396.988 312.3309"
    id="svg4948"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="logo-outline.svg">
+   sodipodi:docname="logo-only-greyscale.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -45,7 +45,7 @@
        id="SVGID_6_-3">
       <polygon
          id="use7931-6"
-         points="64.662,63.324 85.852,60.377 89.068,91.405 74.548,91.405 " />
+         points="89.068,91.405 74.548,91.405 64.662,63.324 85.852,60.377 " />
     </clipPath>
     <clipPath
        id="SVGID_4_-7">
@@ -383,7 +383,7 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-677.67139,-238.83046)"
+     transform="translate(-677.67139,-238.83044)"
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="icon base"
@@ -405,7 +405,7 @@
      id="layer2"
      inkscape:label="icon image"
      style="display:inline;opacity:0.98000004"
-     transform="translate(-851.95702,-212.18202)">
+     transform="translate(-851.95702,-212.182)">
     <g
        id="Layer_1"
        transform="translate(-801.12786,530.99855)">
