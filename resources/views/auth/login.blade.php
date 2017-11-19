@@ -7,14 +7,8 @@
       <div class="row">
         <!-- Logo & Information Panel-->
         <div class="col-lg-6">
-          <div class="info d-flex align-items-center">
-            <div class="content text-center">
-              <div class="logo mb-4">
-                {{-- <h1>SIMPel</h1> --}}
-                  <img class="img-fluid" src="/img/logo/logo.svg" width="300px">
-              </div>
-              <p>Sistem Informasi Pengendalian Pasca-panen Kedelai Lokal</p>
-            </div>
+          <div class="info text-center">
+            <img class="img-fluid" src="/img/logo/logo.svg" width="300px">
           </div>
         </div>
         <!-- Form Panel    -->
