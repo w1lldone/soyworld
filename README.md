@@ -1,4 +1,4 @@
-# Information system for post-harvest soybean control
+# Information system for post-harvest soybean control (SOYWORLD)
 This information system was build to control soybean post-harvest system (case study on Tani Makmur Prambanan soybean farmers, Yogyakarta, Indonesia)
 
 ## Credits
@@ -19,4 +19,4 @@ This information system was build to control soybean post-harvest system (case s
 
 ## License
 
-© 2017 Wildan Ainurrahman under the Apache License 2.0.
+© 2017 Wildan Ainurrahman under the GNU GENERAL PUBLIC LICENSE 3.0.
