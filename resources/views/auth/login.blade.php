@@ -5,20 +5,20 @@
   <div class="container d-flex align-items-center">
     <div class="form-holder">
       <div class="row">
-        <div class="col-lg-6 offset-lg-3 bg-white">
+        <div class="col-md-6 offset-md-3 bg-white">
           <div class="form d-flex align-items-center">
             <div class="content">
               <form id="login-form" method="POST" action="{{ route('login') }}">
                 <div class="form-group mb-5">
-                  <img class="img-fluid" src="/img/logo/logo.svg" width="300px">
+                  <img class="img-fluid" src="/img/logo/logo.svg">
                 </div>
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                   <input id="login-email" type="email" name="email" required=""  class="input-material" value="{{ old('email') }}">
                   @if ($errors->has('email'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('email') }}</strong>
-                      </span>
+                    <span class="help-block">
+                      <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                   @endif
                   <label for="login-email" class="label-material">Email</label>
                 </div>
