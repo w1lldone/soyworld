@@ -14,7 +14,7 @@
     <!-- theme stylesheet-->
     {{-- <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet"> --}}
     <!-- Custom stylesheet - for your changes-->
-    {{-- <link rel="stylesheet" href="{{ asset('css/custom.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/landing-page.css') }}">
     <!-- Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
@@ -35,7 +35,7 @@
   </head>
   <body>
     <!-- Just an image -->
-    <nav class="navbar navbar-toggleable-md navbar-inverse sticky-top" style="background-color: #2f333e;">
+    <nav class="navbar navbar-toggleable-sm navbar-inverse" style="background-color: #2f333e;">
       <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#simpel-nav" aria-controls="simpel-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
