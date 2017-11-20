@@ -34,17 +34,17 @@
 	<section class="info">
 		<div class="container">
 			<div class="row text-center">
-				<div class="col-4">
+				<div class="col-md-4 py-4">
 					<img src="/img/icons/farmer.svg" class="img-fluid mb-4" style="width: 100px">
 					<h3 class="number">13</h3>
 					<h5 class="description">Petani <br> berpengalaman</h5>
 				</div>
-				<div class="col-4">
+				<div class="col-md-4 py-4">
 					<img src="/img/icons/factory.svg" class="img-fluid mb-4" style="width: 100px">
 					<h3 class="number">50</h3>
 					<h5 class="description">Konsumen <br> industri</h5>
 				</div>
-				<div class="col-4">
+				<div class="col-md-4 py-4">
 					<img src="/img/icons/transaction.svg" class="img-fluid mb-4" style="width: 100px">
 					<h3 class="number">100<sup>+</sup></h3>
 					<h5 class="description">Total <br> transaksi</h5>
