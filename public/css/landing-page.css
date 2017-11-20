@@ -1,0 +1,27 @@
+.header {
+	background: url('/img/jumbotron/soybean-1.jpg') center center fixed no-repeat; 
+	background-size: cover; 
+	padding: 2.5rem 1rem 1rem;
+}
+
+.intro {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background-color: #06ef63fa;
+	color: white;
+}
+
+.info {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background-color: #eee;
+}
+
+.info .number {
+	color: #06ef63fa;
+}
+
+.info .description {
+	margin-top: 1rem;
+	color: #6f707eff;
+}
