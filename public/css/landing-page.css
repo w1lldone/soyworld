@@ -1,3 +1,26 @@
+body {
+	color: #6f707eff;
+}
+
+.bg-soy {
+	background-color: #06ef63fa;
+	color: white;
+}
+
+.separator {
+	border-top-width: 0.2rem;
+	width: 35%;
+}
+
+.separator.dark {
+	background-color: #6f707eff; 
+	opacity: 0.7;
+}
+
+.separator.light {
+	background-color: white;
+}
+
 .header {
 	background: url('/img/jumbotron/soybean-1.jpg') center center fixed no-repeat; 
 	background-size: cover; 
@@ -24,4 +47,14 @@
 .info .description {
 	margin-top: 1rem;
 	color: #6f707eff;
+}
+
+.news {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.news span.title {
+	font-weight: 600;
+	font-size: 1.4rem;
 }

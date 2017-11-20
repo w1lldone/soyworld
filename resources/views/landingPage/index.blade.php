@@ -21,7 +21,7 @@
 					<h1>Tentang <strong>SOY</strong>WORLD</h1>
 				</div>
 			</div>
-			<hr style="background-color: white; width: 55%">
+			<hr class="separator light">
 			<div class="row mt-5">
 				<div class="col-md-8 offset-md-2">
 					<p><strong>SOY</strong>WORLD adalah sistem informasi yang menjadi wadah bagi petani kedelai untuk memasarkan hasil panen mereka langsung kepada industri. <strong>SOY</strong>WORLD menyediakan data penanaman kedelai, aktifita tanam, biaya produksi, panen, penanganan pasca panen, dan stok realtime kedelai. Diharapkan, pembuatan sistem informasi pengendalian inventory pasca panen kedelai ini bisa memperbaiki sistem penanganan pasca panen kedelai lokal, mepermudah pengendalian ketersediaan kedelai lokal secara kontinyu, menjembatani petani kedelai lokal dengan para pelaku industri, dan mensejahterakan petani kedelai lokal.</p>
@@ -48,6 +48,39 @@
 					<img src="/img/icons/transaction.svg" class="img-fluid mb-4" style="width: 100px">
 					<h3 class="number">100<sup>+</sup></h3>
 					<h5 class="description">Total <br> transaksi</h5>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="news">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1>Data terbaru</h1>
+				</div>
+			</div>
+			<hr class="separator dark">
+			<div class="row">
+				<div class="col-md-3 offset-md-3 py-5">
+					<div class="card">
+						<div class="card-header text-center bg-soy">
+							<span class="title">Harga kedelai</span>
+						</div>
+						<div class="card-block text-center">
+							<h3 class="m-0 py-3">Rp. 8000/Kg</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 py-5">
+					<div class="card">
+						<div class="card-header text-center bg-soy">
+							<span class="title">Stok kedelai</span>
+						</div>
+						<div class="card-block text-center">
+							<h3 class="m-0 py-3">2552 Kg</h3>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
