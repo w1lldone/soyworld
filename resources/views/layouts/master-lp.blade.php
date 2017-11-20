@@ -35,21 +35,19 @@
   </head>
   <body>
     <!-- Just an image -->
-    <nav class="navbar navbar-toggleable-sm navbar-inverse" style="background-color: #2f333e;">
-      <div class="container">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#simpel-nav" aria-controls="simpel-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="/img/logo/logo-only-outline.svg" height="45" alt="">
-        </a>
-        <div class="collapse navbar-collapse" id="simpel-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/login"><i class="fa fa-sign-in fa-fw"></i>Login</a>
-            </li>
-          </ul>
-        </div>
+    <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: #2f333e;">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#simpel-nav" aria-controls="simpel-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="/img/logo/logo-only-outline.svg" height="45" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="simpel-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fa fa-sign-in fa-fw"></i>Login</a>
+          </li>
+        </ul>
       </div>
     </nav>
     
