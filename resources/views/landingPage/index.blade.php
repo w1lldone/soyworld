@@ -167,12 +167,12 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 d-flex justify-content-center">
 					<img src="/img/logo/logo-white.svg" class="img-fluid">
 				</div>
 				<div class="col-md-8">
 					<p class="m-0">
-						Sistem informasi manajemen pengendalian inventori pasca panen kedelai (<strong>SOY</strong>WORLD) &copy; Wildan Ainurrahman under <a href="https://github.com/w1lldone/simkedelai/blob/master/LICENSE">GNU General Public License 3.0</a>. PHP framework by <a href="https://laravel.com/">Laravel 5.4</a>, HTML/CSS/JavaScript framework by <a href="https://bootstrapious.com/admin-templates">Bootstrapious</a> based on <a href="https://v4-alpha.getbootstrap.com/">Bootstrap 4.0.0-alpha.6</a>. Header image by <a href="https://www.flickr.com/photos/unitedsoybean/10060224723/">United Soybean Board</a> (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>), icons by <a href="https://www.iconfinder.com/Wahib">Ely Wahib</a> (<a href="http://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a>), 
+						Sistem informasi manajemen pengendalian inventori pasca panen kedelai (<strong>SOY</strong>WORLD) &copy; Wildan Ainurrahman under <a href="https://github.com/w1lldone/simkedelai/blob/master/LICENSE">GNU General Public License 3.0</a>. PHP framework by <a href="https://laravel.com/">Laravel 5.4</a>, HTML/CSS/JavaScript framework by <a href="https://bootstrapious.com/admin-templates">Bootstrapious</a> based on <a href="https://v4-alpha.getbootstrap.com/">Bootstrap 4.0.0-alpha.6</a>. Header image by <a href="https://www.flickr.com/photos/unitedsoybean/10060224723/">United Soybean Board</a> (<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>). Logo <a href='https://www.freepik.com/free-vector/elegant-business-logos_714464.htm'>Designed by Freepik</a> (edited). Icons by <a href="https://www.iconfinder.com/Wahib">Ely Wahib</a> (<a href="http://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a>), <a href="https://www.iconfinder.com/sergey9198">Sergey Tikhonov</a> (<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>), <a href="https://www.iconfinder.com/igorverizub">Igor Verizub</a> (<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>), <a href="https://www.iconfinder.com/stormicons">Alexandre Luis</a> (<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>), <a href="https://www.iconfinder.com/addictedtocoffee">Oliver Pitsch</a> <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>, and <a href="http://fontawesome.io/">Font Awesome</a> (<a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a>)
 					</p>
 				</div>
 			</div>
