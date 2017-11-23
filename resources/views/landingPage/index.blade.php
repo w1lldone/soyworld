@@ -96,7 +96,7 @@
 					</div>
 				</div>
 				<div class="col-md-6 offset-md-3">
-					<a href="/login" class="btn btn-success btn-block bg-soy">Beli kedelai</a>
+					<a href="/login" class="btn btn-outline-success btn-lg btn-block">Beli kedelai</a>
 				</div>
 			</div>
 		</div>
