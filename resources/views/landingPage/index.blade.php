@@ -62,7 +62,20 @@
 			</div>
 			<hr class="separator dark">
 			<div class="row">
-				<div class="col-md-3 offset-md-3 py-5">
+				<div class="col-md-6 offset-md-3 py-5">
+					<div class="card">
+						<div class="card-header text-center bg-soy">
+							<span class="title">Panen kedelai</span>
+						</div>
+						<div class="card-block text-center">
+							<div class="bar-chart has-shadow bg-white">
+							  <div class="title"><strong class="text-violet">95%</strong><br><small>Current Server Uptime</small></div>
+							  <canvas id="barChartHome"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 offset-md-3 pb-5">
 					<div class="card">
 						<div class="card-header text-center bg-soy">
 							<span class="title">Harga kedelai</span>
@@ -72,7 +85,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 py-5">
+				<div class="col-md-3 pb-5">
 					<div class="card">
 						<div class="card-header text-center bg-soy">
 							<span class="title">Stok kedelai</span>
@@ -80,6 +93,70 @@
 						<div class="card-block text-center">
 							<h3 class="m-0 py-3">2552 Kg</h3>
 						</div>
+					</div>
+				</div>
+				<div class="col-md-6 offset-md-3">
+					<a href="/login" class="btn btn-success btn-block bg-soy">Beli kedelai</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="galery">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1>Galeri kedelai</h1>
+				</div>
+			</div>
+			<hr class="separator">
+			<div class="row">
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/0.jpeg" alt="Lahan kedelai">
+					  <div class="card-footer">
+					    <p class="card-text">Lahan kedelai sebelum dilakukan penanaman.</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/8.jpeg" alt="Pupuk kandang">
+					  <div class="card-footer">
+					    <p class="card-text">Penyimpanan pupuk kandang milik Kelompok Tani Makmur.</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/9.jpeg" alt="Kedelai usia 3 minggu">
+					  <div class="card-footer">
+					    <p class="card-text">Kedelai Anjasmoro usia 2&ndash;3 minggu.</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/7.jpeg" alt="Lahan kedelai">
+					  <div class="card-footer">
+					    <p class="card-text">Kedelai Anjasmoro usia 2 bulan.</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/1.jpeg" alt="Lahan kedelai">
+					  <div class="card-footer">
+					    <p class="card-text">Kedelai usia sekitar 80 hari.</p>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 pt-5">
+					<div class="card">
+					  <img class="card-img-top img-fluid" src="/img/galery/2.jpeg" alt="Lahan kedelai">
+					  <div class="card-footer">
+					    <p class="card-text">Daun kedelai rontok menandakan kedelai siap panen.</p>
+					  </div>
 					</div>
 				</div>
 			</div>

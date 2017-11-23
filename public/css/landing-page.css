@@ -58,3 +58,10 @@ body {
 	font-weight: 600;
 	font-size: 1.4rem;
 }
+
+.galery {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background-color: #eee;
+	/*color: white;*/
+}
