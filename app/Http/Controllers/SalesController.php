@@ -19,7 +19,8 @@ class SalesController extends Controller
     public function index()
     {
         $transactions = Transaction::latest()->get();
-        return view('sales.index', compact('transactions'));
+        $newSales = $transactions->where('status_id', 1)->count();
+        return view('sales.index', compact(['transactions', 'newSales']));
     }
 
     /**

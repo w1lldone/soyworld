@@ -19,7 +19,11 @@
 		      <div class="breadcrumb text-fade">
 		      	<span class="breadcrumb-item h3 active">Penjualan</span>
 		      </div>
-	        <h1 class="text-light" style="font-size: 2rem;">Daftar Penjualan kedelai  <span class="badge badge-warning">2 Baru</span></h1>
+	        <h1 class="text-light" style="font-size: 2rem;">Daftar Penjualan kedelai 
+	        	@if ($newSales != 0)
+	        		<span class="badge badge-warning">{{ $newSales }} Baru</span>
+	        	@endif
+	        </h1>
 	      </div>
 	    </div>
 	    <div class="row">
