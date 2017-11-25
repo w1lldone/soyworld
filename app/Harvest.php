@@ -131,7 +131,7 @@ class Harvest extends Model
 
 	public function getSaleStatusAttribute()
 	{
-		if ($this->ending_stock == 0) {
+		if ($this->ending_stock == 0 && $this->initial_stock != 0) {
 			return 'Habis';
 		}
 		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
