@@ -93,7 +93,7 @@
                    @endforeach   
                 </tbody>
   	          </table>
-              <div>
+              <div class="text-center">
                 {{ $harvests->links() }}
               </div>
   	        </div>
