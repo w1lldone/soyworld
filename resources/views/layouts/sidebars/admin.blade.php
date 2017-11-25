@@ -35,6 +35,10 @@
   <ul class="list-unstyled">
     <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
     <li> <a href="/harvest"> <i class="fa fa-archive"></i>Pasca panen </a></li>
-    <li> <a href="/sales"> <i class="fa fa-credit-card"></i>Penjualan </a></li>
+    <li> <a href="/sales"> <i class="fa fa-credit-card"></i>Penjualan 
+      @if ($newSales != 0)
+        <span class="badge badge-pill badge-warning">{{ $newSales }}</span>
+      @endif
+    </a></li>
   </ul>
 </nav>
