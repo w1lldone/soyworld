@@ -58,7 +58,7 @@
 		    		  </thead>
 		    		  <tbody>
 		    		  	@foreach ($transaction->transaction_detail as $detail)
-		    		  		<tr>
+		    		  		<tr class="linked-row" data-href="/soybean/{{ $detail->harvest_id }}">
 		    		  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 		    		  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->onfarm->user->name }}</td>
 		    		  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->harvested_at->format('j F Y') }}</td>
