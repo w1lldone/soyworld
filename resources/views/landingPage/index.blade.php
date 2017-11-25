@@ -36,17 +36,17 @@
 			<div class="row text-center">
 				<div class="col-md-4 py-4">
 					<img src="/img/icons/farmer.svg" class="img-fluid mb-4" style="width: 100px">
-					<h3 class="number">13</h3>
+					<h3 class="number">{{ $res['farmer'] }}</h3>
 					<h5 class="description">Petani <br> berpengalaman</h5>
 				</div>
 				<div class="col-md-4 py-4">
 					<img src="/img/icons/factory.svg" class="img-fluid mb-4" style="width: 100px">
-					<h3 class="number">50</h3>
+					<h3 class="number">{{ $res['consumer'] }}</h3>
 					<h5 class="description">Konsumen <br> industri</h5>
 				</div>
 				<div class="col-md-4 py-4">
 					<img src="/img/icons/transaction.svg" class="img-fluid mb-4" style="width: 100px">
-					<h3 class="number">100<sup>+</sup></h3>
+					<h3 class="number">{{ $res['transaction'] }}<sup>+</sup></h3>
 					<h5 class="description">Total <br> transaksi</h5>
 				</div>
 			</div>
@@ -69,8 +69,7 @@
 						</div>
 						<div class="card-block text-center">
 							<div class="bar-chart has-shadow bg-white">
-							  <div class="title"><strong class="text-violet">95%</strong><br><small>Current Server Uptime</small></div>
-							  <canvas id="barChartHome"></canvas>
+							  <canvas id="harvestChart"></canvas>
 							</div>
 						</div>
 					</div>
@@ -81,7 +80,7 @@
 							<span class="title">Harga kedelai</span>
 						</div>
 						<div class="card-block text-center">
-							<h3 class="m-0 py-3">Rp. 8000/Kg</h3>
+							<h3 class="m-0 py-3">Rp. {{ $res['price'] }}/Kg</h3>
 						</div>
 					</div>
 				</div>
@@ -91,7 +90,7 @@
 							<span class="title">Stok kedelai</span>
 						</div>
 						<div class="card-block text-center">
-							<h3 class="m-0 py-3">2552 Kg</h3>
+							<h3 class="m-0 py-3">{{ $res['stock'] }} Kg</h3>
 						</div>
 					</div>
 				</div>
@@ -178,4 +177,46 @@
 			</div>
 		</div>
 	</footer>
+@endsection
+
+@section('script')
+	<script type="text/javascript">
+		$(document).ready(function () {
+	    var BARCHARTEXMPLE = $('#harvestChart');
+	    var harvestChart = new Chart(BARCHARTEXMPLE, {
+	        type: 'bar',
+	        options: {
+	            scales: {
+	                xAxes: [{
+	                    display: true,
+	                    gridLines: {
+	                        color: '#eee'
+	                    }
+	                }],
+	                yAxes: [{
+	                    display: true,
+	                    gridLines: {
+	                        color: '#eee'
+	                    }
+	                }]
+	            },
+	        },
+	        data: {
+	            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Desember"],
+	            datasets: [
+	                {
+	                    label: "Panen kedelai (kg)",
+	                    backgroundColor: '#54e69d',
+	                    borderWidth: 1,
+	                    data: [
+	                    	@foreach ($res['harvests'] as $harvests)
+	                    		{{ $harvests }},
+	                    	@endforeach
+	                    ],
+	                }
+	            ]
+	        }
+	    });
+		})
+	</script>
 @endsection
