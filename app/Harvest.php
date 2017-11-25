@@ -131,7 +131,29 @@ class Harvest extends Model
 
 	public function getSaleStatusAttribute()
 	{
+		if ($this->ending_stock == 0) {
+			return 'Habis';
+		}
 		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
+	}
+
+	public function getStatusColorAttribute()
+	{
+		switch ($this->sale_status) {
+			case 'Dijual':
+				$color = 'success';
+				break;
+
+			case 'Habis':
+				$color = 'default';
+				break;
+			
+			default:
+				$color = 'warning';
+				break;
+		}
+
+		return $color;
 	}
 
 	public function getIncomeAttribute()

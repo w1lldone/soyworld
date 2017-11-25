@@ -35,7 +35,7 @@
 	  	        </div>
 	  	        <div class="clearfix">
 	  	          <span class="float-left"><strong>Status:</strong></span>
-	  	          <span class="float-right badge badge-pill {{ $harvest->on_sale ? 'badge-success' : 'badge-warning' }}" style="font-size: 100%">{{ $harvest->sale_status }}</span>
+	  	          <span class="float-right badge badge-pill badge-{{ $harvest->status_color }}" style="font-size: 100%">{{ $harvest->sale_status }}</span>
 	  	        </div>
 	  	      </div>
 	  	    </div>
@@ -80,7 +80,7 @@
   	            </div>
   	            <hr class="my-1">
   	            <div class="clearfix">
-  	              <p class="float-left m-0">Total Keuntungan</p>
+  	              <p class="float-left m-0">Perkiraan Keuntungan</p>
   	              <p class="float-right m-0">Rp. {{ $harvest->revenue }}</p>
   	            </div>
 	  	      </div>
@@ -161,7 +161,7 @@
 		          	  	    <div class="info d-flex">
 		          	  	      <div class="icon"><i class="fa fa-shopping-bag text-muted"></i></div>
 		          	  	      <div class="title">
-		          	  	        <h5>{{ $sale->formattedTotalPrice() }}</h5>
+		          	  	        <h5>Rp. {{ $sale->formattedTotalPrice() }}</h5>
 		          	  	        <p>{{ $sale->transaction->user->name }}</p>
 		          	  	      </div>
 		          	  	    </div>

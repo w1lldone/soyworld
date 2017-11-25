@@ -88,7 +88,7 @@
                           {{ $harvest->ending_stock }} Kg
                         @endif
                       </td>
-                      <td>{{ $harvest->sale_status }}</td>
+                      <td><span style="font-size: 100%" class="badge badge-pill badge-{{ $harvest->status_color }}">{{ $harvest->sale_status }}</span></td>
                     </tr>
                    @endforeach   
                 </tbody>
