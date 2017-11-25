@@ -22,13 +22,9 @@
 				<div class="col-12">
 				  @include('layouts.alerts')
 					<div class="card">
-					  <div class="card-close">
-					    <div class="dropdown">
-					      <a href="/onfarm/create" title="Tambah onfarm kedelai" data-placement="left" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
-					    </div>
-					  </div>
-					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Daftar on farm kedelai</h3>
+					  <div class="card-header">
+					    <h3 class="h4 d-inline">Daftar on farm kedelai</h3>
+					    <a href="/onfarm/create/" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
 					  </div>
 					  <div class="card-body">
 					    <table class="table table-hover">

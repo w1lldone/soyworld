@@ -22,13 +22,9 @@
 				<div class="col-12">
 				@include('layouts.alerts')
 					<div class="card">
-					  <div class="card-close">
-					    <div class="dropdown">
-					      <a href="/poktan/create" title="Tambah kelompok tani" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></a>
-					    </div>
-					  </div>
-					  <div class="card-header d-flex align-items-center">
-					    <h3 class="h4">Daftar kelompok tani</h3>
+					  <div class="card-header">
+					    <h3 class="h4 d-inline">Daftar kelompok tani</h3>
+					    <a href="/poktan/create/" class="btn btn-sm btn-primary float-right" title="Tambah poktan" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Poktan</a>
 					  </div>
 					  <div class="card-body table-responsive">
 					    <table class="table">
