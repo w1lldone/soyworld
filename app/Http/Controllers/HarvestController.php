@@ -76,8 +76,11 @@ class HarvestController extends Controller
      */
     public function show(Harvest $harvest)
     {
-        
-        return view('harvest.view', compact('harvest'));
+        $sales = $harvest->transaction_detail()->whereHas('transaction', function($query)
+        {
+            $query->where('status_id', 3);
+        })->get();
+        return view('harvest.view', compact(['harvest', 'sales']));
     }
 
     /**
