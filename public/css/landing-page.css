@@ -2,6 +2,15 @@ body {
 	color: #6f707eff;
 }
 
+a {
+	color: #06ef63fa;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #00a441;
+}
+
 .bg-soy {
 	background-color: #06ef63fa;
 	color: white;
