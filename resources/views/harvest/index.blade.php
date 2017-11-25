@@ -93,6 +93,9 @@
                    @endforeach   
                 </tbody>
   	          </table>
+              <div>
+                {{ $harvests->links() }}
+              </div>
   	        </div>
   	      </div>
   	    </div>

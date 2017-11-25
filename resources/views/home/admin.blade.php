@@ -16,19 +16,6 @@
 	      <div class="col-12">
 		      @include('layouts.alerts')
 	      </div>
-	      <!-- Statistics -->
-	      <div class="statistics col-lg-4 sticky-top">
-	      	<!-- STOCK -->
-	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
-	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
-	      	  <div class="text"><strong>{{ $stock }} Kg</strong><br>Stok aktif</div>
-	      	</div>
-	      	<!-- HARGA KEDELAI -->
-	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
-	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
-	      	  <div class="text"><strong>Rp. {{ $price }}</strong><br>Harga kedelai</div>
-	      	</div>	      	
-	      </div>
 	      <div class="col-lg-8">
 	      	{{-- TRANSACTION --}}
 	      	<div class="articles card mb-3">
@@ -56,9 +43,6 @@
 	      	    </table>
 	      	  </div>
 	      	</div>
-	      </div>
-	      <!-- Line Chart            -->
-	      <div class="col-lg-8 offset-lg-4">
 	        <div class="bar-chart-example card">
 	          <div class="card-header d-flex align-items-center bg-violet">
 	            <h3 class="h4">Grafik panen kedelai {{ date('Y') }}</h3>
@@ -67,6 +51,19 @@
 	            <canvas id="barChartCustom"></canvas>
 	          </div>
 	        </div>
+	      </div>
+	      <!-- Statistics -->
+	      <div class="statistics col-lg-4 sticky-top">
+	      	<!-- STOCK -->
+	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
+	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
+	      	  <div class="text"><strong>{{ $stock }} Kg</strong><br>Stok aktif</div>
+	      	</div>
+	      	<!-- HARGA KEDELAI -->
+	      	<div class="statistic d-flex align-items-center bg-white has-shadow">
+	      	  <div class="icon bg-violet"><i class="fa fa-tasks"></i></div>
+	      	  <div class="text"><strong>Rp. {{ $price }}</strong><br>Harga kedelai</div>
+	      	</div>	      	
 	      </div>
 	    </div>
 	  </div>

@@ -120,7 +120,7 @@
 	    		  </div>
 	    		  <div class="card-footer text-center">
 	    		    <a href="/transaction/create" class="btn bg-blue ">Beli kedelai</a>
-	    		    <a href="/soybean?tab=stok-aktif" class="btn btn-warning">Kembali</a>
+	    		    <a href="#" onclick="window.history.go(-1)" class="btn btn-warning">Kembali</a>
 	    		  </div>
 	    		</div>
 	    	</div>

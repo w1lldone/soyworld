@@ -44,12 +44,11 @@
 			      	      <th>Jumlah kedelai</th>
 			      	      <th class="hidden-sm-down">Total pembayaran</th>
 			      	      <th>Status</th>
-			      	      <th>Tindakan</th>
 			      	    </tr>
 			      	  </thead>
 			      	  <tbody>
 			      	  	@foreach ($transactions as $transaction)
-			      	  		<tr>
+			      	  		<tr class="linked-row" data-href="/sales/{{ $transaction->id }}">
 			      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 			      	  		  <td>
 			      	  		  	<b class="text-primary">{{ $transaction->code }}</b><br>
@@ -58,9 +57,6 @@
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
 			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>
 			      	  		  <td class="align-middle"><span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%">{{ $transaction->status->name }}</span></td>
-			      	  		  <td class="align-middle">
-			      	  		  	<a class="btn btn-outline-info" href="/sales/{{ $transaction->id }}"><i class="fa fa-info"></i></a>
-			      	  		  </td>
 			      	  		</tr>
 			      	  	@endforeach
 			      	  </tbody>
