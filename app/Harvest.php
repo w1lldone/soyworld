@@ -103,7 +103,10 @@ class Harvest extends Model
 
 	public function income()
 	{
-		return $this->transaction_detail->sum('total_price');
+		return $this->transaction_detail()->whereHas('transaction', function($query)
+		{
+			$query->where('status_id', 3);
+		})->get()->sum('total_price');
 	}
 
 	public function revenue()
