@@ -14,17 +14,32 @@
 	<section class="dashboard-counts p-0">
 	  <div class="container">
 	    <div class="row">
-	      <div class="col-12">
+      	<div class="col-12">
 		      <!-- BREADCRUMB -->
-		      <div class="breadcrumb text-fade">
-		      	<a class="breadcrumb-item h3" href="/sales">Penjualan</a>
-		      	<span class="breadcrumb-item h3 active">Detail</span>
-		      </div>
+      		<div class="breadcrumb text-fade">
+      			<a class="breadcrumb-item h3" href="/sales">Penjualan</a>
+      			<span class="breadcrumb-item h3 active">Detail</span>
+      		</div>
+      	</div>
+	      <div class="col-md-8">
 	        <h1 class="text-light" style="font-size: 2rem;">Detail transaksi #{{ $transaction->code }}</h1>
 	        <div class="text-muted">
-	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Jumlah kedelai"><i class="fa fa-user-o mr-2"></i> {{ $transaction->user->name }}</span>
+	          <span class="pr-4" data-toggle="tooltip" data-placement="bottom" title="Tanggal pesan"><i class="fa fa-calendar mr-2"></i> {{ $transaction->created_at->format('d F Y') }}</span>
 	          <span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%" data-toggle="tooltip" data-placement="bottom" title="Status">{{ $transaction->status->name }}</span>
 	        </div>
+	      </div>
+	      <div class="col-md-4">
+	      	<div class="card mt-md-0 mt-3 mb-0">
+	      		<div class="card-header bg-violet">
+	      			Informasi pembeli
+	      		</div>
+	      		<div class="card-block py-3">
+	      			<p class="m-0">
+	      				<i class="fa fa-user-o fa-fw"></i> {{ $transaction->user->name }} <br>
+	      				<i class="fa fa-map-marker fa-fw"></i> {{ $transaction->delivered_to }}
+	      			</p>
+	      		</div>
+	      	</div>
 	      </div>
 	      <div class="col-12">
 			    <div class="table-responsive mt-4">
