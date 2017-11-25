@@ -28,39 +28,57 @@
 	          <span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%" data-toggle="tooltip" data-placement="bottom" title="Status">{{ $transaction->status->name }}</span>
 	        </div> --}}
 	      </div>
-		    <div class="table-responsive mt-4">
-		      <table class="table table-hover">
-		      	  <thead>
-		      	    <tr>
-		      	      <th>#</th>
-		      	      <th class="hidden-sm-down">Petani</th>
-		      	      <th class="hidden-sm-down">Tanggal panen</th>
-		      	      <th>Jumlah kedelai</th>
-		      	      <th>Harga</th>
-		      	    </tr>
-		      	  </thead>
-		      	  <tbody>
-		      	  	@foreach ($transaction->transaction_detail as $detail)
-		      	  		<tr>
-		      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
-		      	  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->onfarm->user->name }}</td>
-		      	  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->harvested_at->format('j F Y') }}</td>
-		      	  		  <td class="align-middle">{{ $detail->quantity }} Kg</td>
-		      	  		  <td class="align-middle ">Rp. {{ $detail->formattedTotalPrice() }} </td>
-		      	  		</tr>
-		      	  	@endforeach
-		      	  </tbody>
-		      	  <tfoot>
-		      	  	<tr>
-		      	  		<td><b>Total</b></td>
-		      	  		<td class="hidden-sm-down"></td>
-		      	  		<td class="hidden-sm-down"></td>
-		      	  		<td class="text-primary"><b>{{ $transaction->total_quantity }} Kg</b></td>
-		      	  		<td class="text-primary"><b>Rp. {{ $transaction->formattedTotalPayment() }}</b></td>
-		      	  	</tr>
-		      	  </tfoot>
-		      	</table>
-	    	</div>
+	      <div class="col-md-6 mt-3">
+	      	<div class="card" style="background-color: #eee;">
+	      		<div class="card-block">
+	      			<h3 class="card-title">Tanggal pesan</h3>
+	      			<p>{{ $transaction->created_at->format('d F y') }}</p>
+	      		</div>
+	      	</div>
+	      </div>
+	      <div class="col-md-6 mt-lg-3">
+	      	<div class="card" style="background-color: #eee;">
+	      		<div class="card-block">
+	      			<h3 class="card-title">Alamat pengiriman</h3>
+	      			<p>{{ $transaction->delivered_to }}</p>
+	      		</div>
+	      	</div>
+	      </div>
+	      <div class="col-12">
+			    <div class="table-responsive">
+			    	<table class="table table-hover">
+		    		  <thead>
+		    		    <tr>
+		    		      <th>#</th>
+		    		      <th class="hidden-sm-down">Petani</th>
+		    		      <th class="hidden-sm-down">Tanggal panen</th>
+		    		      <th>Jumlah kedelai</th>
+		    		      <th>Harga</th>
+		    		    </tr>
+		    		  </thead>
+		    		  <tbody>
+		    		  	@foreach ($transaction->transaction_detail as $detail)
+		    		  		<tr>
+		    		  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
+		    		  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->onfarm->user->name }}</td>
+		    		  		  <td class="align-middle hidden-sm-down">{{ $detail->harvest->harvested_at->format('j F Y') }}</td>
+		    		  		  <td class="align-middle">{{ $detail->quantity }} Kg</td>
+		    		  		  <td class="align-middle ">Rp. {{ $detail->formattedTotalPrice() }} </td>
+		    		  		</tr>
+		    		  	@endforeach
+		    		  </tbody>
+		    		  <tfoot>
+		    		  	<tr>
+		    		  		<td><b>Total</b></td>
+		    		  		<td class="hidden-sm-down"></td>
+		    		  		<td class="hidden-sm-down"></td>
+		    		  		<td class="text-primary"><b>{{ $transaction->total_quantity }} Kg</b></td>
+		    		  		<td class="text-primary"><b>Rp. {{ $transaction->formattedTotalPayment() }}</b></td>
+		    		  	</tr>
+		    		  </tfoot>
+		    		</table>
+			    </div>
+	      </div>
 	    </div>
 	  </div>
 	</section>

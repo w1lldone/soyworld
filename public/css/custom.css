@@ -1,5 +1,16 @@
 /* your styles go here */
 
+.container {
+  padding: 0 30px;
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0px;
+  }
+}
+
+
 .datepicker-dropdown {
   z-index: 9999;
 }
