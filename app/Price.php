@@ -10,4 +10,6 @@ class Price extends Model
     {
     	return number_format(Price::latest()->first()->nominal, 0, ',', '.');
     }
+
+    protected $guarded = ['id'];
 }

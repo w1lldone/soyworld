@@ -142,3 +142,8 @@ Route::group(['prefix' => 'notifications'], function(){
 	Route::get('/', 'NotificationController@index');
 	Route::get('/{id}', 'NotificationController@show');
 });
+
+Route::group(['prefix' => 'price'], function(){
+	Route::get('/', 'PriceController@index');
+	Route::post('/', 'PriceController@store');
+});

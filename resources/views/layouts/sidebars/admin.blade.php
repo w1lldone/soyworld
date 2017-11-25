@@ -30,6 +30,7 @@
         <li><a href="/supplier">Daftar Supplier</a></li>
       </ul>
     </li>
+    <li><a href="/price"> <i class="fa fa-btc"></i>Harga kedelai</a></li>
   </ul><span class="heading">Kedelai</span>
   <ul class="list-unstyled">
     <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
