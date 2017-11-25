@@ -72,16 +72,16 @@
 	  	      <div class="item mx-2">
   	            <div class="clearfix">
   	              <p class="float-left m-0">Total biaya</p>
-  	              <p class="float-right m-0">Rp. {{ $harvest->formattedTotalCost() }}</p>
+  	              <p class="float-right m-0">Rp. {{ $harvest->total_cost }}</p>
   	            </div>
   	            <div class="clearfix">
   	              <p class="float-left m-0">Total pendapatan</p>
-  	              <p class="float-right m-0">Rp. 2.500.000</p>
+  	              <p class="float-right m-0">Rp. {{ $harvest->income }}</p>
   	            </div>
   	            <hr class="my-1">
   	            <div class="clearfix">
   	              <p class="float-left m-0">Total Keuntungan</p>
-  	              <p class="float-right m-0">Rp. 1.000.000</p>
+  	              <p class="float-right m-0">Rp. {{ $harvest->revenue }}</p>
   	            </div>
 	  	      </div>
 	  	    </div> 

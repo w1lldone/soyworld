@@ -67,7 +67,7 @@ class Harvest extends Model
 
 	public function stockPercent()
 	{
-		return $this->ending_stock/$this->initial_stock*100;
+		return floor($this->ending_stock/$this->initial_stock*100);
 	}
 
 	public function harvestCost()
@@ -101,6 +101,21 @@ class Harvest extends Model
 		return array_values($data);
 	}
 
+	public function income()
+	{
+		return $this->transaction_detail->sum('total_price');
+	}
+
+	public function revenue()
+	{
+		if ($this->income() == 0) {
+			return 0;
+		}
+
+		$revenue = $this->income() - $this->totalCost();
+		return $revenue;
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*
@@ -114,6 +129,21 @@ class Harvest extends Model
 	public function getSaleStatusAttribute()
 	{
 		return $this->on_sale ? 'Dijual' : 'Tidak dijual';
+	}
+
+	public function getIncomeAttribute()
+	{
+		return number_format($this->income(), 0, ',', '.');
+	}
+
+	public function getRevenueAttribute()
+	{
+		return number_format($this->revenue(),0,',','.');
+	}
+
+	public function getTotalCostAttribute()
+	{
+		return number_format($this->totalCost(),0,',','.');
 	}
 
     protected $guarded = ['id'];
