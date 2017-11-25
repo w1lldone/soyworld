@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        view()->composer('layouts.sidebars.admin', function($view)
+        {
+            $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
+        });
     }
 
     /**
