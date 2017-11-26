@@ -95,4 +95,18 @@ class Onfarm extends Model
     {
         return "/activity/create/$this->id";
     }
+
+    /**
+    * Custom attribute
+    */
+
+    public function getHarvestEstimationAttribute()
+    {
+        $up = $this->planted_at->addDays(82)->format('j');
+        $down = $this->planted_at->addDays(90)->format('j F Y');
+
+        return $up.'&ndash;'.$down;
+    }
+
+
 }

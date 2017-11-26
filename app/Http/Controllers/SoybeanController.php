@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Harvest;
+use App\Onfarm;
 
 class SoybeanController extends Controller
 {
     public function index()
     {
-    	return view('soybean.index');
+
+        if (request('tab') == 'stok-aktif') {
+            $harvests = Harvest::readyStock();
+        	return view('soybean.index', compact('harvests'));
+        }
+
+        if (request('tab') == 'onfarm') {
+           $onfarms = Onfarm::doesntHave('harvest')->latest()->get();
+           return view('soybean.index', compact('onfarms'));
+        }
     }
 
     public function show(Harvest $harvest)
