@@ -23,24 +23,18 @@
 	          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> 42 Petani</span>
 	          <span class="pr-4"><i class="fa fa-envira mr-3"></i> Panen terakhir: 7 Agustus 2017</span>
 	        </div>
+	        <div class="d-flex flex-wrap mt-3">
+	        	<h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
+				    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. {{ \App\Price::latestPrice() }}/Kg</b></span></h2>
+				    <a class="btn btn-info ml-auto" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
+	        </div>
 	      </div>
 	    </div>
 	    <div class="row">
 	    	<div class="col-12">
 			    @include('soybean.navpill')
 			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
-				    <h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
-				    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. {{ \App\Price::latestPrice() }}/Kg</b></span></h2>
-				    <a class="btn btn-info ml-auto" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
-{{-- 				    <form class="ml-auto">
-				      <div class="input-group">
-				        <input id="inlineFormInput" type="text" placeholder="Cari" class="form-control">
-				        <span class="input-group-btn">
-									<button type="button" class="btn btn-primary">Go!</button>
-								</span>
-				      </div>
-				    </form> --}}
-			    </div>
+		    	</div>
 			    <div class="table-responsive">
 		      	<table class="table table-hover">
 		      	  <thead>
