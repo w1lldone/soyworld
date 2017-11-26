@@ -89,9 +89,18 @@ class HarvestController extends Controller
      * @param  \App\Harvest  $harvest
      * @return \Illuminate\Http\Response
      */
-    public function edit(Harvest $harvest)
+    public function edit(Harvest $harvest, $section)
     {
-        //
+        switch ($section) {
+            case 'stock':
+                $this->authorize('editStock', $harvest);
+                return view('harvest.edit.stock', compact('harvest'));
+                break;
+            
+            default:
+                return $harvest;
+                break;
+        }
     }
 
     /**
@@ -101,9 +110,18 @@ class HarvestController extends Controller
      * @param  \App\Harvest  $harvest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Harvest $harvest)
+    public function update(Request $request, Harvest $harvest, $section)
     {
-        
+        switch ($section) {
+            case 'sale':
+                $harvest->update(request(['on_sale']));
+                return redirect("/harvest/$harvest->id/view")->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
+                break;
+            
+            default:
+                # code...
+                break;
+        }
     }
 
     /**

@@ -116,11 +116,13 @@ Route::group(['prefix' => 'onfarmcost'], function()
 
 Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/', 'HarvestController@index');
+	Route::get('/{harvest}/edit/{section}', 'HarvestController@edit');
 	Route::get('/create', 'HarvestController@create');
 	Route::get('/{harvest}/view', 'HarvestController@show');
 	Route::get('/{harvest}/postharvest', 'PostharvestController@create');
 	Route::post('/', 'HarvestController@store');
-	Route::put('/{harvest}/sale', 'HarvestSalesController@update');
+	// Route::put('/{harvest}/sale', 'HarvestSalesController@update');
+	Route::put('/{harvest}/{section}', 'HarvestController@update');
 });
 
 Route::group(['prefix' => 'stock'], function(){

@@ -89,7 +89,9 @@
 	  	  <div class="clearfix mt-2">
 	  	  	<h2 class="d-inline"><span class="badge badge-default mr-4">Tindakan:</span></h2>
 	  	    <a href="/onfarm/{{ $harvest->onfarm_id }}/view" class="btn btn-info btn-sm">Detail tanam</a>
-	  	    <a href="/harvest/{{ $harvest->onfarm_id }}/stock" class="btn btn-success btn-sm">Ubah stok</a>
+	  	    @can('editStock', $harvest)
+		  	    <a href="/harvest/{{ $harvest->id }}/edit/stock" class="btn btn-success btn-sm">Ubah stok</a>
+	  	    @endcan
 	  	  </div> 
 	  	</div>
 	  </section>
