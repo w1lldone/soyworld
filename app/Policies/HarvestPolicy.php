@@ -46,6 +46,11 @@ class HarvestPolicy
         return $user->id == $harvest->onfarm->user_id;
     }
 
+    public function editStock(User $user, Harvest $harvest)
+    {
+        return $user->id == $harvest->onfarm->user_id && $harvest->initial_stock == $harvest->ending_stock;
+    }
+
     /**
      * Determine whether the user can update the harvest.
      *
