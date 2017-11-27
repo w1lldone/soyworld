@@ -11,7 +11,7 @@
 	  </thead>
 	  <tbody>
 	  	@foreach ($harvests as $harvest)
-	  		<tr class="linked-row" data-href="/soybean/{{ $harvest->id }}">
+	  		<tr class="linked-row" data-href="/soybean/harvest/{{ $harvest->id }}">
 	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 	  		  <td>
 	  		  	<b class="text-primary">{{ $harvest->onfarm->user->name }}</b><br>
