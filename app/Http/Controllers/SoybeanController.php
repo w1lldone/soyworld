@@ -37,6 +37,7 @@ class SoybeanController extends Controller
 
     public function showOnfarm(Onfarm $onfarm)
     {
-        return $onfarm;
+        $activities = $onfarm->activity;
+        return view('soybean.view-onfarm', compact('onfarm', 'activities'));
     }
 }

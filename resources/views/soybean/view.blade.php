@@ -17,13 +17,13 @@
 	      <div class="col-12">
 	      	<div class="breadcrumb" style="background-color: inherit;">
 					  <a href="/soybean" class="h3 breadcrumb-item">Kedelai</a>
-					  <a href="#" class="h3 breadcrumb-item active">Detail</a>
+					  <a href="#" class="h3 breadcrumb-item active">Detail panen</a>
 	      	</div>
-	        <h1 class="text-light" style="font-size: 2rem;">Detail tanam kedelai bulan Mei</h1>
+	        <h1 class="text-light" style="font-size: 2rem;">{{ $onfarm->name }}</h1>
 	        <div class="text-muted">
-	          <span class="pr-4"><i class="fa fa-user-o fa-fw"></i> Sumarmo</span>
-	          <span class="pr-4"><i class="fa fa-cog fa-fw"></i> Kelompok tani makmur</span>
-	          <span class="pr-4"><i class="fa fa-home fa-fw"></i> Yogyakarta</span>
+	          <span class="pr-4"><i class="fa fa-user-o fa-fw"></i> {{ $onfarm->user->name }}</span>
+	          <span class="pr-4"><i class="fa fa-cog fa-fw"></i> {{ $onfarm->user->poktan->name }}</span>
+	          <span class="pr-4"><i class="fa fa-home fa-fw"></i> {{ $onfarm->user->address }}</span>
 	        </div>
 	      </div>
 	    </div>
@@ -123,40 +123,7 @@
 	    		    <a href="#" onclick="window.history.go(-1)" class="btn btn-warning">Kembali</a>
 	    		  </div>
 	    		</div>
-	    	</div>
-	    	<div class="col-md-4">
-	    	</div>      
-	    </div>
-	    <div class="row">
-	    	{{-- <div class="col-12">
-			    <div class="table-responsive">
-		      	<table class="table table-hover">
-		      	  <thead>
-		      	    <tr>
-		      	      <th>#</th>
-		      	      <th>Petani</th>
-		      	      <th>Stok</th>
-		      	      <th class="hidden-sm-down">Tanam</th>
-		      	      <th class="hidden-sm-down">Panen</th>
-		      	    </tr>
-		      	  </thead>
-		      	  <tbody>
-		      	  	@foreach (\App\Harvest::readyStock() as $harvest)
-		      	  		<tr>
-		      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
-		      	  		  <td>
-		      	  		  	<b class="text-primary">{{ $harvest->onfarm->user->name }}</b><br>
-		      	  		  	{{ $harvest->onfarm->user->poktan->name }} - <b>Yogyakarta</b>
-		      	  		  </td>
-		      	  		  <td class="align-middle">{{ $harvest->ending_stock }} Kg</td>
-		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->onfarm->planted_at->format('j F Y') }}</td>
-		      	  		  <td class="align-middle hidden-sm-down">{{ $harvest->harvested_at->format('j F Y') }} </td>
-		      	  		</tr>
-		      	  	@endforeach
-		      	  </tbody>
-		      	</table>
-			    </div>
-	    	</div> --}}
+	    	</div>  
 	    </div>
 	  </div>
 	</section>
