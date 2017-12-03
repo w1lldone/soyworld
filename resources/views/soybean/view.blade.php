@@ -32,7 +32,7 @@
 	    		<!-- Nav tabs -->
 	    		<ul class="nav nav-tabs" role="tablist">
 	    		  <li class="nav-item">
-	    		    <a class="nav-link active" data-toggle="tab" href="#general" role="tab">Info tanam</a>
+	    		    <a class="nav-link active" data-toggle="tab" href="#general" role="tab">Info umum</a>
 	    		  </li>
 	    		  <li class="nav-item">
 	    		    <a class="nav-link" data-toggle="tab" href="#onfarm" role="tab">Aktifitas tanam</a>
@@ -56,12 +56,12 @@
   		  						<td>{{ $onfarm->area }} m<sup>2</sup></td>
   		  					</tr>
   		  					<tr>
-  		  						<th class="text-blue">Tanggal tanam</th>
-  		  						<td>{{ $onfarm->planted_at->format('j F Y') }}</td>
+  		  						<th class="text-blue">Masa penanaman</th>
+  		  						<td>{{ $onfarm->planted_at->format('j F Y') }}&ndash;{{ $onfarm->harvest->harvested_at->format('j F Y') }}</td>
   		  					</tr>
   		  					<tr>
-  		  						<th class="text-blue">Tanggal panen</th>
-  		  						<td>{{ $onfarm->harvest->harvested_at->format('j F Y') }}</td>
+  		  						<th class="text-blue">Lama penanaman</th>
+  		  						<td>{{ $onfarm->planted_at->diffInDays($onfarm->harvest->harvested_at) }} hari</td>
   		  					</tr>
   		  					<tr>
   		  						<th class="text-blue">Hasil panen</th>
