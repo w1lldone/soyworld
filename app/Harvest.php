@@ -171,6 +171,11 @@ class Harvest extends Model
 		return number_format($this->totalCost(),0,',','.');
 	}
 
+	public function getProductivityAttribute(){
+		return round($this->initial_stock/$this->onfarm->area, 2);
+	}
+		
+
     protected $guarded = ['id'];
     protected $dates = ['harvested_at'];
     // protected $appends = ['periode'];

@@ -49,7 +49,7 @@
   		  				<tbody>
   		  					<tr>
   		  						<th class="text-blue">Jumlah bibit</th>
-  		  						<td>{{ $onfarm->seed->quantity }} Kg</td>
+  		  						<td>{{ $onfarm->seed->quantity }} kg</td>
   		  					</tr>
   		  					<tr>
   		  						<th class="text-blue">Luas tanam</th>
@@ -62,6 +62,14 @@
   		  					<tr>
   		  						<th class="text-blue">Tanggal panen</th>
   		  						<td>{{ $onfarm->harvest->harvested_at->format('j F Y') }}</td>
+  		  					</tr>
+  		  					<tr>
+  		  						<th class="text-blue">Hasil panen</th>
+  		  						<td>{{ $onfarm->harvest->initial_stock }} kg</td>
+  		  					</tr>
+  		  					<tr>
+  		  						<th class="text-blue">Produktivitas</th>
+  		  						<td>{{ $onfarm->harvest->productivity }} kg/m<sup>2</sup></td>
   		  					</tr>
   		  				</tbody>
   		  			</table>
