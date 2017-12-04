@@ -69,7 +69,7 @@
   		  					</tr>
   		  					<tr>
   		  						<th class="text-blue">Produktivitas</th>
-  		  						<td>{{ $onfarm->harvest->productivity }} kg/m<sup>2</sup></td>
+  		  						<td>{{ $onfarm->harvest->productivity*10 }} ton/ha</td>
   		  					</tr>
   		  				</tbody>
   		  			</table>
