@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Solver;
 
 class Onfarm extends Model
 {
+    use Solver;
     protected $guarded = ['id'];
     protected $dates = ['updated_at', 'planted_at'];
 
@@ -96,17 +98,40 @@ class Onfarm extends Model
         return "/activity/create/$this->id";
     }
 
+    
+
     /**
     * Custom attribute
     */
 
-    public function getHarvestEstimationAttribute()
+    public function getHarvestEstAttribute()
     {
         $up = $this->planted_at->addDays(82)->format('j');
         $down = $this->planted_at->addDays(90)->format('j F Y');
 
         return $up.'&ndash;'.$down;
     }
+
+    public function getCropsEstAttribute(){
+
+        $avg = $this->user->harvest->avg('initial_stock');
+        if (empty($avg)) {
+            return 'Data belum ada';
+        }
+        $productivity = $this->user->harvest->pluck('productivity');
+        $stdDev = $this->stdDev($productivity)*$this->area;
+
+        if ($stdDev == 0) {
+            return $avg;
+        }
+
+        $up = round($avg+$stdDev);
+        $down = round($avg-$stdDev);
+
+        return $up.'&ndash;'.$down.' kg';
+        
+    }
+        
 
 
 }
