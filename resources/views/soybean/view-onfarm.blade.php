@@ -58,7 +58,11 @@
 	  		  					</tr>
 	  		  					<tr>
 	  		  						<th class="text-blue">Perkiraan panen</th>
-	  		  						<td>{{ $onfarm->harvest_estimation }}</td>
+	  		  						<td>{{ $onfarm->harvest_est }}</td>
+	  		  					</tr>
+	  		  					<tr>
+	  		  						<th class="text-blue">Perkiraan hasil panen</th>
+	  		  						<td>{{ $onfarm->crops_est }}</td>
 	  		  					</tr>
 	  		  				</tbody>
 	  		  			</table>
