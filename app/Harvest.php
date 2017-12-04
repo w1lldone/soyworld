@@ -171,6 +171,7 @@ class Harvest extends Model
 		return number_format($this->totalCost(),0,',','.');
 	}
 
+	// get produvtivity value on kg per square meter, by divide weight of corps with plantation area
 	public function getProductivityAttribute(){
 		return round($this->initial_stock/$this->onfarm->area, 2);
 	}
