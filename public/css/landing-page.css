@@ -3,7 +3,7 @@ body {
 }
 
 a {
-	color: #06ef63fa;
+	color: #06ef63;
 }
 
 a:hover {
@@ -12,7 +12,7 @@ a:hover {
 }
 
 .bg-soy {
-	background-color: #06ef63fa;
+	background-color: #06ef63;
 	color: white;
 }
 
@@ -39,7 +39,7 @@ a:hover {
 .intro {
 	padding-top: 5rem;
 	padding-bottom: 5rem;
-	background-color: #06ef63fa;
+	background-color: #06ef63;
 	color: white;
 }
 
@@ -50,7 +50,7 @@ a:hover {
 }
 
 .info .number {
-	color: #06ef63fa;
+	color: #06ef63;
 }
 
 .info .description {
