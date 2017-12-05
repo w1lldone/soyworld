@@ -18,14 +18,22 @@
     <!-- DATEPICKER FOR BOOTSTRAP -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.css') }}">
     <!-- Favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+    {{-- <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
     <link rel="manifest" href="/img/favicons/manifest.json">
     <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#49525f">
     <link rel="shortcut icon" href="/img/favicons/favicon.ico">
     <meta name="msapplication-config" content="/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff"> --}}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#06ef63">
     <meta name="theme-color" content="#ffffff">
+
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
     {{-- <script src="https://use.fontawesome.com/99347ac47f.js"></script> --}}
