@@ -21,7 +21,7 @@
 	  		  <td class="align-middle hidden-sm-down">{{ $onfarm->planted_at->format('j F Y') }}</td>
 	  		  <td class="align-middle hidden-sm-down">{{ $onfarm->seed->quantity }} Kg</td>
 	  		  <td class="align-middle hidden-sm-down">{{ $onfarm->area }} m<sup>2</sup></td>
-	  		  <td class="align-middle">{{ $onfarm->harvest_estimation }} </td>
+	  		  <td class="align-middle">{{ $onfarm->harvest_est }} </td>
 	  		</tr>
 	  	@endforeach
 	  </tbody>
