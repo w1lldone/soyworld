@@ -18,7 +18,7 @@
 		      	<div class="breadcrumb">
 						  <a href="#" class="h3 breadcrumb-item active">Kedelai</a>
 		      	</div>
-		        <h1 class="text-light" style="font-size: 2rem;">Daftar kedelai Onfarm dan Pasca panen</h1>
+		        <h1 class="text-light" style="font-size: 2rem;">Informasi dan Data Kedelai</h1>
 		        <div class="text-muted">
 		          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> 42 Petani</span>
 		          <span class="pr-4"><i class="fa fa-envira mr-3"></i> Panen terakhir: 7 Agustus 2017</span>
