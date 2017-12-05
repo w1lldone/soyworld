@@ -106,7 +106,12 @@ class Onfarm extends Model
 
     public function getHarvestEstAttribute()
     {
-        $up = $this->planted_at->addDays(82)->format('j');
+        if ($this->planted_at->addDays(82)->format('F') == $this->planted_at->addDays(90)->format('F')) {
+            $up = $this->planted_at->addDays(82)->format('j');
+        } else {
+            $up = $this->planted_at->addDays(82)->format('j F');
+        }
+        
         $down = $this->planted_at->addDays(90)->format('j F Y');
 
         return $up.'&ndash;'.$down;
