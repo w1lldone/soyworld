@@ -119,6 +119,12 @@ class Harvest extends Model
 		return $revenue;
 	}
 
+	// get productivity on kg per square meter
+	public function productivity()
+	{
+		return round($this->initial_stock/$this->onfarm->area, 2);
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*
@@ -171,9 +177,10 @@ class Harvest extends Model
 		return number_format($this->totalCost(),0,',','.');
 	}
 
-	// get produvtivity value on kg per square meter, by divide weight of corps with plantation area
+	// get produvtivity on ton per hectare
 	public function getProductivityAttribute(){
-		return round($this->initial_stock/$this->onfarm->area, 2);
+		$val = $this->productivity()*10.." ton/ha";
+		return $val;
 	}
 		
 

@@ -115,14 +115,16 @@ class Onfarm extends Model
     public function getCropsEstAttribute(){
 
         $avg = $this->user->harvest->avg('initial_stock');
+
         if (empty($avg)) {
             return 'Data belum ada';
         }
+
         $productivity = $this->user->harvest->pluck('productivity');
         $stdDev = $this->stdDev($productivity)*$this->area;
 
         if ($stdDev == 0) {
-            return $avg;
+            return $avg. 'kg';
         }
 
         $up = round($avg+$stdDev);
