@@ -21,12 +21,51 @@
 			<div class="row">
 				<div class="col-12">
 				@include('layouts.alerts')
+					@if ($inactives->isNotEmpty())
+				    <div class="card">
+				    	<div class="card-header bg-warning text-white">
+				    		<h3 class="h4 d-inline">Anggota belum aktif</h3>
+				    	</div>
+				    	<div class="card-body table-responsive">
+				    		<table class="table table-hover">
+				    			<thead>
+				    				<tr>
+				    					<th>Nama</th>
+				    					<th>Sebagai</th>
+				    					<th>Kontak</th>
+				    					<th>Alamat</th>
+				    					<th>Tindakan</th>
+				    				</tr>
+				    			</thead>
+				    			<tbody>
+					    			@foreach ($inactives as $user)
+					    				<tr>
+					    					<td><b>{{ $user->name }}</b></td>
+					    					<td>{{ $user->privilage->name }}</td>
+					    					<td>{{ $user->contact }}</td>
+					    					<td>{{ $user->address }}</td>
+					    					<td>
+					    						<form action="/user/{{ $user->id }}/activate"	method="POST">
+					    							{{ csrf_field() }}
+					    							{{ method_field('PUT') }}
+					    							<button class="btn btn-success" onclick="return confirm('Apakah anda akan mengaktifkan pengguna?')" name="value" type="submit" value="1">Aktifkan</button>
+					    							<button class="btn btn-danger" onclick="return confirm('Apakah anda akan menghapus pengguna?')" name="value" type="submit" value="0">Hapus</button>
+					    						</form>
+					    					</td>
+					    				</tr>
+					    			@endforeach
+				    			</tbody>
+				    		</table>
+				    	</div>
+				    </div>
+					@endif
+					
 					<div class="card">
 					  <div class="card-header">
-					    <h3 class="h4 d-inline">Daftar Anggota</h3>
+					    <h3 class="h4 d-inline">Daftar Anggota Aktif</h3>
 				      <a href="/user/create/" class="btn btn-sm btn-primary float-right" title="Tambah anggota" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Anggota</a>
 					  </div>
-					  <div class="card-body">
+					  <div class="card-body table-responsive">
 					    <table class="table table-hover">
 					      <thead>
 					        <tr>

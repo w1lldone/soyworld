@@ -39,8 +39,9 @@ class UserController extends Controller
 
     public function index()
     {
-    	$users = User::all();
-    	return view('users.index', compact('users'));
+    	$users = User::where('is_activated', 1)->get();
+        $inactives = User::where('is_activated', 0)->get();
+    	return view('users.index', compact('users', 'inactives'));
     }
 
     public function create()
