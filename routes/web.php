@@ -22,6 +22,7 @@ Route::group(['prefix' => 'user'], function()
 {
 	Route::put('/{user}/email', 'UserController@changeEmail');
 	Route::put('/{user}/password', 'UserController@changePassword');
+	Route::put('/{user}/activate', 'UserActivationController@update');
 });
 
 Route::group(['prefix' => 'profile'], function()
