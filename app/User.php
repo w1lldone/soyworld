@@ -127,4 +127,5 @@ class User extends Authenticatable
     {
         return \App\TransactionDetail::salesHistory()->latest()->take(5)->get();
     }
+    
 }
