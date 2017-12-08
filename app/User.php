@@ -81,6 +81,7 @@ class User extends Authenticatable
             'password' => bcrypt($request->password),
             'privilage_id' => $request->privilage_id,
             'poktan_id' => $request->privilage_id == 2 ? $request->poktan_id : null,
+            'is_activated' => 1,
         ]);
     }
 
@@ -127,5 +128,5 @@ class User extends Authenticatable
     {
         return \App\TransactionDetail::salesHistory()->latest()->take(5)->get();
     }
-    
+
 }
