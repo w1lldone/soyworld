@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('privilage_id')->unsigned();
             $table->integer('poktan_id')->unsigned();
+            $table->boolean('is_activated')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
