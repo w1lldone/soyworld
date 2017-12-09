@@ -16,12 +16,12 @@ class CheckActivatedUser
      */
     public function handle($request, Closure $next)
     {
-        $user = User::where('email', $request->email)->first();
 
-        if ($user->is_activated) {
+        if (auth()->user()->is_activated) {
             return $next($request);
         }
 
-        return redirect('/login')->with('warning', 'Akun anda belum aktif. Silahkan coba beberapa saat lagi.');
+        auth()->logout();
+        return redirect('/login')->with('warning', 'Akun anda belum aktif. Silahkan hubungi administrator untuk mengaktifkan akun');
     }
 }
