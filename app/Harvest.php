@@ -85,7 +85,7 @@ class Harvest extends Model
 		return number_format($this->totalCost(), 0, ',', '.');
 	}
 
-	public static function annualHarvest($year = null)
+	public static function annualHarvest($year = 2017)
 	{
 		if (empty($year)) {
 			$year = date('Y');
