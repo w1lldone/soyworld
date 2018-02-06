@@ -85,12 +85,8 @@ class Harvest extends Model
 		return number_format($this->totalCost(), 0, ',', '.');
 	}
 
-	public static function annualHarvest($year = 2017)
+	public static function annualHarvest($year = '2017')
 	{
-		if (empty($year)) {
-			$year = date('Y');
-		}
-
 		$harvests = Harvest::whereYear('harvested_at', $year)->get();
 
 		for ($i=1; $i <= 12; $i++) { 
