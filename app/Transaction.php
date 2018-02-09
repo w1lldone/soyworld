@@ -24,6 +24,14 @@ class Transaction extends Model
     /**
     * CUSTOM METHOD SECTION
     */
+   
+   public function getPoktanTransactions($poktanId)
+   {
+       return $this->whereHas('transaction_detail.harvest.onfarm.user', function ($query) use ($poktanId)
+       {
+           $query->where('poktan_id', $poktanId);
+       })->get();
+   }
 
     public function cancelTransaction()
     {

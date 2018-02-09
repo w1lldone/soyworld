@@ -24,6 +24,10 @@ class Poktan extends Model
 		return $this->hasMany('App\Supplier');
 	}
 
+	public function onfarm(){
+		return $this->hasManyThrough('App\Onfarm', 'App\User');
+	}
+
 	/**
 	* CUSTOM METHOD
 	*/
@@ -35,4 +39,12 @@ class Poktan extends Model
 			'leader_user_id' => $request->leader_user_id,
 		]);
 	}
+
+	public function getActiveStockAttribute(){
+		return $this->onfarm()->whereHas('harvest', function ($query)
+		{
+			$query->where('ending_stock', '<>', 0);
+		})->get()->load('harvest')->pluck('harvest')->sum('ending_stock');
+	}
+		
 }

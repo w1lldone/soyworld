@@ -9,16 +9,16 @@ class SalesController extends Controller
 {
     function __construct()
     {
-        $this->middleware(['auth', 'role:admin']);
+        $this->middleware(['auth', 'isPoktanLeader']);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Transaction $transaction)
     {
-        $transactions = Transaction::latest()->get();
+        $transactions = $transaction->getPoktanTransactions(auth()->user()->poktan_id);
         $newSales = $transactions->where('status_id', 1)->count();
         return view('sales.index', compact(['transactions', 'newSales']));
     }

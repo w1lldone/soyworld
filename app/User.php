@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->privilage->is_superadmin;
     }
 
+    public function isPoktanLeader()
+    {
+        return $this->privilage->name == 'petani' && $this->poktan->leader_user_id  == $this->id;
+    }
+
     public static function addUser($request)
     {
         return static::create([
