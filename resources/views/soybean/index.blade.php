@@ -18,26 +18,25 @@
 		      	<div class="breadcrumb">
 						  <a href="#" class="h3 breadcrumb-item active">Kedelai</a>
 		      	</div>
-		        <h1 class="text-light" style="font-size: 2rem;">Informasi dan Data Kedelai</h1>
+		        <h1 class="text-light" style="font-size: 2rem;">Informasi Stok Kedelai</h1>
 		        <div class="text-muted">
 		          <span class="pr-4"><i class="fa fa-user-o mr-3"></i> 42 Petani</span>
 		          <span class="pr-4"><i class="fa fa-envira mr-3"></i> Panen terakhir: 7 Agustus 2017</span>
 		        </div>
-		        <div class="d-flex flex-wrap mt-3">
-		        	<h2 class="px-1"><span class="badge badge-primary p-2">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
-					    <h2 class="px-1"><span class="badge badge-success p-2">Harga <b>Rp. {{ \App\Price::latestPrice() }}/Kg</b></span></h2>
-					    <a class="btn btn-info ml-auto" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
-		        </div>
 		      </div>
 		    </div>
-		    <div class="row">
-		    	<div class="col-12">
-				    @include('soybean.navpill')
-				    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
+		    @foreach ($poktans as $poktan)
+		    	<div class="row">
+			    	<div class="col-md-6">
+					    <h2 class="text-primary">{{ $poktan->name }}</h2>
+					    <span class="text-muted"><i class="fa fa-home fa-fw"></i> {{ $poktan->address }}</span>
+					    <span class="text-muted"><i class="fa fa-user fa-fw"></i> {{ $poktan->user->count() }} Petani</span>
 			    	</div>
-				    @include('soybean.tab.'.request('tab'))
-		    	</div>
-		    </div>
+			    	<div class="col-md-6 text-right">
+					    <a href="{{ route('transaction.create', ['poktan_id' => $poktan->id]) }}" class="btn btn-info"></a>
+			    	</div>
+			    </div>
+		    @endforeach
 		  </div>
 		</section>
 	</div>

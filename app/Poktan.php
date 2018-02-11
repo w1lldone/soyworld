@@ -28,9 +28,8 @@ class Poktan extends Model
 		return $this->hasManyThrough('App\Onfarm', 'App\User');
 	}
 
-	/**
-	* CUSTOM METHOD
-	*/
+	/*CUSTOM METHOD SECTION*/
+
 	public static function addPoktan($request)
 	{
 		return static::create([
@@ -40,6 +39,8 @@ class Poktan extends Model
 		]);
 	}
 
+	/*CUSTOM ATTRIBUTE SECTION*/
+	
 	public function getActiveStockAttribute(){
 		return $this->onfarm()->whereHas('harvest', function ($query)
 		{
