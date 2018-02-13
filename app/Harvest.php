@@ -60,9 +60,12 @@ class Harvest extends Model
 		return $stock;
 	}
 
-	public static function readyStock()
+	public static function readyStock($poktanId = 1)
 	{
-		return static::where('on_sale', 1)->where('ending_stock', '<>', 0)->get();
+		return static::where('on_sale', 1)->where('ending_stock', '<>', 0)->whereHas('onfarm.user', function ($query) use ($poktanId)
+		{
+			$query->where('poktan_id', $poktanId);
+		})->get();
 	}
 
 	public function stockPercent()

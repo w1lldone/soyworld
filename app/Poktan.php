@@ -48,7 +48,7 @@ class Poktan extends Model
 	public function getActiveStockAttribute(){
 		return $this->onfarm()->whereHas('harvest', function ($query)
 		{
-			$query->where('ending_stock', '<>', 0);
+			$query->where('ending_stock', '<>', 0)->where('on_sale', 1);
 		})->get()->load('harvest')->pluck('harvest')->sum('ending_stock');
 	}
 		

@@ -63,12 +63,13 @@ class Transaction extends Model
     	$transaction = Transaction::create([
     		'user_id' => auth()->id(),
     		'status_id' => 1,
-    		'delivered_to' => $request->delivered_to, 
+            'poktan_id' => $request->poktan_id,
+    		'delivered_to' => $request->delivered_to,
 		]);
 
         $transaction->update(['code' => $transaction->user_id.$transaction->id.$transaction->created_at->format('dmy')]);
 
-		foreach (\App\Harvest::readyStock() as $stock) {
+		foreach (\App\Harvest::readyStock($transaction->poktan_id) as $stock) {
 			if ($request->quantity > $stock->ending_stock) {
 				$transaction->addDetail($stock->id, $stock->ending_stock);
 				$request->quantity -= $stock->ending_stock;
