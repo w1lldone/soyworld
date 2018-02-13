@@ -18,9 +18,9 @@ class SalesController extends Controller
      */
     public function index(Transaction $transaction)
     {
-        $transactions = $transaction->where('poktan_id', auth()->user()->poktan_id)->get();
+        $transactions = $transaction->where('poktan_id', auth()->user()->poktan_id)->latest()->get();
         $newSales = $transactions->where('status_id', 1)->count();
-        
+
         return view('sales.index', compact(['transactions', 'newSales']));
     }
 
