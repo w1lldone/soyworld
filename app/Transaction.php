@@ -21,18 +21,13 @@ class Transaction extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function poktan(){
+        return $this->belongsTo('App\Poktan');
+    }
+
     /**
     * CUSTOM METHOD SECTION
     */
-   
-   public function getPoktanTransactions($poktanId)
-   {
-       return $this->whereHas('transaction_detail.harvest.onfarm.user', function ($query) use ($poktanId)
-       {
-           $query->where('poktan_id', $poktanId);
-       })->get();
-   }
-
     public function cancelTransaction()
     {
         foreach ($this->transaction_detail as $detail) {

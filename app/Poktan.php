@@ -28,6 +28,10 @@ class Poktan extends Model
 		return $this->hasManyThrough('App\Onfarm', 'App\User');
 	}
 
+	public function transaction(){
+		return $this->hasMany('App\Transaction');
+	}
+
 	/*CUSTOM METHOD SECTION*/
 
 	public static function addPoktan($request)
