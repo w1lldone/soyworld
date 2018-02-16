@@ -124,6 +124,11 @@ class Harvest extends Model
 		return round($this->initial_stock/$this->onfarm->area, 2);
 	}
 
+	public function hasHandling($handling)
+	{
+		return $this->postharvest()->where('name', $handling)->get()->isNotEmpty();
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*
@@ -181,6 +186,14 @@ class Harvest extends Model
 		$val = $this->productivity()*10.." ton/ha";
 		return $val;
 	}
+
+	public function getHandlingsAttribute(){
+		return collect([
+			'Sortasi',
+        	'Pengeringan',
+		]);
+	}
+		
 		
 
     protected $guarded = ['id'];
