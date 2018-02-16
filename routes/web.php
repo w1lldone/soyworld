@@ -151,3 +151,7 @@ Route::group(['prefix' => 'price'], function(){
 	Route::get('/', 'PriceController@index');
 	Route::post('/', 'PriceController@store');
 });
+
+Route::group(['prefix' => 'warehouse'], function(){
+	Route::get('/', 'WarehouseController@index');
+});
