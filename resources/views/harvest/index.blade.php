@@ -63,10 +63,10 @@
                   <div class="input-group">
                     <label class="mr-sm-2">Tampilkan</label>
                     <div class="btn-group" data-toggle="buttons" onchange="$('#filterSortForm').submit()">
-                      <label class="btn btn-primary @if (request('view') == 'mine' || empty(request('view'))) active @endif">
+                      <label class="btn btn-primary btn-sm @if (request('view') == 'mine' || empty(request('view'))) active @endif">
                         <input type="radio" value="mine" name="view" id="option1" @if (request('view') == 'mine' || empty(request('view'))) checked @endif> Kedelaiku
                       </label>
-                      <label class="btn btn-primary @if (request('view') == 'poktan') active @endif"">
+                      <label class="btn btn-primary btn-sm @if (request('view') == 'poktan') active @endif"">
                         <input type="radio" value="poktan" name="view" id="option2" @if (request('view') == 'poktan') checked @endif> Kelompok tani
                       </label>
                     </div>
@@ -97,10 +97,6 @@
   	              <tr>
   	                <th>#</th>
   	                <th>Nama</th>
-                    @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
-    	                <th>Petani</th>
-                    @endif
-                    <th>Tanggal panen</th>
   	                <th>Sisa stok</th>
                     <th>Status</th>
   	              </tr>
@@ -109,11 +105,13 @@
                   @foreach ($harvests as $harvest)
                     <tr>
                       <td>{{ $harvests->toArray()['from']+$loop->index }}</td>
-                      <td><a href="/harvest/{{$harvest->id}}/view">Panen {{ $harvest->onfarm->name }}</a></td>
-                      @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
-                        <td>{{ $harvest->onfarm->user->name }}</td>
-                      @endif
-                      <td>{{ $harvest->harvested_at->format('j F Y') }}</td>
+                      <td>
+                        <a href="{{ route('harvest.show', [$harvest]) }}"><b>Panen {{ $harvest->onfarm->name }}</b></a> <br>
+                        <span class="text-muted"><i class="fa fa-calendar fa-fw"></i>Panen: {{ $harvest->harvested_at->format('j F Y') }}</span> &nbsp;
+                        @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
+                          <span class="text-muted"><i class="fa fa-user-o fa-fw"></i>{{ $harvest->onfarm->user->name }}</span>
+                        @endif
+                      </td>
                       <td>
                         @if (empty($harvest->ending_stock) && $harvest->on_sale == 0)
                           <button data-toggle="modal" data-target="#tambahStok{{$harvest->id}}" class="round-link btn">Tambah stok</button>

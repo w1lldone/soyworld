@@ -19,7 +19,6 @@
       </ul>
     </li>
     @if (auth()->user()->isPoktanLeader())
-      <li> <a href="/warehouse"> <i class="fa fa-archive"></i>Gudang</a></li>
       <li> <a href="/sales"> <i class="fa fa-archive"></i>Kedelai dipesan</a></li>
     @endif
   </ul><span class="heading">Kedelaiku</span>
