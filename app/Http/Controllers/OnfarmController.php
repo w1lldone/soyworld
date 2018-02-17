@@ -12,9 +12,10 @@ class OnfarmController extends Controller
 		$this->middleware(['auth', 'role:petani']);
 	}
 
-    public function index()
+    public function index(Onfarm $onfarm)
     {
-        $onfarms = auth()->user()->getOnfarm();
+        $onfarms = $onfarm->getOnfarms(auth()->user());
+
     	return view('onfarm.index', compact('onfarms'));
     }
 

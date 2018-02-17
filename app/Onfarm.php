@@ -82,6 +82,17 @@ class Onfarm extends Model
         return number_format($this->onfarmCost(), 0, ",", ".");
     }
 
+    public function getOnfarms($user)
+    {
+        if ($user->isSuperadmin()) {
+            return $this->latest()->get();
+        } elseif ($user->isPoktanLeader()) {
+            return $user->poktan->onfarm;
+        } else{
+            return $user->onfarm;
+        }
+    }
+
     // URL SECTION
     public function viewUrl()
     {
