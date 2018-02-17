@@ -129,6 +129,46 @@ class Harvest extends Model
 		return $this->postharvest()->where('name', $handling)->get()->isNotEmpty();
 	}
 
+	public function getHarvests($user, $request)
+	{
+		if ($user->isSuperadmin()) {
+		    $harvests = $this->latest();
+		} elseif ($user->isPoktanLeader() && $request->view == 'poktan') {
+		    $harvests = $this->whereHas('onfarm.user', function ($query) use ($user)
+		    {
+		    	$query->where('poktan_id', $user->poktan_id);
+		    });
+		} else{
+		    $harvests = $user->harvest();
+		}
+
+		switch ($request->filter) {
+			case 'unhandled':
+				$harvests = $harvests->has('postharvest', '<', 3);
+				break;
+
+			case 'on_sale':
+				$harvests = $harvests->where('on_sale', 1)->where('ending_stock', '<>', 0);
+				break;
+
+			case 'sold':
+				$harvests = $harvests->where('ending_stock', 0);
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+		if ($request->has('sort')) {
+			$harvests = $harvests->{$request->sort}();
+		} else {
+			$harvests = $harvests->latest();
+		}
+
+		return $harvests;
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*

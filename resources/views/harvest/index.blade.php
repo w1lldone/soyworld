@@ -50,7 +50,7 @@
   	    <div class="col-12">
   	      <div class="card">
   	        <div class="card-close">
-  	          <div class="dropdown">
+  	          <div class="btn-group">
   	            <a href="/harvest/create" title="Tambah panen kedelai" data-placement="left" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
   	          </div>
   	        </div>
@@ -58,12 +58,46 @@
   	          <h3 class="h4">Daftar panen kedelai</h3>
   	        </div>
   	        <div class="card-body table-responsive">
+              <form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('harvest.index') }}">
+                @if (auth()->user()->isPoktanLeader())
+                  <div class="input-group">
+                    <label class="mr-sm-2">Tampilkan</label>
+                    <div class="btn-group" data-toggle="buttons" onchange="$('#filterSortForm').submit()">
+                      <label class="btn btn-primary @if (request('view') == 'mine' || empty(request('view'))) active @endif">
+                        <input type="radio" value="mine" name="view" id="option1" @if (request('view') == 'mine' || empty(request('view'))) checked @endif> Kedelaiku
+                      </label>
+                      <label class="btn btn-primary @if (request('view') == 'poktan') active @endif"">
+                        <input type="radio" value="poktan" name="view" id="option2" @if (request('view') == 'poktan') checked @endif> Kelompok tani
+                      </label>
+                    </div>
+                  </div>
+                @endif
+                <div class="input-group">
+                  <label class="mr-sm-2" for="sort">Filter</label>
+                  <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+                    <option value="all" @if (request('filter') == 'all') selected @endif>Semua</option>
+                    <option value="unhandled" @if (request('filter') == 'unhandled') selected @endif>Butuh penanganan</option>
+                    <option value="on_sale" @if (request('filter') == 'on_sale') selected @endif>Dijual</option>
+                    <option value="sold" @if (request('filter') == 'sold') selected @endif>Habis</option>
+                  </select>
+                </div>                  
+                <div class="input-group">
+                  <label class="mr-sm-2" for="sort">Urutkan</label>
+                  <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+                    <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
+                    <option value="oldest" @if (request('sort') == 'oldest') selected @endif>Terlama</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <a href="{{ route('harvest.index') }}" class="btn btn-warning"><i class="fa fa-refresh"></i></a>
+                </div>
+              </form>
   	          <table class="table table-hover">
   	            <thead>
   	              <tr>
   	                <th>#</th>
   	                <th>Nama</th>
-                    @if (auth()->user()->isSuperadmin())
+                    @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
     	                <th>Petani</th>
                     @endif
                     <th>Tanggal panen</th>
@@ -76,7 +110,7 @@
                     <tr>
                       <td>{{ $harvests->toArray()['from']+$loop->index }}</td>
                       <td><a href="/harvest/{{$harvest->id}}/view">Panen {{ $harvest->onfarm->name }}</a></td>
-                      @if (auth()->user()->isSuperadmin())
+                      @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
                         <td>{{ $harvest->onfarm->user->name }}</td>
                       @endif
                       <td>{{ $harvest->harvested_at->format('j F Y') }}</td>
@@ -93,9 +127,9 @@
                    @endforeach   
                 </tbody>
   	          </table>
-              <div class="text-center">
+              <center>
                 {{ $harvests->links() }}
-              </div>
+              </center>
   	        </div>
   	      </div>
   	    </div>

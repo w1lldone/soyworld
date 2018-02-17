@@ -26,9 +26,11 @@ class HarvestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Harvest $harvest, Request $request)
     {
-        $harvests = auth()->user()->isSuperadmin() ? Harvest::latest()->paginate(10) : auth()->user()->harvest()->paginate(10);
+        $harvests = $harvest->getHarvests(auth()->user(), $request)
+                        ->paginate(10)
+                        ->appends($request->except('page'));
 
         return view('harvest.index', compact('harvests'));
     }
