@@ -144,7 +144,7 @@ class Harvest extends Model
 
 		switch ($request->filter) {
 			case 'unhandled':
-				$harvests = $harvests->has('postharvest', '<', 3);
+				$harvests = $harvests->where('on_sale', 0);
 				break;
 
 			case 'on_sale':
