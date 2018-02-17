@@ -32,7 +32,7 @@
 					        <tr>
 					          <th class="hidden-sm-down">#</th>
 					          <th>Nama</th>
-					          @if (auth()->user()->isSuperadmin())
+					          @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
 						          <th class="hidden-sm-down">Petani</th>
 					          @endif
 					          <th class="hidden-sm-down">Benih</th>
@@ -48,7 +48,7 @@
 					      		<tr>
 						      		<th class="hidden-sm-down" scope="row">{{ $loop->index+1 }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
-						      		@if (auth()->user()->isSuperadmin())
+						      		@if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
 							      		<td class="hidden-sm-down">{{ $onfarm->user->name }}</td>
 						      		@endif
 						      		<td class="hidden-sm-down">
