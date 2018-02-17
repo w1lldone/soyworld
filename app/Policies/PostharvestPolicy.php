@@ -49,6 +49,10 @@ class PostharvestPolicy
      */
     public function update(User $user, Postharvest $postharvest)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $postharvest->harvest->onfarm->user->poktan_id;
+        }
+
         return $user->id === $postharvest->harvest->onfarm->user_id;
     }
 
