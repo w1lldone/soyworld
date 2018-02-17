@@ -64,7 +64,7 @@
 						      				Belum ditanam
 						      			@endempty
 						      			@isset ($onfarm->planted_at)
-						      			    {{ $onfarm->planted_at->toFormattedDateString() }}
+						      			    {{ $onfarm->planted_at->format('j F Y') }}
 						      			@endisset
 						      		</td>
 						      		<td class="hidden-sm-down">

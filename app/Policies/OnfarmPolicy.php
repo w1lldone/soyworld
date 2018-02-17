@@ -46,16 +46,28 @@ class OnfarmPolicy
 
     public function createSeed(User $user, Onfarm $onfarm)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $onfarm->user->poktan_id && empty($onfarm->seed);
+        }
+
         return ($user->id === $onfarm->user->id || $user->isSuperadmin()) && empty($onfarm->seed);
     }
 
     public function createActivity(User $user, Onfarm $onfarm)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $onfarm->user->poktan_id;
+        }
+
         return (($user->id === $onfarm->user->id) || $user->isSuperadmin()) && !empty($onfarm->planted_at);
     }
 
     public function createCost(User $user, Onfarm $onfarm)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $onfarm->user->poktan_id;
+        }
+
         return $user->id === $onfarm->user->id || $user->isSuperadmin();
     }
 
