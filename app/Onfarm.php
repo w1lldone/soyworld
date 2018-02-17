@@ -82,15 +82,44 @@ class Onfarm extends Model
         return number_format($this->onfarmCost(), 0, ",", ".");
     }
 
-    public function getOnfarms($user)
+    public function getOnfarms($user, $request)
     {
         if ($user->isSuperadmin()) {
-            return $this->latest()->get();
-        } elseif ($user->isPoktanLeader()) {
-            return $user->poktan->onfarm;
+            $onfarms = $this->latest();
+        } elseif ($user->isPoktanLeader() && $request->view == 'poktan') {
+            $onfarms = $this->whereHas('user', function ($query) use ($user)
+            {
+                $query->where('poktan_id', $user->poktan_id);
+            });
         } else{
-            return $user->onfarm;
+            $onfarms = $user->onfarm();
         }
+
+        switch ($request->filter) {
+            case 'unplanted':
+                $onfarms = $onfarms->whereNull('planted_at');
+                break;
+
+            case 'planted':
+                $onfarms = $onfarms->whereNotNull('planted_at')->doesntHave('harvest');
+                break;
+
+            case 'harvested':
+                $onfarms = $onfarms->has('harvest');
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+        if ($request->has('sort')) {
+            $onfarms = $onfarms->{$request->sort}();
+        } else {
+            $onfarms = $onfarms->latest();
+        }
+
+        return $onfarms;
     }
 
     // URL SECTION
