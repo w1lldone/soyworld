@@ -26,7 +26,11 @@ class OnfarmPolicy
      */
     public function view(User $user, Onfarm $onfarm)
     {
-        //
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id == $onfarm->user->poktan_id;
+        } else {
+            return $user->id == $onfarm->user->id;
+        }
     }
 
     /**
