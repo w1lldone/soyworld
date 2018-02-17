@@ -19,6 +19,7 @@ class CreatePostharvestsTable extends Migration
             $table->date('date')->nullable();
             $table->string('name', 100)->nullable();
             $table->integer('cost')->nullable();
+            $table->integer('weight_reduction')->nullable();
             $table->timestamps();
         });
     }
