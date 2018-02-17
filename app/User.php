@@ -97,7 +97,13 @@ class User extends Authenticatable
 
     public function getOnfarm()
     {
-        return $this->isSuperadmin() ? \App\Onfarm::all() : $this->onfarm;
+        if ($this->isSuperadmin()) {
+            return \App\Onfarm::all();
+        } elseif ($this->isPoktanLeader()) {
+            return $this->poktan->onfarm;
+        } else{
+            return $this->onfarm;
+        }
     }
 
     public function getSupplier()

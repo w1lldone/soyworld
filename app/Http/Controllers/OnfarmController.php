@@ -20,13 +20,22 @@ class OnfarmController extends Controller
 
     public function show(Onfarm $onfarm)
     {
+        $this->authorize('view', $onfarm);
 
         return view('onfarm.view', compact('onfarm'));
     }
 
     public function create()
     {
-    	return view('onfarm.create');
+        if (auth()->user()->isSuperAdmin()) {
+            $users = \App\User::orderBy('name')->get();
+        } elseif (auth()->user()->isPoktanLeader()) {
+            $users = auth()->user()->poktan->user;
+        } else {
+            $users = null;
+        }
+
+    	return view('onfarm.create', compact('users'));
     }
 
     public function store(Request $request)
