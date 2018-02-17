@@ -67,7 +67,7 @@ class HarvestController extends Controller
 
         // $harvest->addPostharvest($request);
 
-        return redirect("/harvest/$harvest->id/view");
+        return redirect(route('harvest.show', [$harvest]))->with('success', 'Berhasil panen kedelai');
     }
 
     /**
@@ -117,7 +117,7 @@ class HarvestController extends Controller
         switch ($section) {
             case 'sale':
                 $harvest->update(request(['on_sale']));
-                return redirect("/harvest/$harvest->id/view")->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
+                return redirect(route('harvest.show', [$harvest]))->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
                 break;
             
             default:

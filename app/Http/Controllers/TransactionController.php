@@ -108,7 +108,7 @@ class TransactionController extends Controller
         $transaction = Transaction::newTransaction($request);
         $transaction->sendSoldNotification();
 
-        return redirect('/transaction')->with('success', 'Berhasil melakukan transaksi!');
+        return redirect(route('transaction.index'))->with('success', 'Berhasil melakukan transaksi!');
     }
 
     /**

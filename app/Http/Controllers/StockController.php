@@ -25,7 +25,7 @@ class StockController extends Controller
 			'ending_stock' => $request->quantity,
 		]);
 
-		return redirect("/harvest/$request->harvest_id/view")->with('success', 'Berhasil menambah stok!');
+		return redirect(route('harvest.show', [$harvest]))->with('success', 'Berhasil menambah stok!');
 	}
 
 	public function create($harvest)

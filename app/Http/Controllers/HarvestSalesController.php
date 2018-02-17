@@ -11,6 +11,6 @@ class HarvestSalesController extends Controller
     {
     	$harvest->update(request(['on_sale']));
 
-    	return redirect("/harvest/$harvest->id/view")->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
+    	return redirect(route('harvest.show', [$harvest]))->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
     }
 }

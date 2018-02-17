@@ -73,7 +73,7 @@ class SeedController extends Controller
         $seed = Seed::addSeed($request);
         if (!empty($request->photo[0])) $seed->addPhoto($request);
 
-        return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil melakukan pembelian benih');
+        return redirect(route('onfarm.show', [$seed->onfarm]))->with('success', 'Berhasil melakukan pembelian benih');
     }
 
     /**
@@ -112,7 +112,7 @@ class SeedController extends Controller
         $seed->update(request([
             'name', 'supplier_id', 'quantity', 'price'
         ]));
-        return redirect("/seed/$seed->id/view")->with('success', 'Benih berhasi diubah');
+        return redirect(route('seed.show', [$seed]))->with('success', 'Benih berhasi diubah');
     }
 
     /**

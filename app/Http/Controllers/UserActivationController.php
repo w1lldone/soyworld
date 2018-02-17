@@ -84,7 +84,7 @@ class UserActivationController extends Controller
             ];
         }
 
-        return redirect('/user')->with($val['status'], $val['message']);
+        return redirect(route('user.index'))->with($val['status'], $val['message']);
     }
 
     /**

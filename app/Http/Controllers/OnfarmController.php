@@ -12,9 +12,9 @@ class OnfarmController extends Controller
 		$this->middleware(['auth', 'role:petani']);
 	}
 
-    public function index(Onfarm $onfarm)
+    public function index(Onfarm $onfarm, Request $request)
     {
-        $onfarms = $onfarm->getOnfarms(auth()->user());
+        $onfarms = $onfarm->getOnfarms(auth()->user(), $request)->paginate(10)->appends($request->except('page'));
 
     	return view('onfarm.index', compact('onfarms'));
     }
@@ -42,7 +42,8 @@ class OnfarmController extends Controller
     public function store(Request $request)
     {
     	$onfarm = Onfarm::addOnfarm($request);
-    	return redirect('/onfarm')->with('success', 'Onfarm kedelai berhasil dibuat');
+        
+    	return redirect(route('onfarm.index'))->with('success', 'Onfarm kedelai berhasil dibuat');
     }
 
     public function destroy(Onfarm $onfarm)
@@ -52,6 +53,6 @@ class OnfarmController extends Controller
         $onfarm->cost()->delete();
         $onfarm->harvest()->delete();
         $onfarm->delete();
-        return redirect('/onfarm')->with('success', 'berhasil menghapus on farm!');
+        return redirect(route('onfarm.index'))->with('success', 'berhasil menghapus on farm!');
     }
 }

@@ -70,7 +70,7 @@ class PostharvestController extends Controller
             'harvest_id', 'name', 'date', 'cost',
         ]));
 
-        return redirect("/harvest/$postharvest->harvest_id/view")->with('success', 'Berhasil menambah penanganan pasca panen!');
+        return redirect(route('harvest.show', [$postharvest->harvest]))->with('success', 'Berhasil menambah penanganan pasca panen!');
     }
 
     /**
@@ -109,7 +109,7 @@ class PostharvestController extends Controller
             'name', 'date', 'cost',
         ]));
 
-        return redirect("/harvest/$postharvest->harvest_id/view")->with('success', 'berhasil mengubah penanganan!');
+        return redirect(route('harvest.show', [$postharvest->harvest]))->with('success', 'berhasil mengubah penanganan!');
     }
 
     /**
@@ -123,6 +123,6 @@ class PostharvestController extends Controller
         $harvestId = $postharvest->harvest_id;
         $postharvest->delete();
 
-        return redirect("harvest/$harvestId/view")->with('success', 'Berhasil menghapus penanganan!');
+        return redirect(route('harvest.show', [$harvestId]))->with('success', 'Berhasil menghapus penanganan!');
     }
 }
