@@ -39,7 +39,7 @@ Route::group(['prefix' => 'profile'], function()
 Route::group(['prefix' => 'onfarm'], function()
 {
 	Route::get('/', 'OnfarmController@index')->name('onfarm.index');
-	Route::get('/create', 'OnfarmController@create');
+	Route::get('/create', 'OnfarmController@create')->name('onfarm.create');
 	Route::post('/', 'OnfarmController@store');
 	Route::get('/{onfarm}/view', 'OnfarmController@show')->name('onfarm.show');
 	Route::put('/{onfarm}/plant', 'OnfarmController@plant');
@@ -118,7 +118,7 @@ Route::group(['prefix' => 'onfarmcost'], function()
 Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/', 'HarvestController@index')->name('harvest.index');
 	Route::get('/{harvest}/edit/{section}', 'HarvestController@edit');
-	Route::get('/create', 'HarvestController@create');
+	Route::get('/create', 'HarvestController@create')->name('harvest.create');
 	Route::get('/{harvest}', 'HarvestController@show')->name('harvest.show');
 	Route::get('/{harvest}/postharvest', 'PostharvestController@create');
 	Route::post('/', 'HarvestController@store');

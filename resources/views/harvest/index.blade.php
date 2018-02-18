@@ -49,13 +49,9 @@
   	  <div class="row">
   	    <div class="col-12">
   	      <div class="card">
-  	        <div class="card-close">
-  	          <div class="btn-group">
-  	            <a href="/harvest/create" title="Tambah panen kedelai" data-placement="left" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
-  	          </div>
-  	        </div>
-  	        <div class="card-header d-flex align-items-center">
-  	          <h3 class="h4">Daftar panen kedelai</h3>
+  	        <div class="card-header">
+              <h3 class="h4 d-inline">Daftar panen kedelai</h3>
+              <a href="{{ route('harvest.create') }}" class="btn btn-sm btn-primary float-right" title="Tambah panen" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Panen</a>
   	        </div>
   	        <div class="card-body table-responsive">
               <form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('harvest.index') }}">

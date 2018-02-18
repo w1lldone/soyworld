@@ -24,7 +24,7 @@
 					<div class="card">
 					  <div class="card-header">
 					    <h3 class="h4 d-inline">Daftar on farm kedelai</h3>
-					    <a href="/onfarm/create/" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
+					    <a href="{{ route('onfarm.create') }}" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
 					  </div>
 					  <div class="card-body">
 					  	<form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('onfarm.index') }}">
