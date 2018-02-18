@@ -95,7 +95,8 @@ class SeedController extends Controller
      */
     public function edit(Seed $seed)
     {
-        $this->authorize('edit', $seed);
+        $this->authorize('update', $seed);
+
         return view('seed.edit', compact('seed'));
     }
 

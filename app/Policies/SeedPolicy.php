@@ -50,6 +50,10 @@ class SeedPolicy
      */
     public function update(User $user, Seed $seed)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $seed->onfarm->user->poktan_id;
+        }
+        
         return $user->id === $seed->onfarm->user_id;
     }
 

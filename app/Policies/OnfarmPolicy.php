@@ -80,6 +80,10 @@ class OnfarmPolicy
      */
     public function update(User $user, Onfarm $onfarm)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $onfarm->user->poktan_id;
+        }
+
         return ($user->id === $onfarm->user->id) || $user->isSuperadmin();
     }
 
