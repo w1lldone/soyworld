@@ -32,6 +32,9 @@ class HarvestController extends Controller
                         ->paginate(10)
                         ->appends($request->except('page'));
 
+        $harvests->totalStock = $harvest->getHarvests(auth()->user(), $request)->sum('ending_stock');
+        $harvests->activeStock = $harvest->getHarvests(auth()->user(), $request)->where('on_sale', 1)->sum('ending_stock');
+
         return view('harvest.index', compact('harvests'));
     }
 

@@ -46,19 +46,19 @@ class Harvest extends Model
 		
 	}
 
-	public static function totalStock()
-	{
-		$stock = auth()->user()->isSuperadmin() ? Harvest::all()->sum('ending_stock') : auth()->user()->harvest->sum('ending_stock');
+	// public static function totalStock()
+	// {
+	// 	$stock = auth()->user()->isSuperadmin() ? Harvest::all()->sum('ending_stock') : auth()->user()->harvest->sum('ending_stock');
 
-		return $stock;
-	}
+	// 	return $stock;
+	// }
 
-	public static function onSaleStock()
-	{
-		$stock = auth()->user()->isSuperadmin() ? Harvest::where('on_sale', 1)->get()->sum('ending_stock') : auth()->user()->harvest()->where('on_sale', 1)->get()->sum('ending_stock');
+	// public static function onSaleStock()
+	// {
+	// 	$stock = auth()->user()->isSuperadmin() ? Harvest::where('on_sale', 1)->get()->sum('ending_stock') : auth()->user()->harvest()->where('on_sale', 1)->get()->sum('ending_stock');
 
-		return $stock;
-	}
+	// 	return $stock;
+	// }
 
 	public static function readyStock($poktanId = 1)
 	{

@@ -26,7 +26,7 @@
           <div class="item">
             <div class="title clearfix">
               <span class="float-left">Stok total</span>
-              <span class="badge bg-info float-right">{{ \App\Harvest::totalStock() }} Kg</span>
+              <span class="badge bg-info float-right">{{ $harvests->totalStock }} Kg</span>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="item">
             <div class="title clearfix">
               <span class="float-left">Stok dijual</span>
-              <span class="badge bg-orange float-right">{{ \App\Harvest::onSaleStock() }} Kg</span>
+              <span class="badge bg-orange float-right">{{ $harvests->activeStock }} Kg</span>
             </div>
           </div>
         </div>        
