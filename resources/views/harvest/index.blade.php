@@ -69,8 +69,8 @@
                   </div>
                 @endif
                 <div class="input-group">
-                  <label class="mr-sm-2" for="sort">Filter</label>
-                  <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+                  <label class="mr-sm-2" for="filter">Filter</label>
+                  <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="filter" onchange="$('#filterSortForm').submit()">
                     <option value="all" @if (request('filter') == 'all') selected @endif>Semua</option>
                     <option value="unhandled" @if (request('filter') == 'unhandled') selected @endif>Butuh penanganan</option>
                     <option value="on_sale" @if (request('filter') == 'on_sale') selected @endif>Dijual</option>
@@ -116,7 +116,16 @@
                           {{ $harvest->ending_stock }} Kg
                         @endif
                       </td>
-                      <td><span style="font-size: 100%" class="badge badge-pill badge-{{ $harvest->status_color }}">{{ $harvest->sale_status }}</span></td>
+                      <td>
+                        @foreach ($harvest->handlings as $handling)
+                          @if ($harvest->hasHandling($handling))
+                            <span class="text-success"><i class="fa fa-check fa-fw"></i>{{ $handling }}</span>
+                          @else
+                            <span class="text-muted"><i class="fa fa-close fa-fw"></i>{{ $handling }}</span>
+                          @endif
+                        @endforeach
+                        <span style="font-size: 100%" class="badge badge-pill badge-{{ $harvest->status_color }}">{{ $harvest->sale_status }}</span>
+                      </td>
                     </tr>
                    @endforeach   
                 </tbody>

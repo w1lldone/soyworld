@@ -29,10 +29,19 @@
 	    <div class="row">
 	    	<div class="col-12">
 	    		@include('layouts.alerts')
-			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
-				    <form class="mr-auto">
+			    <div class="my-4">
+				    <form class="mr-auto form-inline" id="filterSortForm">
+				    	<div class="input-group">
+				    	  <label class="mr-sm-2" for="status">Status</label>
+				    	  <select name="status" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="status" onchange="$('#filterSortForm').submit()">
+				    	    <option value="" @if (request('status') == 'all') selected @endif>All</option>
+				    	  	@foreach ($statuses as $status)
+					    	    <option value="{{ $status->id }}" @if (request('status') == $status->id) selected @endif>{{ $status->name }}</option>
+				    	  	@endforeach
+				    	  </select>
+				    	</div>    
 				      <div class="input-group">
-				        <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control">
+				        <input id="inlineFormInput" name="keyword" type="text" placeholder="Cari transaksi" class="form-control" value="{{ request('keyword') }}">
 				        <span class="input-group-btn">
 									<button type="button" class="btn btn-primary">Cari</button>
 								</span>

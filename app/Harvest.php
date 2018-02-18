@@ -195,11 +195,11 @@ class Harvest extends Model
 				break;
 
 			case 'Habis':
-				$color = 'default';
+				$color = 'warning';
 				break;
 			
 			default:
-				$color = 'warning';
+				$color = 'default';
 				break;
 		}
 
@@ -229,8 +229,8 @@ class Harvest extends Model
 
 	public function getHandlingsAttribute(){
 		return collect([
-			'Sortasi',
         	'Pengeringan',
+			'Sortasi',
 		]);
 	}
 		
