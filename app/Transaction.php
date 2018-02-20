@@ -40,13 +40,14 @@ class Transaction extends Model
 
     public function sendSoldNotification()
     {
+        // send notification to farmers
         foreach ($this->transaction_detail as $detail) {
             $user = $detail->harvest->onfarm->user;
             $user->notify(new \App\Notifications\SoybeanSold($detail));
         }
-        foreach (\App\Privilage::find(1)->user as $user) {
-            $user->notify(new \App\Notifications\NewTransaction($this));
-        }
+
+        // send notification to poktan leader
+        $this->poktan->leader->notify(new \App\Notifications\NewTransaction($this));
     }
 
     public function addDetail($harvestId, $quantity)
