@@ -27,6 +27,10 @@ trait FilterAndSort
             });
         }
 
+        if ($request->has('sort')) {
+            $model = $model->{$request->sort}();
+        }
+
         return $model->paginate(10);
     }
 }

@@ -30,7 +30,7 @@
 	    	<div class="col-12">
 	    		@include('layouts.alerts')
 			    <div class="my-4">
-				    <form class="mr-auto form-inline" id="filterSortForm">
+				    <form class="form-inline d-flex" id="filterSortForm">
 				    	<div class="input-group">
 				    	  <label class="mr-sm-2" for="status">Status</label>
 				    	  <select name="status" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="status" onchange="$('#filterSortForm').submit()">
@@ -46,6 +46,13 @@
 									<button type="button" class="btn btn-primary">Cari</button>
 								</span>
 				      </div>
+				      <div class="input-group ml-auto">
+				    	  <label class="mr-sm-2" for="sort">Urutkan</label>
+				    	  <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+				    	    <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
+				    	    <option value="oldest" @if (request('sort') == 'oldest') selected @endif>Terlama</option>
+				    	  </select>
+				    	</div> 
 				    </form>
 			    </div>
 			    <div class="table-responsive">
@@ -65,7 +72,7 @@
 			      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 			      	  		  <td>
 			      	  		  	<b class="text-primary">{{ $transaction->code }}</b><br>
-			      	  		  	{{ $transaction->user->name }}
+			      	  		  	<i class="fa fa-clock-o fa-fw"></i>{{ $transaction->created_at->diffForHumans() }}&nbsp; <i class="fa fa-user-o fa-fw"></i>{{ $transaction->user->name }}
 			      	  		  </td>
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
 			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>
