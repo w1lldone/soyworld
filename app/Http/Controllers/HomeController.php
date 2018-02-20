@@ -44,6 +44,12 @@ class HomeController extends Controller
                 
                 return view('home.admin', compact(['annuals', 'sales', 'stock', 'price']));
                 break;
+
+            case 'petani':
+                $stock = \App\Harvest::onSaleStock();
+
+                return view('home.petani', compact('stock'));
+                break;
             
             default:
                 # code...

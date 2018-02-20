@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class SalesController extends Controller
 {
     use FilterAndSort;
+    
     function __construct()
     {
         $this->middleware(['auth', 'isPoktanLeader']);
