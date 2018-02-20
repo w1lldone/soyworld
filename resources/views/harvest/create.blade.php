@@ -34,26 +34,15 @@
 								<div class="form-group row {{ $errors->has('onfarm_id') ? ' has-danger' : '' }}">
 									<label class="col-sm-3 form-control-label">Penanaman</label>
 									<div class="col-sm-9">
-										@if (request()->has('onfarm_id'))
-											<input class="form-control" type="text" disabled value="{{ \App\Onfarm::find(request('onfarm_id'))->name }}">
-											<input type="hidden" name="onfarm_id" value="{{ request('onfarm_id') }}">
-										@else
 										<select name="onfarm_id" class="form-control">
-											<option></option>
-											@if (auth()->user()->isSuperadmin())
-												@foreach (\App\Onfarm::where('planted_at', '><', null)->doesntHave('harvest')->get() as $onfarm)
+											<option value="">PILIH PENANAMAN...</option>
+												@foreach ($onfarms as $onfarm)
 													<option value="{{ $onfarm->id }}">{{ $onfarm->name }}</option>
 												@endforeach
-											@else
-												@foreach (auth()->user()->onfarm()->doesntHave('harvest')->where('planted_at', '><', null)->get() as $onfarm)
-													<option value="{{ $onfarm->id }}">{{ $onfarm->name }}</option>
-												@endforeach
-											@endif
 										</select>
-									@endif
-									@if ($errors->has('onfarm_id'))
-										<small class="form-text text-danger">{{ $errors->first('onfarm_id') }}</small>
-									@endif
+										@if ($errors->has('onfarm_id'))
+											<small class="form-text text-danger">{{ $errors->first('onfarm_id') }}</small>
+										@endif
 									</div>
 								</div>
 								{{-- INPUT DATE --}}

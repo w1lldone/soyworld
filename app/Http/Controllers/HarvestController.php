@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Harvest;
-use Illuminate\Support\Facades\Validator;
+use App\Onfarm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HarvestController extends Controller
 {
@@ -46,12 +47,22 @@ class HarvestController extends Controller
     public function create()
     {
         if (request()->has('onfarm_id')) {
-            $onfarm = \App\Onfarm::find(request('onfarm_id'));
-            if ($onfarm->planted_at == null) {
+            $onfarms = Onfarm::where('id', request('onfarm_id'))->get();
+            if ($onfarms->first()->planted_at == null) {
                 return redirect(route('onfarm.show', $onfarm))->with('danger', 'Kedelai belum ditanam!');
             }
+        } elseif (auth()->user()->isSuperAdmin()) {
+            $onfarms = Onfarm::whereNotNull('planted_at')->doesntHave('harvest')->get();
+        } elseif (auth()->user()->isPoktanLeader()) {
+            $onfarms = Onfarm::whereNotNull('planted_at')->doesntHave('harvest')->whereHas('user', function ($query)
+            {
+                $query->where('poktan_id', auth()->user()->poktan_id);
+            })->get();
+        } else {
+            $onfarms = auth()->user()->onfarm()->doesntHave('harvest')->where('planted_at', '><', null)->get();
         }
-        return view('harvest.create');
+
+        return view('harvest.create', compact('onfarms'));
     }
 
     /**
