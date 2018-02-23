@@ -8,7 +8,7 @@ class Postharvest extends Model
 {
 
 	public function harvest(){
-		return $this->belongsTo('App\Harvest');
+		return $this->belongsToMany('App\Harvest');
 	}
 
 	public function formattedCost()

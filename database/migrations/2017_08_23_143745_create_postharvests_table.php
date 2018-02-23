@@ -15,11 +15,9 @@ class CreatePostharvestsTable extends Migration
     {
         Schema::create('postharvests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('harvest_id')->unsigned();
-            $table->date('date')->nullable();
+            $table->integer('poktan_id')->unsigned();
             $table->string('name', 100)->nullable();
-            $table->integer('cost')->nullable();
-            $table->integer('weight_reduction')->nullable();
+            $table->decimal('reduction_percentage', 4, 2)->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class Harvest extends Model
 	*
 	*/
 	public function postharvest(){
-		return $this->hasMany('App\Postharvest');
+		return $this->belongsToMany('App\Postharvest')->withPivot('date', 'cost', 'weight_reduction');
 	}
 
 	public function onfarm(){

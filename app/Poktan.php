@@ -32,6 +32,10 @@ class Poktan extends Model
 		return $this->hasMany('App\Transaction');
 	}
 
+	public function postharvest(){
+		return $this->hasMany('App\Postharvest');
+	}
+
 	/*CUSTOM METHOD SECTION*/
 
 	public static function addPoktan($request)
