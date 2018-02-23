@@ -42,12 +42,19 @@ class HarvestPolicy
 
     public function createPostharvest(User $user, Harvest $harvest)
     {
-        // return false;
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $harvest->onfarm->user->poktan_id;
+        }
+
         return $user->id == $harvest->onfarm->user_id;
     }
 
     public function editStock(User $user, Harvest $harvest)
     {
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $harvest->onfarm->user->poktan_id;
+        }
+        
         return $user->id == $harvest->onfarm->user_id && $harvest->initial_stock == $harvest->ending_stock;
     }
 

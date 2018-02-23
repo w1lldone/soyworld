@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Poktan;
+use App\Price;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,11 +18,12 @@ class TransactionController extends Controller
 
     public function validator($request)
     {
-        $max = \App\Harvest::readyStock()->sum('ending_stock');
+        $max = Poktan::find($request['poktan_id'])->active_stock;
 
         return Validator::make($request, [
             'quantity' => "required|numeric|max:$max",
             'delivered_to' => "required|string",
+            'poktan_id' => 'required|exists:poktans,id',
         ]);
     }
     /**
@@ -81,9 +84,15 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Price $price)
     {
-        return view('transaction.create');
+        $this->validate($request, [
+            'poktan_id' => 'required|exists:poktans,id',
+        ]);
+
+        $poktan = Poktan::find($request->poktan_id);
+
+        return view('transaction.create', compact('poktan', 'price'));
     }
 
     /**
@@ -99,7 +108,7 @@ class TransactionController extends Controller
         $transaction = Transaction::newTransaction($request);
         $transaction->sendSoldNotification();
 
-        return redirect('/transaction')->with('success', 'Berhasil melakukan transaksi!');
+        return redirect(route('transaction.index'))->with('success', 'Berhasil melakukan transaksi!');
     }
 
     /**

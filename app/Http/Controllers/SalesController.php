@@ -2,25 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Status;
+use App\Traits\FilterAndSort;
 use App\Transaction;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
+    use FilterAndSort;
+    
     function __construct()
     {
-        $this->middleware(['auth', 'role:admin']);
+        $this->middleware(['auth', 'isPoktanLeader']);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Transaction $transaction, Request $request, Status $status)
     {
-        $transactions = Transaction::latest()->get();
+        $transactions = $transaction->where('poktan_id', auth()->user()->poktan_id);
+
+        $transactions = $this->filterAndSort($transactions, $request);
+        
         $newSales = $transactions->where('status_id', 1)->count();
-        return view('sales.index', compact(['transactions', 'newSales']));
+        $statuses = $status->orderBy('id')->get();
+
+        return view('sales.index', compact(['transactions', 'newSales', 'statuses']));
     }
 
     /**
@@ -95,7 +104,7 @@ class SalesController extends Controller
 
         $transaction->user->notify(new \App\Notifications\TransactionConfirmation($transaction));
 
-        return redirect('/sales')->with('success', $status);
+        return redirect(route('sales.index'))->with('success', $status);
     }
 
     /**

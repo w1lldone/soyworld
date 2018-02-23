@@ -43,7 +43,7 @@
 	        <div class="item d-flex align-items-center">
 	          <div class="icon bg-violet"><i class="icon-check"></i></div>
 	          <div class="title">
-	          	<span class="badge bg-violet">{{ \App\Harvest::onSaleStock() }} Kg</span>
+	          	<span class="badge bg-violet">{{ $stock }} Kg</span>
 	          	<br>
 	          	<span>Stok gudang</span>
 	          </div>

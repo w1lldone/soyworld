@@ -27,7 +27,7 @@ Route::group(['prefix' => 'user'], function()
 
 Route::group(['prefix' => 'profile'], function()
 {
-	Route::get('/', 'ProfileController@index');
+	Route::get('/', 'ProfileController@index')->name('profile.index');
 	Route::get('/edit', 'ProfileController@edit');
 	Route::put('/', 'ProfileController@update');
 	Route::get('/email', 'ProfileController@editEmail');
@@ -38,10 +38,10 @@ Route::group(['prefix' => 'profile'], function()
 
 Route::group(['prefix' => 'onfarm'], function()
 {
-	Route::get('/', 'OnfarmController@index');
-	Route::get('/create', 'OnfarmController@create');
+	Route::get('/', 'OnfarmController@index')->name('onfarm.index');
+	Route::get('/create', 'OnfarmController@create')->name('onfarm.create');
 	Route::post('/', 'OnfarmController@store');
-	Route::get('/{onfarm}/view', 'OnfarmController@show');
+	Route::get('/{onfarm}/view', 'OnfarmController@show')->name('onfarm.show');
 	Route::put('/{onfarm}/plant', 'OnfarmController@plant');
 	Route::delete('/{onfarm}', 'OnfarmController@destroy');
 });
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'plant'], function()
 Route::group(['prefix' => 'seed'], function()
 {
 	Route::get('/create/{onfarm}', 'SeedController@create');
-	Route::get('/{seed}/view', 'SeedController@show');
+	Route::get('/{seed}/view', 'SeedController@show')->name('seed.show');
 	Route::get('/{seed}/edit', 'SeedController@edit');
 	Route::put('/{seed}', 'SeedController@update');
 	Route::post('/', 'SeedController@store');
@@ -65,7 +65,7 @@ Route::group(['prefix' => 'seed'], function()
 Route::group(['prefix' => 'supplier'], function()
 {
 	Route::post('/', 'SupplierController@store');
-	Route::get('/', 'SupplierController@index');
+	Route::get('/', 'SupplierController@index')->name('supplier.index');
 	Route::get('/{supplier}/edit', 'SupplierController@edit');
 	Route::get('/create', 'SupplierController@create');
 	Route::put('/{supplier}', 'SupplierController@update');
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'supplier'], function()
 
 Route::group(['prefix' => 'poktan'], function()
 {
-	Route::get('/', 'PoktanController@index');
+	Route::get('/', 'PoktanController@index')->name('poktan.index');
 	Route::post('/', 'PoktanController@store');
 	Route::get('/create', 'PoktanController@create');
 	Route::get('/{poktan}/edit', 'PoktanController@edit');
@@ -116,10 +116,10 @@ Route::group(['prefix' => 'onfarmcost'], function()
 });
 
 Route::group(['prefix' => 'harvest'], function(){
-	Route::get('/', 'HarvestController@index');
+	Route::get('/', 'HarvestController@index')->name('harvest.index');
 	Route::get('/{harvest}/edit/{section}', 'HarvestController@edit');
-	Route::get('/create', 'HarvestController@create');
-	Route::get('/{harvest}/view', 'HarvestController@show');
+	Route::get('/create', 'HarvestController@create')->name('harvest.create');
+	Route::get('/{harvest}', 'HarvestController@show')->name('harvest.show');
 	Route::get('/{harvest}/postharvest', 'PostharvestController@create');
 	Route::post('/', 'HarvestController@store');
 	// Route::put('/{harvest}/sale', 'HarvestSalesController@update');
@@ -148,6 +148,14 @@ Route::group(['prefix' => 'notifications'], function(){
 });
 
 Route::group(['prefix' => 'price'], function(){
-	Route::get('/', 'PriceController@index');
+	Route::get('/', 'PriceController@index')->name('price.index');
 	Route::post('/', 'PriceController@store');
+});
+
+Route::group(['prefix' => 'warehouse'], function(){
+	Route::get('/', 'WarehouseController@index')->name('warehouse.index');
+});
+
+Route::group(['prefix' => 'handling'], function(){
+	Route::post('/', 'HandlingController@store')->name('handling.store');
 });

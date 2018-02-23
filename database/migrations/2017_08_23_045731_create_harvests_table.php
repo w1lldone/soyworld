@@ -19,7 +19,8 @@ class CreateHarvestsTable extends Migration
             $table->date('harvested_at')->nullable();
             $table->double('initial_stock', 4, 1)->nullable();
             $table->double('ending_stock', 4, 1)->nullable();
-            $table->boolean('sold')->default(0);
+            $table->decimal('water_content', 4, 2)->nullable();
+            $table->boolean('on_sale')->default(0);
             $table->timestamps();
         });
     }

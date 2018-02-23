@@ -24,15 +24,49 @@
 					<div class="card">
 					  <div class="card-header">
 					    <h3 class="h4 d-inline">Daftar on farm kedelai</h3>
-					    <a href="/onfarm/create/" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
+					    <a href="{{ route('onfarm.create') }}" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
 					  </div>
 					  <div class="card-body">
+					  	<form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('onfarm.index') }}">
+					  	  @if (auth()->user()->isPoktanLeader())
+					  	    <div class="input-group">
+					  	      <label class="mr-sm-2">Tampilkan</label>
+					  	      <div class="btn-group" data-toggle="buttons" onchange="$('#filterSortForm').submit()">
+					  	        <label class="btn btn-primary btn-sm @if (request('view') == 'mine' || empty(request('view'))) active @endif">
+					  	          <input type="radio" value="mine" name="view" id="option1" @if (request('view') == 'mine' || empty(request('view'))) checked @endif> Kedelaiku
+					  	        </label>
+					  	        <label class="btn btn-primary btn-sm @if (request('view') == 'poktan') active @endif"">
+					  	          <input type="radio" value="poktan" name="view" id="option2" @if (request('view') == 'poktan') checked @endif> Kelompok tani
+					  	        </label>
+					  	      </div>
+					  	    </div>
+					  	  @endif
+					  	  <div class="input-group">
+					  	    <label class="mr-sm-2" for="sort">Filter</label>
+					  	    <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+					  	      <option value="all" @if (request('filter') == 'all') selected @endif>Semua</option>
+					  	      <option value="unplanted" @if (request('filter') == 'unplanted') selected @endif>Belum tanam</option>
+					  	      <option value="planted" @if (request('filter') == 'planted') selected @endif>Ditanam</option>
+					  	      <option value="harvested" @if (request('filter') == 'harvested') selected @endif>Telah panen</option>
+					  	    </select>
+					  	  </div>                  
+					  	  <div class="input-group">
+					  	    <label class="mr-sm-2" for="sort">Urutkan</label>
+					  	    <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+					  	      <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
+					  	      <option value="oldest" @if (request('sort') == 'oldest') selected @endif>Terlama</option>
+					  	    </select>
+					  	  </div>
+					  	  <div class="input-group">
+					  	    <a href="{{ route('onfarm.index') }}" class="btn btn-warning"><i class="fa fa-refresh"></i></a>
+					  	  </div>
+					  	</form>
 					    <table class="table table-hover">
 					      <thead>
 					        <tr>
 					          <th class="hidden-sm-down">#</th>
 					          <th>Nama</th>
-					          @if (auth()->user()->isSuperadmin())
+					          @if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
 						          <th class="hidden-sm-down">Petani</th>
 					          @endif
 					          <th class="hidden-sm-down">Benih</th>
@@ -46,9 +80,9 @@
 					      <tbody>
 					      	@foreach ($onfarms as $onfarm)
 					      		<tr>
-						      		<th class="hidden-sm-down" scope="row">{{ $loop->index+1 }}</th>
+						      		<th class="hidden-sm-down" scope="row">{{ $onfarms->toArray()['from']+$loop->index }}</th>
 						      		<td><a href="/onfarm/{{$onfarm->id}}/view">{{ $onfarm->name }}</a></td>
-						      		@if (auth()->user()->isSuperadmin())
+						      		@if (auth()->user()->isSuperadmin() || auth()->user()->isPoktanLeader())
 							      		<td class="hidden-sm-down">{{ $onfarm->user->name }}</td>
 						      		@endif
 						      		<td class="hidden-sm-down">
@@ -64,7 +98,7 @@
 						      				Belum ditanam
 						      			@endempty
 						      			@isset ($onfarm->planted_at)
-						      			    {{ $onfarm->planted_at->toFormattedDateString() }}
+						      			    {{ $onfarm->planted_at->format('j F Y') }}
 						      			@endisset
 						      		</td>
 						      		<td class="hidden-sm-down">
@@ -111,6 +145,9 @@
 					      	@endforeach
 					      </tbody>
 					    </table>
+					    <div class="text-center">
+					    	{{ $onfarms->links() }}
+					    </div>
 					  </div>
 					</div>
 				</div>

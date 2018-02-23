@@ -56,7 +56,7 @@ class UserController extends Controller
         
     	$user = User::addUser($request);
 
-		return redirect('/user');
+		return redirect(route('user.index'));
 
     }
 
@@ -75,7 +75,7 @@ class UserController extends Controller
 
         $user->update(request(['name', 'contact', 'address', 'privilage_id', 'poktan_id']));
 
-        return redirect('/user')->with('success', 'berhasil mengubah user');
+        return redirect(route('user.index'))->with('success', 'berhasil mengubah user');
     }
 
     public function changeEmail(User $user, Request $request)

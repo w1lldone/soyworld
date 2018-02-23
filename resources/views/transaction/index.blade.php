@@ -30,7 +30,7 @@
 		    	<div class="col-12">
 		    		@include('layouts.alerts')
 				    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
-					    <a class="btn btn-info" href="/transaction/create"><i class="fa fa-plus"></i> Pesan kedelai</a>
+					    <a class="btn btn-info" href="/soybean"><i class="fa fa-plus"></i> Pesan kedelai</a>
 					    <form class="ml-auto my-2 form form-inline" method="GET" action="/transaction">
 					    	<div class="input-group mr-md-2">
 					        {{-- <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control"> --}}

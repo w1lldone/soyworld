@@ -18,10 +18,13 @@
         <li><a href="/supplier">Daftar Supplier</a></li>
       </ul>
     </li>
-  </ul><span class="heading">Kedelai</span>
+    @if (auth()->user()->isPoktanLeader())
+      <li> <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan</a></li>
+    @endif
+  </ul><span class="heading">Kedelaiku</span>
   <ul class="list-unstyled">
     <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
     <li> <a href="/harvest"> <i class="fa fa-archive"></i>Pasca panen </a></li>
-    <li> <a href="/sold"> <i class="fa fa-shopping-cart"></i>Penjualan </a></li>
+    <li> <a href="/sold"> <i class="fa fa-shopping-cart"></i>Riwayat penjualan</a></li>
   </ul>
 </nav>

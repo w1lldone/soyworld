@@ -34,8 +34,8 @@
                 {{-- BADGE --}}
                 <div class="row">
                   <div class="col-sm-9 offset-sm-3 d-flex">
-                    <h2 class="px-1"><span class="badge badge-primary p-2 text-white">Stok <b>{{ \App\Harvest::readyStock()->sum('ending_stock') }} Kg</b></span></h2>
-                    <h2 class="px-1"><span class="badge badge-success p-2 text-white">Harga <b>Rp. 8000/Kg</b></span></h2>
+                    <h2 class="px-1"><span class="badge badge-primary p-2 text-white">Stok <b>{{ $poktan->active_stock }} Kg</b></span></h2>
+                    <h2 class="px-1"><span class="badge badge-success p-2 text-white">Harga <b>Rp. {{ $price->latestPrice() }}/Kg</b></span></h2>
                   </div>
                 </div>
                 {{-- INPUT QUANTITY --}}
@@ -65,6 +65,7 @@
                 </div>
 								<div class="form-group row">       
 									<div class="col-sm-9 offset-sm-3">
+                    <input type="hidden" name="poktan_id" value="{{ request('poktan_id') }}">
 										<input type="submit" value="Simpan" class="btn btn-primary">
 									</div>
 								</div>

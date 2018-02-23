@@ -52,6 +52,7 @@ class OnfarmCostController extends Controller
     {
         $this->authorize('createCost', $onfarm);
         $url = request()->fullUrl();
+
         return view('onfarmCost.create', compact(['onfarm', 'url']));
     }
 
@@ -67,7 +68,7 @@ class OnfarmCostController extends Controller
 
         $onfarmCost = OnfarmCost::addCost($request);
 
-        return redirect("/onfarm/$onfarmCost->onfarm_id/view")->with('success', 'Berhasil menambah biaya!');
+        return redirect(route('onfarm.show', [$onfarmCost->onfarm]))->with('success', 'Berhasil menambah biaya!');
     }
 
     /**
@@ -110,7 +111,7 @@ class OnfarmCostController extends Controller
             'price' => $request->price,
         ]);
 
-        return redirect("/onfarm/$onfarmCost->onfarm_id/view")->with('success', 'Berhasil mengubah biaya!');
+        return redirect(route('onfarm.show', [$onfarmCost->onfarm]))->with('success', 'Berhasil mengubah biaya!');
     }
 
     /**
@@ -124,6 +125,6 @@ class OnfarmCostController extends Controller
         $id = $onfarmCost->onfarm_id;
         $onfarmCost->delete();
 
-        return redirect("/onfarm/$id/view");
+        return redirect(route('onfarm.show', [$id]));
     }
 }

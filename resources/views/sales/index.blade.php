@@ -29,14 +29,30 @@
 	    <div class="row">
 	    	<div class="col-12">
 	    		@include('layouts.alerts')
-			    <div class="my-4 clearfix d-flex flex-wrap justify-content-between align-items-center">
-				    <form class="mr-auto">
+			    <div class="my-4">
+				    <form class="form-inline d-flex" id="filterSortForm">
+				    	<div class="input-group">
+				    	  <label class="mr-sm-2" for="status">Status</label>
+				    	  <select name="status" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="status" onchange="$('#filterSortForm').submit()">
+				    	    <option value="" @if (request('status') == 'all') selected @endif>All</option>
+				    	  	@foreach ($statuses as $status)
+					    	    <option value="{{ $status->id }}" @if (request('status') == $status->id) selected @endif>{{ $status->name }}</option>
+				    	  	@endforeach
+				    	  </select>
+				    	</div>    
 				      <div class="input-group">
-				        <input id="inlineFormInput" type="text" placeholder="Cari transaksi" class="form-control">
+				        <input id="inlineFormInput" name="keyword" type="text" placeholder="Cari transaksi" class="form-control" value="{{ request('keyword') }}">
 				        <span class="input-group-btn">
 									<button type="button" class="btn btn-primary">Cari</button>
 								</span>
 				      </div>
+				      <div class="input-group ml-auto">
+				    	  <label class="mr-sm-2" for="sort">Urutkan</label>
+				    	  <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
+				    	    <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
+				    	    <option value="oldest" @if (request('sort') == 'oldest') selected @endif>Terlama</option>
+				    	  </select>
+				    	</div> 
 				    </form>
 			    </div>
 			    <div class="table-responsive">
@@ -56,7 +72,7 @@
 			      	  		  <th scope="row" class="align-middle">{{ $loop->index+1 }}</th>
 			      	  		  <td>
 			      	  		  	<b class="text-primary">{{ $transaction->code }}</b><br>
-			      	  		  	{{ $transaction->user->name }}
+			      	  		  	<i class="fa fa-clock-o fa-fw"></i>{{ $transaction->created_at->diffForHumans() }}&nbsp; <i class="fa fa-user-o fa-fw"></i>{{ $transaction->user->name }}
 			      	  		  </td>
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
 			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>

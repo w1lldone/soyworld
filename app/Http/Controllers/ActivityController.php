@@ -74,7 +74,7 @@ class ActivityController extends Controller
             $activity->uploadPhoto($request->photo, $request->onfarm_id);
         }
 
-        return redirect("/onfarm/$request->onfarm_id/view")->with('success', 'Berhasil menambah aktivitas tanam');
+        return redirect(route('onfarm.show', [$activity->onfarm]))->with('success', 'Berhasil menambah aktivitas tanam');
     }
 
     /**
@@ -118,7 +118,7 @@ class ActivityController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect("/activity/$activity->id/view")->with('success', 'Aktivitas tanam berhasil dirubah');
+        return redirect(route('onfarm.show', [$activity->onfarm]))->with('success', 'Aktivitas tanam berhasil dirubah');
 
     }
 
@@ -134,6 +134,6 @@ class ActivityController extends Controller
 
         $activity->delete();
 
-        return redirect("/onfarm/$id/view");
+        return redirect(route('onfarm.show', [$id]));
     }
 }

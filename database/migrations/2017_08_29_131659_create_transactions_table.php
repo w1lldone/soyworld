@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->string('code', 20)->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('status_id')->unsigned();
+            $table->integer('poktan_id')->unsigned();
             $table->string('delivered_to')->nullable();
             $table->timestamps();
         });

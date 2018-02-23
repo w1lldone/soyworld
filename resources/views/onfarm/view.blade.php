@@ -108,7 +108,7 @@
                   <br>
                   <small>Tanggal panen</small>
                   <br>
-                  <a href="/harvest/{{$onfarm->harvest->id}}/view" class="round-link bg-green">Detail</a>
+                  <a href="{{ route('harvest.show', $onfarm->harvest) }}" class="round-link bg-green">Detail</a>
                  </p>
               	@endisset
               	@empty ($onfarm->harvest)

@@ -2,26 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Harvest;
 use App\Onfarm;
+use App\Poktan;
+use Illuminate\Http\Request;
 
 class SoybeanController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->tab == null) {
-            $request->merge(['tab' => 'stok-aktif']);
-        }
-        if (request('tab') == 'stok-aktif') {
-            $harvests = Harvest::readyStock();
-        	return view('soybean.index', compact('harvests'));
-        }
+        $poktans = Poktan::all();
 
-        if (request('tab') == 'onfarm') {
-           $onfarms = Onfarm::doesntHave('harvest')->latest()->get();
-           return view('soybean.index', compact('onfarms'));
-        }
+        return view('soybean.index', compact('poktans'));
     }
 
     public function show(Harvest $harvest)

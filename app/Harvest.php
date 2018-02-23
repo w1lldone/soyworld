@@ -55,14 +55,19 @@ class Harvest extends Model
 
 	public static function onSaleStock()
 	{
-		$stock = auth()->user()->isSuperadmin() ? Harvest::where('on_sale', 1)->get()->sum('ending_stock') : auth()->user()->harvest()->where('on_sale', 1)->get()->sum('ending_stock');
-
-		return $stock;
+		if (auth()->user()->isSuperadmin()) {
+			return Harvest::where('on_sale', 1)->get()->sum('ending_stock');
+		}
+				
+		return auth()->user()->harvest()->where('on_sale', 1)->get()->sum('ending_stock');
 	}
 
-	public static function readyStock()
+	public static function readyStock($poktanId = 1)
 	{
-		return static::where('on_sale', 1)->where('ending_stock', '<>', 0)->get();
+		return static::where('on_sale', 1)->where('ending_stock', '<>', 0)->whereHas('onfarm.user', function ($query) use ($poktanId)
+		{
+			$query->where('poktan_id', $poktanId);
+		})->get();
 	}
 
 	public function stockPercent()
@@ -85,12 +90,8 @@ class Harvest extends Model
 		return number_format($this->totalCost(), 0, ',', '.');
 	}
 
-	public static function annualHarvest($year = 2017)
+	public static function annualHarvest($year = '2017')
 	{
-		if (empty($year)) {
-			$year = date('Y');
-		}
-
 		$harvests = Harvest::whereYear('harvested_at', $year)->get();
 
 		for ($i=1; $i <= 12; $i++) { 
@@ -125,6 +126,51 @@ class Harvest extends Model
 		return round($this->initial_stock/$this->onfarm->area, 2);
 	}
 
+	public function hasHandling($handling)
+	{
+		return $this->postharvest()->where('name', $handling)->get()->isNotEmpty();
+	}
+
+	public function getHarvests($user, $request)
+	{
+		if ($user->isSuperadmin()) {
+		    $harvests = $this->latest();
+		} elseif ($user->isPoktanLeader() && $request->view == 'poktan') {
+		    $harvests = $this->whereHas('onfarm.user', function ($query) use ($user)
+		    {
+		    	$query->where('poktan_id', $user->poktan_id);
+		    });
+		} else{
+		    $harvests = $user->harvest();
+		}
+
+		switch ($request->filter) {
+			case 'unhandled':
+				$harvests = $harvests->where('on_sale', 0);
+				break;
+
+			case 'on_sale':
+				$harvests = $harvests->where('on_sale', 1)->where('ending_stock', '<>', 0);
+				break;
+
+			case 'sold':
+				$harvests = $harvests->where('ending_stock', 0);
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+		if ($request->has('sort')) {
+			$harvests = $harvests->{$request->sort}();
+		} else {
+			$harvests = $harvests->latest();
+		}
+
+		return $harvests;
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*
@@ -151,11 +197,11 @@ class Harvest extends Model
 				break;
 
 			case 'Habis':
-				$color = 'default';
+				$color = 'warning';
 				break;
 			
 			default:
-				$color = 'warning';
+				$color = 'default';
 				break;
 		}
 
@@ -182,6 +228,14 @@ class Harvest extends Model
 		$val = $this->productivity()*10.." ton/ha";
 		return $val;
 	}
+
+	public function getHandlingsAttribute(){
+		return collect([
+        	'Pengeringan',
+			'Sortasi',
+		]);
+	}
+		
 		
 
     protected $guarded = ['id'];

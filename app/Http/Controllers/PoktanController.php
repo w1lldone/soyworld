@@ -57,7 +57,7 @@ class PoktanController extends Controller
 
         $poktan = Poktan::addPoktan($request);
 
-        return redirect('/poktan')->with('success', 'Tambah kelompok tani berhasil!');
+        return redirect(route('poktan.index')->with('success', 'Tambah kelompok tani berhasil!');
     }
 
     /**
@@ -99,7 +99,7 @@ class PoktanController extends Controller
             'name', 'address', 'leader_user_id', 
         ]));
 
-        return redirect('/poktan')->with('success', 'Berhasil mengubah kelompok tani!');
+        return redirect(route('poktan.index'))->with('success', 'Berhasil mengubah kelompok tani!');
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Harvest;
-use Illuminate\Support\Facades\Validator;
+use App\Onfarm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HarvestController extends Controller
 {
@@ -26,9 +27,14 @@ class HarvestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Harvest $harvest, Request $request)
     {
-        $harvests = auth()->user()->isSuperadmin() ? Harvest::latest()->paginate(10) : auth()->user()->harvest()->paginate(10);
+        $harvests = $harvest->getHarvests(auth()->user(), $request)
+                        ->paginate(10)
+                        ->appends($request->except('page'));
+
+        $harvests->totalStock = $harvest->getHarvests(auth()->user(), $request)->sum('ending_stock');
+        $harvests->activeStock = $harvest->getHarvests(auth()->user(), $request)->where('on_sale', 1)->sum('ending_stock');
 
         return view('harvest.index', compact('harvests'));
     }
@@ -41,12 +47,22 @@ class HarvestController extends Controller
     public function create()
     {
         if (request()->has('onfarm_id')) {
-            $onfarm = \App\Onfarm::find(request('onfarm_id'));
-            if ($onfarm->planted_at == null) {
-                return redirect("onfarm/$onfarm->id/view")->with('danger', 'Kedelai belum ditanam!');
+            $onfarms = Onfarm::where('id', request('onfarm_id'))->get();
+            if ($onfarms->first()->planted_at == null) {
+                return redirect(route('onfarm.show', $onfarm))->with('danger', 'Kedelai belum ditanam!');
             }
+        } elseif (auth()->user()->isSuperAdmin()) {
+            $onfarms = Onfarm::whereNotNull('planted_at')->doesntHave('harvest')->get();
+        } elseif (auth()->user()->isPoktanLeader()) {
+            $onfarms = Onfarm::whereNotNull('planted_at')->doesntHave('harvest')->whereHas('user', function ($query)
+            {
+                $query->where('poktan_id', auth()->user()->poktan_id);
+            })->get();
+        } else {
+            $onfarms = auth()->user()->onfarm()->doesntHave('harvest')->where('planted_at', '><', null)->get();
         }
-        return view('harvest.create');
+
+        return view('harvest.create', compact('onfarms'));
     }
 
     /**
@@ -65,7 +81,7 @@ class HarvestController extends Controller
 
         // $harvest->addPostharvest($request);
 
-        return redirect("/harvest/$harvest->id/view");
+        return redirect(route('harvest.show', [$harvest]))->with('success', 'Berhasil panen kedelai');
     }
 
     /**
@@ -115,7 +131,7 @@ class HarvestController extends Controller
         switch ($section) {
             case 'sale':
                 $harvest->update(request(['on_sale']));
-                return redirect("/harvest/$harvest->id/view")->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
+                return redirect(route('harvest.show', [$harvest]))->with('success', "Kedelai Anda sekarang $harvest->sale_status!");
                 break;
             
             default:

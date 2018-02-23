@@ -36,7 +36,7 @@ class SupplierController extends Controller
         $this->validator($request->all())->validate();
 
     	$supplier = Supplier::addSupplier($request);
-        $url = $request->has('url') ? $request->url : "/supplier" ;
+        $url = $request->has('url') ? $request->url : route('supplier.index') ;
 
         return redirect($url)->with('success', 'Berhasil menambah suppler!');
     }
@@ -61,13 +61,13 @@ class SupplierController extends Controller
             'name', 'description', 'address', 'contact', 'poktan_id',
         ]));
 
-        return redirect('/supplier')->with('success', 'Supplier berhasil diupdate');
+        return redirect(route('supplier.index'))->with('success', 'Supplier berhasil diupdate');
     }
 
     public function destroy(Supplier $supplier)
     {
         $supplier->delete();
 
-        return redirect('/supplier')->with('success', 'Berhasil menghapus supplier!');
+        return redirect(route('supplier.index'))->with('success', 'Berhasil menghapus supplier!');
     }
 }

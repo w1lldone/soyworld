@@ -88,7 +88,7 @@ class ProfileController extends Controller
 
         $user = auth()->user()->update(request(['email']));
 
-        return redirect('/profile')->with('success', 'Berhasil mengubah email!');
+        return redirect(route('profile.index'))->with('success', 'Berhasil mengubah email!');
     }
 
     public function updatePassword(Request $request)
@@ -107,7 +107,7 @@ class ProfileController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect('/profile')->with('success', 'Berhasil mengubah password!');
+        return redirect(route('profile.index'))->with('success', 'Berhasil mengubah password!');
     }
 
     /**
