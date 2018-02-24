@@ -84,9 +84,10 @@ class PostharvestController extends Controller
      * @param  \App\Postharvest  $postharvest
      * @return \Illuminate\Http\Response
      */
-    public function show(Postharvest $postharvest)
+    public function show(Harvest $harvest, Postharvest $postharvest)
     {
-        return view('postharvest.view', compact('postharvest'));
+        $pivot = $harvest->postharvest->where('id', $postharvest->id)->first()->pivot;
+        return view('postharvest.view', compact('postharvest', 'harvest', 'pivot'));
     }
 
     /**
@@ -95,9 +96,11 @@ class PostharvestController extends Controller
      * @param  \App\Postharvest  $postharvest
      * @return \Illuminate\Http\Response
      */
-    public function edit(Postharvest $postharvest)
+    public function edit(Harvest $harvest, Postharvest $postharvest)
     {
-        return view('postharvest.edit', compact('postharvest'));
+        $pivot = $harvest->postharvest->where('id', $postharvest->id)->first()->pivot;
+
+        return view('postharvest.edit', compact('postharvest', 'harvest', 'pivot'));
     }
 
     /**

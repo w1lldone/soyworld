@@ -65,9 +65,13 @@ class HarvestPolicy
      * @param  \App\Harvest  $harvest
      * @return mixed
      */
-    public function update(User $user, Harvest $harvest)
+    public function updatePostharvest(User $user, Harvest $harvest)
     {
-        //
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $harvest->onfarm->user->poktan_id;
+        }
+
+        return $user->id == $harvest->onfarm->user_id;
     }
 
     /**
@@ -77,8 +81,12 @@ class HarvestPolicy
      * @param  \App\Harvest  $harvest
      * @return mixed
      */
-    public function delete(User $user, Harvest $harvest)
+    public function deletePostharvest(User $user, Harvest $harvest)
     {
-        //
+        if ($user->isPoktanLeader()) {
+            return $user->poktan_id === $harvest->onfarm->user->poktan_id;
+        }
+
+        return $user->id == $harvest->onfarm->user_id;
     }
 }

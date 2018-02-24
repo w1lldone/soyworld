@@ -120,7 +120,11 @@ Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/{harvest}/edit/{section}', 'HarvestController@edit');
 	Route::get('/create', 'HarvestController@create')->name('harvest.create');
 	Route::get('/{harvest}', 'HarvestController@show')->name('harvest.show');
-	Route::get('/{harvest}/postharvest', 'PostharvestController@create');
+	Route::get('/{harvest}/postharvest', 'PostharvestController@create')->name('postharvest.create');
+	Route::put('/{harvest}/postharvest', 'PostharvestController@create')->name('postharvest.update');
+	Route::delete('/{harvest}/postharvest', 'PostharvestController@create')->name('postharvest.destroy');
+	Route::get('/{harvest}/postharvest/{postharvest}', 'PostharvestController@show')->name('postharvest.show');
+	Route::get('/{harvest}/postharvest/{postharvest}/edit', 'PostharvestController@edit')->name('postharvest.edit');
 	Route::post('/', 'HarvestController@store');
 	// Route::put('/{harvest}/sale', 'HarvestSalesController@update');
 	Route::put('/{harvest}/{section}', 'HarvestController@update');
@@ -129,8 +133,6 @@ Route::group(['prefix' => 'harvest'], function(){
 Route::group(['prefix' => 'stock'], function(){
 	Route::post('/', 'StockController@store');
 });
-
-Route::resource('postharvest', 'PostharvestController');
 
 Route::group(['prefix' => 'soybean'], function(){
 	Route::get('/', 'SoybeanController@index');
