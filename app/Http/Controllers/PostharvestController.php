@@ -21,9 +21,9 @@ class PostharvestController extends Controller
             case 'POST':
                return Validator::make($request, [
                    'harvest_id' => 'required|exists:harvests,id',
-                   'name' => 'required|string',
+                   'postharvest_id' => 'required|string|exists:postharvests,id',
                    'date' => 'required|date',
-                   'cost' => 'required|numeric',
+                   'cost' => 'nullable|numeric',
                ]);
            case 'PUT':
                return Validator::make($request, [
@@ -52,8 +52,10 @@ class PostharvestController extends Controller
      */
     public function create(Harvest $harvest)
     {
-        // $this->authorize('createPostharvest', $harvest);
-        return view('postharvest.create', compact('harvest'));
+        $attached = $harvest->postharvest->pluck('id');
+        $postharvests = auth()->user()->poktan->postharvest()->whereNotIn('id', $attached)->get();
+
+        return view('postharvest.create', compact('harvest', 'postharvests'));
     }
 
     /**
@@ -66,11 +68,14 @@ class PostharvestController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $postharvest = Postharvest::create(request([
-            'harvest_id', 'name', 'date', 'cost',
-        ]));
+        $harvest = Harvest::find($request->harvest_id);
 
-        return redirect(route('harvest.show', [$postharvest->harvest]))->with('success', 'Berhasil menambah penanganan pasca panen!');
+        $postharvest = $harvest->postharvest()->attach($request->postharvest_id, [
+            'date' => $request->date,
+            'cost' => $request->cost,
+        ]);
+
+        return redirect(route('harvest.show', [$harvest]))->with('success', 'Berhasil menambah penanganan pasca panen!');
     }
 
     /**

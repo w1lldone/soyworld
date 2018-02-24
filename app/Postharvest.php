@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Postharvest extends Model
@@ -15,6 +16,12 @@ class Postharvest extends Model
 	{
 		return number_format($this->cost, 0, ',', '.');
 	}
+
+    public function formatDate($date)
+    {
+        return Carbon::parse($date)->format('j F Y');
+    }
+        
 
     protected $guarded = ['id'];
     protected $dates = ['date'];

@@ -11,7 +11,7 @@
 <ul class="breadcrumb">
 	<div class="container-fluid">
 		<li class="breadcrumb-item"><a href="/harvest">Panen</a></li>
-		<li class="breadcrumb-item"><a href="/harvest/{{$harvest->id}}/view">Detail panen</a></li>
+		<li class="breadcrumb-item"><a href="{{ route('harvest.show', $harvest) }}">Detail panen</a></li>
 		<li class="breadcrumb-item active">Tambah penanganan</li>
 	</div>
 </ul>
@@ -29,7 +29,7 @@
 							<h3 class="h4">Form penanganan pasca panen</h3>
 						</div>
 						<div class="card-body">
-							<form class="form-horizontal" method="POST" action="/postharvest">
+							<form class="form-horizontal" method="POST" action="{{ route('postharvest.store') }}">
 								{{ csrf_field() }}
 								{{-- INPUT HARVEST --}}
 								<div class="form-group row {{ $errors->has('harvest_id') ? ' has-danger' : '' }}">
@@ -39,18 +39,22 @@
 										<input type="hidden" name="harvest_id" value="{{ $harvest->id }}">
 									</div>
 									@if ($errors->has('harvest_id'))
-										  <small class="form-text text-danger">{{ $errors->first('harvest_id') }}</small>
-									  @endif
+									  <small class="form-text text-danger">{{ $errors->first('harvest_id') }}</small>
+								  @endif
 								</div>
 								{{-- INPUT NAME --}}
-								<div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+								<div class="form-group row {{ $errors->has('postharvest_id') ? ' has-danger' : '' }}">
 									<label class="col-sm-3 form-control-label">Kegiatan</label>
 									<div class="col-sm-9">
 										<div class="input-group">
-											<input value="{{ old('name') }}" type="text" placeholder="Nama kegiatan" name="name" class="form-control" required>
+											<select class="form-control" name="postharvest_id">
+												@foreach ($postharvests as $postharvest)
+													<option value="{{ $postharvest->id }}">{{ $postharvest->name }}</option>
+												@endforeach
+											</select>
 										</div>
-										@if ($errors->has('name'))
-										  <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+										@if ($errors->has('postharvest_id'))
+										  <small class="form-text text-danger">{{ $errors->first('postharvest_id') }}</small>
 										@endif
 									</div>
 								</div>
