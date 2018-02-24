@@ -171,6 +171,16 @@ class Harvest extends Model
 		return $harvests;
 	}
 
+	public function reduceStock($quantity)
+	{
+		if ($this->ending_stock != 0) {
+			$this->ending_stock -= $quantity;
+			$this->save();
+		}
+
+		return $this->ending_stock;
+	}
+
 	/**
 	* CUSTOM ATTRIBUTE SECTION
 	*

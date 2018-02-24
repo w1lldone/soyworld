@@ -41,6 +41,10 @@
                 <span class="float-left"><strong>Biaya:</strong></span>
                 <span class="float-right">Rp. {{ $pivot->cost }}</span>
               </div>
+              <div class="clearfix">
+                <span class="float-left"><strong>Pengurangan berat:</strong></span>
+                <span class="float-right">{{ $pivot->weight_reduction }} kg</span>
+              </div>
             </div>
             {{-- CARD FOOTER --}}
             <div class="card-footer text-right">

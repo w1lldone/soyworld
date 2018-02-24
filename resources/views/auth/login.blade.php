@@ -9,11 +9,11 @@
           <div class="form d-flex align-items-center">
             <div class="content">
               <form id="login-form" method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
                 <div class="form-group mb-5">
                   <img class="img-fluid" src="/img/logo/logo.svg">
                 </div>
                 @include('layouts.alerts')
-                {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                   <input id="login-email" type="email" name="email" required=""  class="input-material" value="{{ old('email') }}">
                   @if ($errors->has('email'))

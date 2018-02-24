@@ -69,11 +69,16 @@ class PostharvestController extends Controller
         $this->validator($request->all())->validate();
 
         $harvest = Harvest::find($request->harvest_id);
+        $postharvest = Postharvest::find($request->postharvest_id);
+        $weightReduction = $harvest->ending_stock*$postharvest->reduction_percentage;
 
-        $postharvest = $harvest->postharvest()->attach($request->postharvest_id, [
+        $postharvest = $harvest->postharvest()->attach($postharvest->id, [
             'date' => $request->date,
             'cost' => $request->cost,
+            'weight_reduction' => $weightReduction,
         ]);
+
+        $harvest->reduceStock($weightReduction);
 
         return redirect(route('harvest.show', [$harvest]))->with('success', 'Berhasil menambah penanganan pasca panen!');
     }
