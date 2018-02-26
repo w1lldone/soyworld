@@ -12,7 +12,7 @@ class Harvest extends Model
 	*
 	*/
 	public function postharvest(){
-		return $this->belongsToMany('App\Postharvest')->withPivot('date', 'cost', 'weight_reduction');
+		return $this->belongsToMany('App\Postharvest')->using('App\HarvestPostharvest')->withPivot('date', 'cost', 'weight_reduction');
 	}
 
 	public function onfarm(){
@@ -171,10 +171,20 @@ class Harvest extends Model
 		return $harvests;
 	}
 
-	public function reduceStock($quantity)
+	public function reduceStock($quantity = 0)
 	{
 		if ($this->ending_stock != 0) {
 			$this->ending_stock -= $quantity;
+			$this->save();
+		}
+
+		return $this->ending_stock;
+	}
+
+	public function increaseStock($quantity = 0)
+	{
+		if ($this->ending_stock != 0) {
+			$this->ending_stock += $quantity;
 			$this->save();
 		}
 

@@ -69,7 +69,7 @@ class PostharvestController extends Controller
 
         $harvest = Harvest::find($request->harvest_id);
         $postharvest = Postharvest::find($request->postharvest_id);
-        $weightReduction = $harvest->ending_stock*$postharvest->reduction_percentage;
+        $weightReduction = floor($harvest->ending_stock*$postharvest->reduction_percentage);
 
         $postharvest = $harvest->postharvest()->attach($postharvest->id, [
             'date' => $request->date,
@@ -129,11 +129,12 @@ class PostharvestController extends Controller
      * @param  \App\Postharvest  $postharvest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Postharvest $postharvest)
+    public function destroy(Harvest $harvest, Request $request)
     {
-        $harvestId = $postharvest->harvest_id;
-        $postharvest->delete();
+        $handling = $harvest->postharvest()->where('postharvest_id', $request->postharvest_id)->first();
+        $harvest->postharvest()->detach($request->postharvest_id);
+        $harvest->increaseStock($handling->pivot->weight_reduction);
 
-        return redirect(route('harvest.show', [$harvestId]))->with('success', 'Berhasil menghapus penanganan!');
+        return redirect(route('harvest.show', $harvest))->with('success', 'Berhasil menghapus penanganan!');
     }
 }

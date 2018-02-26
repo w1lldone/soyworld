@@ -49,9 +49,10 @@
             {{-- CARD FOOTER --}}
             <div class="card-footer text-right">
               @can('deletePostharvest', $harvest)
-                <form method="POST" action="{{ route('postharvest.destroy', [$harvest, $postharvest]) }}" class="d-inline">
+                <form method="POST" action="{{ route('postharvest.destroy', $harvest) }}" class="d-inline">
                   {{ csrf_field() }}
                   {{ method_field('DELETE') }}
+                  <input type="hidden" name="postharvest_id" value="{{ $postharvest->id }}">
                   <button onclick="return confirm('Apakah anda yakin menghapus penanganan?')" type="submit" class="btn btn-danger">Hapus</button>
                 </form>
               @endcan

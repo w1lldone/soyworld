@@ -9,7 +9,7 @@ class Postharvest extends Model
 {
 
 	public function harvest(){
-		return $this->belongsToMany('App\Postharvest')->withPivot('date', 'cost', 'weight_reduction');
+		return $this->belongsToMany('App\Postharvest')->using('App\HarvestPostharvest')->withPivot('date', 'cost', 'weight_reduction');
 	}
 
 	public function formattedCost()
