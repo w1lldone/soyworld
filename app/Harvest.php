@@ -128,7 +128,7 @@ class Harvest extends Model
 
 	public function hasHandling($handling)
 	{
-		return $this->postharvest()->where('name', $handling)->get()->isNotEmpty();
+		return $this->postharvest()->where('postharvest_id', $handling->id)->get()->isNotEmpty();
 	}
 
 	public function getHarvests($user, $request)

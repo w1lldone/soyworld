@@ -117,11 +117,11 @@
                         @endif
                       </td>
                       <td>
-                        @foreach ($harvest->handlings as $handling)
+                        @foreach ($handlings as $handling)
                           @if ($harvest->hasHandling($handling))
-                            <span class="text-success"><i class="fa fa-check fa-fw"></i>{{ $handling }}</span>
+                            <span class="text-success"><i class="fa fa-check fa-fw"></i>{{ $handling->name }}</span>
                           @else
-                            <span class="text-muted"><i class="fa fa-close fa-fw"></i>{{ $handling }}</span>
+                            <span class="text-muted"><i class="fa fa-close fa-fw"></i>{{ $handling->name }}</span>
                           @endif
                         @endforeach
                         <span style="font-size: 100%" class="badge badge-pill badge-{{ $harvest->status_color }}">{{ $harvest->sale_status }}</span>
