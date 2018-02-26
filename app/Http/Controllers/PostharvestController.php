@@ -20,14 +20,13 @@ class PostharvestController extends Controller
         switch (request()->method()) {
             case 'POST':
                return Validator::make($request, [
-                   'harvest_id' => 'required|exists:harvests,id',
+                   'harvest_id' => 'required|exists:harvests,id|stockIsNotEmpty',
                    'postharvest_id' => 'required|string|exists:postharvests,id',
                    'date' => 'required|date',
                    'cost' => 'nullable|numeric',
                ]);
            case 'PUT':
                return Validator::make($request, [
-                   'name' => 'required|string',
                    'date' => 'required|date',
                    'cost' => 'required|numeric',
                ]);
@@ -115,14 +114,13 @@ class PostharvestController extends Controller
      * @param  \App\Postharvest  $postharvest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Postharvest $postharvest)
+    public function update(Request $request, Harvest $harvest, $postharvest)
     {
         $this->validator($request->all())->validate();
-        $postharvest->update(request([
-            'name', 'date', 'cost',
-        ]));
 
-        return redirect(route('harvest.show', [$postharvest->harvest]))->with('success', 'berhasil mengubah penanganan!');
+        $harvest->postharvest()->updateExistingPivot($postharvest, $request->only(['date', 'cost']));
+
+        return redirect(route('harvest.show', $harvest))->with('success', 'berhasil mengubah penanganan!');
     }
 
     /**

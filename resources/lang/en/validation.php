@@ -82,6 +82,7 @@ return [
         'string'  => 'The :attribute must be :size characters.',
         'array'   => 'The :attribute must contain :size items.',
     ],
+    'stock_is_not_empty'      => 'Stok pada pemanenan ini kosong. Silahkan tambahkan stok terlebih dahulu',
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'The :attribute has already been taken.',

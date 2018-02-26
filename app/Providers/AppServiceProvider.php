@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Harvest;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -16,9 +18,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
         view()->composer('layouts.sidebars.admin', function($view)
         {
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
+        });
+
+        Validator::extend('stockIsNotEmpty', function ($attribute, $value, $parameters, $validator) {
+            $harvest = Harvest::findOrFail($value);
+            return $harvest->initial_stock != 0;
         });
     }
 
