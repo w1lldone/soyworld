@@ -20,7 +20,8 @@ class StockController extends Controller
 			'harvest_id' => 'required|exists:harvests,id',
 		]);
 
-		$harvest = Harvest::find($request->harvest_id)->update([
+		$harvest = Harvest::find($request->harvest_id);
+		$harvest->update([
 			'initial_stock' => $request->quantity,
 			'ending_stock' => $request->quantity,
 		]);
