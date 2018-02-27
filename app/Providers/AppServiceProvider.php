@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         Validator::extend('stockIsNotEmpty', function ($attribute, $value, $parameters, $validator) {
             $harvest = Harvest::findOrFail($value);
-            return $harvest->initial_stock != 0;
+            return $harvest->ending_stock != 0;
         });
     }
 
