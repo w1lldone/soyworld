@@ -255,6 +255,14 @@ class Harvest extends Model
 			'Sortasi',
 		]);
 	}
+
+	public function getSoldStockAttribute(){
+		return $this->transaction_detail()->whereHas('transaction', function ($query)
+		{
+			$query->where('status_id', 3);
+		})->sum('quantity');
+	}
+		
 		
 		
 
