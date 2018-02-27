@@ -56,7 +56,7 @@
 	  	      	</div>
 	  	      	<div class="clearfix">
 	  	      	  <h4 class="float-left">Terjual</h4>
-	  	      	  <h4 class="float-right">{{ $harvest->initial_stock-$harvest->ending_stock }} Kg</h4>
+	  	      	  <h4 class="float-right">{{ $harvest->sold_stock }} Kg</h4>
 	  	      	</div>
 	  	      	<div>
 	  	          <span>Status stok:</span>
