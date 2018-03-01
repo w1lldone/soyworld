@@ -75,7 +75,13 @@
 			      	  		  	<i class="fa fa-clock-o fa-fw"></i>{{ $transaction->created_at->diffForHumans() }}&nbsp; <i class="fa fa-user-o fa-fw"></i>{{ $transaction->user->name }}
 			      	  		  </td>
 			      	  		  <td class="align-middle">{{ $transaction->total_quantity }} Kg</td>
-			      	  		  <td class="align-middle hidden-sm-down">Rp. {{ $transaction->formattedTotalPayment() }} </td>
+			      	  		  <td class="align-middle hidden-sm-down">
+			      	  		  	@if ($transaction->status_id == 4)
+			      	  		  		Rp. 0
+			      	  		  	@else
+			      	  		  		Rp. {{ $transaction->formattedTotalPayment() }} 
+			      	  		  	@endif
+			      	  		  </td>
 			      	  		  <td class="align-middle"><span class="badge badge-{{ $transaction->status->status_color }}" style="font-size: 100%">{{ $transaction->status->name }}</span></td>
 			      	  		</tr>
 			      	  	@endforeach

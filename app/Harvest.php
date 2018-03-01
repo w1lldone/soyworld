@@ -146,7 +146,8 @@ class Harvest extends Model
 
 		switch ($request->filter) {
 			case 'unhandled':
-				$harvests = $harvests->where('on_sale', 0);
+				$handlings = auth()->user()->poktan->postharvest->count();
+				$harvests = $harvests->has('postharvest', '<', $handlings);
 				break;
 
 			case 'on_sale':
