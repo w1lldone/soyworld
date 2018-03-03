@@ -172,5 +172,6 @@ Route::group(['prefix' => 'report'], function(){
 		Route::get('/', 'Report\PoktanReportController@index')->name('report.poktan.index');
 		Route::get('/farmer', 'Report\PoktanReportController@farmer')->name('report.poktan.farmer');
 		Route::get('/sales', 'Report\PoktanReportController@sales')->name('report.poktan.sales');
+		Route::get('/soybean', 'Report\PoktanReportController@soybean')->name('report.poktan.soybean');
 	});
 });

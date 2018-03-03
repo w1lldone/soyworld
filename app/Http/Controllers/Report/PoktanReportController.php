@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Report;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\ReportsRepository as Repository;
+use Illuminate\Http\Request;
 
 class PoktanReportController extends Controller
 {
-    function __construct()
+    function __construct(Repository $repository)
     {
         $this->middleware('auth');
+        $this->repository = $repository;
     }
 
     public function index()
@@ -19,37 +21,28 @@ class PoktanReportController extends Controller
 
     public function farmer(Request $request)
     {
-        $years = collect(range(2016, date('Y')))->reverse();
-        $farmers = auth()->user()->poktan->user()->orderBy('name')->get();
-
-        if ($request->has('year')) {
-            $farmers = $farmers->load(['harvest' => function ($query) use ($request)
-            {
-                $query->whereYear('harvested_at', $request->year);
-            }]);
-        }
+        $years = $this->repository->getYears();
+        $farmers = $this->repository->getFarmersReports($request);
 
         return view('report.poktan.farmer', compact('farmers', 'years'));
     }
 
     public function sales(Request $request)
     {
-        $year = $request->year ?: date('Y');
+        $years = $this->repository->getYears();
 
-        foreach (range(0, 12) as $month) {
-            $sales[$month] = auth()
-                            ->user()
-                            ->poktan
-                            ->transaction()
-                            ->whereYear('created_at', $year)
-                            ->where('status_id', 3)
-                            ->whereMonth('created_at', $month)
-                            ->get()
-                            ->sum('total_quantity');
-        }
+        $sales = $this->repository->getSalesReport($request, $years);
 
-        $sales = collect($sales);
+        return view('report.poktan.sales', compact('sales', 'years'));
+    }
 
-        return view('report.poktan.sales', compact('sales'));
+    public function soybean(Request $request)
+    {
+        $years = $this->repository->getYears();
+
+        $onfarms = $this->repository->getOnfarmsReport($request);
+        $harvests = $this->repository->getHarvestsReport($request);
+
+        return view('report.poktan.soybean', compact('onfarms', 'harvests', 'years'));
     }
 }

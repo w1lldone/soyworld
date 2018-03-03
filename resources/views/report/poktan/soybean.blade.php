@@ -17,7 +17,7 @@
               {{-- ONFARM --}}
               <div class="articles card mb-3">
                 <div class="card-header d-flex align-items-center bg-violet">
-                  <h2 class="h3">Penjualan Kedelai</h2>
+                  <h2 class="h3">Tanam dan Panen Kedelai</h2>
                 </div>
                 <div class="card-body">
                   <form method="GET" id="filterForm">
@@ -33,7 +33,14 @@
                       </div>
                     </div>
                   </form>
-                  <canvas id="salesChart" height="100rem"></canvas>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <canvas id="onfarmsChart" height="200rem"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                      <canvas id="harvestsChart" height="200rem"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -45,27 +52,59 @@
 
 @section('script')
     <script type="text/javascript">
-        var ctx = document.getElementById("salesChart");
+        var ctx = document.getElementById("onfarmsChart");
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                labels: {!! $sales->keys() !!},
+                labels: {!! $onfarms->keys() !!},
                 datasets: [{
-                    label: 'kg Kedelai',
-                    data: {!! $sales->values() !!},
+                    label: 'kg benih',
+                    data: {!! $onfarms->values() !!},
                     borderColor: 'rgba(255, 99, 132, 1)',
                     backgroundColor: 'rgba(0, 0, 0, 0)'
                 }]
             },
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              },
+              title: {
+                display: true,
+                text: 'Grafik tanam kedelai'
+              }
+            }
+        });
+
+        var ctx = document.getElementById("harvestsChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels: {!! $harvests->keys() !!},
+                datasets: [{
+                    label: 'kg kedelai',
+                    data: {!! $harvests->values() !!},
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(0, 0, 0, 0)'
+                }]
+            },
+            options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              },
+              title: {
+                display: true,
+                text: 'Grafik panen kedelai'
+              }
             }
         });
     </script>

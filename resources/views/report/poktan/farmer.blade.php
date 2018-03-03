@@ -26,7 +26,7 @@
                     <div class="col-sm-2">
                       <select class="form-control" name="year" onchange="$('#filterForm').submit()">
                         <option value="" @if(request('year') == '') selected @endif>All</option>
-                        @foreach ($years as $year)
+                        @foreach ($years->reverse() as $year)
                           <option @if(request('year') == $year) selected @endif>{{ $year }}</option>
                         @endforeach
                       </select>
