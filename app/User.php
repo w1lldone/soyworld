@@ -129,4 +129,13 @@ class User extends Authenticatable
         return \App\TransactionDetail::salesHistory()->latest()->take(5)->get();
     }
 
+    public function getTotalHarvestAttribute(){
+        if ($this->harvest->isNotEmpty()) {
+            return $this->harvest->sum('initial_stock');    
+        }
+
+        return 0;
+    }
+        
+
 }
