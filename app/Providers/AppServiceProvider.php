@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Harvest;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.sidebars.admin', function($view)
         {
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
+        });
+
+        view()->composer('report.poktan.nav', function($view)
+        {
+            $view->with('route', Route::currentRouteName());
         });
 
         Validator::extend('stockIsNotEmpty', function ($attribute, $value, $parameters, $validator) {

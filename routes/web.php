@@ -165,3 +165,13 @@ Route::group(['prefix' => 'warehouse'], function(){
 Route::group(['prefix' => 'handling'], function(){
 	Route::post('/', 'HandlingController@store')->name('handling.store');
 });
+
+Route::group(['prefix' => 'report'], function(){
+	Route::get('/', 'ReportsController@index')->name('report.index');
+	Route::group(['prefix' => 'poktan'], function(){
+		Route::get('/', 'Report\PoktanReportController@index')->name('report.poktan.index');
+		Route::get('/farmer', 'Report\PoktanReportController@farmer')->name('report.poktan.farmer');
+		Route::get('/sales', 'Report\PoktanReportController@sales')->name('report.poktan.sales');
+		Route::get('/soybean', 'Report\PoktanReportController@soybean')->name('report.poktan.soybean');
+	});
+});

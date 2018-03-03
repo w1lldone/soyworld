@@ -83,7 +83,7 @@
     <script src="{{ asset('js/jquery.cookie.js') }}"> </script>
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    {{-- <script src="{{ asset('js/charts-custom.js') }}"></script> --}}
+    <script src="{{ asset('js/Chart.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 

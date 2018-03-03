@@ -21,6 +21,16 @@
     @if (auth()->user()->isPoktanLeader())
       <li> <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan</a></li>
     @endif
+    <li>
+      @if (auth()->user()->isPoktanLeader())
+        <a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Laporan </a>
+      @endif
+      <ul id="report" class="collapse list-unstyled">
+        @if (auth()->user()->isPoktanLeader())
+          <li><a href="{{ route('report.poktan.index') }}">Laporan poktan</a></li>
+        @endif 
+      </ul>
+    </li>
   </ul><span class="heading">Kedelaiku</span>
   <ul class="list-unstyled">
     <li> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>
