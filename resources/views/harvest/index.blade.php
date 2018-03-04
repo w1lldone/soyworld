@@ -54,9 +54,10 @@
               <a href="{{ route('harvest.create') }}" class="btn btn-sm btn-primary float-right" title="Tambah panen" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Panen</a>
   	        </div>
   	        <div class="card-body table-responsive">
-              <form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('harvest.index') }}">
+              {{-- FILTER SORT FORM --}}
+              <form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-start align-items-center mb-4" action="{{ route('harvest.index') }}">
                 @if (auth()->user()->isPoktanLeader())
-                  <div class="input-group">
+                  <div class="input-group mr-3">
                     <label class="mr-sm-2">Tampilkan</label>
                     <div class="btn-group" data-toggle="buttons" onchange="$('#filterSortForm').submit()">
                       <label class="btn btn-primary btn-sm @if (request('view') == 'mine' || empty(request('view'))) active @endif">
@@ -68,7 +69,7 @@
                     </div>
                   </div>
                 @endif
-                <div class="input-group">
+                <div class="input-group mr-3">
                   <label class="mr-sm-2" for="filter">Filter</label>
                   <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="filter" onchange="$('#filterSortForm').submit()">
                     <option value="all" @if (request('filter') == 'all') selected @endif>Semua</option>
@@ -77,7 +78,7 @@
                     <option value="sold" @if (request('filter') == 'sold') selected @endif>Habis</option>
                   </select>
                 </div>                  
-                <div class="input-group">
+                <div class="input-group mr-3">
                   <label class="mr-sm-2" for="sort">Urutkan</label>
                   <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
                     <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
@@ -88,6 +89,7 @@
                   <a href="{{ route('harvest.index') }}" class="btn btn-warning"><i class="fa fa-refresh"></i></a>
                 </div>
               </form>
+              {{-- END FORM --}}
   	          <table class="table table-hover">
   	            <thead>
   	              <tr>

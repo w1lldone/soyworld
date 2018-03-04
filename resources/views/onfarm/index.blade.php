@@ -27,9 +27,9 @@
 					    <a href="{{ route('onfarm.create') }}" class="btn btn-sm btn-primary float-right" title="Tambah Onfarm" data-toggle="tooltip"><i class="fa fa-plus fa-fw"></i>Onfarm</a>
 					  </div>
 					  <div class="card-body">
-					  	<form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-between align-items-center mb-4" action="{{ route('onfarm.index') }}">
+					  	<form id="filterSortForm" class="form-inline clearfix d-flex flex-wrap justify-content-start align-items-center mb-4" action="{{ route('onfarm.index') }}">
 					  	  @if (auth()->user()->isPoktanLeader())
-					  	    <div class="input-group">
+					  	    <div class="input-group mr-3">
 					  	      <label class="mr-sm-2">Tampilkan</label>
 					  	      <div class="btn-group" data-toggle="buttons" onchange="$('#filterSortForm').submit()">
 					  	        <label class="btn btn-primary btn-sm @if (request('view') == 'mine' || empty(request('view'))) active @endif">
@@ -41,7 +41,7 @@
 					  	      </div>
 					  	    </div>
 					  	  @endif
-					  	  <div class="input-group">
+					  	  <div class="input-group mr-3">
 					  	    <label class="mr-sm-2" for="sort">Filter</label>
 					  	    <select name="filter" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
 					  	      <option value="all" @if (request('filter') == 'all') selected @endif>Semua</option>
@@ -50,7 +50,7 @@
 					  	      <option value="harvested" @if (request('filter') == 'harvested') selected @endif>Telah panen</option>
 					  	    </select>
 					  	  </div>                  
-					  	  <div class="input-group">
+					  	  <div class="input-group mr-3">
 					  	    <label class="mr-sm-2" for="sort">Urutkan</label>
 					  	    <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="$('#filterSortForm').submit()">
 					  	      <option value="latest" @if (request('sort') == 'latest') selected @endif>Terbaru</option>
