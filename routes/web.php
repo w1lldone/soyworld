@@ -174,4 +174,19 @@ Route::group(['prefix' => 'report'], function(){
 		Route::get('/sales', 'Report\PoktanReportController@sales')->name('report.poktan.sales');
 		Route::get('/soybean', 'Report\PoktanReportController@soybean')->name('report.poktan.soybean');
 	});
+	Route::group(['prefix' => 'farmer'], function(){
+		Route::get('/', 'Report\FarmerReportController@index')->name('report.farmer.index');
+		Route::get('/soybean', 'Report\FarmerReportController@soybean')->name('report.farmer.soybean');
+		Route::get('/sales', 'Report\FarmerReportController@sales')->name('report.farmer.sales');
+	});
 });
+
+Route::get('/reset-data', function ()
+{
+	\App\Harvest::all()->each(function ($item)
+	{
+		$item->update([
+			'ending_stock' => $item->initial_stock,
+		]);
+	});
+})->name('reset-data');

@@ -22,10 +22,9 @@
       <li> <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan</a></li>
     @endif
     <li>
-      @if (auth()->user()->isPoktanLeader())
-        <a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Laporan </a>
-      @endif
+      <a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Laporan </a>
       <ul id="report" class="collapse list-unstyled">
+        <li><a href="{{ route('report.farmer.index') }}">Laporan petani</a></li>
         @if (auth()->user()->isPoktanLeader())
           <li><a href="{{ route('report.poktan.index') }}">Laporan poktan</a></li>
         @endif 
