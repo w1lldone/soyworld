@@ -48,10 +48,6 @@ class OnfarmController extends Controller
 
     public function destroy(Onfarm $onfarm)
     {
-        $onfarm->seed()->delete();
-        $onfarm->activity()->delete();
-        $onfarm->cost()->delete();
-        $onfarm->harvest()->delete();
         $onfarm->delete();
         return redirect(route('onfarm.index'))->with('success', 'berhasil menghapus on farm!');
     }

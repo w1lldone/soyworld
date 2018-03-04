@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use App\Harvest;
+use App\Observers\HarvestObserver;
+use App\Observers\OnfarmObserver;
+use App\Onfarm;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
         });
 
-        view()->composer('report.poktan.nav', function($view)
+        view()->composer('report.*.nav', function($view)
         {
             $view->with('route', Route::currentRouteName());
         });
@@ -34,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
             $harvest = Harvest::findOrFail($value);
             return $harvest->ending_stock != 0;
         });
+
+        /*Observer*/
+        Onfarm::observe(OnfarmObserver::class);
+        Harvest::observe(HarvestObserver::class);
     }
 
     /**
