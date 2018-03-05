@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('layouts.sidebars.admin', function($view)
+        view()->composer('layouts.sidebars.petani', function($view)
         {
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
         });
