@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use App\Harvest;
+use App\Observers\HarvestObserver;
+use App\Observers\OnfarmObserver;
+use App\Onfarm;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -20,12 +23,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('layouts.sidebars.admin', function($view)
+        view()->composer('layouts.sidebars.petani', function($view)
         {
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
         });
 
-        view()->composer('report.poktan.nav', function($view)
+        view()->composer('*', function($view)
         {
             $view->with('route', Route::currentRouteName());
         });
@@ -34,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
             $harvest = Harvest::findOrFail($value);
             return $harvest->ending_stock != 0;
         });
+
+        /*Observer*/
+        Onfarm::observe(OnfarmObserver::class);
+        Harvest::observe(HarvestObserver::class);
     }
 
     /**

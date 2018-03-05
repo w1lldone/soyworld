@@ -10,7 +10,7 @@ class PoktanReportController extends Controller
 {
     function __construct(Repository $repository)
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'role:poktanLeader']);
         $this->repository = $repository;
     }
 

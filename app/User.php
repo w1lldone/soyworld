@@ -92,6 +92,10 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
+        if ($role == 'poktanLeader') {
+            return $this->isPoktanLeader();
+        }
+        
         return $this->privilage->name === $role;
     }
 

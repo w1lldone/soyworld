@@ -27,9 +27,7 @@ class ReportsRepository
     {
         if ($request->has('year')) {
             foreach ($this->getMonths() as $key => $value) {
-                $sales[$value] = auth()
-                                ->user()
-                                ->poktan
+                $sales[$value] = $this->getModel()
                                 ->transaction()
                                 ->whereYear('created_at', $request->year)
                                 ->where('status_id', 3)
@@ -39,9 +37,7 @@ class ReportsRepository
             }
         } else {
             foreach ($this->getYears() as $year) {
-                $sales[$year] = auth()
-                                ->user()
-                                ->poktan
+                $sales[$year] = $this->getModel()
                                 ->transaction()
                                 ->whereYear('created_at', $year)
                                 ->where('status_id', 3)
@@ -59,9 +55,7 @@ class ReportsRepository
     {
         if ($request->has('year')) {
             foreach ($this->getMonths() as $key => $value) {
-                $onfarms[$value] = auth()
-                                ->user()
-                                ->poktan
+                $onfarms[$value] = $this->getModel()
                                 ->onfarm()
                                 ->whereYear('planted_at', $request->year)
                                 ->whereMonth('planted_at', $key)
@@ -72,9 +66,7 @@ class ReportsRepository
             }
         } else {
             foreach ($this->getYears() as $year) {
-                $onfarms[$year] = auth()
-                                ->user()
-                                ->poktan
+                $onfarms[$year] = $this->getModel()
                                 ->onfarm()
                                 ->whereYear('planted_at', $year)
                                 ->get()
@@ -92,7 +84,7 @@ class ReportsRepository
     {
         if ($request->has('year')) {
             foreach ($this->getMonths() as $key => $value) {
-                $harvest = auth()->user()->poktan
+                $harvest = $this->getModel()
                                 ->onfarm()
                                 ->whereHas('harvest', function ($query) use ($key, $request)
                                 {
@@ -107,7 +99,7 @@ class ReportsRepository
             }
         } else {
             foreach ($this->getYears() as $year) {
-                $harvest = auth()->user()->poktan
+                $harvest = $this->getModel()
                                 ->onfarm()
                                 ->whereHas('harvest', function ($query) use ($year)
                                 {
@@ -122,6 +114,15 @@ class ReportsRepository
         }
 
         return collect($harvests);
+    }
+
+    public function getModel()
+    {
+        if (auth()->user()->isPoktanLeader()) {
+            return auth()->user()->poktan;
+        } elseif(auth()->user()->hasRole('petani')) {
+            return auth()->user();
+        }
     }
 
     public function getMonths()
