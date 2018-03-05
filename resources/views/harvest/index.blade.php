@@ -91,19 +91,29 @@
                     </div>
                   </form>
                 </div>
-                <form action="{{ route('harvest.update.sale') }}" method="POST">
+                <form id="bulkActionForm" action="{{ route('harvest.update.sale') }}" method="POST">
                   {{ method_field('PUT') }}
                   {{ csrf_field() }}
                   <input type="hidden" name="url" value="{{ request()->fullUrl() }}">
                   <div id="bulkActionContainer" class="mb-3" style="display: none;">
                     <div class="input-group mr-3">
-                      <div class="dropdown">
+                      <div class="dropdown mr-3">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Pilih tindakan
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <button name="sale" class="dropdown-item" type="submit" value="1">Jual</button>
                           <button name="sale" class="dropdown-item" type="submit" value="0">Berhenti jual</button>
+                        </div>
+                      </div>
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Pilih penanganan
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          @foreach ($handlings as $handling)
+                            <button name="handling" class="dropdown-item" type="submit" value="{{ $handling->id }}">{{ $handling->name }}</button>
+                          @endforeach
                         </div>
                       </div>
                     </div>
@@ -180,11 +190,19 @@
 
 @section('script')
   <script type="text/javascript">
+    $(function () {
+      checkInputs();
+    });
+
     $("#checkAll").click(function () {
         $(".form-check-input").prop('checked', $(this).prop('checked'));
     });
 
     $(".form-check-input").change(function () {
+      checkInputs();
+    })
+
+    function checkInputs() {
       var atLeastOneIsChecked = $('.form-check-input:checked').length > 0;
 
       if (atLeastOneIsChecked) {
@@ -194,6 +212,6 @@
         $('#filterSortFormContainer').show();
         $('#bulkActionContainer').hide();
       }
-    })
+    }
   </script>
 @endsection
