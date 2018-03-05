@@ -142,6 +142,33 @@ class HarvestController extends Controller
         }
     }
 
+    public function updateSale(Request $request)
+    {
+        $this->validate($request, [
+            'id' => "required|array",
+            'id.*' => 'required|exists:harvests,id',
+            'sale' => 'required|boolean',
+        ]);
+
+        foreach ($request->id as $id) {
+            $harvest = Harvest::find($id);
+            
+            $this->authorize('update', $harvest->onfarm);
+
+            $harvest->update([
+                'on_sale' => $request->sale,
+            ]);
+        };
+
+        if ($request->sale) {
+            $message = 'Berhasil menjual hasil panen!';
+        } else {
+            $message = 'Berhasil menonaktifkan penjualan hasil panen!';
+        }
+
+        return redirect($request->url)->with('success', $message);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

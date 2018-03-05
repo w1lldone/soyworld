@@ -126,7 +126,7 @@ Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/{harvest}/postharvest/{postharvest}', 'PostharvestController@show')->name('postharvest.show');
 	Route::get('/{harvest}/postharvest/{postharvest}/edit', 'PostharvestController@edit')->name('postharvest.edit');
 	Route::post('/', 'HarvestController@store');
-	// Route::put('/{harvest}/sale', 'HarvestSalesController@update');
+	Route::put('/sale', 'HarvestController@updateSale')->name('harvest.update.sale');
 	Route::put('/{harvest}/{section}', 'HarvestController@update');
 });
 
@@ -146,6 +146,7 @@ Route::group(['prefix' => 'soybean'], function(){
 
 Route::resource('transaction', 'TransactionController');
 Route::resource('sales', 'SalesController', ['parameters' => ['sales' => 'transaction']]);
+
 Route::resource('sold', 'SoldSoybeanController', ['parameters' => ['sold' => 'detail']]);
 
 Route::group(['prefix' => 'notifications'], function(){
