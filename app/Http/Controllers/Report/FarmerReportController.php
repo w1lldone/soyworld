@@ -11,7 +11,9 @@ class FarmerReportController extends Controller
     function __construct(Repository $repository)
     {
         $this->repository = $repository;
+        $this->middleware(['auth', 'role:petani']);
     }
+
     public function index(Request $request)
     {
         return redirect(route('report.farmer.soybean'));
