@@ -48,7 +48,12 @@ class HomeController extends Controller
             case 'petani':
                 $stock = \App\Harvest::onSaleStock();
 
-                return view('home.petani', compact('stock'));
+                $sales = collect([]);
+                if (auth()->user()->isPoktanLeader()) {
+                    $sales = \App\Transaction::where('status_id', 1)->where('poktan_id', auth()->user()->poktan_id)->latest()->get();
+                }
+
+                return view('home.petani', compact('stock', 'sales'));
                 break;
             
             default:
