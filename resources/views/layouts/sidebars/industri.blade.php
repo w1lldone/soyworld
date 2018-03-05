@@ -11,11 +11,11 @@
   <!-- Sidebar Navidation Menus-->
   <span class="heading">Utama</span>
   <ul class="list-unstyled">
-    <li> <a href="/home"><i class="icon-home"></i>Home</a></li>
+    <li class="@if(starts_with($route, 'home')) active @endif"> <a href="/home"><i class="icon-home"></i>Home</a></li>
   </ul>
   <span class="heading">Kedelai</span>
   <ul class="list-unstyled">
-    <li> <a href="/soybean?tab=stok-aktif"> <i class="fa fa-envira"></i>Kedelai</a></li>
-    <li> <a href="/transaction"> <i class="fa fa-archive"></i>Transaksi</a></li>
+    <li class="@if(starts_with($route, 'soybean')) active @endif"> <a href="/soybean?tab=stok-aktif"> <i class="fa fa-envira"></i>Kedelai</a></li>
+    <li class="@if(starts_with($route, 'transaction')) active @endif"> <a href="/transaction"> <i class="fa fa-archive"></i>Transaksi</a></li>
   </ul>
 </nav>

@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
         });
 
-        view()->composer('report.*.nav', function($view)
+        view()->composer('*', function($view)
         {
             $view->with('route', Route::currentRouteName());
         });
