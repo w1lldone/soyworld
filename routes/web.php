@@ -139,7 +139,7 @@ Route::group(['prefix' => 'stock'], function(){
 });
 
 Route::group(['prefix' => 'soybean'], function(){
-	Route::get('/', 'SoybeanController@index');
+	Route::get('/', 'SoybeanController@index')->name('soybean.index');
 	Route::get('/harvest/{harvest}', 'SoybeanController@show');
 	Route::get('/onfarm/{onfarm}', 'SoybeanController@showOnfarm');
 });
