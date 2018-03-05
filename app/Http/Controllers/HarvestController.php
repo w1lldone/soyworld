@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Harvest;
 use App\Onfarm;
+use App\Repositories\HarvestsRepository as Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class HarvestController extends Controller
 {
 
-    function __construct()
+    function __construct(Repository $repository)
     {
         $this->middleware(['auth', 'role:petani']);
+        $this->repository = $repository;
     }
 
     public function validator($request)
@@ -27,14 +29,14 @@ class HarvestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Harvest $harvest, Request $request)
+    public function index(Request $request)
     {
-        $harvests = $harvest->getHarvests(auth()->user(), $request)
+        $harvests = $this->repository->getHarvests(auth()->user(), $request)
                         ->paginate(10)
                         ->appends($request->except('page'));
 
-        $harvests->totalStock = $harvest->getHarvests(auth()->user(), $request)->sum('ending_stock');
-        $harvests->activeStock = $harvest->getHarvests(auth()->user(), $request)->where('on_sale', 1)->sum('ending_stock');
+        $harvests->totalStock = $this->repository->getHarvests(auth()->user(), $request)->sum('ending_stock');
+        $harvests->activeStock = $this->repository->getHarvests(auth()->user(), $request)->where('on_sale', 1)->sum('ending_stock');
 
         $handlings = auth()->user()->poktan->postharvest;
 
@@ -98,6 +100,7 @@ class HarvestController extends Controller
         {
             $query->where('status_id', 3);
         })->get();
+        
         return view('harvest.view', compact(['harvest', 'sales']));
     }
 
