@@ -2,45 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TransactionDetailsRepository as Repository;
 use App\Transaction;
 use App\TransactionDetail as Detail;
 use Illuminate\Http\Request;
 
 class SoldSoybeanController extends Controller
 {
-    function __construct()
+    function __construct(Repository $repository)
     {
         $this->middleware(['auth', 'role:petani']);
+        $this->repository = $repository;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sales = Detail::salesHistory();
+        // $sales = Detail::salesHistory();
 
-        if (!empty(request('month'))) {
-            $month = request('month');
-            $sales = $sales->where('created_at', 'like', "%$month%");
-        }
-
-        switch (request('sort')) {
-            case 'oldest':
-                $sales = $sales->oldest();
-                break;
-
-            case 'expensive':
-                $sales = $sales->orderBy('quantity', 'desc');
-                break;
-            
-            default:
-                $sales = $sales->latest();
-                break;
-        }
-
-        $sales = $sales->oldest()->get();
+        $sales = $this->repository->getSales($request);
 
         $sold = $sales->sum('quantity');
         $income = number_format($sales->sum('total_price'), 0, ',', '.');
