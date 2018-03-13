@@ -38,18 +38,6 @@ class Transaction extends Model
         $this->update(['status_id' => 4]);
     }
 
-    public function sendSoldNotification()
-    {
-        // send notification to farmers
-        foreach ($this->transaction_detail as $detail) {
-            $user = $detail->harvest->onfarm->user;
-            $user->notify(new \App\Notifications\SoybeanSold($detail));
-        }
-
-        // send notification to poktan leader
-        $this->poktan->leader->notify(new \App\Notifications\NewTransaction($this));
-    }
-
     public function addDetail($harvestId, $quantity)
     {
     	return $this->transaction_detail()->create([

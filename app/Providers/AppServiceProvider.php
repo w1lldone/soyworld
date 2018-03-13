@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Harvest;
 use App\Observers\HarvestObserver;
 use App\Observers\OnfarmObserver;
+use App\Observers\TransactionObserver;
 use App\Onfarm;
+use App\Transaction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('layouts.sidebars.petani', function($view)
+        view()->composer('layouts.sidebars.admin', function($view)
         {
             $view->with('newSales', \App\Transaction::where('status_id', 1)->count());
         });
@@ -41,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         /*Observer*/
         Onfarm::observe(OnfarmObserver::class);
         Harvest::observe(HarvestObserver::class);
+        Transaction::observe(TransactionObserver::class);
     }
 
     /**

@@ -30,6 +30,13 @@
         <li><a href="/supplier">Daftar Supplier</a></li>
       </ul>
     </li>
+    <li class="@if(starts_with($route, 'sales')) active @endif">
+      <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan
+        @if ($newSales != 0)
+          <span class="badge badge-pill badge-warning">{{ $newSales }}</span>
+        @endif
+      </a>
+    </li>
     <li class="@if(starts_with($route, 'price')) active @endif"><a href="/price"> <i class="fa fa-btc"></i>Harga kedelai</a></li>
   </ul><span class="heading">Kedelai</span>
   <ul class="list-unstyled">
