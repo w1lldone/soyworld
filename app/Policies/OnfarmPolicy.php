@@ -10,6 +10,13 @@ class OnfarmPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        if ($user->isSuperadmin()) {
+            return true;
+        }
+    }
+
     // public function before($user, $ability)
     // {
     //     if ($user->privilage->is_superadmin) {

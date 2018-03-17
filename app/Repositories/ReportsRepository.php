@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Transaction;
+
 /**
 * Reports repository
 */
@@ -116,11 +118,37 @@ class ReportsRepository
         return collect($harvests);
     }
 
+    public function getAllSales($request)
+    {
+        $transaction = new Transaction;
+
+        if ($request->has('year')) {
+            foreach ($this->getMonths() as $key => $value) {
+                $sales[$value] = $transaction->whereYear('created_at', $request->year)
+                                ->where('status_id', 3)
+                                ->whereMonth('created_at', $key)
+                                ->get()
+                                ->sum('total_quantity');
+            }
+        } else {
+            foreach ($this->getYears() as $year) {
+                $sales[$year] = $transaction->whereYear('created_at', $year)
+                                ->where('status_id', 3)
+                                ->get()
+                                ->sum('total_quantity');
+            }
+        }
+
+        return collect($sales);
+    }
+
     public function getModel()
     {
         if (auth()->user()->isPoktanLeader()) {
             return auth()->user()->poktan;
-        } elseif(auth()->user()->hasRole('petani')) {
+        } 
+
+        if(auth()->user()->hasRole('petani')) {
             return auth()->user();
         }
     }
