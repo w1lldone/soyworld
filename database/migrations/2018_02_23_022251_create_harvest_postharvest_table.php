@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHarvestPostharvestsTable extends Migration
+class CreateHarvestPostharvestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -31,6 +31,6 @@ class CreateHarvestPostharvestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('harvest_postharvests');
+        Schema::dropIfExists('harvest_postharvest');
     }
 }
