@@ -56,7 +56,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     {{-- <script src="{{ asset('js/jquery.cookie.js') }}"> </script> --}}
     {{-- <script src="{{ asset('js/jquery.validate.min.js') }}"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="js/Chart.js"></script>
     {{-- <script src="{{ asset('js/front.js') }}"></script> --}}
 
     @yield('script')

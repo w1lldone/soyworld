@@ -17,32 +17,6 @@
 		      @include('layouts.alerts')
 	      </div>
 	      <div class="col-lg-8">
-	      	{{-- TRANSACTION --}}
-	      	<div class="articles card mb-3">
-	      	  <div class="card-header d-flex align-items-center bg-violet">
-	      	    <h2 class="h3">Transaksi butuh tindakan</h2>
-	      	  </div>
-	      	  <div class="card-body">
-	      	    @if ($sales->isEmpty())
-	      	      <div class="pt-2 pb-4 text-center">
-	      	        <img src="/img/stock/shop_shopping.svg" class="img-fluid" width="150px">
-	      	        <h4 class="text-light text-muted">Tidak ada Transaksi</h4>
-	      	      </div>
-      	        <a href="/sales" class="btn btn-info">Semua transaksi</a>
-	      	    @endif
-	      	    <!-- TRANSACTION LIST -->
-	      	    <table class="table table-hover mb-0">
-	      	    	<tbody>
-	      	    		@foreach ($sales as $sale)
-	      	    			<tr class="linked-row" data-href="/sales/{{ $sale->id }}">
-	      	    				<td><b>#{{ $sale->code }}</b><br><span>{{ $sale->total_quantity }} Kg</span></td>
-	      	    				<td class="text-right"><small>{{ $sale->updated_at->diffForHumans() }}</small> <br> <span class="badge badge-{{ $sale->status->status_color }}">{{ $sale->status->name }}</span> </td>
-	      	    			</tr>
-	      	    		@endforeach
-	      	    	</tbody>
-	      	    </table>
-	      	  </div>
-	      	</div>
 	        <div class="bar-chart-example card">
 	          <div class="card-header d-flex align-items-center bg-violet">
 	            <h3 class="h4">Grafik panen kedelai {{ date('Y') }}</h3>

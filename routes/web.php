@@ -126,7 +126,7 @@ Route::group(['prefix' => 'harvest'], function(){
 	Route::get('/{harvest}/postharvest/{postharvest}', 'PostharvestController@show')->name('postharvest.show');
 	Route::get('/{harvest}/postharvest/{postharvest}/edit', 'PostharvestController@edit')->name('postharvest.edit');
 	Route::post('/', 'HarvestController@store');
-	// Route::put('/{harvest}/sale', 'HarvestSalesController@update');
+	Route::put('/sale', 'HarvestController@updateSale')->name('harvest.update.sale');
 	Route::put('/{harvest}/{section}', 'HarvestController@update');
 });
 
@@ -139,13 +139,14 @@ Route::group(['prefix' => 'stock'], function(){
 });
 
 Route::group(['prefix' => 'soybean'], function(){
-	Route::get('/', 'SoybeanController@index');
+	Route::get('/', 'SoybeanController@index')->name('soybean.index');
 	Route::get('/harvest/{harvest}', 'SoybeanController@show');
 	Route::get('/onfarm/{onfarm}', 'SoybeanController@showOnfarm');
 });
 
 Route::resource('transaction', 'TransactionController');
 Route::resource('sales', 'SalesController', ['parameters' => ['sales' => 'transaction']]);
+
 Route::resource('sold', 'SoldSoybeanController', ['parameters' => ['sold' => 'detail']]);
 
 Route::group(['prefix' => 'notifications'], function(){
@@ -165,3 +166,28 @@ Route::group(['prefix' => 'warehouse'], function(){
 Route::group(['prefix' => 'handling'], function(){
 	Route::post('/', 'HandlingController@store')->name('handling.store');
 });
+
+Route::group(['prefix' => 'report'], function(){
+	Route::get('/', 'ReportsController@index')->name('report.index');
+	Route::group(['prefix' => 'poktan'], function(){
+		Route::get('/', 'Report\PoktanReportController@index')->name('report.poktan.index');
+		Route::get('/farmer', 'Report\PoktanReportController@farmer')->name('report.poktan.farmer');
+		Route::get('/sales', 'Report\PoktanReportController@sales')->name('report.poktan.sales');
+		Route::get('/soybean', 'Report\PoktanReportController@soybean')->name('report.poktan.soybean');
+	});
+	Route::group(['prefix' => 'farmer'], function(){
+		Route::get('/', 'Report\FarmerReportController@index')->name('report.farmer.index');
+		Route::get('/soybean', 'Report\FarmerReportController@soybean')->name('report.farmer.soybean');
+		Route::get('/sales', 'Report\FarmerReportController@sales')->name('report.farmer.sales');
+	});
+});
+
+Route::get('/reset-data', function ()
+{
+	\App\Harvest::all()->each(function ($item)
+	{
+		$item->update([
+			'ending_stock' => $item->initial_stock,
+		]);
+	});
+})->name('reset-data');
