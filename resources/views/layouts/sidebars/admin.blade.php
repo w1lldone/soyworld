@@ -30,7 +30,20 @@
         <li><a href="/supplier">Daftar Supplier</a></li>
       </ul>
     </li>
+    <li class="@if(starts_with($route, 'sales')) active @endif">
+      <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan
+        @if ($newSales != 0)
+          <span class="badge badge-pill badge-warning">{{ $newSales }}</span>
+        @endif
+      </a>
+    </li>
     <li class="@if(starts_with($route, 'price')) active @endif"><a href="/price"> <i class="fa fa-btc"></i>Harga kedelai</a></li>
+    <li class="@if(starts_with($route, 'report')) active @endif">
+      <a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Laporan </a>
+      <ul id="report" class="collapse list-unstyled">
+        <li><a href="{{ route('report.admin.index') }}">Laporan Admin</a></li>
+      </ul>
+    </li>
   </ul><span class="heading">Kedelai</span>
   <ul class="list-unstyled">
     <li class="@if(starts_with($route, 'onfarm')) active @endif"> <a href="/onfarm"> <i class="fa fa-envira"></i>On farm </a></li>

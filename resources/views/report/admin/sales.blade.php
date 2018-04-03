@@ -4,7 +4,7 @@
   <!-- Page Header-->
   <header class="page-header">
     <div class="container-fluid">
-      @include('report.poktan.nav')
+      @include('report.admin.nav')
     </div>
   </header>
 

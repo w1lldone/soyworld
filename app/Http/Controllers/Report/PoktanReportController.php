@@ -31,7 +31,7 @@ class PoktanReportController extends Controller
     {
         $years = $this->repository->getYears();
 
-        $sales = $this->repository->getSalesReport($request, $years);
+        $sales = $this->repository->getSalesReport($request);
 
         return view('report.poktan.sales', compact('sales', 'years'));
     }

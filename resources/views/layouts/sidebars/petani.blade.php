@@ -18,15 +18,6 @@
         <li><a href="{{ route('supplier.index') }}">Daftar Supplier</a></li>
       </ul>
     </li>
-    @if (auth()->user()->isPoktanLeader())
-      <li class="@if(starts_with($route, 'sales')) active @endif">
-        <a href="/sales"> <i class="fa fa-envelope-open-o"></i>Kedelai dipesan
-          @if ($newSales != 0)
-            <span class="badge badge-pill badge-warning">{{ $newSales }}</span>
-          @endif
-        </a>
-      </li>
-    @endif
     <li class="@if(starts_with($route, 'report')) active @endif">
       <a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Laporan </a>
       <ul id="report" class="collapse list-unstyled">

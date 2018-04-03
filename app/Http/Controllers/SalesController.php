@@ -13,7 +13,7 @@ class SalesController extends Controller
     
     function __construct()
     {
-        $this->middleware(['auth', 'isPoktanLeader']);
+        $this->middleware(['auth', 'role:admin']);
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +22,7 @@ class SalesController extends Controller
      */
     public function index(Transaction $transaction, Request $request, Status $status)
     {
-        $transactions = $transaction->where('poktan_id', auth()->user()->poktan_id);
-
-        $transactions = $this->filterAndSort($transactions, $request);
+        $transactions = $this->filterAndSort($transaction, $request);
         
         $newSales = $transactions->where('status_id', 1)->count();
         $statuses = $status->orderBy('id')->get();

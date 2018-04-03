@@ -50,18 +50,29 @@
   	    <div class="col-12">
   	      <div class="card">
             <div class="card-body">
-              <form class="form-inline">
-                <label class="mr-sm-2" for="sort">Urutkan</label>
-                <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort">
-                  <option value="latest">Terbaru</option>
-                  <option value="oldest">Terlama</option>
-                  <option value="expensive">Termahal</option>
+              <form class="form-inline" id="filterForm">
+                @if (auth()->user()->isPoktanLeader())
+                  <label class="mr-sm-2">Tampilkan</label>
+                  <div class="btn-group" data-toggle="buttons" onchange="$('#filterForm').submit()">
+                    <label class="btn btn-primary btn-sm @if (request('view') == 'mine' || empty(request('view'))) active @endif">
+                      <input type="radio" value="mine" name="view" id="option1" @if (request('view') == 'mine' || empty(request('view'))) checked @endif> Kedelaiku
+                    </label>
+                    <label class="btn btn-primary btn-sm @if (request('view') == 'poktan') active @endif"">
+                      <input type="radio" value="poktan" name="view" id="option2" @if (request('view') == 'poktan') checked @endif> Kelompok tani
+                    </label>
+                  </div>
+                @endif
+                <label class="mr-sm-2 ml-0 ml-md-3" for="sort">Urutkan</label>
+                <select name="sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sort" onchange="this.form.submit()">
+                  <option value="latest" @if (request('sort') == 'latest' || empty(request('sort'))) selected @endif>Terbaru</option>
+                  <option value="oldest" @if (request('sort') == 'oldest') selected @endif>Terlama</option>
+                  <option value="expensive" @if (request('sort') == 'expensive') selected @endif>Termahal</option>
                 </select>
 
-                <label class="mr-sm-2" for="month">Bulan</label>
-                <input value="{{ request('month') }}" data-provide="datepicker" type="text" data-date-format="yyyy-mm" data-date-view-mode="months" data-date-min-view-mode="months" placeholder="pilih bulan" name="month" class="form-control datepicker">
+                <label class="mr-sm-2 ml-0 ml-md-3" for="month">Bulan</label>
+                <input on value="{{ request('month') }}" data-provide="datepicker" type="text" data-date-format="yyyy-mm" data-date-view-mode="months" data-date-min-view-mode="months" placeholder="pilih bulan" name="month" class="form-control datepicker">
 
-                <button type="submit" class="btn btn-primary ml-auto">Submit</button>
+                <button type="submit" class="btn btn-primary">Filter</button>
               </form>
             </div>
             @empty ($sales->first())
@@ -76,6 +87,9 @@
     	            <thead>
     	              <tr>
                       <th>Pembeli</th>
+                      @if (auth()->user()->isPoktanLeader())
+                        <th>Petani</th>
+                      @endif
                       <th>Jumlah kedelai</th>
                       <th>Total pembayaran</th>
                       <th>Tanggal transaksi</th>
@@ -85,6 +99,9 @@
                     @foreach ($sales as $sale)
                       <tr class="linked-row" data-href="/sold/{{ $sale->id }}">
                         <td>{{ $sale->transaction->user->name }}</td>
+                        @if (auth()->user()->isPoktanLeader())
+                          <td>{{ $sale->harvest->onfarm->user->name }}</td>
+                        @endif
                         <td>{{ $sale->quantity }} Kg</td>
                         <td>Rp. {{ $sale->formattedTotalPrice() }}</td>
                         <td>{{ $sale->transaction->created_at->format('j F Y') }}</td>
@@ -109,9 +126,5 @@
     //     viewMode: "months", 
     //     minViewMode: "months"
     // });
-
-    $(function(){
-      $("#sort").val("{{ request('sort') }}");
-    });
   </script>
 @endsection

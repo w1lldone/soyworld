@@ -180,6 +180,10 @@ Route::group(['prefix' => 'report'], function(){
 		Route::get('/soybean', 'Report\FarmerReportController@soybean')->name('report.farmer.soybean');
 		Route::get('/sales', 'Report\FarmerReportController@sales')->name('report.farmer.sales');
 	});
+	Route::group(['prefix' => 'admin'], function(){
+		Route::get('/', 'Report\AdminReportController@index')->name('report.admin.index');
+		Route::get('/sales', 'Report\AdminReportController@sales')->name('report.admin.sales');
+	});
 });
 
 Route::get('/reset-data', function ()
