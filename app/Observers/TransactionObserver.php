@@ -19,6 +19,9 @@ class TransactionObserver
         }
 
         // send notification to Administrator
-        User::where('is_superadmin', 1)->first()->notify(new \App\Notifications\NewTransaction($transaction));
+        User::whereHas('privilage', function ($query)
+        {
+            $query->where('is_superadmin', true);
+        })->first()->notify(new \App\Notifications\NewTransaction($transaction));
     }
 }
